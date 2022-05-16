@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 
 // App.js
 function Home() {
