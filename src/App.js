@@ -2,23 +2,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
+import { Home } from "./website/pages/home/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 
 // App.js
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
 
 function About() {
   return (
@@ -42,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="equipa" element={<Equipa />} />
+        <Route path="home" element={<Home />} />
       </Routes>
     </div>
   );
