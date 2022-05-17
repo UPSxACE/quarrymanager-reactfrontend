@@ -22,6 +22,7 @@ const H2 = styled.h2((props) => ({
 const Paragraph = styled.p((props) => ({
   color: textColor1,
   fontSize: "20px",
+  textAlign: "justify",
 }));
 
 const H3 = styled.h3((props) => ({
