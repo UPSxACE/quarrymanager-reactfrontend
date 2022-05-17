@@ -1,16 +1,20 @@
 import { Button } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { render } from "@testing-library/react";
 export { Equipa };
 
 function BotaoAumentarContador(props) {
+  const { quantidade, funcaoAumentar } = props;
+
   return (
     <Button
       onClick={() => {
-        props.funcaoAumentar(props.quantidade);
+        funcaoAumentar(quantidade);
       }}
       variant="primary"
     >
-      Aumentar Numero por {props.quantidade}
+      Aumentar Numero por {quantidade}
     </Button>
   );
 }
@@ -28,6 +32,7 @@ function Equipa() {
   }
 
   function aumentarContadorPorX(quantidade) {
+    //  function aumentarContadorPorX({quantidade})
     atualizarContador(contador + quantidade);
   }
 
@@ -54,6 +59,26 @@ function Equipa() {
       >
         Aumentar Numero por 3
       </BotaoAumentarContador>
+      <br></br>
     </div>
   );
+}
+
+function ListarCriptos() {
+  const [data, setData] = useState([]);
+  console.log("teste", data);
+
+  async function getCriptos() {
+    const result = await axios("https://api.coincap.io/v2/assets");
+    console.log(result);
+    setData(result.data.data);
+  }
+
+  useEffect(() => {
+    getCriptos();
+  }, []);
+
+  return data.map((objeto) => {
+    return <li>{objeto.name}</li>;
+  });
 }
