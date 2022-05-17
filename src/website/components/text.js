@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 export { DisplayH1, H1, Paragraph, H2, H3 };
 
-const textColor1 = "red";
+const textColor1 = "White";
 
 const DisplayH1 = styled.h1((props) => ({
   color: textColor1,
