@@ -5,6 +5,7 @@ import { Equipa } from "./website/pages/equipa/equipa";
 import { Home } from "./website/pages/home/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import { NavbarComponent, StylizedNavbar } from "./website/components/navbar";
 
 // App.js
 
@@ -26,6 +27,8 @@ function App() {
   return (
     <div className="App">
       {/*<h1>Welcome to React Router!</h1>*/}
+      <StylizedNavbar isGuest={true} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
