@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Col, Row, Container, Navbar, Nav } from "react-bootstrap";
 import styled from "styled-components";
+import weROCK from "../../images/website/weROCK.png";
 export { NavbarComponent };
 
 function NavbarComponent(props) {
@@ -8,8 +9,10 @@ function NavbarComponent(props) {
   if (guest) {
     return (
       <StyledNavbar className={props.className}>
-        <div className="d-flex bd-highlight mb-3 w-100 justify-content-end">
-          <div className=" p-2 bd-highlight me-auto">teste</div>
+        <div className="d-flex bd-highlight w-100 justify-content-end">
+          <div className=" p-2 bd-highlight me-auto">
+            <LogoWEROCK src={weROCK}></LogoWEROCK>
+          </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink href="#">Loja</StyledNavLink>
           </div>
@@ -38,10 +41,18 @@ function NavbarComponent(props) {
 
 const StyledNavbar = styled(Navbar)`
   background-color: #30373e;
+  padding-top: 0px;
+  padding-bottom: 0px;
 `;
 
 const StyledNavLink = styled(Nav.Link)`
   color: white;
+  font-size: 28px;
+`;
+
+const LogoWEROCK = styled.img`
+  width: 191px;
+  height: auto;
 `;
 
 {
