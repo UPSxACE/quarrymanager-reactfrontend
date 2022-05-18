@@ -1,45 +1,51 @@
 import { useState } from "react";
 import { Button, Col, Row, Container, Navbar, Nav } from "react-bootstrap";
 import styled from "styled-components";
-export { NavbarComponent, StylizedNavbar };
+export { NavbarComponent };
 
 function NavbarComponent(props) {
   const [guest, setGuest] = useState(props.isGuest);
   if (guest) {
     return (
-      <Navbar className={props.className}>
+      <StyledNavbar className={props.className}>
         <div className="d-flex bd-highlight mb-3 w-100 justify-content-end">
           <div className=" p-2 bd-highlight me-auto">teste</div>
           <div className="p-2 bd-highlight">
-            <Nav.Link href="#">Loja</Nav.Link>
+            <StyledNavLink href="#">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <Nav.Link href="/equipa">A nossa equipa</Nav.Link>
+            <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <Nav.Link href="#">Parceiros</Nav.Link>
+            <StyledNavLink href="#">Parceiros</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <Nav.Link href="#">Contacte-nos</Nav.Link>
+            <StyledNavLink href="#">Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <Nav.Link href="#">Faqs</Nav.Link>
+            <StyledNavLink href="#">Faqs</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <Button variant="light">Login/Register</Button>
           </div>
         </div>
-      </Navbar>
+      </StyledNavbar>
     );
   }
 
   return <Navbar></Navbar>;
 }
 
-const StylizedNavbar = styled(NavbarComponent)`
+const StyledNavbar = styled(Navbar)`
   background-color: #30373e;
 `;
 
-const StylizedNavLink = styled.a`
-  color: black;
+const StyledNavLink = styled(Nav.Link)`
+  color: white;
 `;
+
+{
+  /* const StylizedNavLink = styled.a`
+  color: black;
+`;*/
+}
