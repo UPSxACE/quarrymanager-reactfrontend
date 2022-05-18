@@ -24,7 +24,7 @@ const H2 = styled.h2((props) => ({
 
 const Paragraph = styled.p((props) => ({
   color: textColor1,
-  fontSize: "20px",
+  fontSize: "19px",
   textAlign: "justify",
 }));
 
