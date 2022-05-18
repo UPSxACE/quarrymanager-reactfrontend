@@ -5,33 +5,34 @@ import styled from "styled-components";
 import mainPicture from "../../../images/website/mainPicture.jpg";
 import indexPic1 from "../../../images/website/indexPic1.png";
 import indexPic2 from "../../../images/website/indexPic2.png";
+import parceriaPic from "../../../images/website/parcerias.png";
 export { Home };
 
 function Home() {
   return (
     <Container fluid className="main">
       <Row>
-        <Col xs={12}>
+        <Col xs={12} className={"g-0"}>
           <MainPicture src={mainPicture}></MainPicture>
         </Col>
       </Row>
       <StyledRowSlogan>
         <Col xs={6}>
-          <DisplayH1>
+          <DisplayH1 textAlign={"center"}>
             <strong>weDELIVER</strong>
-            <H1>Somos nós que entregamos</H1>
           </DisplayH1>
+          <H1 textAlign={"center"}>Somos nós que entregamos</H1>
         </Col>
         <Col xs={6}>
-          <DisplayH1>
+          <DisplayH1 textAlign={"center"}>
             <strong>weDELIVER</strong>
-            <H1>Garantimos a qualidade do serviço</H1>
           </DisplayH1>
+          <H1 textAlign={"center"}>Garantimos a qualidade do serviço</H1>
         </Col>
       </StyledRowSlogan>
       <StyledRowText1>
         <Col xs={4}>
-          <H2>PRODUTO SEMPRE COM A MELHOR QUALIDADE!</H2>
+          <H2 textAlign={"center"}>PRODUTO SEMPRE COM A MELHOR QUALIDADE!</H2>
           <Paragraph>
             A extracção de pedra natural é o que a weROCK faz há mais de 50
             anos, com diversas pedreiras a nivél nacional. Fazemos de tudo para
@@ -40,16 +41,16 @@ function Home() {
             grandes projectos.
           </Paragraph>
         </Col>
-        <Col xs={8}>
+        <Col xs={8} className={"g-0"}>
           <IndexPic1 src={indexPic1}></IndexPic1>
         </Col>
       </StyledRowText1>
       <StyledRowText2>
-        <Col xs={8}>
+        <Col xs={8} className={"g-0"}>
           <IndexPic2 src={indexPic2}></IndexPic2>
         </Col>
         <Col xs={4}>
-          <H2>RESPONSABILIDADE E DETERMINAÇÃO</H2>
+          <H2 textAlign={"center"}>RESPONSABILIDADE E DETERMINAÇÃO</H2>
           <Paragraph>
             Dominamos a arte de arrancar pedra, acumulamos uma experiência
             inestimável e temos sempre a mesma energia e a motivação, desde o
@@ -58,6 +59,32 @@ function Home() {
           </Paragraph>
         </Col>
       </StyledRowText2>
+      <StyledRowMessages>
+        <Col xs={4}>
+          <ParceriaPic src={parceriaPic}></ParceriaPic>
+          <H1>Parcerias sem igual:</H1>
+          <Paragraph>
+            A união traz a força e hoje podemos afirmar que temos do nosso lado
+            o melhor grupo de aliados, todos com um mesmo objetivo em comum:
+            Eficácia.
+          </Paragraph>
+        </Col>
+        <Col xs={4}>
+          <H1>Rapidez na Entrega:</H1>
+          <Paragraph>
+            Entregamos para toda a Europa, de Norte a Sul, sempre cumprindo os
+            prazos acordados com o cliente.
+          </Paragraph>
+        </Col>
+        <Col xs={4}>
+          <H1>Segurança no Trabalho:</H1>
+          <Paragraph>
+            Asseguramos as condições necessárias, desenvolvemos condições
+            técnicas e formamos os trabalhadores no domínio da segurança e saúde
+            no trabalho.
+          </Paragraph>
+        </Col>
+      </StyledRowMessages>
     </Container>
   );
 }
@@ -92,4 +119,13 @@ const IndexPic2 = styled.img`
   height: 425px;
   width: 100%;
   object-fit: cover;
+`;
+
+const StyledRowMessages = styled(Row)`
+  background-color: #394a58;
+`;
+
+const ParceriaPic = styled.img`
+  width: auto;
+  height: 110px;
 `;
