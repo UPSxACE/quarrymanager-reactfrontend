@@ -6,6 +6,7 @@ import { Home } from "./website/pages/home/home";
 import { Footer } from "./website/components/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import { NavbarComponent } from "./website/components/navbar";
 
 // App.js
 
@@ -26,7 +27,8 @@ function About() {
 function App() {
   return (
     <div className="App">
-      {/*<h1>Welcome to React Router!</h1>*/}
+      <NavbarComponent isGuest={true} />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
