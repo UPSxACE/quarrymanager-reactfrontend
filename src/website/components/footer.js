@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
 import wRLogo from "../../img/website/wR.png";
 import { Paragraph } from "./text";
+import { H2 } from "./text";
 
 export { Footer };
 
@@ -24,7 +25,12 @@ function Footer() {
             <Container fluid>
               <Row>
                 <Col xs={3}>
-                  <TightList></TightList>
+                  <TightList>
+                    <ListHeader>
+                      <H2>Serviços</H2>
+                      <WhiteLine />
+                    </ListHeader>
+                  </TightList>
                 </Col>
                 <Col xs={3}></Col>
                 <Col xs={3}></Col>
@@ -84,4 +90,14 @@ const WRLogo = styled.img`
   height: 90px;
 `;
 
-const TightList = styled.div``;
+const TightList = styled.div`
+  width: max-content;
+g`;
+
+const ListHeader = styled.div``;
+
+const WhiteLine = styled.span`
+  font-size: 2px;
+  padding-left: 100%;
+  background-color: white;
+`;
