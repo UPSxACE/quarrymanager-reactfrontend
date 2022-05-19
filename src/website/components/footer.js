@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
+import wRLogo from "../../img/website/wR.png";
+import { Paragraph } from "./text";
+
 export { Footer };
 
 function Footer() {
@@ -8,8 +11,27 @@ function Footer() {
     <FooterBase>
       <Container fluid>
         <Row>
-          <Col xs={3}>a</Col>
-          <Col xs={9}>v</Col>
+          <Col xs={3}>
+            <div>
+              <WRLogo src={wRLogo} />
+              <Paragraph>
+                Orientados por um obetivo comum, e partilhado com alegria
+                entusiasmo e paixão pelo que fazemos
+              </Paragraph>
+            </div>
+          </Col>
+          <Col xs={9}>
+            <Container fluid>
+              <Row>
+                <Col xs={3}>
+                  <TightList></TightList>
+                </Col>
+                <Col xs={3}></Col>
+                <Col xs={3}></Col>
+                <Col xs={3}></Col>
+              </Row>
+            </Container>
+          </Col>
         </Row>
         <Row>
           <Col xs={12}>
@@ -38,6 +60,7 @@ const FooterBase = styled.footer`
 `;
 
 const HorizontalUl = styled.ul`
+  margin-bottom: 8px;
   display: flex;
   padding: 0;
   justify-content: end;
@@ -56,3 +79,9 @@ const ClickableLi = styled.a`
     padding-left: 15px;
   } ;
 `;
+
+const WRLogo = styled.img`
+  height: 90px;
+`;
+
+const TightList = styled.div``;
