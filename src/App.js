@@ -26,7 +26,6 @@ function About() {
 function App() {
   return (
     <div className="App">
-      {/*<h1>Welcome to React Router!</h1>*/}
       <NavbarComponent isGuest={true} />
 
       <Routes>
