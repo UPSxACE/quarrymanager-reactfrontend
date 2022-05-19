@@ -16,6 +16,30 @@ const PrimaryButton = styled(PrimaryButtonBase)`
   background-color: #f8f9fa;
   border-color: #f8f9fa;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  border: 0;
+
+  &:active {
+    color: black;
+    background-color: #dae0e5;
+    border: 0;
+  }
+
+  &:hover {
+    color: black;
+    background-color: #dae0e5;
+    border: 0;
+  }
+
+  &:focus {
+    color: black;
+    background-color: #dae0e5;
+    border: 0;
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+
+  &:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
 `;
 
 // BOTÃO SUBMIT (ENVIAR)

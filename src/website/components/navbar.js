@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import styled from "styled-components";
 import weROCK from "../../images/website/weROCK.png";
+import { PrimaryButton } from "./buttons";
 export { NavbarComponent };
 
 function NavbarComponent(props) {
@@ -38,7 +39,7 @@ function NavbarComponent(props) {
             <StyledNavLink href="#">Faqs</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
-            <Button variant="light">Login/Register</Button>
+            <PrimaryButton>Login/Register</PrimaryButton>
           </div>
         </div>
       </StyledNavbar>
