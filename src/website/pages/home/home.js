@@ -111,7 +111,7 @@ function Home() {
 }
 
 const MainPicture = styled.img`
-  height: calc((100vh - 145px) * 0.85);
+  height: calc((100vh - 175px) * 0.85);
   width: 100%;
   object-fit: cover;
 `;

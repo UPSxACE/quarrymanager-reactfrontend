@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-export { DisplayH1, H1, Paragraph, H2, H3 };
+export { DisplayH1, H1, Paragraph, H2, H3, H5 };
 
 const textColor1 = "White";
 
@@ -26,9 +26,17 @@ const Paragraph = styled.p((props) => ({
   color: textColor1,
   fontSize: "19px",
   textAlign: "justify",
+  fontWeight: props.fontWeight,
 }));
 
 const H3 = styled.h3((props) => ({
   color: textColor1,
   fontSize: "28px",
+}));
+
+const H5 = styled.h5((props) => ({
+  color: textColor1,
+  fontSize: "20px",
+  fontWeight: "normal",
+  textAlign: props.textAlign,
 }));
