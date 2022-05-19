@@ -8,7 +8,11 @@ import indexPic2 from "../../../images/website/indexPic2.png";
 import parceriaPic from "../../../images/website/parcerias.png";
 import rapidezPic from "../../../images/website/rapidez.png";
 import segurancaPic from "../../../images/website/seguranca.png";
-import { ButtonSubmit, PrimaryButton } from "../../components/buttons";
+import {
+  ButtonSubmit,
+  LoginButtonSubmit,
+  PrimaryButton,
+} from "../../components/buttons";
 export { Home };
 
 function Home() {
@@ -100,8 +104,6 @@ function Home() {
             técnicas e formamos os trabalhadores no domínio da segurança e saúde
             no trabalho.
           </Paragraph>
-          <PrimaryButton>Login/Register</PrimaryButton>
-          <ButtonSubmit>Login</ButtonSubmit>
         </Col>
       </StyledRowMessages>
     </Container>
