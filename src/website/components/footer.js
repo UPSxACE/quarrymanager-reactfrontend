@@ -23,7 +23,7 @@ function Footer() {
           </Col>
           <Col xs={9}>
             <Container fluid>
-              <Row>
+              <Row className="pt-5">
                 <Col xs={3}>
                   <TightList>
                     <ListHeader>
