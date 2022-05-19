@@ -11,20 +11,20 @@ function Footer() {
   return (
     <FooterBase>
       <Container fluid>
-        <Row>
+        <Row className="pt-5 pb-5">
           <Col xs={3}>
-            <div>
+            <div className="ps-4 pe-4">
               <WRLogo src={wRLogo} />
-              <Paragraph>
+              <LogoText>
                 Orientados por um obetivo comum, e partilhado com alegria
                 entusiasmo e paixão pelo que fazemos
-              </Paragraph>
+              </LogoText>
             </div>
           </Col>
           <Col xs={9}>
             <Container fluid>
-              <Row className="pt-5">
-                <Col xs={3}>
+              <Row>
+                <Col xs={3} className="d-flex justify-content-center">
                   <TightList>
                     <ListHeader>
                       <ListHeaderTitle>Serviços</ListHeaderTitle>
@@ -40,7 +40,7 @@ function Footer() {
                     </ListHeader>
                   </TightList>
                 </Col>
-                <Col xs={3}>
+                <Col xs={3} className="d-flex justify-content-center">
                   <TightList>
                     <ListHeader>
                       <ListHeaderTitle>Acerca de</ListHeaderTitle>
@@ -59,7 +59,7 @@ function Footer() {
                     </ListHeader>
                   </TightList>
                 </Col>
-                <Col xs={3}>
+                <Col xs={3} className="d-flex justify-content-center">
                   <TightList>
                     <ListHeader>
                       <ListHeaderTitle>Segue-nos</ListHeaderTitle>
@@ -78,7 +78,7 @@ function Footer() {
                     </ListHeader>
                   </TightList>
                 </Col>
-                <Col xs={3}>
+                <Col xs={3} className="d-flex justify-content-center">
                   <TightList>
                     <ListHeader>
                       <ListHeaderTitle>Ajuda</ListHeaderTitle>
@@ -176,4 +176,10 @@ const FooterListClickable = styled.a`
 
 const FooterListItem = styled.li`
   color: white;
+`;
+
+const LogoText = styled.p`
+  color: white;
+  font-size: 20px;
+  line-height: 19px !important;
 `;
