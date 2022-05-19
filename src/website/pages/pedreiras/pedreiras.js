@@ -26,8 +26,8 @@ function Pedreiras() {
       </StyledRowLight>
 
       <StyledRowDark>
-        <Col xs={6}>
-          <PedreiraMoleanosPic src={pedreiraMoleanos}></PedreiraMoleanosPic>
+        <Col xs={6} className={"g-0"}>
+          <PedreiraPicture src={pedreiraMoleanos}></PedreiraPicture>
         </Col>
         <Col xs={6}>
           <H3>Pedreira de Moleanos</H3>
@@ -42,8 +42,8 @@ function Pedreiras() {
       </StyledRowDark>
 
       <StyledRowLight>
-        <Col xs={6}>
-          <PedreiraAtaijaPic src={pedreiraAtaija}></PedreiraAtaijaPic>
+        <Col xs={6} className={"g-0"}>
+          <PedreiraPicture src={pedreiraAtaija}></PedreiraPicture>
         </Col>
         <Col xs={6}>
           <H3>Pedreira de Ataija</H3>
@@ -56,8 +56,8 @@ function Pedreiras() {
       </StyledRowLight>
 
       <StyledRowDark>
-        <Col xs={6}>
-          <PedreiraMocaPic src={pedreiraMoca}></PedreiraMocaPic>
+        <Col xs={6} className={"g-0"}>
+          <PedreiraPicture src={pedreiraMoca}></PedreiraPicture>
         </Col>
         <Col xs={6}>
           <H3>Pedreira de Moca</H3>
@@ -69,8 +69,8 @@ function Pedreiras() {
       </StyledRowDark>
 
       <StyledRowLight>
-        <Col xs={6}>
-          <PedreiraAtaijaPic src={pedreiraAtaija}></PedreiraAtaijaPic>
+        <Col xs={6} className={"g-0"}>
+          <PedreiraPicture src={pedreiraSalgueira}></PedreiraPicture>
         </Col>
         <Col xs={6}>
           <H3>Pedreira de Salgueira</H3>
@@ -92,22 +92,8 @@ const StyledRowDark = styled(Row)`
   background-color: #30373e;
 `;
 
-const PedreiraMoleanosPic = styled.img`
+const PedreiraPicture = styled.img`
+  height: 300px;
   width: 100%;
-  height: 80%;
-`;
-
-const PedreiraAtaijaPic = styled.img`
-  width: 100%;
-  height: 80%;
-`;
-
-const PedreiraMocaPic = styled.img`
-  width: 100%;
-  height: 80%;
-`;
-
-const PedreiraSalgueiraPic = styled.img`
-  width: 100%;
-  height: 80%;
+  object-fit: cover;
 `;
