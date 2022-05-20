@@ -13,8 +13,9 @@ function Pedreiras() {
   return (
     <Container fluid>
       <StyledRowLight>
-        <Col xs={12} className={"g-0"}>
+        <Col xs={12} className={"g-0 pb-5 pt-3 ps-5 pe-5"}>
           <DisplayH1 textAlign={"center"}>As nossas Pedreiras</DisplayH1>
+          <br></br>
           <H5 textAlign={"center"}>
             A extracção de pedra natural é o que a WeRock faz desde há mais de
             50 anos, com diversas pedreiras no Maciço Calcário Estremenho.
@@ -29,7 +30,7 @@ function Pedreiras() {
         <Col xs={6} className={"g-0"}>
           <PedreiraPicture src={pedreiraMoleanos}></PedreiraPicture>
         </Col>
-        <Col xs={6}>
+        <Col xs={6} className={"pe-3 pt-3 ps-3"}>
           <H3>Pedreira de Moleanos</H3>
           <Paragraph fontWeight="Lighter">
             Esta é a pedreira do verdadeiro calcário Moleanos Gascogne, nas suas
@@ -45,7 +46,7 @@ function Pedreiras() {
         <Col xs={6} className={"g-0"}>
           <PedreiraPicture src={pedreiraAtaija}></PedreiraPicture>
         </Col>
-        <Col xs={6}>
+        <Col xs={6} className={"pe-3 pt-3 ps-3"}>
           <H3>Pedreira de Ataija</H3>
           <Paragraph fontWeight="Lighter">
             Na Ataíja temos a pedreira com a maior capacidade de produção desta
@@ -59,7 +60,7 @@ function Pedreiras() {
         <Col xs={6} className={"g-0"}>
           <PedreiraPicture src={pedreiraMoca}></PedreiraPicture>
         </Col>
-        <Col xs={6}>
+        <Col xs={6} className={"pe-3 pt-3 ps-3"}>
           <H3>Pedreira de Moca</H3>
           <Paragraph fontWeight="Lighter">
             No núcleo da Moca possuímos pedreira desta pedra natural, de onde
@@ -72,7 +73,7 @@ function Pedreiras() {
         <Col xs={6} className={"g-0"}>
           <PedreiraPicture src={pedreiraSalgueira}></PedreiraPicture>
         </Col>
-        <Col xs={6}>
+        <Col xs={6} className={"pe-3 pt-3 ps-3"}>
           <H3>Pedreira de Salgueira</H3>
           <Paragraph fontWeight="Lighter">
             No alto da Serra dos Candeeiros, possuímos pedreira de semi-rijo
@@ -93,7 +94,7 @@ const StyledRowDark = styled(Row)`
 `;
 
 const PedreiraPicture = styled.img`
-  height: 300px;
+  height: 250px;
   width: 100%;
   object-fit: cover;
 `;
