@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
 import { Home } from "./website/pages/home/home";
+import { Footer } from "./website/components/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavbarComponent } from "./website/components/navbar";
@@ -36,6 +37,7 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="pedreiras" element={<Pedreiras />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
