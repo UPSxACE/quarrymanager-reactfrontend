@@ -77,7 +77,7 @@ function Pedreiras() {
           <H3>Pedreira de Salgueira</H3>
           <Paragraph fontWeight="Lighter">
             No alto da Serra dos Candeeiros, possuímos pedreira de semi-rijo
-            Branco do Mar na Salgueira, que se distingue pela sua qualidade.
+            Branco do Mar na Salgueira, que se distingue pela sua qualidade!
           </Paragraph>
         </Col>
       </StyledRowLight>
