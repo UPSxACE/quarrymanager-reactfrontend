@@ -27,6 +27,7 @@ const Paragraph = styled.p((props) => ({
   fontSize: "19px",
   textAlign: "justify",
   fontWeight: props.fontWeight,
+  fontStyle: props.fontStyle,
 }));
 
 const H3 = styled.h3((props) => ({
@@ -35,7 +36,8 @@ const H3 = styled.h3((props) => ({
 }));
 
 const H5 = styled.h5((props) => ({
-  color: textColor1,
+  color: props.orange ? "#d69b7f" : "white",
+
   fontSize: "20px",
   fontWeight: "normal",
   textAlign: props.textAlign,

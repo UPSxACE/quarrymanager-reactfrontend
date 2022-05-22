@@ -93,6 +93,14 @@ const StyledNavbar = styled(Navbar)`
 const StyledNavLink = styled(Nav.Link)`
   color: white;
   font-size: 28px;
+
+  &:hover {
+    color: #d69b7f;
+  }
+
+  &:focus {
+    color: #d69b7f;
+  }
 `;
 
 const LogoWEROCK = styled.img`

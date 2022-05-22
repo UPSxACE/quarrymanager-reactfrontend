@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { NavbarComponent } from "./website/components/navbar";
 import { Pedreiras } from "./website/pages/pedreiras/pedreiras";
+import { Criadores } from "./website/pages/criadores/criadores";
 
 // App.js
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="equipa" element={<Equipa />} />
         <Route path="home" element={<Home />} />
         <Route path="pedreiras" element={<Pedreiras />} />
+        <Route path="criadores" element={<Criadores />} />
       </Routes>
       <Footer />
     </div>
