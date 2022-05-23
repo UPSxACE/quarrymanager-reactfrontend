@@ -14,7 +14,7 @@ export { Parceiros };
 function Parceiros() {
   return (
     <ColoredContainer className="main" fluid>
-      <Row className="pt-5 pb-5">
+      <Row className="pt-3 pb-5">
         <Col xs={12}>
           <DisplayH1 className="text-center">Parceiros Comerciais</DisplayH1>
         </Col>
@@ -29,7 +29,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro1} />
                   </Col>
@@ -37,7 +37,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro2} />
                   </Col>
@@ -45,7 +45,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro3} />
                   </Col>
@@ -53,7 +53,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro4} />
                   </Col>
@@ -61,7 +61,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro5} />
                   </Col>
@@ -69,7 +69,7 @@ function Parceiros() {
                     xs={12}
                     md={6}
                     xl={4}
-                    className="d-flex justify-content-center"
+                    className="d-flex justify-content-center pb-5"
                   >
                     <LogoParceiro src={parceiro6} />
                   </Col>
