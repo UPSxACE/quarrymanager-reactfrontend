@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
 import { Home } from "./website/pages/home/home";
+import { Parceiros } from "./website/pages/parceiros/parceiros";
 import { Footer } from "./website/components/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
@@ -37,6 +38,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="equipa" element={<Equipa />} />
         <Route path="home" element={<Home />} />
+        <Route path="parceiros" element={<Parceiros />} />
         <Route path="pedreiras" element={<Pedreiras />} />
         <Route path="criadores" element={<Criadores />} />
         <Route path="login" element={<Login />} />
