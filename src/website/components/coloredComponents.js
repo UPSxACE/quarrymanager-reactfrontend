@@ -8,6 +8,8 @@ const ColoredContainer = styled(Container)`
     switch (props.variant) {
       case 1:
         return "#394a58";
+      case 2:
+        return "#30373E";
       default:
         return "#394a58";
     }

@@ -10,6 +10,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import { NavbarComponent } from "./website/components/navbar";
 import { Pedreiras } from "./website/pages/pedreiras/pedreiras";
 import { Criadores } from "./website/pages/criadores/criadores";
+import { Contactos } from "./website/pages/contactos/contactos";
 
 // App.js
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="parceiros" element={<Parceiros />} />
         <Route path="pedreiras" element={<Pedreiras />} />
         <Route path="criadores" element={<Criadores />} />
+        <Route path="contactos" element={<Contactos />} />
       </Routes>
       <Footer />
     </div>
