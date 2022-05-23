@@ -92,6 +92,7 @@ const LoginButtonSubmit = styled(LoginButton)`
   border-radius: 17px;
   border: 0;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  width: 200px;
 
   &:active {
     color: #fff;
