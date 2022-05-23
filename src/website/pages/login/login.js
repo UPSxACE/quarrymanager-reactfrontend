@@ -47,17 +47,19 @@ function Login() {
                 <Row>
                   <Col xs={6}>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                      <StyledText type="checkbox" label="Lembra-me" />
+                      <StyledFormCheck type="checkbox" label="Lembrar-me" />
                     </Form.Group>
                   </Col>
                   <Col xs={6} className={"text-end"}>
-                    <ForgotPassText href="#">
-                      Esqueceu-se da senha?
-                    </ForgotPassText>
+                    <WhiteLink href="#">Esqueceu-se da senha?</WhiteLink>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center"}>
                     <LoginButtonSubmit>Login</LoginButtonSubmit>
                   </Col>
+                  <RegisterSpan className="text-center pt-3">
+                    Não tem uma conta?{" "}
+                    <WhiteLink href="#">Regista-te</WhiteLink>
+                  </RegisterSpan>
                 </Row>
               </Container>
             </Form>
@@ -75,15 +77,36 @@ const CardBodyRow = styled.div`
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
 `;
 
-const StyledText = styled(Form.Check)`
+const StyledFormCheck = styled(Form.Check)`
   color: white;
+
+  input {
+    background-color: #30373e !important;
+    border-color: transparent !important;
+  }
+
+  input:focus {
+    background-color: #30373e;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  input:active {
+    background-color: #30373e;
+    border-color: transparent;
+    box-shadow: none;
+  }
 
   &:focus {
     border-color: #f3844f !important;
   }
 `;
 
-const ForgotPassText = styled.a`
+const RegisterSpan = styled.span`
+  color: white;
+`;
+
+const WhiteLink = styled.a`
   color: white;
 
   &:hover {
