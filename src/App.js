@@ -10,11 +10,8 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import { NavbarComponent } from "./website/components/navbar";
 import { Pedreiras } from "./website/pages/pedreiras/pedreiras";
 import { Criadores } from "./website/pages/criadores/criadores";
-<<<<<<< HEAD
 import { Contactos } from "./website/pages/contactos/contactos";
-=======
 import { Login } from "./website/pages/login/login";
->>>>>>> feature/login.js
 
 // App.js
 
@@ -48,7 +45,6 @@ function App() {
         <Route path="contactos" element={<Contactos />} />
         <Route path="login" element={<Login />} />
         <Route path="index" element={<Home />} />
-
       </Routes>
       <Footer />
     </div>
