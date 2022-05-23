@@ -36,7 +36,7 @@ function NavbarComponent(props) {
             <StyledNavLink href="#">Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Faqs</StyledNavLink>
+            <StyledNavLink href="#">FAQ</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
             <PrimaryButton>Login/Register</PrimaryButton>
@@ -93,6 +93,14 @@ const StyledNavbar = styled(Navbar)`
 const StyledNavLink = styled(Nav.Link)`
   color: white;
   font-size: 28px;
+
+  &:hover {
+    color: #d69b7f;
+  }
+
+  &:focus {
+    color: #d69b7f;
+  }
 `;
 
 const LogoWEROCK = styled.img`
