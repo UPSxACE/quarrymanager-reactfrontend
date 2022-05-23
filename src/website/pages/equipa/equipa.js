@@ -12,8 +12,8 @@ function Equipa() {
         <Col xs={12} className={"g-0 pb-5 pt-3 ps-5 pe-5"}>
           <DisplayH1 textAlign={"center"}>A NOSSA EQUIPA</DisplayH1>
           <br></br>
+          <WRLogo src={wRLogo} className={"pe-3"} />
           <Paragraph textAlign={"justify"}>
-            <WRLogo src={wRLogo} />
             Na WeRock caminhamos todos na mesma direção, orientados por um
             objetivo comum e partilhado, com alegria, entusiamo e paixão pelo
             que fazemos, criando a força necessária para o nosso crescimento.
@@ -49,5 +49,6 @@ const StyledRowLight = styled(Row)`
 `;
 
 const WRLogo = styled.img`
-  height: 50px;
+  height: 60px;
+  float: left;
 `;
