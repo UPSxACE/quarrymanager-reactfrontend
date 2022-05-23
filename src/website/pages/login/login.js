@@ -53,7 +53,7 @@ function Login() {
                   <Col xs={6} className={"text-end"}>
                     <WhiteLink href="#">Esqueceu-se da senha?</WhiteLink>
                   </Col>
-                  <Col xs={12} className={"d-flex justify-content-center"}>
+                  <Col xs={12} className={"d-flex justify-content-center pt-3"}>
                     <LoginButtonSubmit>Login</LoginButtonSubmit>
                   </Col>
                   <RegisterSpan className="text-center pt-3">
