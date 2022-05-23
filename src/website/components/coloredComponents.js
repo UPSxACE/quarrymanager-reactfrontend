@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
 export { ColoredContainer, ColoredRow, ColoredCol };
@@ -8,13 +8,15 @@ const ColoredContainer = styled(Container)`
     switch (props.variant) {
       case 1:
         return "#394a58";
+      case 3:
+        return "#5e666d";
       default:
         return "#394a58";
     }
   }};
 `;
 
-const ColoredRow = styled(Container)`
+const ColoredRow = styled(Row)`
   background-color: ${(props) => {
     switch (props.variant) {
       case 1:
@@ -25,7 +27,7 @@ const ColoredRow = styled(Container)`
   }};
 `;
 
-const ColoredCol = styled(Container)`
+const ColoredCol = styled(Col)`
   background-color: ${(props) => {
     switch (props.variant) {
       case 1:

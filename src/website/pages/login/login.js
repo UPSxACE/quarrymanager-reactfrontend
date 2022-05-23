@@ -1,29 +1,72 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 import { DisplayH1, H1, Paragraph, H5, H3 } from "../../components/text";
+import { LoginButtonSubmit } from "../../components/buttons";
+import {
+  ColoredContainer,
+  ColoredRow,
+} from "../../components/coloredComponents";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+
 export { Login };
 
 function Login() {
   return (
     <Container fluid>
-      <StyledRowLight>
-        <CardBodyRow>
+      <ColoredRow variant={3}>
+        <CardBodyRow className={"container-fluid mt-5 mb-5 p-5"}>
           <Col xs={12} className={"g-0"}>
-            <H1 textAlign={"center"}>LOGIN</H1>
-            <br></br>
+            <H3 className={"text-center"}>LOGIN</H3>
+            <Form>
+              <Form.Group controlId="formBasicEmail">
+                <InputGroup className="mb-3">
+                  <InputGroup.Text id="basic-addon1">
+                    <FontAwesomeIcon
+                      className="align-self-center"
+                      icon={faUser}
+                    />
+                  </InputGroup.Text>
+                  <Form.Control type="email" placeholder="Email" />
+                </InputGroup>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <InputGroup className="mb-3">
+                  <InputGroup.Text id="basic-addon1">
+                    <FontAwesomeIcon
+                      className="align-self-center"
+                      icon={faLock}
+                    />
+                  </InputGroup.Text>
+                  <Form.Control type="password" placeholder="Password" />
+                </InputGroup>
+              </Form.Group>
+              <Container>
+                <Row>
+                  <Col xs={6}>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                      <Form.Check type="checkbox" label="Lembra-me" />
+                    </Form.Group>
+                  </Col>
+                  <Col xs={6} className={"text-end"}>
+                    <a href="#">Esqueceu-se da senha?</a>
+                  </Col>
+                  <Col xs={12} className={"d-flex justify-content-center"}>
+                    <LoginButtonSubmit>Login</LoginButtonSubmit>
+                  </Col>
+                </Row>
+              </Container>
+            </Form>
           </Col>
         </CardBodyRow>
-      </StyledRowLight>
+      </ColoredRow>
     </Container>
   );
 }
 
-const StyledRowLight = styled(Row)`
-  background-color: #394a58;
-`;
-
-const CardBodyRow = styled(Row)`
+const CardBodyRow = styled.div`
   background-color: #5e666d;
-  width: 100px;
+  width: 600px;
 `;

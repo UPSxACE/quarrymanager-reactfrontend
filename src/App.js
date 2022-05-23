@@ -42,6 +42,7 @@ function App() {
         <Route path="pedreiras" element={<Pedreiras />} />
         <Route path="criadores" element={<Criadores />} />
         <Route path="login" element={<Login />} />
+        <Route path="index" element={<Home />} />
       </Routes>
       <Footer />
     </div>
