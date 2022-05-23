@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { DisplayH1 } from "../../components/text";
-import { ColoredContainer } from "../../components/containers";
+import { ColoredContainer } from "../../components/coloredComponents";
 import parceiro1 from "../../../images/website/parceiro1.png";
 import parceiro2 from "../../../images/website/parceiro2.png";
 import parceiro3 from "../../../images/website/parceiro3.png";
