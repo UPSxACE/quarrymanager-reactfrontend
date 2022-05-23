@@ -9,7 +9,7 @@ function Login() {
     <Container fluid>
       <StyledRowLight>
         <CardBodyRow>
-          <Col xs={12} className={"g-0 pb-5 pt-3 ps-5 pe-5"}>
+          <Col xs={12} className={"g-0"}>
             <H1 textAlign={"center"}>LOGIN</H1>
             <br></br>
           </Col>
@@ -25,4 +25,5 @@ const StyledRowLight = styled(Row)`
 
 const CardBodyRow = styled(Row)`
   background-color: #5e666d;
+  width: 100px;
 `;
