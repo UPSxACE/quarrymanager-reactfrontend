@@ -16,9 +16,9 @@ function Login() {
   return (
     <Container fluid>
       <ColoredRow variant={1}>
-        <CardBodyRow className={"container-fluid mt-5 mb-5 p-5"}>
+        <CardBodyRow className={"container-fluid mt-5 mb-5 p-5 pt-4"}>
           <Col xs={12} className={"g-0"}>
-            <H3 className={"text-center"}>LOGIN</H3>
+            <H3 className={"text-center pb-3"}>LOGIN</H3>
             <Form>
               <Form.Group controlId="formBasicEmail">
                 <InputGroup className="mb-3">
@@ -46,7 +46,7 @@ function Login() {
               <Container>
                 <Row>
                   <Col xs={6}>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Group className="mb-1" controlId="formBasicCheckbox">
                       <StyledFormCheck type="checkbox" label="Lembrar-me" />
                     </Form.Group>
                   </Col>
@@ -56,9 +56,9 @@ function Login() {
                   <Col xs={12} className={"d-flex justify-content-center pt-3"}>
                     <LoginButtonSubmit>Login</LoginButtonSubmit>
                   </Col>
-                  <RegisterSpan className="text-center pt-3">
+                  <RegisterSpan className="text-center pt-1">
                     Não tem uma conta?{" "}
-                    <WhiteLink href="#">Regista-te</WhiteLink>
+                    <WhiteLink href="/register">Regista-te</WhiteLink>
                   </RegisterSpan>
                 </Row>
               </Container>
