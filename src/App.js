@@ -12,6 +12,7 @@ import { Pedreiras } from "./website/pages/pedreiras/pedreiras";
 import { Criadores } from "./website/pages/criadores/criadores";
 import { Contactos } from "./website/pages/contactos/contactos";
 import { Login } from "./website/pages/login/login";
+import { Faq } from "./website/pages/faq/faq";
 
 // App.js
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="contactos" element={<Contactos />} />
         <Route path="login" element={<Login />} />
         <Route path="index" element={<Home />} />
+        <Route path="faq" element={<Faq />} />
       </Routes>
       <Footer />
     </div>
