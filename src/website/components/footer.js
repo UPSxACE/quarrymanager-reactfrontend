@@ -151,7 +151,7 @@ const WRLogo = styled.img`
 
 const TightList = styled.div`
   width: max-content;
-g`;
+`;
 
 const ListHeader = styled.div``;
 

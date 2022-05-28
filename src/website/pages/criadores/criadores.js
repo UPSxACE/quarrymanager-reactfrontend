@@ -12,7 +12,7 @@ function Criadores() {
   return (
     <Container fluid>
       <StyledRow>
-        <Col xs={12} className={"pb-5 pt-4 ps-5 pe-5"}>
+        <Col xs={12} className={"pb-4 pt-4 ps-5 pe-5"}>
           <DisplayH1 textAlign={"left"}>NOSSA EQUIPA</DisplayH1>
 
           <H5 textAlign={"left"}>
@@ -31,7 +31,7 @@ function Criadores() {
           <H2>Eduardo Botelho</H2>
           <H5 orange>Sócio-fundador da WeRock</H5>
           <Paragraph fontWeight="Lighter" fontStyle="italic">
-            "Devemos sonhar os nossos próprios sonhos”
+            “Devemos sonhar os nossos próprios sonhos”
           </Paragraph>
         </Col>
         <Col xs={2} className={"ps-5"}>
@@ -53,7 +53,7 @@ function Criadores() {
           <H2>Diogo Branquinho</H2>
           <H5 orange>Sócio-fundador da WeRock</H5>
           <Paragraph fontWeight="Lighter" fontStyle="italic">
-            “Comece acreditando que é possível"
+            “Comece acreditando que é possível”
           </Paragraph>
         </Col>
         <Col xs={2} className={"ps-5 pb-5"}>
@@ -63,7 +63,7 @@ function Criadores() {
           <H2>Miguel Rocha</H2>
           <H5 orange>Sócio-fundador da WeRock</H5>
           <Paragraph fontWeight="Lighter" fontStyle="italic">
-            "Na dificuldade encontra-se a oportunidade"
+            “Na dificuldade encontra-se a oportunidade”
           </Paragraph>
         </Col>
       </StyledRow>
