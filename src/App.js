@@ -39,6 +39,7 @@ function Website() {
     <div className="Website">
       <NavbarComponent isGuest={true} />
       <Outlet />
+      <Footer />
     </div>
   );
 }
@@ -46,7 +47,6 @@ function Website() {
 function Dashboard() {
   return (
     <div className="Dashboard">
-      <h1>Funciona!</h1>
       <Outlet />
     </div>
   );
@@ -78,7 +78,6 @@ function App(props) {
           <Route path="home" element={<DashboardHome />} />
         </Route>
       </Routes>
-      <Footer />
     </div>
   );
 }

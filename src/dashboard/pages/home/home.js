@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import {} from "react-bootstrap";
 import styled from "styled-components";
+import { DashboardLayout } from "../../components/layout";
+
 export { DashboardHome };
 
 function DashboardHome() {
   return (
-    <div>
-      <h1>Isto é o componente DashboardHome</h1>
-    </div>
+    <DashboardLayout>
+      <h1>Isto é a home</h1>
+    </DashboardLayout>
   );
 }
