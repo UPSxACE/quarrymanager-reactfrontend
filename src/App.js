@@ -17,6 +17,7 @@ import { Register } from "./website/pages/register/register";
 
 import { Faq } from "./website/pages/faq/faq";
 import { DashboardHome } from "./dashboard/pages/home/home";
+import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 
 // App.js
 
@@ -76,6 +77,7 @@ function App(props) {
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
+          <Route path="lotes" element={<DashboardLotes />} />
         </Route>
       </Routes>
     </div>
