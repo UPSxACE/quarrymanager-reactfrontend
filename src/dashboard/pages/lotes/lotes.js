@@ -6,6 +6,7 @@ import axios from "axios";
 
 export { DashboardLotes };
 
+//teste
 function DashboardLotes() {
   const [data, setData] = useState({ hits: [] });
 
