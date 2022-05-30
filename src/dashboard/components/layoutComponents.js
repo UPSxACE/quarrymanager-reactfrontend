@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
-export {};
+export { DashboardContainer, DashboardRow, DashboardCol };
 
 const DashboardContainer = styled(Container)`
   background-color: ${(props) => (props.dark ? "grey" : "white")};
