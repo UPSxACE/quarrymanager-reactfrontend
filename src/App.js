@@ -18,6 +18,7 @@ import { Register } from "./website/pages/register/register";
 import { Faq } from "./website/pages/faq/faq";
 import { DashboardHome } from "./dashboard/pages/home/home";
 import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
+import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
 
 // App.js
 
@@ -78,6 +79,7 @@ function App(props) {
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
           <Route path="lotes" element={<DashboardLotes />} />
+          <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>
       </Routes>
     </div>

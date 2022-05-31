@@ -5,7 +5,7 @@ export { DashboardLayout };
 
 function DashboardLayout(props) {
   return (
-    <div className="DashboardLayout d-flex">
+    <BackgoundDiv className="DashboardLayout d-flex">
       <aside>
         <SideNavBar className="d-flex flex-column">
           <DashboardLogo>Logo</DashboardLogo>
@@ -24,9 +24,9 @@ function DashboardLayout(props) {
             <h6 className="ps-3">Seta</h6>
           </div>
         </PageHeader>
-        <div className="page-content">{props.children}</div>
+        <div className="page-content p-5">{props.children}</div>
       </ContentDiv>
-    </div>
+    </BackgoundDiv>
   );
 }
 
@@ -56,4 +56,8 @@ const PageHeader = styled.div`
 
 const ContentDiv = styled.div`
   width: calc(100% - 95px);
+`;
+
+const BackgoundDiv = styled.div`
+  background-color: #eff3f9;
 `;

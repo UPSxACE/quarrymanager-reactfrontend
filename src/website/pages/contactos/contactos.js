@@ -66,7 +66,7 @@ function Contactos() {
                   </Form.Group>
                 </Col>
                 <Col xs={6}>
-                  <Form.Group className="mb-3" controlId="formBasicname">
+                  <Form.Group className="mb-3" controlId="formBasicEmpresa">
                     <Form.Control type="text" placeholder="Empresa" />
                   </Form.Group>
                 </Col>
@@ -78,9 +78,9 @@ function Contactos() {
                   </Form.Group>
                 </Col>
                 <Col xs={6}>
-                  <Form.Group className="mb-3" controlId="formBasicname">
+                  <Form.Group className="mb-3" controlId="formContacto">
                     <Form.Control
-                      type="text"
+                      type="number"
                       placeholder="Número de Telefone"
                     />
                   </Form.Group>
