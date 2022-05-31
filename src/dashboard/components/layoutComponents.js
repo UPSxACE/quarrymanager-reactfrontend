@@ -9,6 +9,7 @@ export {
   H2,
   H3,
   H5,
+  H1Alt,
   Paragraph,
 };
 
@@ -62,8 +63,18 @@ const H3 = styled.h3((props) => ({
 
 const H5 = styled.h5((props) => ({
   color: props.orange ? "#d69b7f" : "white",
-
   fontSize: "20px",
   fontWeight: "normal",
   textAlign: props.textAlign,
 }));
+
+const H1Alt = styled(H1)`
+  color: ${(props) => {
+    switch (props.textColor) {
+      case 1:
+        return textColor1;
+      default:
+        return "black";
+    }
+  }};
+`;
