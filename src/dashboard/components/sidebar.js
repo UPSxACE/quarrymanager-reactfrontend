@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo70pxBlack from "../../images/dashboard/wR70pxBlack.png";
+import logo90pxBlack from "../../images/dashboard/wR90pxBlack.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -19,7 +19,7 @@ function DashboardSidebar() {
   return (
     <StyledSideBar>
       <DashboardLogo className="d-flex justify-content-center">
-        <img src={logo70pxBlack} />
+        <img src={logo90pxBlack} />
       </DashboardLogo>
       <NavigationItems className="d-flex flex-grow-1 flex-column justify-content-center">
         <li className="text-center pt-2 pb-2">
@@ -58,13 +58,13 @@ const StyledSideBar = styled.nav`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 95px;
+  width: 105px;
   background-color: grey;
 `;
 
 const DashboardLogo = styled.div`
   padding-top: 30px;
-  height: calc(40px + 30px);
+  height: calc(60px + 30px);
 `;
 
 const ThemeColorButton = styled.div`
