@@ -30,7 +30,7 @@ function Footer() {
                       <ListHeaderTitle>Serviços</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/parceiros">
                           <FooterListItem>Parceiros</FooterListItem>
                         </FooterListClickable>
                         <FooterListClickable href="#">
@@ -46,13 +46,13 @@ function Footer() {
                       <ListHeaderTitle>Acerca de</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/equipa">
                           <FooterListItem>Equipa</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/criadores">
                           <FooterListItem>Criadores</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/pedreiras">
                           <FooterListItem>Pedreiras</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
@@ -84,10 +84,10 @@ function Footer() {
                       <ListHeaderTitle>Ajuda</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/contactos">
                           <FooterListItem>Contacte-nos</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable href="/faq">
                           <FooterListItem>FAQ</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
