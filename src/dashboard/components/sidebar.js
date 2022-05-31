@@ -77,5 +77,5 @@ const NavigationItems = styled.ul`
 
 const SidebarIcon = styled(FontAwesomeIcon)`
   color: black;
-  font-size: 30px;
+  font-size: 34px;
 `;
