@@ -19,6 +19,7 @@ import { Faq } from "./website/pages/faq/faq";
 import { DashboardHome } from "./dashboard/pages/home/home";
 import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
+import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 
 // App.js
 
@@ -54,6 +55,16 @@ function Dashboard() {
   );
 }
 
+function Perfil() {
+  return (
+    <div className="Website">
+      <NavbarComponent isGuest={true} />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+}
+
 function App(props) {
   return (
     <div className="App">
@@ -80,6 +91,10 @@ function App(props) {
           <Route path="home" element={<DashboardHome />} />
           <Route path="lotes" element={<DashboardLotes />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
+        </Route>
+
+        <Route path="perfil" element={<Perfil />}>
+          <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
         </Route>
       </Routes>
     </div>
