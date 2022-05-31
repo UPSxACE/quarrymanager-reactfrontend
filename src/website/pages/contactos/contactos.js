@@ -79,10 +79,7 @@ function Contactos() {
                 </Col>
                 <Col xs={6}>
                   <Form.Group className="mb-3" controlId="formContacto">
-                    <Form.Control
-                      type="number"
-                      placeholder="Número de Telefone"
-                    />
+                    <Form.Control type="tel" placeholder="Número de Telefone" />
                   </Form.Group>
                 </Col>
               </Row>

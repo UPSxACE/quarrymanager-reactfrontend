@@ -27,7 +27,7 @@ function DashboardNovoLote() {
                     </Form.Select>
                   </Col>
                   <Col xs={3} className="pe-5 ps-4 ">
-                    <H2>Côr</H2>
+                    <h2>Cor</h2>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
@@ -50,7 +50,7 @@ function DashboardNovoLote() {
                     <H2>Data/Hora</H2>
                     <Form.Group className="mb-3" controlId="formBasicDateTime">
                       <Form.Control
-                        type="text"
+                        type="datetime-local"
                         placeholder="00/00/0000 00:00 AM"
                       />
                     </Form.Group>
