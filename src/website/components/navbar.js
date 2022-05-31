@@ -30,16 +30,18 @@ function NavbarComponent(props) {
             <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Parceiros</StyledNavLink>
+            <StyledNavLink href="/parceiros">Parceiros</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Contacte-nos</StyledNavLink>
+            <StyledNavLink href="/contactos">Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">FAQ</StyledNavLink>
+            <StyledNavLink href="/faq">FAQ</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
-            <PrimaryButton>Login/Register</PrimaryButton>
+            <a href="/login">
+              <PrimaryButton>Login/Register</PrimaryButton>
+            </a>
           </div>
         </div>
       </StyledNavbar>
@@ -59,13 +61,13 @@ function NavbarComponent(props) {
           <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
         </div>
         <div className="p-2 bd-highlight">
-          <StyledNavLink href="#">Parceiros</StyledNavLink>
+          <StyledNavLink href="/parceiros">Parceiros</StyledNavLink>
         </div>
         <div className="p-2 bd-highlight">
-          <StyledNavLink href="#">Contacte-nos</StyledNavLink>
+          <StyledNavLink href="/contactos">Contacte-nos</StyledNavLink>
         </div>
         <div className="p-2 bd-highlight">
-          <StyledNavLink href="#">Faqs</StyledNavLink>
+          <StyledNavLink href="/faq">Faqs</StyledNavLink>
         </div>
         <div className="p-2 bd-highlight d-flex align-items-center">
           <DropdownButton id="dropdown-basic-button" title="Dropdown button">
