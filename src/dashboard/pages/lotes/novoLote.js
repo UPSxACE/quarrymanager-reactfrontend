@@ -7,6 +7,7 @@ import {
   DashboardRow,
 } from "../../components/layoutComponents";
 import uploadBackgroundImg from "../../../images/dashboard/uploadImagem20opacity.png";
+import { H1, H2 } from "../../components/layoutComponents";
 export { DashboardNovoLote };
 
 //teste
@@ -20,19 +21,19 @@ function DashboardNovoLote() {
               <Container fluid>
                 <Row className="g-0 ">
                   <Col xs={3} className="pe-4 ps-4">
-                    <h2>Material</h2>
+                    <H2>Material</H2>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
                   </Col>
                   <Col xs={3} className="pe-5 ps-4 ">
-                    <h2>Côr</h2>
+                    <H2>Côr</H2>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
                   </Col>
                   <Col xs={6} className="ps-5 pe-4">
-                    <h2>ID Lote</h2>
+                    <H2>ID Lote</H2>
                     <Form.Group className="mb-3" controlId="formBasicIdLote">
                       <Form.Control type="text" placeholder="ID" />
                     </Form.Group>
@@ -40,13 +41,13 @@ function DashboardNovoLote() {
                 </Row>
                 <Row className="g-0 ">
                   <Col xs={6} className="pe-5 ps-4">
-                    <h2>Local de Retirada</h2>
+                    <H2>Local de Retirada</H2>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
                   </Col>
                   <Col xs={6} className="ps-5 pe-4">
-                    <h2>Data/Hora</h2>
+                    <H2>Data/Hora</H2>
                     <Form.Group className="mb-3" controlId="formBasicDateTime">
                       <Form.Control
                         type="text"
@@ -57,7 +58,7 @@ function DashboardNovoLote() {
                 </Row>
                 <Row className="g-0">
                   <Col xs={6} className="pe-5 ps-4">
-                    <h2>Quantidade</h2>
+                    <H2>Quantidade</H2>
                     <Form.Group
                       className="mb-3"
                       controlId="formBasicQuantidadeMaterial"
@@ -68,7 +69,7 @@ function DashboardNovoLote() {
                   <Col xs={6} className="ps-5">
                     <Container fluid>
                       <Row className="g-0">
-                        <h2>Cordenadas GPS</h2>
+                        <H2>Cordenadas GPS</H2>
                         <Col xs={3} className="pe-4">
                           <Form.Group
                             className="mb-3"
@@ -95,7 +96,7 @@ function DashboardNovoLote() {
 
           <DashboardRow className="mt-4 d-flex g-0">
             <Col xs={12} className="d-flex p-4 ">
-              <h1>Imagens</h1>
+              <H2>Imagens</H2>
 
               <UploadButton className="ms-auto ">Upload Imagem</UploadButton>
             </Col>
@@ -118,7 +119,7 @@ function DashboardNovoLote() {
             <Col xs={12}>
               <a href="#">
                 <SubmitButton>
-                  <h1>Submeter</h1>
+                  <H1>Submeter</H1>
                 </SubmitButton>
               </a>
             </Col>
@@ -137,8 +138,9 @@ const SubmitButton = styled.button`
   border: 0;
 `;
 
-const UploadButton = styled.h1`
-  color: #487cdf;
+const UploadButton = styled(H2)`
+  color: #004b5b;
+  text-decoration: underline;
 `;
 
 const UploadDiv = styled.div`
