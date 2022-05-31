@@ -35,5 +35,5 @@ const ContentDiv = styled.div`
 `;
 
 const BackgoundDiv = styled.div`
-  background-color: #eff3f9;
+  background-color: #fff;
 `;

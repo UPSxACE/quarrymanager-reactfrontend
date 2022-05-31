@@ -130,9 +130,11 @@ function DashboardNovoLote() {
 }
 
 const SubmitButton = styled.button`
-  background-color: #ffffffff;
-  color: black;
+  background-color: rgba(0, 75, 91, 0.04);
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
+  border: 0;
 `;
 
 const UploadButton = styled.h1`
