@@ -16,6 +16,13 @@ const ColoredContainer = styled(Container)`
         return "#394a58";
     }
   }};
+
+  &.dropShadow25 {
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  }
+  &.borderBlack {
+    border: 1px solid black;
+  }
 `;
 
 const ColoredRow = styled(Row)`
@@ -23,10 +30,21 @@ const ColoredRow = styled(Row)`
     switch (props.variant) {
       case 1:
         return "#394a58";
+      case 2:
+        return "#30373E";
+      case 3:
+        return "#5e666d";
       default:
         return "#394a58";
     }
   }};
+
+  &.dropShadow25 {
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  }
+  &.borderBlack {
+    border: 1px solid black;
+  }
 `;
 
 const ColoredCol = styled(Col)`
@@ -34,8 +52,19 @@ const ColoredCol = styled(Col)`
     switch (props.variant) {
       case 1:
         return "#394a58";
+      case 2:
+        return "#30373E";
+      case 3:
+        return "#5e666d";
       default:
         return "#394a58";
     }
   }};
+
+  &.dropShadow25 {
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  }
+  &.borderBlack {
+    border: 1px solid black;
+  }
 `;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { H1 } from "../../components/text";
+import { DisplayH1, H1, H3, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
 
@@ -13,53 +13,52 @@ function DefinicoesPerfil() {
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
         <Col xs={3}>
-          <Container fluid className="block-example border border-dark">
-            <Row>
-              <Col xs={12}>
-                <li>
-                  <a href="#">Meu Perfil</a>
-                </li>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
-                <a href="#">
-                  <li>Definições da Conta</li>
-                </a>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
-                <a href="#">
-                  <li>Histórico de Encomendas</li>
-                </a>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
-                <a href="#">
-                  <li>Terminar Sessão</li>
-                </a>
-              </Col>
-            </Row>
+          <Container fluid>
+            <ul className="list-unstyled">
+              <StyledLi className="p-2">
+                <WhiteLink href="#">
+                  <H5>Meu Perfil</H5>
+                </WhiteLink>
+              </StyledLi>
+
+              <StyledLiSelect className="p-2">
+                <WhiteLink href="#">
+                  <H5>Definições da Conta</H5>
+                </WhiteLink>
+              </StyledLiSelect>
+
+              <StyledLi className="p-2">
+                <WhiteLink href="#">
+                  <H5>Histórico de Encomendas</H5>
+                </WhiteLink>
+              </StyledLi>
+
+              <StyledLi className="p-2">
+                <WhiteLink href="#">
+                  <H5>Terminar Sessão</H5>
+                </WhiteLink>
+              </StyledLi>
+            </ul>
           </Container>
         </Col>
         <Col xs={9}>
           <ColoredContainer
             variant={2}
             fluid
-            className="block-example border border-dark"
+            className="drop dropShadow25 borderBlack"
           >
             <Form>
               <Row className="pe-3 ps-3">
-                <Col xs={12} className="mt-5 d-flex justify-content-start">
+                <Col xs={12} className="mt-5 mb-4 d-flex justify-content-start">
                   <H1>Definições da Conta</H1>
                 </Col>
               </Row>
               <Row className="pe-3 ps-3">
                 <Col xs={12}>
                   <Form.Group className="mb-3" controlId="formBasicName">
-                    <StyledFormLabel>Nome</StyledFormLabel>
+                    <StyledFormLabel>
+                      <TextH4>Nome</TextH4>
+                    </StyledFormLabel>
                     <Form.Control type="text" />
                   </Form.Group>
                 </Col>
@@ -67,7 +66,9 @@ function DefinicoesPerfil() {
               <Row className="pe-3 ps-3">
                 <Col xs={12}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <StyledFormLabel>E-mail</StyledFormLabel>
+                    <StyledFormLabel>
+                      <TextH4>E-mail</TextH4>
+                    </StyledFormLabel>
                     <Form.Control type="email" />
                   </Form.Group>
                 </Col>
@@ -76,15 +77,22 @@ function DefinicoesPerfil() {
                 <Col xs={12}>
                   {" "}
                   <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <StyledFormLabel>Palavra-Passe</StyledFormLabel>
+                    <StyledFormLabel>
+                      <TextH4>Palavra-Passe</TextH4>
+                    </StyledFormLabel>
                     <Form.Control type="password" />
                   </Form.Group>
                 </Col>
               </Row>
               <Row className="pe-3 ps-3">
                 <Col xs={12}>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <StyledFormLabel>Confirmar Palavra-Passe</StyledFormLabel>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formBasicPasswordConfirm"
+                  >
+                    <StyledFormLabel>
+                      <TextH4>Confirmar Palavra-Passe</TextH4>
+                    </StyledFormLabel>
                     <Form.Control type="password" />
                   </Form.Group>
                 </Col>
@@ -93,7 +101,7 @@ function DefinicoesPerfil() {
                 <Col xs={12} className="pb-5 mt-4">
                   <a href="#">
                     <ButtonSubmit black className="w-100">
-                      ENVIAR
+                      Enviar
                     </ButtonSubmit>
                   </a>
                 </Col>
@@ -108,4 +116,28 @@ function DefinicoesPerfil() {
 
 const StyledFormLabel = styled(Form.Label)`
   color: #fff;
+`;
+
+const StyledLi = styled.li`
+  background-color: #4c5660;
+  color: black;
+  border: 1px solid black;
+`;
+
+const StyledLiSelect = styled.li`
+  background-color: #30373e;
+  color: black;
+  border: 1px solid black;
+`;
+
+const WhiteLink = styled.a`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: #f3844f;
+  }
+`;
+
+const TextH4 = styled.h4`
+  font-weight: lighter;
 `;

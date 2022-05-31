@@ -52,6 +52,7 @@ const ButtonSubmit = styled(ButtonSubmitBase)`
   color: ${(props) => (props.black ? "white" : "black")};
   border: 0;
   border-radius: 0;
+  font-size: 20px;
 
   &:active {
     color: #fff;
