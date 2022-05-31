@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo90pxBlack from "../../images/dashboard/wR90pxBlack.png";
+import logo90pxWhite from "../../images/dashboard/wR90pxWhite.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -19,33 +19,51 @@ function DashboardSidebar() {
   return (
     <StyledSideBar>
       <DashboardLogo className="d-flex justify-content-center">
-        <img src={logo90pxBlack} />
+        <a href="/dashboard/home">
+          <img src={logo90pxWhite} />
+        </a>
       </DashboardLogo>
       <NavigationItems className="d-flex flex-grow-1 flex-column justify-content-center">
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faHouse} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faLayerGroup} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faClipboardList} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faCartShopping} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faUserGear} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faScrewdriverWrench} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faBullhorn} />
-        </li>
-        <li className="text-center pt-2 pb-2">
-          <SidebarIcon icon={faCircleQuestion} />
-        </li>
+        <IconSidebarList className="text-center pt-2 pb-2 active">
+          <a href="/dashboard/home">
+            <SidebarIcon icon={faHouse} className="active" />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faLayerGroup} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faClipboardList} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faCartShopping} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faUserGear} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faScrewdriverWrench} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faBullhorn} />
+          </a>
+        </IconSidebarList>
+        <IconSidebarList className="text-center pt-2 pb-2">
+          <a href="#">
+            <SidebarIcon icon={faCircleQuestion} />
+          </a>
+        </IconSidebarList>
       </NavigationItems>
       <ThemeColorButton className="text-center">
         <a href="#">Button</a>
@@ -59,7 +77,7 @@ const StyledSideBar = styled.nav`
   flex-direction: column;
   height: 100vh;
   width: 105px;
-  background-color: grey;
+  background-color: #004b5b;
 `;
 
 const DashboardLogo = styled.div`
@@ -76,6 +94,19 @@ const NavigationItems = styled.ul`
 `;
 
 const SidebarIcon = styled(FontAwesomeIcon)`
-  color: black;
+  color: #fff;
   font-size: 34px;
+
+  &.active {
+    color: #004b5b;
+  }
+`;
+
+const IconSidebarList = styled.li`
+  /*  background-color: ${(props) => (props.green ? "#004b5b" : "white")};  */
+
+  &.active {
+    background-color: white;
+    color: #004b5b;
+  }
 `;
