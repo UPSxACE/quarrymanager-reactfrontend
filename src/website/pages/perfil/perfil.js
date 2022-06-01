@@ -47,14 +47,17 @@ function MeuPerfil() {
             fluid
             className="drop dropShadow25 borderBlack"
           >
-            <Row>
-              <Col xs={12}>
+            <Row className="pe-3 ps-3">
+              <Col
+                xs={12}
+                className="ps-5 mt-5 mb-4 d-flex justify-content-start"
+              >
                 <H1>Meu Perfil</H1>
               </Col>
-              <Row>
+              <Row className="pe-3 ps-3">
                 <Col xs={9}>
                   <Container fluid>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={12}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                           <StyledFormLabel>
@@ -64,7 +67,7 @@ function MeuPerfil() {
                         </Form.Group>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={12}>
                         <Form.Group
                           className="mb-3"
@@ -77,7 +80,7 @@ function MeuPerfil() {
                         </Form.Group>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={6}>
                         <StyledFormLabel>
                           <TextH4>Data de Nascimento</TextH4>
@@ -98,7 +101,7 @@ function MeuPerfil() {
                         </Form.Select>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={12}>
                         <Form.Group
                           className="mb-3"
@@ -111,7 +114,7 @@ function MeuPerfil() {
                         </Form.Group>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={4}>
                         <StyledFormLabel>
                           <TextH4>Código Postal:</TextH4>
@@ -125,7 +128,7 @@ function MeuPerfil() {
                       </Col>
                       <Col xs={2}>
                         <StyledFormLabel>
-                          <TextH4>!</TextH4>
+                          <TextH4>&nbsp;</TextH4>
                         </StyledFormLabel>
                         <Form.Group
                           className="mb-3"
@@ -143,7 +146,7 @@ function MeuPerfil() {
                         </Form.Select>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pe-3 ps-3">
                       <Col xs={12}>
                         <Form.Group className="mb-3" controlId="formBasicPhone">
                           <StyledFormLabel>
@@ -158,7 +161,15 @@ function MeuPerfil() {
                 <Col xs={3}>
                   <Container>
                     <Row>
-                      <Col xs={12}>as</Col>
+                      <Col
+                        xs={12}
+                        className="mt-5 mb-4 d-flex justify-content-start"
+                      >
+                        <img
+                          width={"100%"}
+                          src="https://s3-alpha-sig.figma.com/img/29da/bbe7/b0d50b148f3447c03520fe3a1f129e73?Expires=1655078400&Signature=cKWB1ikrY6eTRrZfcuCPsdecGR5F~5UjUE-1Q2hPyyMsWLi00UUa4KAdT19pMxzag5XRxJ48~xSL~ci13RaVriJtfjv01Bw7ZfJF0Dl5Nwxx-d9n~UKuSvE84Q4yk4Wxfd--lVTz-qatQl3n1zsDUlokIjInuTw2dmm2g~q7S9QPKV0dqiG4zTphonLeLdNEOJHzsVXkqCBfq4~5y7WzsAv3yHt6FB2tAVfeoqoLMsQ9VzD2qNKOCYfN5Adh82ZyxiVSFdQTlcsR67qwg-2xoi-2ueopUD-1u-Fp~B~gUFgoTTKRBcFjGmmXTAbRdqxSvyPbA2VBKF3EPqsjvlooRA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                        ></img>
+                      </Col>
                     </Row>
                     <Row>
                       <Col xs={12}>
@@ -174,7 +185,7 @@ function MeuPerfil() {
               </Row>
             </Row>
             <Row className="pe-3 ps-3">
-              <Col xs={12} className="pb-5 mt-4">
+              <Col xs={12} className="pb-5 mt-4 ps-5 pe-5">
                 <a href="#">
                   <ButtonSubmit black className="w-100">
                     Guardar Alteração

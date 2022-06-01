@@ -95,8 +95,9 @@ function App(props) {
           <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>
 
-        <Route path="perfil" element={<MeuPerfil />}>
+        <Route path="perfil" element={<Perfil />}>
           <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
+          <Route path="/perfil/" element={<MeuPerfil />}></Route>
         </Route>
       </Routes>
     </div>
