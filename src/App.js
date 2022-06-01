@@ -19,6 +19,8 @@ import { Faq } from "./website/pages/faq/faq";
 import { DashboardHome } from "./dashboard/pages/home/home";
 import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
+
+import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 
 // App.js
@@ -93,7 +95,7 @@ function App(props) {
           <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>
 
-        <Route path="perfil" element={<Perfil />}>
+        <Route path="perfil" element={<MeuPerfil />}>
           <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
         </Route>
       </Routes>
