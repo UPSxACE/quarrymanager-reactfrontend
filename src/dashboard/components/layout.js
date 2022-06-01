@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {} from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardSidebar } from "./sidebar";
+import { H1Alt, H1 } from "./layoutComponents";
 export { DashboardLayout };
 
 function DashboardLayout(props) {
@@ -12,11 +13,17 @@ function DashboardLayout(props) {
       </aside>
       <ContentDiv>
         <PageHeader className="d-flex w-100">
-          <h6>Props_Página_Nome</h6>
+          <H1Alt textColor={1}>Nome</H1Alt>
           <div className="userMenu d-flex ms-auto">
-            <h6 className="ps-3">Props_Username</h6>
-            <h6 className="ps-3">icone</h6>
-            <h6 className="ps-3">Seta</h6>
+            <H1Alt className="ps-3" textColor={1}>
+              Props_Username
+            </H1Alt>
+            <H1Alt className="ps-3" textColor={1}>
+              icone
+            </H1Alt>
+            <H1Alt className="ps-3" textColor={1}>
+              Seta
+            </H1Alt>
           </div>
         </PageHeader>
         <div className="page-content p-5">{props.children}</div>
@@ -27,6 +34,8 @@ function DashboardLayout(props) {
 
 const PageHeader = styled.div`
   padding-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
   height: calc(40px + 30px);
 `;
 
@@ -35,5 +44,5 @@ const ContentDiv = styled.div`
 `;
 
 const BackgoundDiv = styled.div`
-  background-color: #eff3f9;
+  background-color: #fff;
 `;

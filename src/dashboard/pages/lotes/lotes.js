@@ -11,8 +11,6 @@ function DashboardLotes() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const axios = require("axios");
-
     const sendGetRequest = async () => {
       try {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
