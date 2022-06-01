@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
-import { DashboardTable } from "../../components/dashboardTable";
+import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardLayout } from "../../components/layout";
 import {
   DashboardMenu,
@@ -37,7 +37,7 @@ function DashboardStock() {
                   <H3>Cores</H3>
                 </DashboardMenuListItem>
                 <DashboardMenuListItemRight>
-                  <H3>Cores</H3>
+                  <H3>Novo Lote</H3>
                 </DashboardMenuListItemRight>
               </DashboardMenuList>
             </DashboardMenu>
@@ -48,53 +48,82 @@ function DashboardStock() {
             <DashboardTable>
               <thead>
                 <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
-                  <th>Country</th>
-                  <th>Country</th>
-                  <th>Country</th>
-                  <th>Country</th>
+                  <th>Lote</th>
+                  <th>Material</th>
+                  <th>Cor</th>
+                  <th>Quantidade</th>
+                  <th>Local de Retirada</th>
+                  <th>Coordenadas GPS</th>
+                  <th>Data</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                  <td>Mariaererererererererererer Anders</td>
+                  <td>Alfredswwww</td>
+                  <td>Mariaerererererere</td>
                   <td>Germany</td>
+                  <td>Germany</td>
+                  <td>Germany</td>
+                  <td>Germany</td>
+                  <td>23739</td>
                 </tr>
                 <tr>
                   <td>Centro comercial Moctezuma</td>
                   <td>Francisco Chang</td>
                   <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
                 <tr>
-                  <td>Centro g Moctezuma</td>
-                  <td>garantir Chang</td>
-                  <td>g</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
                 <tr>
-                  <td>Centro f Moctezuma</td>
-                  <td>d Chang</td>
-                  <td>g</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
                 <tr>
-                  <td>Centro f Moctezuma</td>
-                  <td>s Chang</td>
-                  <td>g</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
                 <tr>
-                  <td>a comercial Moctezuma</td>
-                  <td>Francisco s</td>
-                  <td>d</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
                 <tr>
-                  <td>a comercial Moctezuma</td>
-                  <td>d Chang</td>
-                  <td>f</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Centro comercial Moctezuma</td>
+                  <td>Francisco Chang</td>
+                  <td>Mexico</td>
+                  <td>Mexico</td>
                 </tr>
               </tbody>
             </DashboardTable>
+            <TablePager />
           </Col>
         </Row>
       </Container>

@@ -152,4 +152,5 @@ const DashboardMenuListItemRight = styled(DashboardMenuListItem)`
   margin-left: auto;
   border-left: 2px solid #bbbbbb;
   border-right: none;
+  padding: 16px 10px;
 `;
