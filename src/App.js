@@ -20,6 +20,12 @@ import { DashboardHome } from "./dashboard/pages/home/home";
 import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
 import { DashboardStock } from "./dashboard/pages/stock/stock";
+import { DashboardEncomendas } from "./dashboard/pages/encomendas/encomendas";
+import { DashboardLoja } from "./dashboard/pages/loja/loja";
+import { DashboardUtilizadores } from "./dashboard/pages/utilizadores/utilizadores";
+import { DashboardLocais } from "./dashboard/pages/locais/locais";
+import { DashboardLogs } from "./dashboard/pages/logs/logs";
+import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
 
 // App.js
 
@@ -79,8 +85,14 @@ function App(props) {
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
-          <Route path="lotes" element={<DashboardLotes />} />
           <Route path="stock" element={<DashboardStock />} />
+          <Route path="lotes" element={<DashboardLotes />} />
+          <Route path="encomendas" element={<DashboardEncomendas />} />
+          <Route path="loja" element={<DashboardLoja />} />
+          <Route path="utilizadores" element={<DashboardUtilizadores />} />
+          <Route path="locais" element={<DashboardLocais />} />
+          <Route path="logs" element={<DashboardLogs />} />
+          <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>
       </Routes>
