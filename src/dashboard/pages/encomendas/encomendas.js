@@ -10,7 +10,7 @@ import {
   DashboardMenuListItemRight,
   H3,
 } from "../../components/layoutComponents";
-import { DashboardTable } from "../../components/dashboardTable";
+import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardEncomendas };
 
@@ -42,6 +42,7 @@ function DashboardEncomendas() {
                 </tr>
               </tbody>
             </DashboardTable>
+            <TablePager />
           </Col>
         </Row>
       </Container>
