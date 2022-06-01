@@ -10,7 +10,7 @@ import {
   DashboardMenuListItemRight,
   H3,
 } from "../../components/layoutComponents";
-import { DashboardTable } from "../../components/dashboardTable";
+import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardLogs };
 //asdfasf
@@ -70,6 +70,7 @@ function DashboardLogs() {
                 </tr>
               </tbody>
             </DashboardTable>
+            <TablePager />
           </Col>
         </Row>
       </Container>
