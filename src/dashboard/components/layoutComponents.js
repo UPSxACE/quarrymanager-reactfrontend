@@ -11,6 +11,10 @@ export {
   H5,
   H1Alt,
   Paragraph,
+  DashboardMenu,
+  DashboardMenuList,
+  DashboardMenuListItem,
+  DashboardMenuListItemRight,
 };
 
 const DashboardContainer = styled(Container)`
@@ -77,4 +81,75 @@ const H1Alt = styled(H1)`
         return "black";
     }
   }};
+`;
+
+const DashboardMenu = styled.nav`
+  height: 75px;
+  background-color: ${(props) =>
+    props.dark ? "grey" : "rgba(0, 75, 91, 0.04)"};
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+`;
+
+const DashboardMenuList = styled.ul`
+  list-style: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  border: 2px solid #bbbbbb;
+  border-radius: 5px;
+  border-radius: 5px;
+`;
+
+const DashboardMenuListItem = styled.li`
+  height: 100%;
+  padding: 16px 32px;
+  display: flex;
+  align-content: center;
+  border-right: 2px solid #bbbbbb;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    line-height: 43px;
+    font-weight: bold;
+  }
+
+  &.active:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &.active {
+    background-color: ${textColor1};
+  }
+  &.active h1 {
+    color: white;
+  }
+  &.active h2 {
+    color: white;
+  }
+  &.active h3 {
+    color: white;
+  }
+  &.active h4 {
+    color: white;
+  }
+  &.active h5 {
+    color: white;
+  }
+  &.active h6 {
+    color: white;
+  }
+`;
+
+const DashboardMenuListItemRight = styled(DashboardMenuListItem)`
+  margin-left: auto;
+  border-left: 2px solid #bbbbbb;
+  border-right: none;
 `;

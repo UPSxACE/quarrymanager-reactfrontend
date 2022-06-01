@@ -92,6 +92,7 @@ const ThemeColorButton = styled.div`
 
 const NavigationItems = styled.ul`
   padding: 0;
+  list-style: none;
 `;
 
 const SidebarIcon = styled(FontAwesomeIcon)`
