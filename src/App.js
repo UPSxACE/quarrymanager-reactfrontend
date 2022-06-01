@@ -24,7 +24,7 @@ import { DashboardEncomendas } from "./dashboard/pages/encomendas/encomendas";
 import { DashboardLoja } from "./dashboard/pages/loja/loja";
 import { DashboardUtilizadores } from "./dashboard/pages/utilizadores/utilizadores";
 import { DashboardLocais } from "./dashboard/pages/locais/locais";
-import { DashboardLogs } from "./dashboard/pages/logs/logs";
+import { DashboardLogs } from "./dashboard/pages/logs_dashboard/logs";
 import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
 
 // App.js
