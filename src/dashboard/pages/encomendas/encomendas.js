@@ -1,15 +1,50 @@
 import React, { useEffect, useState } from "react";
-import {} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import axios from "axios";
+import {
+  DashboardMenu,
+  DashboardMenuList,
+  DashboardMenuListItem,
+  DashboardMenuListItemRight,
+  H3,
+} from "../../components/layoutComponents";
+import { DashboardTable } from "../../components/dashboardTable";
 
 export { DashboardEncomendas };
 
 function DashboardEncomendas() {
   return (
     <DashboardLayout>
-      <h1>conteudo</h1>
+      <Container fluid>
+        <Row className="g-0 pt-5">
+          <Col xs={12}>
+            <DashboardTable>
+              <thead>
+                <tr>
+                  <th>ID Encomenda</th>
+                  <th>Status</th>
+                  <th>Ultima Atualização</th>
+                  <th>Cliente</th>
+                  <th>Produto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
+                </tr>
+                <tr>
+                  <td>Centro comercial Moctezuma</td>
+                </tr>
+                <tr>
+                  <td>Centro g Moctezuma</td>
+                </tr>
+              </tbody>
+            </DashboardTable>
+          </Col>
+        </Row>
+      </Container>
     </DashboardLayout>
   );
 }
