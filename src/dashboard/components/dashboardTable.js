@@ -48,7 +48,7 @@ const TableStyle = styled.table`
 function TablePager() {
   return (
     <div className="w-100">
-      <PagerComponent className="w-100 text-center d-flex justify-content-center p-4">
+      <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
         <PagerText className="left">Anterior</PagerText>
         <PagerNumber className="active">1</PagerNumber>
         <PagerNumber>2</PagerNumber>
