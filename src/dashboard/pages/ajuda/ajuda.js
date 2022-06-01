@@ -7,6 +7,7 @@ import axios from "axios";
 export { DashboardAjuda };
 
 function DashboardAjuda() {
+  //
   return (
     <DashboardLayout>
       <h1>conteudo para ajudar as pessoas uwu</h1>
