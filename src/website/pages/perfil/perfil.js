@@ -60,7 +60,7 @@ function MeuPerfil() {
               </Col>
             </Row>
             <Row className="pe-3 ps-3">
-              <Col xs={9}>
+              <Col xs={8}>
                 <Container fluid>
                   <Row className="pe-3 ps-3">
                     <Col xs={12}>
@@ -160,29 +160,21 @@ function MeuPerfil() {
                   </Row>
                 </Container>
               </Col>
-              <Col xs={3}>
-                <Container>
-                  <Row>
-                    <Col
-                      xs={12}
-                      className="mt-5 mb-4 d-flex justify-content-start"
-                    >
-                      <img
-                        width={"100%"}
-                        src="https://s3-alpha-sig.figma.com/img/29da/bbe7/b0d50b148f3447c03520fe3a1f129e73?Expires=1655078400&Signature=cKWB1ikrY6eTRrZfcuCPsdecGR5F~5UjUE-1Q2hPyyMsWLi00UUa4KAdT19pMxzag5XRxJ48~xSL~ci13RaVriJtfjv01Bw7ZfJF0Dl5Nwxx-d9n~UKuSvE84Q4yk4Wxfd--lVTz-qatQl3n1zsDUlokIjInuTw2dmm2g~q7S9QPKV0dqiG4zTphonLeLdNEOJHzsVXkqCBfq4~5y7WzsAv3yHt6FB2tAVfeoqoLMsQ9VzD2qNKOCYfN5Adh82ZyxiVSFdQTlcsR67qwg-2xoi-2ueopUD-1u-Fp~B~gUFgoTTKRBcFjGmmXTAbRdqxSvyPbA2VBKF3EPqsjvlooRA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                      ></img>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col xs={12}>
-                      <a href="#">
-                        <ButtonSubmit black className="w-100">
-                          Carregar foto de perfil
-                        </ButtonSubmit>
-                      </a>
-                    </Col>
-                  </Row>
-                </Container>
+              <Col
+                xs={4}
+                className="g-0 pe-5 d-flex flex-column justify-content-start"
+              >
+                <img
+                  width={"100%"}
+                  src="https://s3-alpha-sig.figma.com/img/29da/bbe7/b0d50b148f3447c03520fe3a1f129e73?Expires=1655078400&Signature=cKWB1ikrY6eTRrZfcuCPsdecGR5F~5UjUE-1Q2hPyyMsWLi00UUa4KAdT19pMxzag5XRxJ48~xSL~ci13RaVriJtfjv01Bw7ZfJF0Dl5Nwxx-d9n~UKuSvE84Q4yk4Wxfd--lVTz-qatQl3n1zsDUlokIjInuTw2dmm2g~q7S9QPKV0dqiG4zTphonLeLdNEOJHzsVXkqCBfq4~5y7WzsAv3yHt6FB2tAVfeoqoLMsQ9VzD2qNKOCYfN5Adh82ZyxiVSFdQTlcsR67qwg-2xoi-2ueopUD-1u-Fp~B~gUFgoTTKRBcFjGmmXTAbRdqxSvyPbA2VBKF3EPqsjvlooRA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                  className="mb-4"
+                ></img>
+
+                <a href="#">
+                  <ButtonSubmit black className="w-100">
+                    Carregar foto de perfil
+                  </ButtonSubmit>
+                </a>
               </Col>
             </Row>
 
