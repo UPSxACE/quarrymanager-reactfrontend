@@ -12,49 +12,49 @@ function DefinicoesPerfil() {
   return (
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
-        <Col xs={3}>
-          <Container fluid>
-            <ul className="list-unstyled">
-              <StyledLi className="p-2">
-                <WhiteLink href="#">
-                  <H5>Meu Perfil</H5>
-                </WhiteLink>
-              </StyledLi>
+        <Col xs={3} className="g-0 pe-5">
+          <ul className="list-unstyled">
+            <StyledLi className="p-2">
+              <WhiteLink href="#">
+                <H5>Meu Perfil</H5>
+              </WhiteLink>
+            </StyledLi>
 
-              <StyledLiSelect className="p-2">
-                <WhiteLink href="#">
-                  <H5>Definições da Conta</H5>
-                </WhiteLink>
-              </StyledLiSelect>
+            <StyledLiSelect className="p-2">
+              <WhiteLink href="#">
+                <H5>Definições da Conta</H5>
+              </WhiteLink>
+            </StyledLiSelect>
 
-              <StyledLi className="p-2">
-                <WhiteLink href="#">
-                  <H5>Histórico de Encomendas</H5>
-                </WhiteLink>
-              </StyledLi>
+            <StyledLi className="p-2">
+              <WhiteLink href="#">
+                <H5>Histórico de Encomendas</H5>
+              </WhiteLink>
+            </StyledLi>
 
-              <StyledLi className="p-2">
-                <WhiteLink href="#">
-                  <H5>Terminar Sessão</H5>
-                </WhiteLink>
-              </StyledLi>
-            </ul>
-          </Container>
+            <StyledLi className="p-2">
+              <WhiteLink href="#">
+                <H5>Terminar Sessão</H5>
+              </WhiteLink>
+            </StyledLi>
+          </ul>
         </Col>
-        <Col xs={9}>
+        <Col xs={9} className="g-0">
           <ColoredContainer
             variant={2}
             fluid
-            className="drop dropShadow25 borderBlack"
+            className="drop dropShadow25 borderBlack pe-5 ps-5"
           >
             <Form>
               <Row className="pe-3 ps-3">
-                <Col xs={12} className="mt-5 mb-4 d-flex justify-content-start">
+                <Col
+                  xs={12}
+                  className="mt-5 mb-4 d-flex justify-content-start g-0"
+                >
                   <H1>Definições da Conta</H1>
                 </Col>
-              </Row>
-              <Row className="pe-3 ps-3">
-                <Col xs={12}>
+
+                <Col xs={12} className="g-0">
                   <Form.Group className="mb-3" controlId="formBasicName">
                     <StyledFormLabel>
                       <TextH4>Nome</TextH4>
@@ -62,9 +62,8 @@ function DefinicoesPerfil() {
                     <Form.Control type="text" />
                   </Form.Group>
                 </Col>
-              </Row>
-              <Row className="pe-3 ps-3">
-                <Col xs={12}>
+
+                <Col xs={12} className="g-0">
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <StyledFormLabel>
                       <TextH4>E-mail</TextH4>
@@ -72,9 +71,8 @@ function DefinicoesPerfil() {
                     <Form.Control type="email" />
                   </Form.Group>
                 </Col>
-              </Row>
-              <Row className="pe-3 ps-3">
-                <Col xs={12}>
+
+                <Col xs={12} className="g-0">
                   {" "}
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <StyledFormLabel>
@@ -83,9 +81,8 @@ function DefinicoesPerfil() {
                     <Form.Control type="password" />
                   </Form.Group>
                 </Col>
-              </Row>
-              <Row className="pe-3 ps-3">
-                <Col xs={12}>
+
+                <Col xs={12} className="g-0">
                   <Form.Group
                     className="mb-3"
                     controlId="formBasicPasswordConfirm"
@@ -96,9 +93,8 @@ function DefinicoesPerfil() {
                     <Form.Control type="password" />
                   </Form.Group>
                 </Col>
-              </Row>
-              <Row className="pe-3 ps-3">
-                <Col xs={12} className="pb-5 mt-4">
+
+                <Col xs={12} className="pb-5 mt-4 g-0">
                   <a href="#">
                     <ButtonSubmit black className="w-100">
                       Enviar
