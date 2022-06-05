@@ -60,6 +60,7 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       <Outlet />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </div>
   );
 }
