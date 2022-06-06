@@ -1,11 +1,21 @@
 import { Container, Row, Col } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {} from "@fortawesome/free-solid-svg-icons";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
+  const [labels, setLabels] = useState({}); // ex: {id: "Order ID", username: "Username", dateTime: "Date of arrival"}
+  const [data, setData] = useState([]); // dados vindos da API
+
+  useEffect(() => {
+    setLabels(props.labels);
+    setData(props.data);
+    console.log(labels);
+    console.log(data);
+  });
+
   return (
     <TableWrapper>
       <TableStyle>{props.children}</TableStyle>

@@ -20,7 +20,14 @@ function DashboardEncomendas() {
       <Container fluid>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
+            <DashboardTable
+              data={[
+                { a: "a", b: "b" },
+                { b: "c", a: "d" },
+              ]}
+              labels={["a", "b"]}
+            >
+              {/*props de teste*/}
               <thead>
                 <tr>
                   <th>ID Encomenda</th>
