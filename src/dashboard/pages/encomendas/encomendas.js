@@ -25,7 +25,7 @@ function DashboardEncomendas() {
                 { a: "a", b: "b" },
                 { b: "c", a: "d" },
               ]}
-              labels={["a", "b"]}
+              labels={{ a: "a", b: "b" }}
             >
               {/*props de teste*/}
               <thead>

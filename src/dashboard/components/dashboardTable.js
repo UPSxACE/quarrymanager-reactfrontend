@@ -6,19 +6,40 @@ import {} from "@fortawesome/free-solid-svg-icons";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
-  const [labels, setLabels] = useState({}); // ex: {id: "Order ID", username: "Username", dateTime: "Date of arrival"}
+  // ex de objeto recebido: {id: "Order ID", username: "Username", dateTime: "Date of arrival"}
   const [data, setData] = useState([]); // dados vindos da API
+  const [labels, setLabels] = useState([]); // ex: ["Order ID", "Username", "Date of arrivale"]
+  const [fields, setFields] = useState([]); //ex: ["id", "username", "dateTime"]
 
   useEffect(() => {
-    setLabels(props.labels);
+    setLabels(Object.values(props.labels));
+    setFields(Object.keys(props.labels));
     setData(props.data);
-    console.log(labels);
-    console.log(data);
-  });
+  }, []);
 
   return (
     <TableWrapper>
-      <TableStyle>{props.children}</TableStyle>
+      <TableStyle>
+        <thead>
+          <tr>
+            {labels.map((label) => (
+              <th key={label}>{label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((entry, index) => {
+            console.log(fields);
+            return (
+              <tr key={index}>
+                {fields.map((field) => {
+                  return <td key={entry + field}>{entry[field]}</td>;
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </TableStyle>
     </TableWrapper>
   );
 }
