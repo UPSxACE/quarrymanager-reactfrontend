@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
@@ -10,11 +11,30 @@ function DashboardTable(props) {
   const [data, setData] = useState([]); // dados vindos da API
   const [labels, setLabels] = useState([]); // ex: ["Order ID", "Username", "Date of arrivale"]
   const [fields, setFields] = useState([]); //ex: ["id", "username", "dateTime"]
+  const [endPoint, setEndpoint] = useState(props.endPoint);
 
   useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(endPoint, {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        setData(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
     setLabels(Object.values(props.labels));
     setFields(Object.keys(props.labels));
-    setData(props.data);
+    //setData(props.data);
   }, []);
 
   return (

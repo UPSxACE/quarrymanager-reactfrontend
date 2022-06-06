@@ -25,7 +25,8 @@ function DashboardEncomendas() {
                 { a: "a", b: "b" },
                 { b: "c", a: "d" },
               ]}
-              labels={{ a: "a", b: "b" }}
+              labels={{ quantidade: "Quantidade" }}
+              endPoint={"http://localhost:8080/api/lote/listar"}
             >
               {/*props de teste*/}
               <thead>
