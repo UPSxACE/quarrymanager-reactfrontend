@@ -3,6 +3,7 @@ import {} from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import axios from "axios";
+import { DashboardTable } from "../../components/dashboardTable";
 
 export { DashboardLotes };
 
@@ -77,6 +78,20 @@ function DashboardLotes() {
           );
         })}
       </ul>
+
+      <DashboardTable
+        labels={{
+          codigo_lote: "Código do Lote",
+          nome: ["idProduto0", ["idMaterial0", "Material"]],
+          //nome: ["idProduto0", ["idCor0", "cor"]],
+          quantidade: "quantidade ",
+          //nome: ["idLocalExtracao0", "Local de Retirada"],
+          coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+          coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+          dataHora: "Data",
+        }}
+        endPoint={"http://localhost:8080/api/lote/listar"}
+      ></DashboardTable>
     </DashboardLayout>
   );
 }

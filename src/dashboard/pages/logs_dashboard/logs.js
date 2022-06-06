@@ -50,8 +50,6 @@ function DashboardLogs() {
 
                 descricao: "Descrição",
                 dataHora: "Data",
-
-                created_at: ["idUser0", ["profile", "created_at"]],
               }}
               endPoint={"http://localhost:8080/api/logs/listar"}
             ></DashboardTable>

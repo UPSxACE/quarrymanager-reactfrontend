@@ -45,84 +45,12 @@ function DashboardStock() {
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
-              <thead>
-                <tr>
-                  <th>Lote</th>
-                  <th>Material</th>
-                  <th>Cor</th>
-                  <th>Quantidade</th>
-                  <th>Local de Retirada</th>
-                  <th>Coordenadas GPS</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfredswwww</td>
-                  <td>Mariaerererererere</td>
-                  <td>Germany</td>
-                  <td>Germany</td>
-                  <td>Germany</td>
-                  <td>Germany</td>
-                  <td>23739</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                  <td>Mexico</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+            <DashboardTable
+              labels={{
+                nome: "Produto",
+              }}
+              endPoint={"http://localhost:8080/api/material/listar"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>
