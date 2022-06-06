@@ -37,24 +37,14 @@ function DashboardLocais() {
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                </tr>
-                <tr>
-                  <td>Centro g Moctezuma</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+            <DashboardTable
+              labels={{
+                nome: "Nome",
+                coordenadasGPS_X: "Coordenadas GPS X",
+                coordenadasGPS_Y: "Coordenadas GPS Y",
+              }}
+              endPoint={"http://localhost:8080/api/local-extracao/listar"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>
