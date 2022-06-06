@@ -62,15 +62,24 @@ function DashboardHome() {
           <Col xs={12}>
             <h1>Isto é a home</h1>
             <div className="d-flex">
-              <DashboardGraph className="left50">
-                <BarChart chartData={data1} chartOptions={options1}></BarChart>
-              </DashboardGraph>
-              <DashboardGraph className="right50">
-                <DoughnutChart
-                  chartData={data2}
-                  chartOptions={options2}
-                ></DoughnutChart>
-              </DashboardGraph>
+              <DashboardGraphWrapper className="left50 pt-1 pb-2">
+                <h1>Status Anual</h1>
+                <DashboardGraph className="insideMargin pt-2 ">
+                  <BarChart
+                    chartData={data1}
+                    chartOptions={options1}
+                  ></BarChart>
+                </DashboardGraph>
+              </DashboardGraphWrapper>
+              <DashboardGraphWrapper className="right50 pt-1 pb-2">
+                <h1>Produtos Mais Vendidos</h1>
+                <DashboardGraph className="pt-2">
+                  <DoughnutChart
+                    chartData={data2}
+                    chartOptions={options2}
+                  ></DoughnutChart>
+                </DashboardGraph>
+              </DashboardGraphWrapper>
             </div>
           </Col>{" "}
         </Row>
@@ -94,13 +103,30 @@ function DoughnutChart({ chartData, chartOptions }) {
 const DashboardGraph = styled.div`
   position: relative;
   height: 400px;
+`;
+
+const DashboardGraphWrapper = styled.div`
+  background-color: rgba(0, 75, 91, 0.04);
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
 
   &.left50 {
     width: 50%;
-    padding-right: 5%;
+    margin-right: 2%;
   }
   &.right50 {
     width: 50%;
-    padding-left: 5%;
+    margin-left: 2%;
+  }
+
+  &.left50 .insideMargin {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  &.right50 .insideMargin {
+    margin-left: 40px;
+    margin-right: 40px;
   }
 `;
