@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 export { DashboardHome };
@@ -27,6 +27,16 @@ function DashboardHome() {
     },
     datasets: { doughnut: { cutout: "65%" } },
   };
+
+  const options3 = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: "bottom", labels: { boxWidth: 30, boxHeight: 30 } },
+    },
+    datasets: { doughnut: { cutout: "65%" } },
+  };
+
   const data1 = {
     labels,
     datasets: [
@@ -56,6 +66,17 @@ function DashboardHome() {
           "rgba(153, 102, 255, 0.2)",
           "rgba(255, 159, 64, 0.2)",
         ],
+      },
+    ],
+  };
+
+  const data3 = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: [4, 3, 2, 1],
+        backgroundColor: ["#004B5B", "#057A81", "#009A78", "#000"],
       },
     ],
   };
@@ -132,7 +153,18 @@ function DashboardHome() {
                 </DashboardGraph>
               </DashboardGraphWrapper>
             </div>
-          </Col>{" "}
+          </Col>
+          <Col xs={12}>
+            <DashboardGraphWrapper className="pt-2 pb-3 ps-4 pe-4 mt-4">
+              <DashboardGraph className="pt-2 ">
+                <TextH3Graph className="ps-3">Outro Gráfico</TextH3Graph>
+                <LineChart
+                  chartData={data3}
+                  chartOptions={options3}
+                ></LineChart>
+              </DashboardGraph>
+            </DashboardGraphWrapper>
+          </Col>
         </Row>
       </Container>
     </DashboardLayout>
@@ -149,6 +181,10 @@ function PieChart({ chartData, chartOptions }) {
 
 function DoughnutChart({ chartData, chartOptions }) {
   return <Doughnut data={chartData} options={chartOptions}></Doughnut>;
+}
+
+function LineChart({ chartData, chartOptions }) {
+  return <Line data={chartData} options={chartOptions}></Line>;
 }
 
 const DashboardGraph = styled.div`
