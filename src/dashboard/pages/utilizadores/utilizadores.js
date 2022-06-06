@@ -40,32 +40,14 @@ function DashboardUtilizadores() {
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Nome</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                  <td>Mariaererererererererererer Anders</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro g Moctezuma</td>
-                  <td>garantir Chang</td>
-                  <td>g</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+            <DashboardTable
+              labels={{
+                username: "Username",
+                full_name: ["profile", "Nome"],
+                created_at: ["profile", "Data"],
+              }}
+              endPoint={"http://localhost:8080/api/user/listar?role_id=4"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>

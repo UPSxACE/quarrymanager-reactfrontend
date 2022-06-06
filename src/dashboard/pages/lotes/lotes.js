@@ -83,9 +83,9 @@ function DashboardLotes() {
         labels={{
           codigo_lote: "Código do Lote",
           nome: ["idProduto0", ["idMaterial0", "Material"]],
-          //nome: ["idProduto0", ["idCor0", "cor"]],
+          //$nome: ["idProduto0", ["idCor0", "cor"]],
           quantidade: "quantidade ",
-          //nome: ["idLocalExtracao0", "Local de Retirada"],
+          //$$nome: ["idLocalExtracao0", "Local de Retirada"],
           coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
           coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
           dataHora: "Data",
