@@ -30,6 +30,7 @@ function DashboardHome() {
   };
 
   const options3 = {
+    scales: { y: { min: 0 } },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -65,27 +66,22 @@ function DashboardHome() {
   };
 
   const data3 = {
-    labels: ["2019", "2020", "2021", "2022"],
+    labels: [
+      "Pendente",
+      "Dados Confirmados",
+      "Stock Confirmado",
+      "Aguardar Pagamento",
+      "Pagamento Confirmado",
+      "Em Espera",
+      "Recolhas Agendadas",
+      "Recebido",
+      "Finalizado",
+    ],
     datasets: [
       {
-        label: "Dataset 1",
-        data: [1, 2, 3, 4],
+        label: "Estados",
+        data: [1, 3, 5, 2, 3, 1, 7, 8, 9],
         backgroundColor: ["#004B5B"],
-      },
-      {
-        label: "Dataset 2",
-        data: [2, 1, 4, 3],
-        backgroundColor: ["#057A81"],
-      },
-      {
-        label: "Dataset 3",
-        data: [3, 4, 1, 2],
-        backgroundColor: ["#009A78"],
-      },
-      {
-        label: "Dataset 4",
-        data: [4, 3, 2, 1],
-        backgroundColor: ["#000"],
       },
     ],
   };
@@ -141,7 +137,7 @@ function DashboardHome() {
             <div className="d-flex">
               <DashboardGraphWrapper className="left50 pt-1 pb-2">
                 <TextH3Graph className="ps-3 pt-2 pb-5">
-                  Status Anual
+                  Utilizadores Anuais
                 </TextH3Graph>
                 <DashboardGraph className="insideMargin pt-2 ">
                   <BarChart
@@ -163,9 +159,13 @@ function DashboardHome() {
               </DashboardGraphWrapper>
             </div>
           </Col>
+        </Row>
+        <Row>
           <Col xs={12}>
-            <DashboardGraphWrapper className="pt-2 pb-3 ps-4 pe-4 mt-4">
-              <TextH3Graph className="pt-2 pb-2">Outro Gráfico</TextH3Graph>
+            <DashboardGraphWrapper className="pt-2 pb-3 ps-3 pe-5 mt-4">
+              <TextH3Graph className="pt-2 pb-2">
+                Estado dos Pedidos
+              </TextH3Graph>
               <DashboardGraph3 className="pt-2">
                 <LineChart
                   chartData={data3}
