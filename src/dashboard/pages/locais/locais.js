@@ -21,17 +21,10 @@ function DashboardLocais() {
         <Row className="g-0">
           <Col xs={12}>
             <DashboardMenu>
-              <DashboardMenuList>
-                <DashboardMenuListItem className="active">
-                  <H3>Locais de Armazéns</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Locais de Extração</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItemRight>
-                  <H3>Adicionar Novo Local</H3>
-                </DashboardMenuListItemRight>
-              </DashboardMenuList>
+              <DashboardMenuList
+                listItems={["Locais de Armazéns", "Locais de Extração"]}
+                activeItem={0}
+              ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>

@@ -91,7 +91,33 @@ const DashboardMenu = styled.nav`
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
 `;
 
-const DashboardMenuList = styled.ul`
+function DashboardMenuList(props) {
+  return (
+    <DashboardMenuListComponent>
+      {props.listItems.map((item, index) => {
+        if (props.activeItem === index) {
+          return (
+            <DashboardMenuListItem key={index} className="active">
+              <H3>{item}</H3>
+            </DashboardMenuListItem>
+          );
+        }
+
+        return (
+          <DashboardMenuListItem key={index}>
+            <H3>{item}</H3>
+          </DashboardMenuListItem>
+        );
+      })}
+
+      <DashboardMenuListItemRight>
+        <H3>Adicionar Novo Local</H3>
+      </DashboardMenuListItemRight>
+    </DashboardMenuListComponent>
+  );
+}
+
+const DashboardMenuListComponent = styled.ul`
   list-style: none;
   padding: 0px;
   display: flex;
