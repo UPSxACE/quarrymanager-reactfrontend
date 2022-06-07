@@ -73,17 +73,25 @@ function DashboardTable(props) {
                     } else {
                       switch (contador_relacoes) {
                         case 0:
-                          return <td key={entry + field}>{entry[field]}</td>;
+                          return (
+                            <td key={entry + field}>
+                              {entry[field.replaceAll("$", "")]}
+                            </td>
+                          );
                         case 1:
                           return (
                             <td key={entry + field}>
-                              {entry[relacoes[0]][field]}
+                              {entry[relacoes[0]][field.replaceAll("$", "")]}
                             </td>
                           );
                         case 2:
                           return (
                             <td key={entry + field}>
-                              {entry[relacoes[0]][relacoes[1]][field]}
+                              {
+                                entry[relacoes[0]][relacoes[1]][
+                                  field.replaceAll("$", "")
+                                ]
+                              }
                             </td>
                           );
                         case 3:
@@ -91,13 +99,17 @@ function DashboardTable(props) {
                             <td key={entry + field}>
                               {
                                 entry[relacoes[0]][relacoes[1]][relacoes[2]][
-                                  field
+                                  field.replaceAll("$", "")
                                 ]
                               }
                             </td>
                           );
                         default:
-                          return <td key={entry + field}>{entry[field]}</td>;
+                          return (
+                            <td key={entry + field}>
+                              {entry[field.replaceAll("$", "")]}
+                            </td>
+                          );
                       }
                     }
                   };
