@@ -32,9 +32,18 @@ function DashboardTable(props) {
     };
 
     sendGetRequest();
-    setLabels(Object.values(props.labels));
+    setLabels(() => {
+      const checkLabelsIfArray = (possible_array) => {
+        if (Array.isArray(possible_array)) {
+          return checkLabelsIfArray(possible_array[1]);
+        }
+        return possible_array;
+      };
+      return Object.values(props.labels).map((label) => {
+        return checkLabelsIfArray(label);
+      });
+    });
     setFields(Object.keys(props.labels));
-    //setData(props.data);
   }, []);
 
   return (
@@ -49,11 +58,51 @@ function DashboardTable(props) {
         </thead>
         <tbody>
           {data.map((entry, index) => {
-            console.log(fields);
             return (
               <tr key={index}>
                 {fields.map((field) => {
-                  return <td key={entry + field}>{entry[field]}</td>;
+                  let contador_relacoes = 0;
+                  let relacoes = [];
+                  // se o field for um array
+                  const checkIfArray = (possible_array) => {
+                    if (Array.isArray(possible_array)) {
+                      contador_relacoes++;
+                      relacoes = [...relacoes, possible_array[0]];
+
+                      return checkIfArray(possible_array[1]);
+                    } else {
+                      switch (contador_relacoes) {
+                        case 0:
+                          return <td key={entry + field}>{entry[field]}</td>;
+                        case 1:
+                          return (
+                            <td key={entry + field}>
+                              {entry[relacoes[0]][field]}
+                            </td>
+                          );
+                        case 2:
+                          return (
+                            <td key={entry + field}>
+                              {entry[relacoes[0]][relacoes[1]][field]}
+                            </td>
+                          );
+                        case 3:
+                          return (
+                            <td key={entry + field}>
+                              {
+                                entry[relacoes[0]][relacoes[1]][relacoes[2]][
+                                  field
+                                ]
+                              }
+                            </td>
+                          );
+                        default:
+                          return <td key={entry + field}>{entry[field]}</td>;
+                      }
+                    }
+                  };
+
+                  return checkIfArray(props.labels[field]);
                 })}
               </tr>
             );

@@ -41,35 +41,18 @@ function DashboardLogs() {
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Nome</th>
-                  <th>Cargo</th>
-                  <th>Tipo de Ação</th>
-                  <th>Descrição</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                  <td>Mariaererererererererererer Anders</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro g Moctezuma</td>
-                  <td>garantir Chang</td>
-                  <td>g</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+            <DashboardTable
+              labels={{
+                username: ["idUser0", "Username"],
+                full_name: ["idUser0", ["profile", "Nome"]],
+                name: ["idUser0", ["role", "Cargo"]],
+                nome: ["idTipoAcao0", "Tipo de Ação"],
+
+                descricao: "Descrição",
+                dataHora: "Data",
+              }}
+              endPoint={"http://localhost:8080/api/logs/listar"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>

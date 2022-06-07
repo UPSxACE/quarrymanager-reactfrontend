@@ -40,35 +40,15 @@ function DashboardLoja() {
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable>
-              <thead>
-                <tr>
-                  <th>Titulo do Artigo</th>
-                  <th>Material</th>
-                  <th>Cor</th>
-                  <th>Preco</th>
-                  <th>Nº Pedidos</th>
-                  <th>Quantidade Vendida</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                  <td>Mariaererererererererererer Anders</td>
-                  <td>Germany</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-                <tr>
-                  <td>Centro g Moctezuma</td>
-                  <td>garantir Chang</td>
-                  <td>g</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+            <DashboardTable
+              labels={{
+                tituloArtigo: "Titulo do Artigo",
+                nome: ["idMaterial0", "Material"],
+                //$nome: ["idCor0","cor"]
+                preco: "Preço",
+              }}
+              endPoint={"http://localhost:8080/api/produto/listar"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>
