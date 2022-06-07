@@ -14,7 +14,54 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardLocais };
 
-function DashboardLocais() {
+function getTable(activeTab) {
+  console.log("teste", activeTab, 1);
+
+  switch (activeTab) {
+    case 0:
+      console.log("this");
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            nome: "Nome",
+          }}
+          endPoint={"local-armazem/listar"}
+        />
+      );
+    case 1:
+      return (
+        <DashboardTable
+          key={1}
+          labels={{
+            nome: "Nome",
+            coordenadasGPS_X: "Coordenadas GPS X",
+            coordenadasGPS_Y: "Coordenadas GPS Y",
+          }}
+          endPoint={"local-extracao/listar"}
+        />
+      );
+    default:
+      console.log("this is default");
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            nome: "Nome",
+          }}
+          endPoint={"local-armazem/listar"}
+        />
+      );
+  }
+}
+
+function DashboardLocais(props) {
+  const [activeTab, changeTab] = useState(props.tab);
+
+  function handleTabClick(newTab) {
+    changeTab(newTab);
+  }
+
   return (
     <DashboardLayout>
       <Container fluid>
@@ -24,21 +71,37 @@ function DashboardLocais() {
               <DashboardMenuList
                 listItems={["Locais de Armazéns", "Locais de Extração"]}
                 rightButton={["Adicionar Novo Local", ""]}
-                activeItem={0}
+                activeItem={activeTab}
+                tabClickFunction={handleTabClick}
               ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>
+
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable
-              labels={{
-                nome: "Nome",
-                coordenadasGPS_X: "Coordenadas GPS X",
-                coordenadasGPS_Y: "Coordenadas GPS Y",
-              }}
-              endPoint={"http://localhost:8080/api/local-extracao/listar"}
-            ></DashboardTable>
+            {/*
+              {
+                0: (
+                  <DashboardTable
+                    labels={{
+                      nome: "Nome",
+                    }}
+                    endPoint={"http://localhost:8080/api/local-armazem/listar"}
+                  ></DashboardTable>
+                ),
+                1: (
+                  <DashboardTable
+                    labels={{
+                      nome: "Nome",
+                      coordenadasGPS_X: "Coordenadas GPS X",
+                      coordenadasGPS_Y: "Coordenadas GPS Y",
+                    }}
+                    endPoint={"http://localhost:8080/api/local-extracao/listar"}
+                  ></DashboardTable>
+                ),
+              }[activeTab]*/}
+            {getTable(activeTab)}
             <TablePager />
           </Col>
         </Row>

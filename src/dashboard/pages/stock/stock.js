@@ -49,7 +49,7 @@ function DashboardStock() {
               labels={{
                 nome: "Produto",
               }}
-              endPoint={"http://localhost:8080/api/material/listar"}
+              endPoint={"material/listar"}
             ></DashboardTable>
             <TablePager />
           </Col>

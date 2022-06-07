@@ -51,7 +51,7 @@ function DashboardLogs() {
                 descricao: "Descrição",
                 dataHora: "Data",
               }}
-              endPoint={"http://localhost:8080/api/logs/listar"}
+              endPoint={"logs/listar"}
             ></DashboardTable>
             <TablePager />
           </Col>

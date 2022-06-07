@@ -11,7 +11,9 @@ function DashboardTable(props) {
   const [data, setData] = useState([]); // dados vindos da API
   const [labels, setLabels] = useState([]); // ex: ["Order ID", "Username", "Date of arrivale"]
   const [fields, setFields] = useState([]); //ex: ["id", "username", "dateTime"]
-  const [endPoint, setEndpoint] = useState(props.endPoint);
+  const [endPoint, setEndpoint] = useState(
+    "http://localhost:8080/api/" + props.endPoint
+  );
 
   useEffect(() => {
     const sendGetRequest = async () => {

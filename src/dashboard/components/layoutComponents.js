@@ -97,16 +97,31 @@ function DashboardMenuList(props) {
       {props.listItems.map((item, index) => {
         if (props.activeItem === index) {
           return (
-            <DashboardMenuListItem key={index} className="active">
-              <H3>{item}</H3>
-            </DashboardMenuListItem>
+            <Button
+              className="active"
+              key={index}
+              onClick={() => {
+                props.tabClickFunction(index);
+              }}
+            >
+              <DashboardMenuListItem className="active">
+                <H3>{item}</H3>
+              </DashboardMenuListItem>
+            </Button>
           );
         }
 
         return (
-          <DashboardMenuListItem key={index}>
-            <H3>{item}</H3>
-          </DashboardMenuListItem>
+          <Button
+            key={index}
+            onClick={() => {
+              props.tabClickFunction(index);
+            }}
+          >
+            <DashboardMenuListItem>
+              <H3>{item}</H3>
+            </DashboardMenuListItem>
+          </Button>
         );
       })}
 
@@ -120,9 +135,11 @@ function DashboardMenuList(props) {
         */}
 
       {props.rightButton && props.rightButton[props.activeItem] !== "" && (
-        <DashboardMenuListItemRight>
-          <H3>{props.rightButton[props.activeItem]}</H3>
-        </DashboardMenuListItemRight>
+        <ButtonRight>
+          <DashboardMenuListItemRight>
+            <H3>{props.rightButton[props.activeItem]}</H3>
+          </DashboardMenuListItemRight>
+        </ButtonRight>
       )}
     </DashboardMenuListComponent>
   );
@@ -145,7 +162,7 @@ const DashboardMenuListItem = styled.li`
   display: flex;
   align-content: center;
   border-right: 2px solid #bbbbbb;
-
+  background-color: #f5f8f9;
   h1,
   h2,
   h3,
@@ -157,10 +174,11 @@ const DashboardMenuListItem = styled.li`
     font-weight: bold;
   }
 
-  &.active:first-child {
+  /* &.active:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
+  */
 
   &.active {
     background-color: ${textColor1};
@@ -190,4 +208,29 @@ const DashboardMenuListItemRight = styled(DashboardMenuListItem)`
   border-left: 2px solid #bbbbbb;
   border-right: none;
   padding: 16px 10px;
+`;
+
+const Button = styled.button`
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+
+  &.active:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &:first-child .active {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+`;
+
+const ButtonRight = styled.button`
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  margin-left: auto;
 `;

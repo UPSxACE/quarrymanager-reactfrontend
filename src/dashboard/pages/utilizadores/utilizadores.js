@@ -46,7 +46,7 @@ function DashboardUtilizadores() {
                 full_name: ["profile", "Nome"],
                 created_at: ["profile", "Data"],
               }}
-              endPoint={"http://localhost:8080/api/user/listar?role_id=4"}
+              endPoint={"user/listar?role_id=4"}
             ></DashboardTable>
             <TablePager />
           </Col>
