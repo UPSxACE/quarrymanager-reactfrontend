@@ -110,9 +110,20 @@ function DashboardMenuList(props) {
         );
       })}
 
-      <DashboardMenuListItemRight>
-        <H3>Adicionar Novo Local</H3>
-      </DashboardMenuListItemRight>
+      {/* props.rightButton -> array (opcional)
+           props.activeItem -> number
+
+           1 Verificar se está definido o rightButton
+           2 Verificar se a string na posição correspondente ao numero do activeItem não está vazia
+           3 Se ambas as verificações derem true vai renderizar o buttonRight. 
+           
+        */}
+
+      {props.rightButton && props.rightButton[props.activeItem] !== "" && (
+        <DashboardMenuListItemRight>
+          <H3>{props.rightButton[props.activeItem]}</H3>
+        </DashboardMenuListItemRight>
+      )}
     </DashboardMenuListComponent>
   );
 }

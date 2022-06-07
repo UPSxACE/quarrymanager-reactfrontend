@@ -23,6 +23,7 @@ function DashboardLocais() {
             <DashboardMenu>
               <DashboardMenuList
                 listItems={["Locais de Armazéns", "Locais de Extração"]}
+                rightButton={["Adicionar Novo Local", ""]}
                 activeItem={0}
               ></DashboardMenuList>
             </DashboardMenu>
