@@ -14,6 +14,7 @@ function DashboardHome() {
     "Mármore Amarelo",
     "Outros",
   ];
+
   const options1 = {
     responsive: true,
     maintainAspectRatio: false,
@@ -38,7 +39,7 @@ function DashboardHome() {
   };
 
   const data1 = {
-    labels,
+    labels: ["março", "abril", "maio", "junho"],
     datasets: [
       {
         label: "Dataset 1",
@@ -58,25 +59,33 @@ function DashboardHome() {
       {
         label: "Dataset 1",
         data: [4, 3, 2, 1],
-        backgroundColor: [
-          "#004B5B",
-          "#057A81",
-          "#009A78",
-          "#000",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
+        backgroundColor: ["#004B5B", "#057A81", "#009A78", "#000"],
       },
     ],
   };
 
   const data3 = {
-    labels,
+    labels: ["2019", "2020", "2021", "2022"],
     datasets: [
       {
         label: "Dataset 1",
+        data: [1, 2, 3, 4],
+        backgroundColor: ["#004B5B"],
+      },
+      {
+        label: "Dataset 2",
+        data: [2, 1, 4, 3],
+        backgroundColor: ["#057A81"],
+      },
+      {
+        label: "Dataset 3",
+        data: [3, 4, 1, 2],
+        backgroundColor: ["#009A78"],
+      },
+      {
+        label: "Dataset 4",
         data: [4, 3, 2, 1],
-        backgroundColor: ["#004B5B", "#057A81", "#009A78", "#000"],
+        backgroundColor: ["#000"],
       },
     ],
   };
@@ -156,13 +165,13 @@ function DashboardHome() {
           </Col>
           <Col xs={12}>
             <DashboardGraphWrapper className="pt-2 pb-3 ps-4 pe-4 mt-4">
-              <DashboardGraph className="pt-2 ">
-                <TextH3Graph className="ps-3">Outro Gráfico</TextH3Graph>
+              <TextH3Graph className="pt-2 pb-2">Outro Gráfico</TextH3Graph>
+              <DashboardGraph3 className="pt-2">
                 <LineChart
                   chartData={data3}
                   chartOptions={options3}
                 ></LineChart>
-              </DashboardGraph>
+              </DashboardGraph3>
             </DashboardGraphWrapper>
           </Col>
         </Row>
@@ -190,6 +199,11 @@ function LineChart({ chartData, chartOptions }) {
 const DashboardGraph = styled.div`
   position: relative;
   height: 400px;
+`;
+
+const DashboardGraph3 = styled.div`
+  position: relative;
+  height: 300px;
 `;
 
 const DashboardGraphWrapper = styled.div`
