@@ -24,6 +24,8 @@ import { DashboardEncomendas } from "./dashboard/pages/encomendas/encomendas";
 import { DashboardLoja } from "./dashboard/pages/loja/loja";
 import { DashboardUtilizadores } from "./dashboard/pages/utilizadores/utilizadores";
 import { DashboardLocais } from "./dashboard/pages/locais/locais";
+import { DashboardNovoLocalArmazem } from "./dashboard/pages/locais/novoLocalArmazem";
+import { DashboardNovoLocalExtracao } from "./dashboard/pages/locais/novoLocalExtracao";
 import { DashboardLogs } from "./dashboard/pages/logs_dashboard/logs";
 import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
 
@@ -105,6 +107,14 @@ function App(props) {
           <Route path="loja" element={<DashboardLoja />} />
           <Route path="utilizadores" element={<DashboardUtilizadores />} />
           <Route path="locais" element={<DashboardLocais />} />
+          <Route
+            path="novo-local-armazem"
+            element={<DashboardNovoLocalArmazem />}
+          />
+          <Route
+            path="novo-local-extracao"
+            element={<DashboardNovoLocalExtracao />}
+          />
           <Route path="logs" element={<DashboardLogs />} />
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
