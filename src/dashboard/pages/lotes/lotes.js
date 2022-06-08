@@ -92,7 +92,7 @@ function DashboardLotes() {
                 coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
                 dataHora: "Data",
               }}
-              endPoint={"http://localhost:8080/api/lote/listar"}
+              endPoint={"lote/listar"}
             ></DashboardTable>
           </Col>{" "}
         </Row>

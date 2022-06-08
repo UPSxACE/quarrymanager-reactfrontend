@@ -91,7 +91,61 @@ const DashboardMenu = styled.nav`
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
 `;
 
-const DashboardMenuList = styled.ul`
+function DashboardMenuList(props) {
+  return (
+    <DashboardMenuListComponent>
+      {props.listItems.map((item, index) => {
+        if (props.activeItem === index) {
+          return (
+            <Button
+              className="active"
+              key={index}
+              onClick={() => {
+                props.tabClickFunction(index);
+              }}
+            >
+              <DashboardMenuListItem className="active">
+                <H3>{item}</H3>
+              </DashboardMenuListItem>
+            </Button>
+          );
+        }
+
+        return (
+          <Button
+            key={index}
+            onClick={() => {
+              props.tabClickFunction(index);
+            }}
+          >
+            <DashboardMenuListItem>
+              <H3>{item}</H3>
+            </DashboardMenuListItem>
+          </Button>
+        );
+      })}
+
+      {/* props.rightButton -> array (opcional)
+           props.activeItem -> number
+
+           1 Verificar se está definido o rightButton
+           2 Verificar se a string na posição correspondente ao numero do activeItem não está vazia
+           3 Se ambas as verificações derem true vai renderizar o buttonRight. 
+           
+        */}
+
+      {props.rightButton && props.rightButton[props.activeItem] !== "" && (
+        <ButtonRight>
+          <DashboardMenuListItemRight>
+            <H3>{props.rightButton[props.activeItem]}</H3>
+          </DashboardMenuListItemRight>
+        </ButtonRight>
+      )}
+    </DashboardMenuListComponent>
+  );
+}
+
+const DashboardMenuListComponent = styled.ul`
   list-style: none;
   padding: 0px;
   display: flex;
@@ -108,7 +162,7 @@ const DashboardMenuListItem = styled.li`
   display: flex;
   align-content: center;
   border-right: 2px solid #bbbbbb;
-
+  background-color: #f5f8f9;
   h1,
   h2,
   h3,
@@ -120,10 +174,11 @@ const DashboardMenuListItem = styled.li`
     font-weight: bold;
   }
 
-  &.active:first-child {
+  /* &.active:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
+  */
 
   &.active {
     background-color: ${textColor1};
@@ -153,4 +208,29 @@ const DashboardMenuListItemRight = styled(DashboardMenuListItem)`
   border-left: 2px solid #bbbbbb;
   border-right: none;
   padding: 16px 10px;
+`;
+
+const Button = styled.button`
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+
+  &.active:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &:first-child .active {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+`;
+
+const ButtonRight = styled.button`
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  margin-left: auto;
 `;

@@ -99,13 +99,16 @@ function App(props) {
         <Route path="dashboard" element={<Dashboard />}>
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
-          <Route path="stock" element={<DashboardStock />} />
+          <Route path="stock" element={<DashboardStock tab={0} />} />
           <Route path="lotes" element={<DashboardLotes />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja />} />
-          <Route path="utilizadores" element={<DashboardUtilizadores />} />
-          <Route path="locais" element={<DashboardLocais />} />
-          <Route path="logs" element={<DashboardLogs />} />
+          <Route
+            path="utilizadores"
+            element={<DashboardUtilizadores tab={0} />}
+          />
+
+          <Route path="logs" element={<DashboardLogs tab={0} />} />
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>

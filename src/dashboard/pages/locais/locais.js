@@ -13,9 +13,53 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardLocais };
+function getTable(activeTab) {
+  console.log("teste", activeTab, 1);
 
-function DashboardLocais() {
-  const [estado, setEstado] = useState(0);
+  switch (activeTab) {
+    case 0:
+      console.log("this");
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            nome: "Nome",
+          }}
+          endPoint={"local-armazem/listar"}
+        />
+      );
+    case 1:
+      return (
+        <DashboardTable
+          key={1}
+          labels={{
+            nome: "Nome",
+            coordenadasGPS_X: "Coordenadas GPS X",
+            coordenadasGPS_Y: "Coordenadas GPS Y",
+          }}
+          endPoint={"local-extracao/listar"}
+        />
+      );
+    default:
+      console.log("this is default");
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            nome: "Nome",
+          }}
+          endPoint={"local-armazem/listar"}
+        />
+      );
+  }
+}
+
+function DashboardLocais(props) {
+  const [activeTab, changeTab] = useState(props.tab);
+
+  function handleTabClick(newTab) {
+    changeTab(newTab);
+  }
 
   return (
     <DashboardLayout>
@@ -23,30 +67,43 @@ function DashboardLocais() {
         <Row className="g-0">
           <Col xs={12}>
             <DashboardMenu>
-              <DashboardMenuList>
-                <DashboardMenuListItem className="active">
-                  <H3>Locais de Armazéns</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Locais de Extração</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItemRight>
-                  <H3>Adicionar Novo Local</H3>
-                </DashboardMenuListItemRight>
-              </DashboardMenuList>
+              <DashboardMenuList
+                listItems={["Locais de Armazéns", "Locais de Extração"]}
+                rightButton={[
+                  "Novo Local de Armazém",
+                  "Novo Local de Extração",
+                ]}
+                activeItem={activeTab}
+                tabClickFunction={handleTabClick}
+              ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>
+
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable
-              labels={{
-                nome: "Nome",
-                coordenadasGPS_X: "Coordenadas GPS X",
-                coordenadasGPS_Y: "Coordenadas GPS Y",
-              }}
-              endPoint={"http://localhost:8080/api/local-extracao/listar"}
-            ></DashboardTable>
+            {/*
+              {
+                0: (
+                  <DashboardTable
+                    labels={{
+                      nome: "Nome",
+                    }}
+                    endPoint={"http://localhost:8080/api/local-armazem/listar"}
+                  ></DashboardTable>
+                ),
+                1: (
+                  <DashboardTable
+                    labels={{
+                      nome: "Nome",
+                      coordenadasGPS_X: "Coordenadas GPS X",
+                      coordenadasGPS_Y: "Coordenadas GPS Y",
+                    }}
+                    endPoint={"http://localhost:8080/api/local-extracao/listar"}
+                  ></DashboardTable>
+                ),
+              }[activeTab]*/}
+            {getTable(activeTab)}
             <TablePager />
           </Col>
         </Row>

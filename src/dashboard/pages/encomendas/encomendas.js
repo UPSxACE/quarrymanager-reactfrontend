@@ -29,7 +29,7 @@ function DashboardEncomendas() {
                 quantidade: "Quantidade",
                 nome: ["idProduto0", ["idMaterial0", "Nome"]], // entry["idProduto0"]["idMaterial0"]
               }}
-              endPoint={"http://localhost:8080/api/lote/listar"}
+              endPoint={"lote/listar"}
             >
               {/*props de teste*/}
               <thead>

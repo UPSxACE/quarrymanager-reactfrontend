@@ -44,10 +44,10 @@ function DashboardLoja() {
               labels={{
                 tituloArtigo: "Titulo do Artigo",
                 nome: ["idMaterial0", "Material"],
-                //$nome: ["idCor0","cor"]
+                $nome: ["idCor0", "Cor"],
                 preco: "Preço",
               }}
-              endPoint={"http://localhost:8080/api/produto/listar"}
+              endPoint={"produto/listar"}
             ></DashboardTable>
             <TablePager />
           </Col>
