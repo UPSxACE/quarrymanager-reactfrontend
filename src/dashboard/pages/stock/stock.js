@@ -13,33 +13,31 @@ import {
 
 export { DashboardStock };
 
-function DashboardStock() {
+function DashboardStock(props) {
+  const [activeTab, changeTab] = useState(props.tab);
+
+  function handleTabClick(newTab) {
+    changeTab(newTab);
+  }
+
   return (
     <DashboardLayout>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>
             <DashboardMenu>
-              <DashboardMenuList>
-                <DashboardMenuListItem className="active">
-                  <H3>Lotes</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Stock</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Produtos</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Materiais</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Cores</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItemRight>
-                  <H3>Novo Lote</H3>
-                </DashboardMenuListItemRight>
-              </DashboardMenuList>
+              <DashboardMenuList
+                listItems={["Lotes", "Stock", "Produtos", "Materiais", "Cores"]}
+                rightButton={[
+                  "Novo Lote",
+                  "",
+                  "Novo Produto",
+                  "Novo Material",
+                  "Nova Cor",
+                ]}
+                activeItem={activeTab}
+                tabClickFunction={handleTabClick}
+              ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>

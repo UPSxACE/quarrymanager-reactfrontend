@@ -14,14 +14,28 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardUtilizadores };
 
-function DashboardUtilizadores() {
+function DashboardUtilizadores(props) {
+  const [activeTab, changeTab] = useState(props.tab);
+
+  function handleTabClick(newTab) {
+    changeTab(newTab);
+  }
   return (
     <DashboardLayout>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>
             <DashboardMenu>
-              <DashboardMenuList>
+              <DashboardMenuList
+                listItems={[
+                  "Clientes",
+                  "Operários",
+                  "Gestores",
+                  "Administradores",
+                ]}
+                activeItem={activeTab}
+                tabClickFunction={handleTabClick}
+              >
                 <DashboardMenuListItem className="active">
                   <H3>Clientes</H3>
                 </DashboardMenuListItem>
