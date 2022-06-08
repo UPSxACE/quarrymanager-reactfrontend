@@ -15,6 +15,8 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 export { DashboardLocais };
 
 function DashboardLocais() {
+  const [estado, setEstado] = useState(0);
+
   return (
     <DashboardLayout>
       <Container fluid>

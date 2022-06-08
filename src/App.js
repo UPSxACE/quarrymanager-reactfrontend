@@ -114,6 +114,10 @@ function App(props) {
           <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
           <Route path="/perfil/" element={<MeuPerfil />}></Route>
         </Route>
+
+        <Route path="loja" element={<Perfil />}>
+          <Route path="produto/:userId" element={<DefinicoesPerfil />}></Route>
+        </Route>
       </Routes>
     </div>
   );
