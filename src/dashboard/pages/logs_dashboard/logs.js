@@ -15,27 +15,24 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 export { DashboardLogs };
 //asdfasf
 
-function DashboardLogs() {
+function DashboardLogs(props) {
+  const [activeTab, changeTab] = useState(props.tab);
+
+  function handleTabClick(newTab) {
+    changeTab(newTab);
+  }
+
   return (
     <DashboardLayout>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>
             <DashboardMenu>
-              <DashboardMenuList>
-                <DashboardMenuListItem className="active">
-                  <H3>Tudo</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Loja</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Stock</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Administração</H3>
-                </DashboardMenuListItem>
-              </DashboardMenuList>
+              <DashboardMenuList
+                listItems={["Tudo", "Loja", "Stock", "Administração"]}
+                activeItem={activeTab}
+                tabClickFunction={handleTabClick}
+              ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>

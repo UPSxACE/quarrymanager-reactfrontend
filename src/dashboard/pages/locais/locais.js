@@ -13,7 +13,6 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardLocais };
-
 function getTable(activeTab) {
   console.log("teste", activeTab, 1);
 
@@ -70,7 +69,10 @@ function DashboardLocais(props) {
             <DashboardMenu>
               <DashboardMenuList
                 listItems={["Locais de Armazéns", "Locais de Extração"]}
-                rightButton={["Adicionar Novo Local", ""]}
+                rightButton={[
+                  "Novo Local de Armazém",
+                  "Novo Local de Extração",
+                ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}
               ></DashboardMenuList>

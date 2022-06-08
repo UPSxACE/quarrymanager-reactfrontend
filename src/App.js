@@ -105,7 +105,7 @@ function App(props) {
           <Route path="loja" element={<DashboardLoja />} />
           <Route path="utilizadores" element={<DashboardUtilizadores />} />
           <Route path="locais" element={<DashboardLocais tab={0} />} />
-          <Route path="logs" element={<DashboardLogs />} />
+          <Route path="logs" element={<DashboardLogs tab={0} />} />
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
         </Route>
