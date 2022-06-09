@@ -102,7 +102,7 @@ function App(props) {
           <Route path="stock" element={<DashboardStock tab={0} />} />
           <Route path="lotes" element={<DashboardLotes />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
-          <Route path="loja" element={<DashboardLoja />} />
+          <Route path="loja" element={<DashboardLoja tab={0} />} />
           <Route
             path="utilizadores"
             element={<DashboardUtilizadores tab={0} />}
