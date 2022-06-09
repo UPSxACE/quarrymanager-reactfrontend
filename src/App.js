@@ -19,6 +19,7 @@ import { Faq } from "./website/pages/faq/faq";
 import { DashboardHome } from "./dashboard/pages/home/home";
 import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
+
 import { DashboardStock } from "./dashboard/pages/stock/stock";
 import { DashboardEncomendas } from "./dashboard/pages/encomendas/encomendas";
 import { DashboardLoja } from "./dashboard/pages/loja/loja";
@@ -31,6 +32,8 @@ import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
 
 import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
+import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
+import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 
 // App.js
 
@@ -103,6 +106,8 @@ function App(props) {
           <Route path="home" element={<DashboardHome />} />
           <Route path="stock" element={<DashboardStock />} />
           <Route path="lotes" element={<DashboardLotes />} />
+          <Route path="novo-material" element={<DashboardNovoMaterial />} />
+          <Route path="nova-cor" element={<DashboardNovaCor />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja />} />
           <Route path="utilizadores" element={<DashboardUtilizadores />} />
