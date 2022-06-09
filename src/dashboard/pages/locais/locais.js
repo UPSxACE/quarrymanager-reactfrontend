@@ -82,27 +82,6 @@ function DashboardLocais(props) {
 
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            {/*
-              {
-                0: (
-                  <DashboardTable
-                    labels={{
-                      nome: "Nome",
-                    }}
-                    endPoint={"http://localhost:8080/api/local-armazem/listar"}
-                  ></DashboardTable>
-                ),
-                1: (
-                  <DashboardTable
-                    labels={{
-                      nome: "Nome",
-                      coordenadasGPS_X: "Coordenadas GPS X",
-                      coordenadasGPS_Y: "Coordenadas GPS Y",
-                    }}
-                    endPoint={"http://localhost:8080/api/local-extracao/listar"}
-                  ></DashboardTable>
-                ),
-              }[activeTab]*/}
             {getTable(activeTab)}
             <TablePager />
           </Col>
