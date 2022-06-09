@@ -34,6 +34,7 @@ import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
+import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
 
 // App.js
 
@@ -108,6 +109,7 @@ function App(props) {
           <Route path="lotes" element={<DashboardLotes />} />
           <Route path="novo-material" element={<DashboardNovoMaterial />} />
           <Route path="nova-cor" element={<DashboardNovaCor />} />
+          <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja />} />
           <Route path="utilizadores" element={<DashboardUtilizadores />} />
