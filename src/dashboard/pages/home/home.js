@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -8,6 +8,13 @@ import { Chart as ChartJS } from "chart.js/auto";
 export { DashboardHome };
 
 function DashboardHome() {
+  const [stats, insertStats] = useState({
+    pendentes: 0,
+    confirmados: 0,
+    finalizados: 0,
+    cancelados: 0,
+    financas: 0,
+  });
   const labels = [
     "Pedra Branca",
     "Granito vermelho",
@@ -95,19 +102,26 @@ function DashboardHome() {
               <Row>
                 <Col xs={4} className="ps-0">
                   <CardGraph>
-                    Pendentes<NumberH1Graph className="pt-2">60</NumberH1Graph>
+                    Pendentes
+                    <NumberH1Graph className="pt-2">
+                      {stats.pendentes}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={4}>
                   <CardGraph>
                     Confirmados
-                    <NumberH1Graph className="pt-2">150</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.confirmados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={4} className="pe-0">
                   <CardGraph>
                     Finalizados
-                    <NumberH1Graph className="pt-2">320</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.finalizados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
               </Row>
@@ -119,13 +133,18 @@ function DashboardHome() {
               <Row>
                 <Col xs={4} className="ps-0">
                   <CardGraph>
-                    Cancelados<NumberH1Graph className="pt-2">2</NumberH1Graph>
+                    Cancelados
+                    <NumberH1Graph className="pt-2">
+                      {stats.cancelados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={8} className="pe-0">
                   <CardGraph>
                     Finanças
-                    <NumberH1Graph className="pt-2">2.0000000€</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.financas}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
               </Row>
