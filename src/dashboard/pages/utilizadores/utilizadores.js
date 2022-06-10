@@ -13,6 +13,72 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardUtilizadores };
+function getTable(activeTab) {
+  console.log("teste", activeTab, 1);
+
+  switch (activeTab) {
+    case 0:
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            username: "Username",
+            full_name: ["profile", "Nome"],
+            created_at: ["profile", "Data"],
+          }}
+          endPoint={"user/listar?role_id=4"}
+        ></DashboardTable>
+      );
+    case 1:
+      return (
+        <DashboardTable
+          key={1}
+          labels={{
+            username: "Username",
+            full_name: ["profile", "Nome"],
+            created_at: ["profile", "Data"],
+          }}
+          endPoint={"user/listar?role_id=3"}
+        ></DashboardTable>
+      );
+    case 2:
+      return (
+        <DashboardTable
+          key={2}
+          labels={{
+            username: "Username",
+            full_name: ["profile", "Nome"],
+            created_at: ["profile", "Data"],
+          }}
+          endPoint={"user/listar?role_id=2"}
+        ></DashboardTable>
+      );
+    case 3:
+      return (
+        <DashboardTable
+          key={3}
+          labels={{
+            username: "Username",
+            full_name: ["profile", "Nome"],
+            created_at: ["profile", "Data"],
+          }}
+          endPoint={"user/listar?role_id=1"}
+        ></DashboardTable>
+      );
+    default:
+      return (
+        <DashboardTable
+          key={0}
+          labels={{
+            username: "Username",
+            full_name: ["profile", "Nome"],
+            created_at: ["profile", "Data"],
+          }}
+          endPoint={"user/listar?role_id=4"}
+        ></DashboardTable>
+      );
+  }
+}
 
 function DashboardUtilizadores(props) {
   const [activeTab, changeTab] = useState(props.tab);
@@ -35,33 +101,13 @@ function DashboardUtilizadores(props) {
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}
-              >
-                <DashboardMenuListItem className="active">
-                  <H3>Clientes</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Operários</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Gestores</H3>
-                </DashboardMenuListItem>
-                <DashboardMenuListItem>
-                  <H3>Administradores</H3>
-                </DashboardMenuListItem>
-              </DashboardMenuList>
+              ></DashboardMenuList>
             </DashboardMenu>
           </Col>
         </Row>
         <Row className="g-0 pt-5">
           <Col xs={12}>
-            <DashboardTable
-              labels={{
-                username: "Username",
-                full_name: ["profile", "Nome"],
-                created_at: ["profile", "Data"],
-              }}
-              endPoint={"user/listar?role_id=4"}
-            ></DashboardTable>
+            {getTable(activeTab)}
             <TablePager />
           </Col>
         </Row>
