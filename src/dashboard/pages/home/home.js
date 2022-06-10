@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import axios from "axios";
 
 export { DashboardHome };
 
@@ -92,6 +93,27 @@ function DashboardHome() {
       },
     ],
   };
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/home/stats", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        insertStats(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
 
   return (
     <DashboardLayout>
