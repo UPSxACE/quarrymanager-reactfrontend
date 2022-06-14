@@ -14,7 +14,7 @@ import {
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 export { DashboardSidebar };
-
+//
 function DashboardSidebar() {
   return (
     <StyledSideBar>
@@ -30,32 +30,32 @@ function DashboardSidebar() {
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/stock">
             <SidebarIcon icon={faLayerGroup} />
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/encomendas">
             <SidebarIcon icon={faClipboardList} />
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/loja">
             <SidebarIcon icon={faCartShopping} />
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/utilizadores">
             <SidebarIcon icon={faUserGear} />
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/locais">
             <SidebarIcon icon={faScrewdriverWrench} />
           </a>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="#">
+          <a href="/dashboard/logs">
             <SidebarIcon icon={faBullhorn} />
           </a>
         </IconSidebarList>

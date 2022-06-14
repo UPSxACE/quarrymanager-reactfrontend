@@ -27,7 +27,7 @@ function DashboardNovoLote() {
                     </Form.Select>
                   </Col>
                   <Col xs={3} className="pe-5 ps-4 ">
-                    <h2>Cor</h2>
+                    <H2>Cor</H2>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
