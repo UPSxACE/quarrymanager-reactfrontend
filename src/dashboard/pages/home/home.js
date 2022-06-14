@@ -150,7 +150,6 @@ function DashboardHome() {
             </Container>
           </Col>
           <Col xs={6} className="p-0">
-            {" "}
             <Container fluid>
               <Row>
                 <Col xs={4} className="ps-0">
