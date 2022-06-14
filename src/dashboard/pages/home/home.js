@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import axios from "axios";
 
 export { DashboardHome };
 
 function DashboardHome() {
+  const [stats, insertStats] = useState({
+    pendentes: 0,
+    confirmados: 0,
+    finalizados: 0,
+    cancelados: 0,
+    financas: 0,
+  });
   const labels = [
     "Pedra Branca",
     "Granito vermelho",
@@ -86,6 +94,27 @@ function DashboardHome() {
     ],
   };
 
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/home/stats", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        insertStats(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
   return (
     <DashboardLayout>
       <Container fluid>
@@ -95,37 +124,48 @@ function DashboardHome() {
               <Row>
                 <Col xs={4} className="ps-0">
                   <CardGraph>
-                    Pendentes<NumberH1Graph className="pt-2">60</NumberH1Graph>
+                    Pendentes
+                    <NumberH1Graph className="pt-2">
+                      {stats.pendentes}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={4}>
                   <CardGraph>
                     Confirmados
-                    <NumberH1Graph className="pt-2">150</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.confirmados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={4} className="pe-0">
                   <CardGraph>
                     Finalizados
-                    <NumberH1Graph className="pt-2">320</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.finalizados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
               </Row>
             </Container>
           </Col>
           <Col xs={6} className="p-0">
-            {" "}
             <Container fluid>
               <Row>
                 <Col xs={4} className="ps-0">
                   <CardGraph>
-                    Cancelados<NumberH1Graph className="pt-2">2</NumberH1Graph>
+                    Cancelados
+                    <NumberH1Graph className="pt-2">
+                      {stats.cancelados}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
                 <Col xs={8} className="pe-0">
                   <CardGraph>
                     Finanças
-                    <NumberH1Graph className="pt-2">2.0000000€</NumberH1Graph>
+                    <NumberH1Graph className="pt-2">
+                      {stats.financas}
+                    </NumberH1Graph>
                   </CardGraph>
                 </Col>
               </Row>

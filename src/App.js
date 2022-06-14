@@ -111,13 +111,12 @@ function App(props) {
           <Route path="nova-cor" element={<DashboardNovaCor />} />
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
-          <Route path="loja" element={<DashboardLoja />} />
-
+          <Route path="loja" element={<DashboardLoja tab={0} />} />
           <Route
             path="utilizadores"
             element={<DashboardUtilizadores tab={0} />}
           />
-          <Route path="locais" element={<DashboardLocais />} />
+          <Route path="locais" element={<DashboardLocais tab={0} />} />
           <Route
             path="novo-local-armazem"
             element={<DashboardNovoLocalArmazem />}
@@ -126,6 +125,7 @@ function App(props) {
             path="novo-local-extracao"
             element={<DashboardNovoLocalExtracao />}
           />
+
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
           <Route path="ajuda" element={<DashboardAjuda />} />
