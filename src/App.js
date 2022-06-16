@@ -54,6 +54,7 @@ import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
 import { ViewCor } from "./dashboard/pages/lotes/ViewCor";
+import { ViewLote } from "./dashboard/pages/lotes/viewLote";
 
 // App.js
 
@@ -182,6 +183,7 @@ function App(props) {
 
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
+          <Route path="ver-lote/:codigo_lote" element={<ViewLote />} />
         </Route>
 
         <Route path="perfil" element={<Perfil />}>
