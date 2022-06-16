@@ -8,66 +8,71 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
+import { DashboardLayout } from "../../components/layout";
 
 export { EditarLocalArmazem };
 export { EditarLocalExtracao };
 
 function EditarLocalExtracao() {
   return (
-    <Container fluid>
-      <Form>
-        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-          <Col xs={12}>
-            <H2 className="pb-3">Editar Local de Extração</H2>
-            <FormColor>Nome</FormColor>
-            <Form.Group className="mb-3" controlId="formBasicIdLote">
-              <Form.Control type="text" placeholder="" />
-            </Form.Group>
-          </Col>
-          <Col xs={6} className="pe-3">
-            <FormColor>Coordenadas GPS X</FormColor>
-            <Form.Group className="mb-3" controlId="formBasicIdLote">
-              <Form.Control type="text" placeholder="" />
-            </Form.Group>
-          </Col>
-          <Col xs={6}>
-            <FormColor>Coordenadas GPS Y</FormColor>
-            <Form.Group className="mb-3" controlId="formBasicIdLote">
-              <Form.Control type="text" placeholder="" />
-            </Form.Group>
-          </Col>
-          <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+    <DashboardLayout>
+      <Container fluid>
+        <Form>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+            <Col xs={12}>
+              <H2 className="pb-3">Editar Local de Extração</H2>
+              <FormColor>Nome</FormColor>
+              <Form.Group className="mb-3" controlId="formBasicIdLote">
+                <Form.Control type="text" placeholder="" />
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pe-3">
+              <FormColor>Coordenadas GPS X</FormColor>
+              <Form.Group className="mb-3" controlId="formBasicIdLote">
+                <Form.Control type="text" placeholder="" />
+              </Form.Group>
+            </Col>
+            <Col xs={6}>
+              <FormColor>Coordenadas GPS Y</FormColor>
+              <Form.Group className="mb-3" controlId="formBasicIdLote">
+                <Form.Control type="text" placeholder="" />
+              </Form.Group>
+            </Col>
+            <Col xs={12} className="pt-3">
+              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-          </Col>
-        </DashboardRow>
-      </Form>
-    </Container>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Col>
+          </DashboardRow>
+        </Form>
+      </Container>
+    </DashboardLayout>
   );
 }
 
 function EditarLocalArmazem() {
   return (
-    <Container fluid>
-      <Form>
-        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-          <Col xs={12}>
-            <H2 className="pb-3">Editar Armazem</H2>
-            <FormColor>Nome</FormColor>
-            <Form.Group className="mb-3" controlId="formBasicIdLote">
-              <Form.Control type="text" placeholder="" />
-            </Form.Group>
-          </Col>
+    <DashboardLayout>
+      <Container fluid>
+        <Form>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+            <Col xs={12}>
+              <H2 className="pb-3">Editar Armazem</H2>
+              <FormColor>Nome</FormColor>
+              <Form.Group className="mb-3" controlId="formBasicIdLote">
+                <Form.Control type="text" placeholder="" />
+              </Form.Group>
+            </Col>
 
-          <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+            <Col xs={12} className="pt-3">
+              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-          </Col>
-        </DashboardRow>
-      </Form>
-    </Container>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Col>
+          </DashboardRow>
+        </Form>
+      </Container>
+    </DashboardLayout>
   );
 }
 
