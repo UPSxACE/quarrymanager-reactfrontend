@@ -29,6 +29,8 @@ import { DashboardNovoLocalArmazem } from "./dashboard/pages/locais/novoLocalArm
 import { DashboardNovoLocalExtracao } from "./dashboard/pages/locais/novoLocalExtracao";
 import { DashboardLogs } from "./dashboard/pages/logs_dashboard/logs";
 import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
+import { EditarLocalArmazem } from "./dashboard/pages/locais/editarLocais";
+import { EditarLocalExtracao } from "./dashboard/pages/locais/editarLocais";
 
 import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
@@ -125,6 +127,11 @@ function App(props) {
             path="novo-local-extracao"
             element={<DashboardNovoLocalExtracao />}
           />
+          <Route
+            path="editar-local-extracao"
+            element={<EditarLocalExtracao />}
+          />
+          <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
 
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
