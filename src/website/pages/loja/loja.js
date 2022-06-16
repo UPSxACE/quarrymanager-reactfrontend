@@ -2,10 +2,38 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DisplayH1, H1, Paragraph, H5, H3 } from "../../components/text";
 import styled from "styled-components";
 import lojaPic from "../../../images/website/granitoAmarelo.jpg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export { LojaHome };
 
 function LojaHome() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/produto/produtos-loja?fields=tituloArtigo,preco",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setData(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
   return (
     <Container fluid>
       <StyledRowDark>
@@ -15,48 +43,24 @@ function LojaHome() {
           <DisplayH1>NOSSA LOJA</DisplayH1>
           <Container>
             <StyledRowDark>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <Col xs={6} className="mb-5 d-flex justify-content-center">
-                <CardImage>
-                  <img src={lojaPic} />
-                </CardImage>
-              </Col>
-              <TablePager></TablePager>
+              {data.map((produto, index) => {
+                return (
+                  <Col
+                    xs={6}
+                    className="mb-5 d-flex justify-content-center"
+                    key={index}
+                  >
+                    <Card>
+                      <Image src={lojaPic} />
+                      <div className="d-flex">
+                        <h5>{produto.tituloArtigo}</h5>
+                        <h5 className="ms-auto">{produto.preco}€/m²</h5>
+                      </div>
+                    </Card>
+                  </Col>
+                );
+              })}
+              <TablePager />
             </StyledRowDark>
           </Container>
         </Col>
@@ -73,12 +77,13 @@ const StyledColLight = styled(Col)`
   background-color: #596d81;
 `;
 
-const CardImage = styled.div`
+const Card = styled.div`
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 50%));
-  border: 30px solid #596d81;
-  width: 359px;
-  height: 263px;
+  padding: 30px;
+  background-color: #596d81;
 `;
+
+const Image = styled.img``;
 
 function TablePager() {
   return (
