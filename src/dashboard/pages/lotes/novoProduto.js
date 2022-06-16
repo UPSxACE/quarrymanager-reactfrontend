@@ -19,13 +19,13 @@ function DashboardNovoProduto() {
             <Col xs={12}>
               <Container fluid>
                 <Row className="g-0 ">
-                  <Col xs={6} className="pe-4 ps-4">
+                  <Col xs={6} className="pe-2 ps-5 pb-4">
                     <FormColor>Material</FormColor>
                     <Form.Select>
                       <option>Selecionar</option>
                     </Form.Select>
                   </Col>
-                  <Col xs={6} className="pe-5 ps-4 ">
+                  <Col xs={6} className="pe-5 ps-2 ">
                     <FormColor>Cor</FormColor>
                     <Form.Select>
                       <option>Selecionar</option>
@@ -35,7 +35,7 @@ function DashboardNovoProduto() {
                   <Col xs={6}>
                     <Container fluid>
                       <Row className="g-0 ">
-                        <Col xs={6} className="pe-3">
+                        <Col xs={6} className="pe-3 ps-5">
                           <FormColor>Res. Compressão</FormColor>
                           <Form.Group
                             className="mb-3"
@@ -44,7 +44,7 @@ function DashboardNovoProduto() {
                             <Form.Control type="text" placeholder="" />
                           </Form.Group>
                         </Col>
-                        <Col xs={6} className="pe-3">
+                        <Col xs={6} className="pe-2">
                           <FormColor>Res. Flexão</FormColor>
                           <Form.Group
                             className="mb-3"
@@ -60,7 +60,7 @@ function DashboardNovoProduto() {
                   <Col xs={6}>
                     <Container fluid>
                       <Row className="g-0 ">
-                        <Col xs={6} className="pe-3">
+                        <Col xs={6} className="pe-3 ps-2">
                           <FormColor>Massa Vol. Aparente</FormColor>
                           <Form.Group
                             className="mb-3"
@@ -69,7 +69,7 @@ function DashboardNovoProduto() {
                             <Form.Control type="text" placeholder="" />
                           </Form.Group>
                         </Col>
-                        <Col xs={6} className="pe-3">
+                        <Col xs={6} className="pe-5">
                           <FormColor>Absorção Água</FormColor>
                           <Form.Group
                             className="mb-3"
@@ -80,6 +80,14 @@ function DashboardNovoProduto() {
                         </Col>
                       </Row>
                     </Container>
+                  </Col>
+
+                  <Col xs={12} className="pt-3 ps-5">
+                    <PrimaryButtonSave className="me-2">
+                      Enviar
+                    </PrimaryButtonSave>
+
+                    <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
                   </Col>
                 </Row>
               </Container>
