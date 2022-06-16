@@ -38,6 +38,7 @@ import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
 import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
+import { EditarLote } from "./dashboard/pages/lotes/editarLote";
 
 // App.js
 
@@ -134,6 +135,9 @@ function App(props) {
             element={<EditarLocalExtracao />}
           />
           <Route path="editar-produto" element={<EditarProduto />} />
+
+          <Route path="editar-lote" element={<EditarLote />} />
+
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
 
           <Route path="logs" element={<DashboardLogs tab={0} />} />
