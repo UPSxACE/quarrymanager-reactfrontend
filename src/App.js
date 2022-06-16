@@ -55,6 +55,12 @@ import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
 import { ViewCor } from "./dashboard/pages/lotes/ViewCor";
 import { ViewLote } from "./dashboard/pages/lotes/viewLote";
+import { ViewAdm } from "./dashboard/pages/utilizadores/viewAdmin";
+import { ViewGestor } from "./dashboard/pages/utilizadores/viewGestor";
+import { ViewOperario } from "./dashboard/pages/utilizadores/viewOperarios";
+import { Viewclienter } from "./dashboard/pages/utilizadores/viewCliente";
+import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
+import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 
 // App.js
 
@@ -160,6 +166,7 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
+          <Route path="ver-extracao/:id" element={<ViewLocalExtracao />} />
 
           <Route path="editar-produto/:id" element={<EditarProduto />} />
           <Route path="ver-produto/:id" element={<ViewProduto />} />
@@ -168,11 +175,17 @@ function App(props) {
           <Route path="editar-lote" element={<EditarLote />} />
 
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
+          <Route path="ver-armazem/:id" element={<ViewLocalArmazem />} />
 
           <Route path="editar-cliente" element={<EditarCliente />} />
           <Route path="editar-operario" element={<EditarOperario />} />
           <Route path="editar-gestor" element={<EditarGestor />} />
           <Route path="editar-administrador" element={<EditarAdmin />} />
+
+          <Route path="ver-cliente/:" element={<Viewclienter />} />
+          <Route path="ver-operario/:" element={<ViewOperario />} />
+          <Route path="ver-gestor/" element={<ViewGestor />} />
+          <Route path="ver-administrador/:" element={<ViewAdm />} />
 
           <Route path="editar-cor" element={<EditarCor />} />
           <Route path="ver-cor/:id" element={<ViewCor />} />
