@@ -52,6 +52,7 @@ import {
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
+import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
 
 // App.js
 
@@ -159,7 +160,6 @@ function App(props) {
           />
 
           <Route path="editar-produto/:id" element={<EditarProduto />} />
-
           <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
@@ -174,6 +174,7 @@ function App(props) {
 
           <Route path="editar-cor" element={<EditarCor />} />
           <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="ver-material/:id" element={<ViewMaterial />} />
           <Route path="editar-produto" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
