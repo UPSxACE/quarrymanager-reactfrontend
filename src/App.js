@@ -37,6 +37,9 @@ import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
+
+import { LojaHome } from "./website/pages/loja/loja";
+
 import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
 import { EditarLote } from "./dashboard/pages/lotes/editarLote";
 import { EditarStock } from "./dashboard/pages/stock/editarStock";
@@ -48,6 +51,7 @@ import {
 } from "./dashboard/pages/utilizadores/editarUtilizadores";
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
+import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 
 // App.js
 
@@ -87,6 +91,16 @@ function Dashboard() {
 function Perfil() {
   return (
     <div className="Website">
+      <NavbarComponent isGuest={true} />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+}
+
+function Loja() {
+  return (
+    <div className="Loja">
       <NavbarComponent isGuest={true} />
       <Outlet />
       <Footer />
@@ -143,8 +157,10 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
-          <Route path="editar-produto" element={<EditarProduto />} />
 
+          <Route path="editar-produto/:id" element={<EditarProduto />} />
+
+          <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
           <Route path="editar-lote" element={<EditarLote />} />
@@ -170,8 +186,12 @@ function App(props) {
           <Route path="/perfil/" element={<MeuPerfil />}></Route>
         </Route>
 
-        <Route path="loja" element={<Perfil />}>
-          <Route path="produto/:userId" element={<DefinicoesPerfil />}></Route>
+        <Route path="loja" element={<Loja />}>
+          <Route path="/loja/" element={<LojaHome />}></Route>
+          <Route
+            path="loja/produto/:idProduto"
+            element={<DefinicoesPerfil />}
+          ></Route>
         </Route>
       </Routes>
     </div>
