@@ -157,7 +157,9 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
+
           <Route path="editar-produto/:id" element={<EditarProduto />} />
+
           <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
