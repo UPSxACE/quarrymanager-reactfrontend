@@ -40,21 +40,23 @@ function LojaHome() {
         <StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>
 
         <Col xs={9}>
-          <DisplayH1>NOSSA LOJA</DisplayH1>
+          <DisplayH1 className="text-center pt-4 pb-5">NOSSA LOJA</DisplayH1>
           <Container>
             <StyledRowDark>
               {data.map((produto, index) => {
                 return (
                   <Col
-                    xs={6}
+                    xs={12}
+                    lg={6}
+                    xxl={4}
                     className="mb-5 d-flex justify-content-center"
                     key={index}
                   >
                     <Card>
                       <Image src={lojaPic} />
-                      <div className="d-flex">
-                        <h5>{produto.tituloArtigo}</h5>
-                        <h5 className="ms-auto">{produto.preco}€/m²</h5>
+                      <div className="d-flex pt-2">
+                        <H5>{produto.tituloArtigo}</H5>
+                        <H5 className="ms-auto">{produto.preco}€/m²</H5>
                       </div>
                     </Card>
                   </Col>
@@ -79,7 +81,7 @@ const StyledColLight = styled(Col)`
 
 const Card = styled.div`
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 50%));
-  padding: 30px;
+  padding: 20px;
   background-color: #596d81;
 `;
 
@@ -103,13 +105,15 @@ function TablePager() {
   );
 }
 
-const PagerComponent = styled.div``;
+const PagerComponent = styled.div`
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 50%));
+`;
 
 const PagerNumber = styled.div`
   padding: 7px 13px 7px 13px;
-  border-top: 1px solid #bbbbbb;
-  border-bottom: 1px solid #bbbbbb;
-  border-left: 1px solid #bbbbbb;
+  border-top: 1px solid #596d81;
+  border-bottom: 1px solid #596d81;
+  border-left: 1px solid #596d81;
   background-color: #fff;
   color: #394a58;
 
@@ -121,9 +125,9 @@ const PagerNumber = styled.div`
 
 const PagerText = styled.div`
   padding: 7px 13px 7px 13px;
-  border-top: 1px solid #bbbbbb;
-  border-bottom: 1px solid #bbbbbb;
-  border-left: 1px solid #bbbbbb;
+  border-top: 1px solid #596d81;
+  border-bottom: 1px solid #596d81;
+  border-left: 1px solid #596d81;
   background-color: #fff;
   color: #394a58;
 
@@ -138,6 +142,6 @@ const PagerText = styled.div`
   }
 
   &:last-child {
-    border-right: 1px solid #bbbbbb;
+    border-right: 1px solid #596d81;
   }
 `;
