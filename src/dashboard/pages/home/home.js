@@ -116,7 +116,7 @@ function DashboardHome() {
   }, []);
 
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"hom"}>
       <Container fluid>
         <Row>
           <Col xs={6} className="p-0">

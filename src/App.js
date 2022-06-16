@@ -29,13 +29,28 @@ import { DashboardNovoLocalArmazem } from "./dashboard/pages/locais/novoLocalArm
 import { DashboardNovoLocalExtracao } from "./dashboard/pages/locais/novoLocalExtracao";
 import { DashboardLogs } from "./dashboard/pages/logs_dashboard/logs";
 import { DashboardAjuda } from "./dashboard/pages/ajuda/ajuda";
+import { EditarLocalArmazem } from "./dashboard/pages/locais/editarLocais";
+import { EditarLocalExtracao } from "./dashboard/pages/locais/editarLocais";
 
 import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
+
 import { LojaHome } from "./website/pages/loja/loja";
+
+import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
+import { EditarLote } from "./dashboard/pages/lotes/editarLote";
+import { EditarStock } from "./dashboard/pages/stock/editarStock";
+import {
+  EditarAdmin,
+  EditarCliente,
+  EditarGestor,
+  EditarOperario,
+} from "./dashboard/pages/utilizadores/editarUtilizadores";
+import { EditarCor } from "./dashboard/pages/lotes/editarCor";
+import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 
 // App.js
 
@@ -113,7 +128,7 @@ function App(props) {
           <Route path="faq" element={<Faq />} />
         </Route>
 
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route path="dashboard/" element={<Dashboard />}>
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
           <Route path="stock" element={<DashboardStock tab={0} />} />
@@ -123,6 +138,7 @@ function App(props) {
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
+
           <Route
             path="utilizadores"
             element={<DashboardUtilizadores tab={0} />}
@@ -136,7 +152,26 @@ function App(props) {
             path="novo-local-extracao"
             element={<DashboardNovoLocalExtracao />}
           />
+          <Route
+            path="editar-local-extracao"
+            element={<EditarLocalExtracao />}
+          />
+          <Route path="editar-produto" element={<EditarProduto />} />
 
+          <Route path="editar-stock" element={<EditarStock />} />
+
+          <Route path="editar-lote" element={<EditarLote />} />
+
+          <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
+
+          <Route path="editar-cliente" element={<EditarCliente />} />
+          <Route path="editar-operario" element={<EditarOperario />} />
+          <Route path="editar-gestor" element={<EditarGestor />} />
+          <Route path="editar-administrador" element={<EditarAdmin />} />
+
+          <Route path="editar-cor" element={<EditarCor />} />
+          <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="editar-produto" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
           <Route path="ajuda" element={<DashboardAjuda />} />

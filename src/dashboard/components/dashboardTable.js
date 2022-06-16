@@ -53,16 +53,24 @@ function DashboardTable(props) {
       <TableStyle>
         <thead>
           <tr>
-            {labels.map((label) => (
-              <th key={label}>{label}</th>
-            ))}
+            {labels.map((label, index) => {
+              if (labels.length - 1 === index) {
+                return (
+                  <React.Fragment key={"actions" + index}>
+                    <th>{label}</th>
+                    <th>Ações</th>
+                  </React.Fragment>
+                );
+              }
+              return <th key={label}>{label}</th>;
+            })}
           </tr>
         </thead>
         <tbody>
           {data.map((entry, index) => {
             return (
               <tr key={index}>
-                {fields.map((field) => {
+                {fields.map((field, index2) => {
                   let contador_relacoes = 0;
                   let relacoes = [];
                   // se o field for um array
@@ -75,20 +83,35 @@ function DashboardTable(props) {
                     } else {
                       switch (contador_relacoes) {
                         case 0:
+                          if (fields.length - 1 === index2) {
+                            return (
+                              <React.Fragment key={"action" + index2}>
+                                <td>{entry[field.replaceAll("$", "")]}</td>
+                                <td>
+                                  <div>
+                                    <i>a</i>
+                                    <i>b</i>
+                                    <i>c</i>
+                                  </div>
+                                </td>
+                              </React.Fragment>
+                            );
+                          }
+
                           return (
-                            <td key={entry + field}>
+                            <td key={field + index + index2}>
                               {entry[field.replaceAll("$", "")]}
                             </td>
                           );
                         case 1:
                           return (
-                            <td key={entry + field}>
+                            <td key={field + index + index2}>
                               {entry[relacoes[0]][field.replaceAll("$", "")]}
                             </td>
                           );
                         case 2:
                           return (
-                            <td key={entry + field}>
+                            <td key={field + index + index2}>
                               {
                                 entry[relacoes[0]][relacoes[1]][
                                   field.replaceAll("$", "")
@@ -98,7 +121,7 @@ function DashboardTable(props) {
                           );
                         case 3:
                           return (
-                            <td key={entry + field}>
+                            <td key={field + index + index2}>
                               {
                                 entry[relacoes[0]][relacoes[1]][relacoes[2]][
                                   field.replaceAll("$", "")
@@ -108,7 +131,7 @@ function DashboardTable(props) {
                           );
                         default:
                           return (
-                            <td key={entry + field}>
+                            <td key={field + index + index2}>
                               {entry[field.replaceAll("$", "")]}
                             </td>
                           );
@@ -157,6 +180,10 @@ const TableWrapper = styled.div`
 
 const TableStyle = styled.table`
   width: 100%;
+
+  tbody {
+    height: 548px;
+  }
 `;
 
 function TablePager() {

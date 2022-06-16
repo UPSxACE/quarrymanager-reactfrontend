@@ -9,7 +9,7 @@ export { DashboardAjuda };
 function DashboardAjuda() {
   //
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"aju"}>
       <h1>conteudo para ajudar as pessoas uwu</h1>
     </DashboardLayout>
   );

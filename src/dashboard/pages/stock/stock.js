@@ -120,7 +120,7 @@ function DashboardStock(props) {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"sto"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>
