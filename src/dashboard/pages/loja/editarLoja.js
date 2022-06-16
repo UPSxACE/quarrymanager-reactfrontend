@@ -9,57 +9,38 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 
-export { EditarLocalArmazem };
-export { EditarLocalExtracao };
+export { EditarProduto };
 
-function EditarLocalExtracao() {
+function EditarProduto() {
   return (
     <Container fluid>
       <Form>
         <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-          <Col xs={12}>
-            <H2 className="pb-3">Editar Local de Extração</H2>
-            <FormColor>Nome</FormColor>
-            <Form.Group className="mb-3" controlId="formBasicIdLote">
-              <Form.Control type="text" placeholder="" />
-            </Form.Group>
+          <Col xs={12} className="pb-3">
+            <H2 className="pb-3">Editar Produto</H2>
+            <H2>Local de Retirada</H2>
+            <Form.Select>
+              <option>Selecionar</option>
+            </Form.Select>
           </Col>
           <Col xs={6} className="pe-3">
-            <FormColor>Coordenadas GPS X</FormColor>
+            <FormColor>Título do Artigo</FormColor>
             <Form.Group className="mb-3" controlId="formBasicIdLote">
               <Form.Control type="text" placeholder="" />
             </Form.Group>
           </Col>
           <Col xs={6}>
-            <FormColor>Coordenadas GPS Y</FormColor>
+            <FormColor>Preço</FormColor>
             <Form.Group className="mb-3" controlId="formBasicIdLote">
               <Form.Control type="text" placeholder="" />
             </Form.Group>
           </Col>
-          <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
-
-            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-          </Col>
-        </DashboardRow>
-      </Form>
-    </Container>
-  );
-}
-
-function EditarLocalArmazem() {
-  return (
-    <Container fluid>
-      <Form>
-        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
           <Col xs={12}>
-            <H2 className="pb-3">Editar Armazem</H2>
-            <FormColor>Nome</FormColor>
+            <FormColor>Descrição do Produto</FormColor>
             <Form.Group className="mb-3" controlId="formBasicIdLote">
               <Form.Control type="text" placeholder="" />
             </Form.Group>
           </Col>
-
           <Col xs={12} className="pt-3">
             <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 

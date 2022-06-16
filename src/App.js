@@ -37,6 +37,7 @@ import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
+import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
 
 // App.js
 
@@ -114,6 +115,7 @@ function App(props) {
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
+
           <Route
             path="utilizadores"
             element={<DashboardUtilizadores tab={0} />}
@@ -131,6 +133,7 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
+          <Route path="editar-produto" element={<EditarProduto />} />
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
 
           <Route path="logs" element={<DashboardLogs tab={0} />} />
