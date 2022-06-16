@@ -35,6 +35,7 @@ import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
+import { LojaHome } from "./website/pages/loja/loja";
 
 // App.js
 
@@ -74,6 +75,16 @@ function Dashboard() {
 function Perfil() {
   return (
     <div className="Website">
+      <NavbarComponent isGuest={true} />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+}
+
+function Loja() {
+  return (
+    <div className="Loja">
       <NavbarComponent isGuest={true} />
       <Outlet />
       <Footer />
@@ -137,7 +148,8 @@ function App(props) {
           <Route path="/perfil/" element={<MeuPerfil />}></Route>
         </Route>
 
-        <Route path="loja" element={<Perfil />}>
+        <Route path="loja" element={<Loja />}>
+          <Route path="/loja/" element={<LojaHome />}></Route>
           <Route path="produto/:userId" element={<DefinicoesPerfil />}></Route>
         </Route>
       </Routes>
