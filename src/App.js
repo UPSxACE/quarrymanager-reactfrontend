@@ -39,6 +39,13 @@ import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
 import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
 import { EditarLote } from "./dashboard/pages/lotes/editarLote";
+import { EditarStock } from "./dashboard/pages/stock/editarStock";
+import {
+  EditarAdmin,
+  EditarCliente,
+  EditarGestor,
+  EditarOperario,
+} from "./dashboard/pages/utilizadores/editarUtilizadores";
 
 // App.js
 
@@ -136,9 +143,16 @@ function App(props) {
           />
           <Route path="editar-produto" element={<EditarProduto />} />
 
+          <Route path="editar-stock" element={<EditarStock />} />
+
           <Route path="editar-lote" element={<EditarLote />} />
 
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
+
+          <Route path="editar-cliente" element={<EditarCliente />} />
+          <Route path="editar-operario" element={<EditarOperario />} />
+          <Route path="editar-gestor" element={<EditarGestor />} />
+          <Route path="editar-administrador" element={<EditarAdmin />} />
 
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
