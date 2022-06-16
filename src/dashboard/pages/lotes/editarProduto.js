@@ -8,9 +8,11 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
+import { useParams } from "react-router-dom";
 export { EditarProduto };
 
 function EditarProduto() {
+  const produto_id = useParams("id");
   return (
     <DashboardLayout>
       <Container fluid>

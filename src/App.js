@@ -51,6 +51,7 @@ import {
 } from "./dashboard/pages/utilizadores/editarUtilizadores";
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
+import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 
 // App.js
 
@@ -156,8 +157,8 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
-          <Route path="editar-produto" element={<EditarProduto />} />
-
+          <Route path="editar-produto/:id" element={<EditarProduto />} />
+          <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
           <Route path="editar-lote" element={<EditarLote />} />
