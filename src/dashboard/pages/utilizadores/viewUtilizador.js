@@ -14,17 +14,22 @@ export { ViewUtilizador };
 function ViewUtilizador() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
-        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
-          headers: {
-            Authorization: "Basic " + btoa(username + ":" + password),
-          },
-        });
+        const resp = await axios(
+          "http://localhost:8080/api/user/find?id=" + id,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
 
         findStats(resp.data);
       } catch (err) {
@@ -33,9 +38,7 @@ function ViewUtilizador() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const user_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>

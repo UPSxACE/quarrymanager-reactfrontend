@@ -15,6 +15,8 @@ export { ViewLocalArmazem };
 function ViewLocalArmazem() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -22,7 +24,7 @@ function ViewLocalArmazem() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-armazem/find?id=1",
+          "http://localhost:8080/api/local-armazem/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -37,9 +39,7 @@ function ViewLocalArmazem() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const Armazem_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>

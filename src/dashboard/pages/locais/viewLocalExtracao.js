@@ -15,6 +15,8 @@ export { ViewLocalExtracao };
 function ViewLocalExtracao() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -22,7 +24,7 @@ function ViewLocalExtracao() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-extracao/find?id=1",
+          "http://localhost:8080/api/local-extracao/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -37,9 +39,7 @@ function ViewLocalExtracao() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const Extracao_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>

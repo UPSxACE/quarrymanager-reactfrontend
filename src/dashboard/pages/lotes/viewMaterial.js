@@ -15,6 +15,8 @@ export { ViewMaterial };
 function ViewMaterial() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -22,7 +24,7 @@ function ViewMaterial() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/material/find?id=1",
+          "http://localhost:8080/api/material/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -37,9 +39,7 @@ function ViewMaterial() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const material_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>

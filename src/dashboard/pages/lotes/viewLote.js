@@ -15,6 +15,8 @@ export { ViewLote };
 function ViewLote() {
   const [find, findStats] = useState({});
 
+  const { codigo_lote } = useParams("codigo_lote");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -22,14 +24,15 @@ function ViewLote() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/lote/find?codigo_lote=GRN_LRJ_00001",
+          "http://localhost:8080/api/lote/find?codigo_lote=" + codigo_lote,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
             },
           }
         );
-        console.log(resp.data);
+        console.log(codigo_lote);
+        console.log("teste: " + resp.data);
         findStats(resp.data);
       } catch (err) {
         console.log(err);
@@ -37,9 +40,7 @@ function ViewLote() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const codigo_lote = useParams("codigo_lote");
+  }, [codigo_lote]);
 
   return (
     <DashboardLayout>

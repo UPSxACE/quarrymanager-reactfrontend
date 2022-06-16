@@ -15,17 +15,22 @@ export { ViewCor };
 function ViewCor() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
-        const resp = await axios("http://localhost:8080/api/cor/find?id=2", {
-          headers: {
-            Authorization: "Basic " + btoa(username + ":" + password),
-          },
-        });
+        const resp = await axios(
+          "http://localhost:8080/api/cor/find?id=" + id,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
 
         findStats(resp.data);
       } catch (err) {
@@ -34,9 +39,7 @@ function ViewCor() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const cor_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>

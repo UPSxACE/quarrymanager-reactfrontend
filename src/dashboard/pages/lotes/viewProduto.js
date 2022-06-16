@@ -15,6 +15,8 @@ export { ViewProduto };
 function ViewProduto() {
   const [find, findStats] = useState({});
 
+  const { id } = useParams("id");
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -22,7 +24,7 @@ function ViewProduto() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/produto/find?id=2",
+          "http://localhost:8080/api/produto/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -37,9 +39,7 @@ function ViewProduto() {
     };
 
     sendGetRequest();
-  }, []);
-
-  const produto_id = useParams("id");
+  }, [id]);
 
   return (
     <DashboardLayout>
