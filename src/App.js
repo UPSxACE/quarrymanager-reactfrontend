@@ -53,6 +53,7 @@ import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
+import { ViewCor } from "./dashboard/pages/lotes/ViewCor";
 
 // App.js
 
@@ -173,6 +174,7 @@ function App(props) {
           <Route path="editar-administrador" element={<EditarAdmin />} />
 
           <Route path="editar-cor" element={<EditarCor />} />
+          <Route path="ver-cor/:id" element={<ViewCor />} />
           <Route path="editar-material" element={<EditarMaterial />} />
           <Route path="ver-material/:id" element={<ViewMaterial />} />
           <Route path="editar-produto" element={<EditarProduto />} />
