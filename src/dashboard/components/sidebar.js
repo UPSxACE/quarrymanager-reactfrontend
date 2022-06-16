@@ -13,60 +13,61 @@ import {
   faBullhorn,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 export { DashboardSidebar };
 //
 function DashboardSidebar() {
   return (
     <StyledSideBar>
       <DashboardLogo className="d-flex justify-content-center">
-        <a href="/dashboard/home">
+        <Link to="/dashboard/home">
           <img src={logo38pxWhite} />
-        </a>
+        </Link>
       </DashboardLogo>
       <NavigationItems className="d-flex flex-grow-1 flex-column justify-content-center">
         <IconSidebarList className="text-center active">
-          <a href="/dashboard/home">
+          <Link to="/dashboard/home">
             <SidebarIcon icon={faHouse} className="active" />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/stock">
+          <Link to="/dashboard/stock">
             <SidebarIcon icon={faLayerGroup} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/encomendas">
+          <Link to="/dashboard/encomendas">
             <SidebarIcon icon={faClipboardList} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/loja">
+          <Link to="/dashboard/loja">
             <SidebarIcon icon={faCartShopping} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/utilizadores">
+          <Link to="/dashboard/utilizadores">
             <SidebarIcon icon={faUserGear} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/locais">
+          <Link to="/dashboard/locais">
             <SidebarIcon icon={faScrewdriverWrench} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center">
-          <a href="/dashboard/logs">
+          <Link to="/dashboard/logs">
             <SidebarIcon icon={faBullhorn} />
-          </a>
+          </Link>
         </IconSidebarList>
         <IconSidebarList className="text-center pt-2 pb-2">
-          <a href="#">
+          <Link to="#">
             <SidebarIcon icon={faCircleQuestion} />
-          </a>
+          </Link>
         </IconSidebarList>
       </NavigationItems>
       <ThemeColorButton className="text-center">
-        <a href="#">Button</a>
+        <Link to="#">Button</Link>
       </ThemeColorButton>
     </StyledSideBar>
   );
