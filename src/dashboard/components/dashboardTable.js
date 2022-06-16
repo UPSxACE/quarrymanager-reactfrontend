@@ -6,6 +6,20 @@ import {} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 export { DashboardTable, TablePager };
 
+function getBlankTables(length) {
+  let rows = [];
+
+  for (let i = length; i < 10; i++) {
+    rows.push(
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    );
+  }
+
+  return <>{rows}</>;
+}
+
 function DashboardTable(props) {
   // ex de objeto recebido: {id: "Order ID", username: "Username", dateTime: "Date of arrival"}
   const [data, setData] = useState([]); // dados vindos da API
@@ -144,6 +158,7 @@ function DashboardTable(props) {
               </tr>
             );
           })}
+          {data.length < 10 && <>{getBlankTables(data.length)}</>}
         </tbody>
       </TableStyle>
     </TableWrapper>
