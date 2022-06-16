@@ -20,8 +20,7 @@ function EditarCliente() {
     <DashboardLayout>
       <Container fluid>
         <Form>
-          <Row className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <H2 className="pb-3">Editar cliente</H2>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={6} className="pe-3">
               <FormColor>Cargo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
@@ -41,7 +40,7 @@ function EditarCliente() {
 
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
-          </Row>
+          </DashboardRow>
         </Form>
       </Container>
     </DashboardLayout>
@@ -53,8 +52,7 @@ function EditarOperario() {
     <DashboardLayout>
       <Container fluid>
         <Form>
-          <Row className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <H2 className="pb-3">Editar Operário</H2>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={6} className="pe-3">
               <FormColor>Cargo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
@@ -74,7 +72,7 @@ function EditarOperario() {
 
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
-          </Row>
+          </DashboardRow>
         </Form>
       </Container>
     </DashboardLayout>
@@ -86,8 +84,7 @@ function EditarGestor() {
     <DashboardLayout>
       <Container fluid>
         <Form>
-          <Row className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <H2 className="pb-3">Editar Gestor</H2>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={6} className="pe-3">
               <FormColor>Cargo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
@@ -107,7 +104,7 @@ function EditarGestor() {
 
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
-          </Row>
+          </DashboardRow>
         </Form>
       </Container>
     </DashboardLayout>
@@ -119,8 +116,7 @@ function EditarAdmin() {
     <DashboardLayout>
       <Container fluid>
         <Form>
-          <Row className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <H2 className="pb-3">Editar Administrador</H2>
+          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={6} className="pe-3">
               <FormColor>Cargo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
@@ -140,7 +136,7 @@ function EditarAdmin() {
 
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
-          </Row>
+          </DashboardRow>
         </Form>
       </Container>
     </DashboardLayout>

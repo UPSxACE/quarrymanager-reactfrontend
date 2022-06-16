@@ -20,7 +20,6 @@ function EditarLocalExtracao() {
         <Form>
           <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={12}>
-              <H2 className="pb-3">Editar Local de Extração</H2>
               <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />
@@ -57,7 +56,6 @@ function EditarLocalArmazem() {
         <Form>
           <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={12}>
-              <H2 className="pb-3">Editar Armazem</H2>
               <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />

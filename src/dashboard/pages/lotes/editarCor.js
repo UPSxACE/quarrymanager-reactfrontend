@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Form } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardRow } from "../../components/layoutComponents";
 
@@ -10,38 +10,30 @@ import {
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
 
-export { EditarProduto };
+export { EditarCor };
 
-function EditarProduto() {
+function EditarCor() {
   return (
     <DashboardLayout>
       <Container fluid>
         <Form>
           <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={12} className="pb-3">
-              <FormColor>Produto</FormColor>
-              <Form.Control type="text" placeholder="" readOnly />
-            </Col>
             <Col xs={6} className="pe-3">
-              <FormColor>Título do Artigo</FormColor>
+              <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
             </Col>
-            <Col xs={6}>
-              <FormColor>Preço</FormColor>
+
+            <Col xs={6} className="pe-3">
+              <FormColor>Perfixo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
             </Col>
-            <Col xs={12}>
-              <FormColor>Descrição do Produto</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
-              </Form.Group>
-            </Col>
+
             <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+              <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
 
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>

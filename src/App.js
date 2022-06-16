@@ -46,6 +46,8 @@ import {
   EditarGestor,
   EditarOperario,
 } from "./dashboard/pages/utilizadores/editarUtilizadores";
+import { EditarCor } from "./dashboard/pages/lotes/editarCor";
+import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 
 // App.js
 
@@ -154,6 +156,9 @@ function App(props) {
           <Route path="editar-gestor" element={<EditarGestor />} />
           <Route path="editar-administrador" element={<EditarAdmin />} />
 
+          <Route path="editar-cor" element={<EditarCor />} />
+          <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="editar-produto" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
           <Route path="ajuda" element={<DashboardAjuda />} />
