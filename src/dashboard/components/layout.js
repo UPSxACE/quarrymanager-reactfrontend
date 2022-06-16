@@ -9,7 +9,7 @@ function DashboardLayout(props) {
   return (
     <BackgoundDiv className="DashboardLayout d-flex">
       <aside>
-        <DashboardSidebar />
+        <DashboardSidebar tab={props.tab} />
       </aside>
       <ContentDiv>
         <PageHeader className="d-flex w-100">

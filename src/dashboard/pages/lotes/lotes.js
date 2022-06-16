@@ -11,52 +11,8 @@ export { DashboardLotes };
 function DashboardLotes() {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const sendGetRequest = async () => {
-      try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
-        const password = "";
-
-        const resp = await axios.get("http://localhost:8080/api/lote", {
-          headers: {
-            Authorization: "Basic " + btoa(username + ":" + password),
-            //+ btoa("dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O") ,
-          },
-        });
-        //setData(resp.data);
-        setData(resp.data);
-      } catch (err) {
-        // Handle Error Here
-        console.error(err);
-      }
-    };
-
-    sendGetRequest();
-
-    /*
-    const config = {
-      headers: {
-        Authorization: "Basic ZEM5Vk9qbEdMU21zZzZaR2toN0UwREpLejhHMUs1OU86",
-        //+ btoa("dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O") ,
-      },
-    };
-
-    const bodyParameters = {};
-
-    async function fetchData() {
-      const result = await axios(
-        "http://localhost:8080/api/lote",
-        bodyParameters,
-        config
-      );
-
-      setData(result.data);
-    }
-    fetchData();*/
-  }, []);
-
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"lot"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>

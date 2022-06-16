@@ -66,7 +66,7 @@ function DashboardLoja(props) {
     changeTab(newTab);
   }
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"loj"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>

@@ -16,7 +16,7 @@ export { DashboardEncomendas };
 
 function DashboardEncomendas() {
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"enc"}>
       <Container fluid>
         <Row className="g-0 pt-5">
           <Col xs={12}>

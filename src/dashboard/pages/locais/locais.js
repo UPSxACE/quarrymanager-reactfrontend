@@ -26,6 +26,7 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
+          z
         />
       );
     case 1:
@@ -62,7 +63,7 @@ function DashboardLocais(props) {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"loc"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>

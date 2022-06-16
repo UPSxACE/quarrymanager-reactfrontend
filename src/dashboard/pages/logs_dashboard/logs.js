@@ -23,7 +23,7 @@ function DashboardLogs(props) {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"log"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>

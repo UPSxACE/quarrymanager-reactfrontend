@@ -102,7 +102,7 @@ function App(props) {
           <Route path="faq" element={<Faq />} />
         </Route>
 
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route path="dashboard/" element={<Dashboard />}>
           <Route path="/dashboard/" element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
           <Route path="stock" element={<DashboardStock tab={0} />} />

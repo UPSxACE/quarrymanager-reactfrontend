@@ -87,7 +87,7 @@ function DashboardUtilizadores(props) {
     changeTab(newTab);
   }
   return (
-    <DashboardLayout>
+    <DashboardLayout tab={"uti"}>
       <Container fluid>
         <Row className="g-0">
           <Col xs={12}>

@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 export { DashboardSidebar };
 //
-function DashboardSidebar() {
+function DashboardSidebar(props) {
   return (
     <StyledSideBar>
       <DashboardLogo className="d-flex justify-content-center">
@@ -25,44 +25,84 @@ function DashboardSidebar() {
         </Link>
       </DashboardLogo>
       <NavigationItems className="d-flex flex-grow-1 flex-column justify-content-center">
-        <IconSidebarList className="text-center active">
+        <IconSidebarList
+          className={props.tab === "hom" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/home">
-            <SidebarIcon icon={faHouse} className="active" />
+            <SidebarIcon
+              icon={faHouse}
+              className={props.tab === "hom" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "sto" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/stock">
-            <SidebarIcon icon={faLayerGroup} />
+            <SidebarIcon
+              icon={faLayerGroup}
+              className={props.tab === "sto" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "enc" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/encomendas">
-            <SidebarIcon icon={faClipboardList} />
+            <SidebarIcon
+              icon={faClipboardList}
+              className={props.tab === "enc" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "loj" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/loja">
-            <SidebarIcon icon={faCartShopping} />
+            <SidebarIcon
+              icon={faCartShopping}
+              className={props.tab === "loj" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "uti" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/utilizadores">
-            <SidebarIcon icon={faUserGear} />
+            <SidebarIcon
+              icon={faUserGear}
+              className={props.tab === "uti" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "loc" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/locais">
-            <SidebarIcon icon={faScrewdriverWrench} />
+            <SidebarIcon
+              icon={faScrewdriverWrench}
+              className={props.tab === "loc" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center">
+        <IconSidebarList
+          className={props.tab === "log" ? "text-center active" : "text-center"}
+        >
           <Link to="/dashboard/logs">
-            <SidebarIcon icon={faBullhorn} />
+            <SidebarIcon
+              icon={faBullhorn}
+              className={props.tab === "log" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
-        <IconSidebarList className="text-center pt-2 pb-2">
+        <IconSidebarList
+          className={props.tab === "aju" ? "text-center active" : "text-center"}
+        >
           <Link to="#">
-            <SidebarIcon icon={faCircleQuestion} />
+            <SidebarIcon
+              icon={faCircleQuestion}
+              className={props.tab === "aju" ? "active" : ""}
+            />
           </Link>
         </IconSidebarList>
       </NavigationItems>
