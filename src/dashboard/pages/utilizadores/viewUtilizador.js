@@ -9,9 +9,9 @@ import {
 } from "../../components/buttons";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-export { ViewOperario };
+export { ViewUtilizador };
 
-function ViewOperario() {
+function ViewUtilizador() {
   const [find, findStats] = useState({});
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function ViewOperario() {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
-        const resp = await axios("http://localhost:8080/api/", {
+        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
           headers: {
             Authorization: "Basic " + btoa(username + ":" + password),
           },
@@ -35,7 +35,7 @@ function ViewOperario() {
     sendGetRequest();
   }, []);
 
-  const operario_id = useParams("id");
+  const user_id = useParams("id");
 
   return (
     <DashboardLayout>
@@ -46,21 +46,27 @@ function ViewOperario() {
               <Tabela className="w-100 ">
                 <tbody>
                   <tr>
+                    <th className="pt-2 pe-3 ps-3 pb-2">Username :</th>
+                    <td className="pt-2 pe-3 ps-3 pb-2">
+                      {find.username ? find.username : ""}
+                    </td>
+                  </tr>
+                  <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Cargo :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find. ? find.: ""}
+                      {find.role ? find.role.name : ""}
                     </td>
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find. ? find. : ""}
+                      {find.profile ? find.profile.full_name : ""}
                     </td>
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find. ? find. : ""}
+                      {find.profile ? find.profile.created_at : ""}
                     </td>
                   </tr>
                 </tbody>

@@ -29,7 +29,7 @@ function ViewLote() {
             },
           }
         );
-
+        console.log(resp.data);
         findStats(resp.data);
       } catch (err) {
         console.log(err);
@@ -111,19 +111,31 @@ function ViewLote() {
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Material :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idMaterial0 ? find.idMaterial0.nome : ""}
+                      {find.idProduto0
+                        ? find.idProduto0.idMaterial0
+                          ? find.idProduto0.idMaterial0.nome
+                          : ""
+                        : ""}
                     </td>
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Cor :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idCor0 ? find.idCor0.nome : ""}
+                      {find.idProduto0
+                        ? find.idProduto0.idCor0
+                          ? find.idProduto0.idCor0.nome
+                          : ""
+                        : ""}
                     </td>
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Preço :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.preco ? find.preco : ""}
+                      {find.idProduto0
+                        ? find.idProduto0.preco
+                          ? find.idProduto0.preco
+                          : ""
+                        : ""}
                     </td>
                   </tr>
                   <tr>
@@ -131,13 +143,21 @@ function ViewLote() {
                       Quantidade Vendida :
                     </th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.quantidade_vendida ? find.quantidade_vendida : ""}
+                      {find.idProduto0
+                        ? find.idProduto0.quantidade_vendida
+                          ? find.idProduto0.quantidade_vendida
+                          : ""
+                        : ""}
                     </td>
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Número de pedidos :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.numero_pedidos ? find.numero_pedidos : ""}
+                      {find.idProduto0
+                        ? find.idProduto0.numero_pedidos
+                          ? find.idProduto0.numero_pedidos
+                          : ""
+                        : ""}
                     </td>
                   </tr>
                   <tr>

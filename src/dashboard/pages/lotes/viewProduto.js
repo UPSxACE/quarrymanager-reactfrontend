@@ -58,7 +58,7 @@ function ViewProduto() {
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">Na Loja :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.na_loja ? find.na_loja : ""}
+                      {find.na_loja ? "Sim" : "Não"}
                     </td>
                   </tr>
                   <tr>
@@ -75,7 +75,7 @@ function ViewProduto() {
                   </tr>
                   <tr>
                     <th className="pt-2 pe-3 ps-3 pb-2">
-                      Massa Volumica Aparente :
+                      Massa Volúmica Aparente :
                     </th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
                       {find.Massa_Vol_Aparente ? find.Massa_Vol_Aparente : ""}

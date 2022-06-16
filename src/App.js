@@ -43,22 +43,14 @@ import { LojaHome } from "./website/pages/loja/loja";
 import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
 import { EditarLote } from "./dashboard/pages/lotes/editarLote";
 import { EditarStock } from "./dashboard/pages/stock/editarStock";
-import {
-  EditarAdmin,
-  EditarCliente,
-  EditarGestor,
-  EditarOperario,
-} from "./dashboard/pages/utilizadores/editarUtilizadores";
+import { EditarUtilizador } from "./dashboard/pages/utilizadores/editarUtilizador";
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
 import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
-import { ViewCor } from "./dashboard/pages/lotes/ViewCor";
+import { ViewCor } from "./dashboard/pages/lotes/viewCor";
 import { ViewLote } from "./dashboard/pages/lotes/viewLote";
-import { ViewAdm } from "./dashboard/pages/utilizadores/viewAdmin";
-import { ViewGestor } from "./dashboard/pages/utilizadores/viewGestor";
-import { ViewOperario } from "./dashboard/pages/utilizadores/viewOperarios";
-import { Viewclienter } from "./dashboard/pages/utilizadores/viewCliente";
+import { ViewUtilizador } from "./dashboard/pages/utilizadores/viewUtilizador";
 import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 
@@ -177,15 +169,9 @@ function App(props) {
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
           <Route path="ver-armazem/:id" element={<ViewLocalArmazem />} />
 
-          <Route path="editar-cliente" element={<EditarCliente />} />
-          <Route path="editar-operario" element={<EditarOperario />} />
-          <Route path="editar-gestor" element={<EditarGestor />} />
-          <Route path="editar-administrador" element={<EditarAdmin />} />
+          <Route path="editar-cliente" element={<EditarUtilizador />} />
 
-          <Route path="ver-cliente/:" element={<Viewclienter />} />
-          <Route path="ver-operario/:" element={<ViewOperario />} />
-          <Route path="ver-gestor/" element={<ViewGestor />} />
-          <Route path="ver-administrador/:" element={<ViewAdm />} />
+          <Route path="ver-user/:id" element={<ViewUtilizador />} />
 
           <Route path="editar-cor" element={<EditarCor />} />
           <Route path="ver-cor/:id" element={<ViewCor />} />

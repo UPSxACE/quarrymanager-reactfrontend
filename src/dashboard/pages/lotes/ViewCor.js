@@ -47,7 +47,7 @@ function ViewCor() {
               <Tabela className="w-100 ">
                 <tbody>
                   <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">nome :</th>
+                    <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
                     <td className="pt-2 pe-3 ps-3 pb-2">
                       {find.nome ? find.nome : ""}
                     </td>
