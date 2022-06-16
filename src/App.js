@@ -188,7 +188,10 @@ function App(props) {
 
         <Route path="loja" element={<Loja />}>
           <Route path="/loja/" element={<LojaHome />}></Route>
-          <Route path="produto/:userId" element={<DefinicoesPerfil />}></Route>
+          <Route
+            path="loja/produto/:idProduto"
+            element={<DefinicoesPerfil />}
+          ></Route>
         </Route>
       </Routes>
     </div>
