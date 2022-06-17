@@ -82,7 +82,7 @@ const ButtonSubmit = styled(ButtonSubmitBase)`
 
 function LoginButton(props) {
   return (
-    <Button className={props.className} variant="light">
+    <Button className={props.className} onClick={props.onClick} variant="light">
       {props.children}
     </Button>
   );
