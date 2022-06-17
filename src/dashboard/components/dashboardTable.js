@@ -36,6 +36,7 @@ function DashboardTable(props) {
     if (props.view) {
       actions.push(
         <Link
+          className="actionLink"
           key={index + "view"}
           to={"/dashboard/" + props.view + "/" + reference}
         >
@@ -48,20 +49,26 @@ function DashboardTable(props) {
     }
     if (props.edit) {
       actions.push(
-        <FontAwesomeIcon
+        <Link
+          className="actionLink"
           key={index + "edit"}
-          className="align-self-center action"
-          icon={faPen}
-        ></FontAwesomeIcon>
+          to={"/dashboard/" + props.edit + "/" + reference}
+        >
+          <FontAwesomeIcon
+            className="align-self-center action"
+            icon={faPen}
+          ></FontAwesomeIcon>
+        </Link>
       );
     }
     if (props.delete) {
       actions.push(
-        <FontAwesomeIcon
-          key={index + "delete"}
-          className="align-self-center action"
-          icon={faTrash}
-        ></FontAwesomeIcon>
+        <button className="actionLink" key={index + "delete"}>
+          <FontAwesomeIcon
+            className="align-self-center action"
+            icon={faTrash}
+          ></FontAwesomeIcon>
+        </button>
       );
     }
     return <>{actions}</>;
@@ -302,12 +309,20 @@ const TableWrapper = styled.div`
     width: 16px;
   }
 
-  .action:not(:first-child) {
+  .actionLink:not(:first-child) {
     margin-left: 5px;
   }
 
   a {
     color: #004b5b;
+  }
+
+  button {
+    all: unset;
+  }
+
+  td div {
+    line-height: 0px;
   }
 `;
 
