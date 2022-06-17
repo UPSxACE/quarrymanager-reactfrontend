@@ -43,16 +43,19 @@ import { LojaHome } from "./website/pages/loja/loja";
 import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
 import { EditarLote } from "./dashboard/pages/lotes/editarLote";
 import { EditarStock } from "./dashboard/pages/stock/editarStock";
-import {
-  EditarAdmin,
-  EditarCliente,
-  EditarGestor,
-  EditarOperario,
-} from "./dashboard/pages/utilizadores/editarUtilizadores";
+import { EditarUtilizador } from "./dashboard/pages/utilizadores/editarUtilizador";
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
+
 import { ProdutoLoja } from "./website/pages/loja/produto";
+
+import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
+import { ViewCor } from "./dashboard/pages/lotes/viewCor";
+import { ViewLote } from "./dashboard/pages/lotes/viewLote";
+import { ViewUtilizador } from "./dashboard/pages/utilizadores/viewUtilizador";
+import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
+import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 
 // App.js
 
@@ -158,28 +161,31 @@ function App(props) {
             path="editar-local-extracao"
             element={<EditarLocalExtracao />}
           />
+          <Route path="ver-extracao/:id" element={<ViewLocalExtracao />} />
 
           <Route path="editar-produto/:id" element={<EditarProduto />} />
-
           <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
           <Route path="editar-lote" element={<EditarLote />} />
 
           <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
+          <Route path="ver-armazem/:id" element={<ViewLocalArmazem />} />
 
-          <Route path="editar-cliente" element={<EditarCliente />} />
-          <Route path="editar-operario" element={<EditarOperario />} />
-          <Route path="editar-gestor" element={<EditarGestor />} />
-          <Route path="editar-administrador" element={<EditarAdmin />} />
+          <Route path="editar-cliente" element={<EditarUtilizador />} />
+
+          <Route path="ver-user/:id" element={<ViewUtilizador />} />
 
           <Route path="editar-cor" element={<EditarCor />} />
+          <Route path="ver-cor/:id" element={<ViewCor />} />
           <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="ver-material/:id" element={<ViewMaterial />} />
           <Route path="editar-produto" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
+          <Route path="ver-lote/:codigo_lote" element={<ViewLote />} />
         </Route>
 
         <Route path="perfil" element={<Perfil />}>

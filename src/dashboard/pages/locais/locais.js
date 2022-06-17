@@ -26,7 +26,10 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
-          z
+          actions
+          view
+          edit
+          delete
         />
       );
     case 1:
@@ -39,6 +42,10 @@ function getTable(activeTab) {
             coordenadasGPS_Y: "Coordenadas GPS Y",
           }}
           endPoint={"local-extracao/listar"}
+          actions
+          view
+          edit
+          delete
         />
       );
     default:
@@ -50,6 +57,10 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
+          actions
+          view
+          edit
+          delete
         />
       );
   }
@@ -71,8 +82,8 @@ function DashboardLocais(props) {
               <DashboardMenuList
                 listItems={["Locais de Armazéns", "Locais de Extração"]}
                 rightButton={[
-                  "Novo Local de Armazém",
-                  "Novo Local de Extração",
+                  ["Novo Local de Armazém", "novo-local-armazem"],
+                  ["Novo Local de Extração", "novo-local-extracao"],
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}

@@ -21,38 +21,16 @@ function DashboardEncomendas() {
         <Row className="g-0 pt-5">
           <Col xs={12}>
             <DashboardTable
-              data={[
-                { a: "a", b: "b" },
-                { b: "c", a: "d" },
-              ]}
               labels={{
                 quantidade: "Quantidade",
                 nome: ["idProduto0", ["idMaterial0", "Nome"]], // entry["idProduto0"]["idMaterial0"]
               }}
               endPoint={"lote/listar"}
-            >
-              {/*props de teste*/}
-              <thead>
-                <tr>
-                  <th>ID Encomenda</th>
-                  <th>Status</th>
-                  <th>Ultima Atualização</th>
-                  <th>Cliente</th>
-                  <th>Produto</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alfreds Futterksdsdsdsdsdsdsdsdsdsdsdsdsddsdsiste</td>
-                </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                </tr>
-                <tr>
-                  <td>Centro g Moctezuma</td>
-                </tr>
-              </tbody>
-            </DashboardTable>
+              actions
+              view={"ver-lote"}
+              edit={"editar-lote"}
+              delete={"delete-lote"}
+            ></DashboardTable>
             <TablePager />
           </Col>
         </Row>

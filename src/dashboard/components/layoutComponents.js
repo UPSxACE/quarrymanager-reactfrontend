@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 export {
   DashboardContainer,
   DashboardRow,
@@ -137,7 +138,9 @@ function DashboardMenuList(props) {
       {props.rightButton && props.rightButton[props.activeItem] !== "" && (
         <ButtonRight>
           <DashboardMenuListItemRight>
-            <H3>{props.rightButton[props.activeItem]}</H3>
+            <Link to={"/dashboard/" + props.rightButton[props.activeItem][1]}>
+              <H3>{props.rightButton[props.activeItem][0]}</H3>
+            </Link>
           </DashboardMenuListItemRight>
         </ButtonRight>
       )}
@@ -154,6 +157,10 @@ const DashboardMenuListComponent = styled.ul`
   border: 2px solid #bbbbbb;
   border-radius: 5px;
   border-radius: 5px;
+
+  a {
+    all: unset;
+  }
 `;
 
 const DashboardMenuListItem = styled.li`

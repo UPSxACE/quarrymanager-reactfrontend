@@ -32,6 +32,11 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          reference={"codigo_lote"}
+          actions
+          view={"ver-lote"}
+          edit={"editar-lote"}
+          delete={"delete-lote"}
         ></DashboardTable>
       );
     case 1:
@@ -49,6 +54,10 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 2:
@@ -65,6 +74,10 @@ function getTable(activeTab) {
             Absorcao_Agua: "Absorção de Água",
           }}
           endPoint={"produto/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 3:
@@ -77,6 +90,10 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"material/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
 
@@ -90,6 +107,10 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"cor/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     default:
@@ -107,6 +128,11 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          reference={"codigo_lote"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
   }
@@ -128,11 +154,11 @@ function DashboardStock(props) {
               <DashboardMenuList
                 listItems={["Lotes", "Stock", "Produtos", "Materiais", "Cores"]}
                 rightButton={[
-                  "Novo Lote",
+                  ["Novo Lote", "novo-lote"],
                   "",
-                  "Novo Produto",
-                  "Novo Material",
-                  "Nova Cor",
+                  ["Novo Produto", "novo-produto"],
+                  ["Novo Material", "novo-material"],
+                  ["Nova Cor", "nova-cor"],
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}

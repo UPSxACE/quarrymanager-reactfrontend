@@ -31,6 +31,10 @@ function getTable(activeTab) {
             quantidade_vendida: "Quantidade Vendida",
           }}
           endPoint={"produto/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 1:
@@ -41,6 +45,10 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"transportadora/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     default:
@@ -54,6 +62,10 @@ function getTable(activeTab) {
             preco: "Preço",
           }}
           endPoint={"produto/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
   }
