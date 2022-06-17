@@ -94,9 +94,9 @@ function getTable(activeTab) {
           endPoint={"material/listar"}
           reference={"codigo_lote"}
           actions
-          view={"ver-lote"}
-          edit={"editar-lote"}
-          delete={"delete-lote"}
+          view={"ver-material"}
+          edit={"editar-material"}
+          delete={"delete-material"}
         ></DashboardTable>
       );
 
@@ -134,9 +134,9 @@ function getTable(activeTab) {
           endPoint={"lote/listar"}
           reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-lote"}
+          edit={"editar-lote"}
+          delete={"delete-lote"}
         ></DashboardTable>
       );
   }
