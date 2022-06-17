@@ -32,6 +32,10 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 1:
@@ -49,6 +53,10 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 2:
@@ -65,6 +73,10 @@ function getTable(activeTab) {
             Absorcao_Agua: "Absorção de Água",
           }}
           endPoint={"produto/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 3:
@@ -77,6 +89,10 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"material/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
 
@@ -90,6 +106,10 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"cor/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     default:
@@ -107,6 +127,10 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
   }

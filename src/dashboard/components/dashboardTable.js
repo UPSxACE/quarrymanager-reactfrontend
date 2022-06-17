@@ -32,13 +32,13 @@ function DashboardTable(props) {
   function renderActions(index) {
     let actions = [];
     if (props.view) {
-      actions.push(<td>A</td>);
+      actions.push(<>A</>);
     }
     if (props.edit) {
-      actions.push(<td>B</td>);
+      actions.push(<>B</>);
     }
     if (props.delete) {
-      actions.push(<td>C</td>);
+      actions.push(<>C</>);
     }
     return <>{actions}</>;
   }
