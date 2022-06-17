@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { Routes, Route, Link, Outlet, Navigate } from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
 import { Home } from "./website/pages/home/home";
 import { Parceiros } from "./website/pages/parceiros/parceiros";
@@ -55,6 +55,14 @@ import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 
 // App.js
+
+function AccessCheck(permission_to_check) {
+  return true;
+}
+
+function Private(props) {
+  return AccessCheck(props.check) ? <>{props.children}</> : <Navigate to="/" />;
+}
 
 function About() {
   return (
@@ -117,7 +125,14 @@ function App(props) {
         {/*<Route path="/" element={<Home />} />*/}
         <Route path="/" element={<Website />}>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route
+            path="about"
+            element={
+              <Private check="admin">
+                <About />
+              </Private>
+            }
+          />
           <Route path="equipa" element={<Equipa />} />
           <Route path="home" element={<Home />} />
           <Route path="parceiros" element={<Parceiros />} />
