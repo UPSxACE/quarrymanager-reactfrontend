@@ -6,7 +6,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import { DisplayH1, H1, Paragraph, H2, H5 } from "../../components/text";
+import { DisplayH1, H1, Paragraph, H2, H5, H3 } from "../../components/text";
 import styled from "styled-components";
 import produtoPic from "../../../images/website/marmore.png";
 import { useEffect, useState } from "react";
@@ -53,12 +53,12 @@ function ProdutoLoja() {
             <Image src={produtoPic} />
           </Col>
 
-          <Col xs={6} className="paddLeft">
+          <Col xs={6} className="paddLeft pt-3 pb-3">
             <H1> {find.tituloArtigo ? find.tituloArtigo : ""}</H1>
           </Col>
 
-          <Col xs={6} className="paddRight">
-            <H1 className="text-end">{find.preco ? find.preco : ""}€/m²</H1>
+          <Col xs={6} className="paddRight pt-3 pb-3">
+            <H1 className="text-end">{find.preco ? find.preco : ""} €/m²</H1>
           </Col>
           <Col xs={6} className="paddLeft">
             <Descricao>
@@ -73,24 +73,31 @@ function ProdutoLoja() {
                   Resistência à Compressão:{" "}
                 </Descricao>
                 <Descricao>
-                  {find.Res_Compressao ? find.Res_Compressao : ""}
+                  {find.Res_Compressao ? find.Res_Compressao : ""} MPa
                 </Descricao>
               </li>
               <li>
+                <Descricao className="me-auto">
+                  Resistência à Flexão:{" "}
+                </Descricao>{" "}
                 <Descricao>
-                  Resistência à Flexão: {find.Res_Flexao ? find.Res_Flexao : ""}
+                  {find.Res_Flexao ? find.Res_Flexao : ""} MPa
                 </Descricao>
               </li>
               <li>
-                <Descricao>
+                <Descricao className="me-auto">
                   Massa Volúmica Aparente:{" "}
-                  {find.Massa_Vol_Aparente ? find.Massa_Vol_Aparente : ""}
+                </Descricao>
+                <Descricao>
+                  {find.Massa_Vol_Aparente ? find.Massa_Vol_Aparente : ""} Kg/m²
                 </Descricao>
               </li>
               <li>
-                <Descricao>
+                <Descricao className="me-auto">
                   Massa Absorção de Água:{" "}
-                  {find.Absorcao_Agua ? find.Absorcao_Agua : ""}
+                </Descricao>
+                <Descricao>
+                  {find.Absorcao_Agua ? find.Absorcao_Agua : ""} %
                 </Descricao>
               </li>
             </ul>
@@ -98,34 +105,32 @@ function ProdutoLoja() {
         </Row>
       </BackgroundLight>
       <BackgroundDark className="" fluid>
-        <Row className="dark p-5">
+        <Row className="dark pt-3 pe-5 ps-5 pb-5">
           <Col xs={12}>
-            <H2>ORÇAMENTO</H2>
+            <H1 className="text-center pb-3">Orçamento</H1>
 
-            <Paragraph>
+            <H5 className="pb-2">
               Para efetuar um pedido de orçamento, por favor registe-se ou
               efetue login.
-            </Paragraph>
+            </H5>
           </Col>
 
           <Col xs={6}>
-            <Descricao>
-              Quantidade(m²):
-              <Form>
-                <Form.Group controlId="formBasic">
-                  <InputGroup>
-                    <Form.Control
-                      type="text"
-                      placeholder="Introduza uma quantia em m²"
-                    />
-                  </InputGroup>
-                </Form.Group>
-              </Form>
-            </Descricao>
+            <H5>Quantidade(m²):</H5>
+            <Form>
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder="Introduza uma quantia em m²"
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Form>
           </Col>
           <Col xs={6}>
-            <Descricao>Estimativa de Preço:</Descricao>
-            <H5>0€</H5>
+            <H5>Estimativa de Preço:</H5>
+            <H3>0€</H3>
           </Col>
         </Row>
       </BackgroundDark>
@@ -149,7 +154,7 @@ const BackgroundLight = styled(Container)`
   }
 
   .paddRight {
-    padding-right: 200px;
+    padding-right: 190px;
   }
 `;
 
