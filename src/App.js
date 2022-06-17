@@ -189,7 +189,7 @@ function App(props) {
 
         <Route path="loja" element={<Loja />}>
           <Route path="/loja/" element={<LojaHome />}></Route>
-          <Route path="produto" element={<ProdutoLoja />}></Route>
+          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
       </Routes>
     </div>
