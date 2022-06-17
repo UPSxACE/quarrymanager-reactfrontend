@@ -26,7 +26,10 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
-          z
+          actions
+          view
+          edit
+          delete
         />
       );
     case 1:
@@ -39,6 +42,10 @@ function getTable(activeTab) {
             coordenadasGPS_Y: "Coordenadas GPS Y",
           }}
           endPoint={"local-extracao/listar"}
+          actions
+          view
+          edit
+          delete
         />
       );
     default:
@@ -50,6 +57,10 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
+          actions
+          view
+          edit
+          delete
         />
       );
   }

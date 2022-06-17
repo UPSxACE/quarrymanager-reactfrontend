@@ -30,6 +30,10 @@ function DashboardEncomendas() {
                 nome: ["idProduto0", ["idMaterial0", "Nome"]], // entry["idProduto0"]["idMaterial0"]
               }}
               endPoint={"lote/listar"}
+              actions
+              view
+              edit
+              delete
             >
               {/*props de teste*/}
               <thead>

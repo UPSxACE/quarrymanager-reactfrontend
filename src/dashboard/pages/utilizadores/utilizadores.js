@@ -27,6 +27,10 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=4"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 1:
@@ -39,6 +43,10 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=3"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 2:
@@ -51,6 +59,10 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=2"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     case 3:
@@ -63,6 +75,10 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=1"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
     default:
@@ -75,6 +91,10 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=4"}
+          actions
+          view
+          edit
+          delete
         ></DashboardTable>
       );
   }

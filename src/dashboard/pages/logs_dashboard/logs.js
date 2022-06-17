@@ -49,6 +49,10 @@ function DashboardLogs(props) {
                 dataHora: "Data",
               }}
               endPoint={"logs/listar"}
+              actions
+              view
+              edit
+              delete
             ></DashboardTable>
             <TablePager />
           </Col>
