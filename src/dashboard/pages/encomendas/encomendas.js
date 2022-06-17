@@ -27,9 +27,9 @@ function DashboardEncomendas() {
               }}
               endPoint={"lote/listar"}
               actions
-              view
-              edit
-              delete
+              view={"ver-lote"}
+              edit={"editar-lote"}
+              delete={"delete-lote"}
             ></DashboardTable>
             <TablePager />
           </Col>

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
@@ -30,15 +31,19 @@ function DashboardTable(props) {
     return <>{rows}</>;
   }
 
-  function renderActions(index) {
+  function renderActions(index, reference) {
     let actions = [];
     if (props.view) {
       actions.push(
-        <FontAwesomeIcon
+        <Link
           key={index + "view"}
-          className="align-self-center action"
-          icon={faEye}
-        ></FontAwesomeIcon>
+          to={"/dashboard/" + props.view + "/" + reference}
+        >
+          <FontAwesomeIcon
+            className="align-self-center action"
+            icon={faEye}
+          ></FontAwesomeIcon>
+        </Link>
       );
     }
     if (props.edit) {
@@ -135,7 +140,12 @@ function DashboardTable(props) {
                               <React.Fragment key={"action" + index2 + "-c0"}>
                                 <td>{entry[field.replaceAll("$", "")]}</td>
                                 <td>
-                                  <div>{renderActions(index2)}</div>
+                                  <div>
+                                    {renderActions(
+                                      index2,
+                                      entry[props.reference]
+                                    )}
+                                  </div>
                                 </td>
                               </React.Fragment>
                             );
@@ -294,6 +304,10 @@ const TableWrapper = styled.div`
 
   .action:not(:first-child) {
     margin-left: 5px;
+  }
+
+  a {
+    color: #004b5b;
   }
 `;
 

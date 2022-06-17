@@ -32,10 +32,11 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-lote"}
+          edit={"editar-lote"}
+          delete={"delete-lote"}
         ></DashboardTable>
       );
     case 1:
@@ -127,6 +128,7 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          reference={"codigo_lote"}
           actions
           view
           edit
