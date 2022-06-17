@@ -82,8 +82,8 @@ function DashboardLocais(props) {
               <DashboardMenuList
                 listItems={["Locais de Armazéns", "Locais de Extração"]}
                 rightButton={[
-                  "Novo Local de Armazém",
-                  "Novo Local de Extração",
+                  ["Novo Local de Armazém", "novo-local-armazem"],
+                  ["Novo Local de Extração", "novo-local-extracao"],
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}

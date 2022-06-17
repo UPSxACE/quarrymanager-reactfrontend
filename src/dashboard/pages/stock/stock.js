@@ -154,11 +154,11 @@ function DashboardStock(props) {
               <DashboardMenuList
                 listItems={["Lotes", "Stock", "Produtos", "Materiais", "Cores"]}
                 rightButton={[
-                  "Novo Lote",
+                  ["Novo Lote", "novo-lote"],
                   "",
-                  "Novo Produto",
-                  "Novo Material",
-                  "Nova Cor",
+                  ["Novo Produto", "novo-produto"],
+                  ["Novo Material", "novo-material"],
+                  ["Nova Cor", "nova-cor"],
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}
