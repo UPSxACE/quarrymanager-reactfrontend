@@ -31,10 +31,11 @@ function getTable(activeTab) {
             quantidade_vendida: "Quantidade Vendida",
           }}
           endPoint={"produto/listar"}
+          reference={"tituloArtigo"}
           actions
-          view
-          edit
-          delete
+          view={"ver-produto"}
+          edit={"editar-produto"}
+          delete={"delete-produto"}
         ></DashboardTable>
       );
     case 1:
@@ -46,9 +47,9 @@ function getTable(activeTab) {
           }}
           endPoint={"transportadora/listar"}
           actions
-          view
-          edit
-          delete
+          view={"ver-transportadora"}
+          edit={"editar-transportadora"}
+          delete={"delete-transportadora"}
         ></DashboardTable>
       );
     default:
@@ -63,9 +64,9 @@ function getTable(activeTab) {
           }}
           endPoint={"produto/listar"}
           actions
-          view
-          edit
-          delete
+          view={"ver-produto"}
+          edit={"editar-produto"}
+          delete={"delete-produto"}
         ></DashboardTable>
       );
   }
@@ -86,8 +87,9 @@ function DashboardLoja(props) {
               <DashboardMenuList
                 listItems={["Produtos", "Transportadoras"]}
                 rightButton={[
-                  "Adicionar Produto à Loja",
-                  "Nova Transportadora",
+                  ["Adicionar Produto à Loja", "novo-produto"],
+                  "",
+                  ["Nova Transportadora", "nova-transportadora"],
                 ]}
                 activeItem={activeTab}
                 tabClickFunction={handleTabClick}

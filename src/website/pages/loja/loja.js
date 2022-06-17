@@ -3,6 +3,7 @@ import { DisplayH1, H1, Paragraph, H5, H3 } from "../../components/text";
 import styled from "styled-components";
 import lojaPic from "../../../images/website/granitoAmarelo.jpg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export { LojaHome };
@@ -17,7 +18,7 @@ function LojaHome() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/produto/produtos-loja?fields=tituloArtigo,preco",
+          "http://localhost:8080/api/produto/produtos-loja?fields=tituloArtigo,preco&expand=id",
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -53,9 +54,14 @@ function LojaHome() {
                     key={index}
                   >
                     <Card>
-                      <Image src={lojaPic} />
+                      <Link to={"/loja/produto/" + produto.id}>
+                        <Image src={lojaPic} />
+                      </Link>
                       <div className="d-flex pt-2">
-                        <H5>{produto.tituloArtigo}</H5>
+                        <Link to={"/loja/produto/" + produto.id}>
+                          <H5>{produto.tituloArtigo}</H5>
+                        </Link>
+
                         <H5 className="ms-auto">{produto.preco}€/m²</H5>
                       </div>
                     </Card>

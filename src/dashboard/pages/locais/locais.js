@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -43,9 +43,9 @@ function getTable(activeTab) {
           }}
           endPoint={"local-extracao/listar"}
           actions
-          view
-          edit
-          delete
+          view={"ver-local-extracao"}
+          edit={"editar-local-extracao"}
+          delete={"delete-local-extracao"}
         />
       );
     default:
@@ -58,9 +58,9 @@ function getTable(activeTab) {
           }}
           endPoint={"local-armazem/listar"}
           actions
-          view
-          edit
-          delete
+          view={"ver-local-armazem"}
+          edit={"editar-local-armazem"}
+          delete={"delete-local-armazem"}
         />
       );
   }

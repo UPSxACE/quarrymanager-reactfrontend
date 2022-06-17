@@ -54,6 +54,9 @@ import { EditarUtilizador } from "./dashboard/pages/utilizadores/editarUtilizado
 import { EditarCor } from "./dashboard/pages/lotes/editarCor";
 import { EditarMaterial } from "./dashboard/pages/lotes/editarMaterial";
 import { ViewProduto } from "./dashboard/pages/lotes/viewProduto";
+
+import { ProdutoLoja } from "./website/pages/loja/produto";
+
 import { ViewMaterial } from "./dashboard/pages/lotes/viewMaterial";
 import { ViewCor } from "./dashboard/pages/lotes/viewCor";
 import { ViewLote } from "./dashboard/pages/lotes/viewLote";
@@ -265,10 +268,7 @@ function App(props) {
 
         <Route path="loja" element={<Loja />}>
           <Route path="/loja/" element={<LojaHome />}></Route>
-          <Route
-            path="loja/produto/:idProduto"
-            element={<DefinicoesPerfil />}
-          ></Route>
+          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
       </Routes>
     </div>

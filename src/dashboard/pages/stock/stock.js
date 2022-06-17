@@ -54,10 +54,11 @@ function getTable(activeTab) {
             dataHora: "Data",
           }}
           endPoint={"lote/listar"}
+          reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-lote"}
+          edit={"editar-lote"}
+          delete={"delete-lote"}
         ></DashboardTable>
       );
     case 2:
@@ -74,10 +75,11 @@ function getTable(activeTab) {
             Absorcao_Agua: "Absorção de Água",
           }}
           endPoint={"produto/listar"}
+          reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-produto"}
+          edit={"editar-produto"}
+          delete={"delete-produto"}
         ></DashboardTable>
       );
     case 3:
@@ -90,10 +92,11 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"material/listar"}
+          reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-material"}
+          edit={"editar-material"}
+          delete={"delete-material"}
         ></DashboardTable>
       );
 
@@ -107,10 +110,11 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"cor/listar"}
+          reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-cor"}
+          edit={"editar-cor"}
+          delete={"delete-cor"}
         ></DashboardTable>
       );
     default:
@@ -130,9 +134,9 @@ function getTable(activeTab) {
           endPoint={"lote/listar"}
           reference={"codigo_lote"}
           actions
-          view
-          edit
-          delete
+          view={"ver-lote"}
+          edit={"editar-lote"}
+          delete={"delete-lote"}
         ></DashboardTable>
       );
   }
