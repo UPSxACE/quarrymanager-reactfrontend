@@ -17,6 +17,7 @@ export { ProdutoLoja };
 
 function ProdutoLoja() {
   const [find, findStats] = useState({});
+  const { id } = useParams("id");
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -25,7 +26,9 @@ function ProdutoLoja() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/produto/find?id=1&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto",
+          "http://localhost:8080/api/produto/find?id=" +
+            id +
+            "&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto",
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -42,34 +45,34 @@ function ProdutoLoja() {
     sendGetRequest();
   }, []);
 
-  const produto_id = useParams("id");
-
   return (
-    <Card>
+    <Card className="d-flex flex-column">
       <BackgroundLight fluid>
         <Row className="d-flex justify-content-center">
-          <Col xs={12}>
+          <Col xs={12} className="g-0">
             <Image src={produtoPic} />
           </Col>
 
-          <Col xs={6} className="ps-5 pt-3 pb-3">
+          <Col xs={6} className="paddLeft">
             <H1> {find.tituloArtigo ? find.tituloArtigo : ""}</H1>
           </Col>
 
-          <Col xs={6} className="pt-3 pb-3">
-            <H1>{find.preco ? find.preco : ""}</H1>
+          <Col xs={6} className="paddRight">
+            <H1 className="text-end">{find.preco ? find.preco : ""}€/m²</H1>
           </Col>
-          <Col xs={6} className="ps-5 pe-5">
+          <Col xs={6} className="paddLeft">
             <Descricao>
               {" "}
               {find.descricaoProduto ? find.descricaoProduto : ""}
             </Descricao>
           </Col>
-          <Col xs={6}>
-            <ul>
+          <Col xs={6} className="paddRight text-end li-flex">
+            <ul className="list-unstyled">
               <li>
-                <Descricao>
+                <Descricao className="me-auto">
                   Resistência à Compressão:{" "}
+                </Descricao>
+                <Descricao>
                   {find.Res_Compressao ? find.Res_Compressao : ""}
                 </Descricao>
               </li>
@@ -86,7 +89,7 @@ function ProdutoLoja() {
               </li>
               <li>
                 <Descricao>
-                  Massa Absorção de Água:
+                  Massa Absorção de Água:{" "}
                   {find.Absorcao_Agua ? find.Absorcao_Agua : ""}
                 </Descricao>
               </li>
@@ -94,8 +97,8 @@ function ProdutoLoja() {
           </Col>
         </Row>
       </BackgroundLight>
-      <BackgroundDark className="m-5 p-5">
-        <Row>
+      <BackgroundDark className="" fluid>
+        <Row className="dark p-5">
           <Col xs={12}>
             <H2>ORÇAMENTO</H2>
 
@@ -136,10 +139,30 @@ const Card = styled.div`
 
 const BackgroundLight = styled(Container)`
   background-color: #394a58;
+
+  .li-flex li {
+    display: flex;
+  }
+
+  .paddLeft {
+    padding-left: 190px;
+  }
+
+  .paddRight {
+    padding-right: 200px;
+  }
 `;
 
 const BackgroundDark = styled(Container)`
-  background-color: #30373e;
+  background-color: #394a58;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 40px;
+  padding-bottom: 70px;
+
+  .dark {
+    background-color: #30373e;
+  }
 `;
 
 const Image = styled.img`
@@ -148,8 +171,8 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Descricao = styled.p`
-  font-size: "19px";
-  text-align: "left";
+const Descricao = styled.span`
+  font-size: 20px;
+
   color: white;
 `;
