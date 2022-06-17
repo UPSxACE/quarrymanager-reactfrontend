@@ -2,8 +2,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
@@ -32,13 +33,31 @@ function DashboardTable(props) {
   function renderActions(index) {
     let actions = [];
     if (props.view) {
-      actions.push(<>A</>);
+      actions.push(
+        <FontAwesomeIcon
+          key={index + "view"}
+          className="align-self-center action"
+          icon={faEye}
+        ></FontAwesomeIcon>
+      );
     }
     if (props.edit) {
-      actions.push(<>B</>);
+      actions.push(
+        <FontAwesomeIcon
+          key={index + "edit"}
+          className="align-self-center action"
+          icon={faPen}
+        ></FontAwesomeIcon>
+      );
     }
     if (props.delete) {
-      actions.push(<>C</>);
+      actions.push(
+        <FontAwesomeIcon
+          key={index + "delete"}
+          className="align-self-center action"
+          icon={faTrash}
+        ></FontAwesomeIcon>
+      );
     }
     return <>{actions}</>;
   }
@@ -131,7 +150,13 @@ function DashboardTable(props) {
                           if (fields.length - 1 === index2 && props.actions) {
                             return (
                               <React.Fragment key={"action" + index2 + "-c1"}>
-                                <td>{entry[field.replaceAll("$", "")]}</td>
+                                <td>
+                                  {
+                                    entry[relacoes[0]][
+                                      field.replaceAll("$", "")
+                                    ]
+                                  }
+                                </td>
                                 <td>
                                   <div>{renderActions(index2)}</div>
                                 </td>
@@ -148,7 +173,14 @@ function DashboardTable(props) {
                           if (fields.length - 1 === index2 && props.actions) {
                             return (
                               <React.Fragment key={"action" + index2 + "-c2"}>
-                                <td>{entry[field.replaceAll("$", "")]}</td>
+                                <td>
+                                  {" "}
+                                  {
+                                    entry[relacoes[0]][relacoes[1]][
+                                      field.replaceAll("$", "")
+                                    ]
+                                  }
+                                </td>
                                 <td>
                                   <div>{renderActions(index2)}</div>
                                 </td>
@@ -169,7 +201,13 @@ function DashboardTable(props) {
                           if (fields.length - 1 === index2 && props.actions) {
                             return (
                               <React.Fragment key={"action" + index2 + "-c3"}>
-                                <td>{entry[field.replaceAll("$", "")]}</td>
+                                <td>
+                                  {
+                                    entry[relacoes[0]][relacoes[1]][
+                                      relacoes[2]
+                                    ][field.replaceAll("$", "")]
+                                  }
+                                </td>
                                 <td>
                                   <div>{renderActions(index2)}</div>
                                 </td>
@@ -245,13 +283,25 @@ const TableWrapper = styled.div`
     border-bottom: 1px solid #bbbbbb;
     border-left: 1px solid #bbbbbb;
   }
+
+  .action {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 3px;
+    height: 16px;
+    width: 16px;
+  }
+
+  .action:not(:first-child) {
+    margin-left: 5px;
+  }
 `;
 
 const TableStyle = styled.table`
   width: 100%;
 
   tbody {
-    height: 548px;
+    height: 576px;
   }
 `;
 
