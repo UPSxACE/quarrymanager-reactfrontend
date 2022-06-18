@@ -16,7 +16,7 @@ export { DashboardEncomendas };
 
 function DashboardEncomendas() {
   const [activePage, updatePager1] = useState(1);
-  const [limitPage, updatePager2] = useState(3);
+  const [limitPage, updatePager2] = useState(1);
 
   function updatePager(value1, value2) {
     if (value1 <= limitPage && value1 > 0) {

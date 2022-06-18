@@ -15,7 +15,7 @@ export { DashboardStock };
 
 function DashboardStock(props) {
   const [activePage, updatePager1] = useState(1);
-  const [limitPage, updatePager2] = useState(3);
+  const [limitPage, updatePager2] = useState(1);
   const [activeTab, changeTab] = useState(props.tab);
 
   function updatePager(value1, value2) {
