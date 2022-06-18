@@ -19,11 +19,14 @@ function DefinicoesPerfil() {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
-        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
-          headers: {
-            Authorization: "Basic " + btoa(username + ":" + password),
-          },
-        });
+        const resp = await axios(
+          "http://localhost:8080/api/profile/get-profile",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
 
         getUser(resp.data);
       } catch (err) {

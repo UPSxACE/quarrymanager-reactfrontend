@@ -11,7 +11,7 @@ import axios from "axios";
 export { MeuPerfil };
 
 function MeuPerfil() {
-  const [user, getUser] = useState([]);
+  const [user, getUser] = useState({});
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -19,11 +19,14 @@ function MeuPerfil() {
         const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
-        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
-          headers: {
-            Authorization: "Basic " + btoa(username + ":" + password),
-          },
-        });
+        const resp = await axios(
+          "http://localhost:8080/api/profile/get-profile",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
 
         getUser(resp.data);
       } catch (err) {
@@ -94,7 +97,7 @@ function MeuPerfil() {
                         </StyledFormLabel>
                         <Form.Control
                           type="text"
-                          value={user.profile ? user.profile.full_name : ""}
+                          defaultValue={user.full_name ? user.full_name : ""}
                         />
                       </Form.Group>
                     </Col>
@@ -108,8 +111,8 @@ function MeuPerfil() {
                       <Form.Group className="mb-3" controlId="formBasicDate">
                         <Form.Control
                           type="date"
-                          value={
-                            user.profile ? user.profile.dataNascimento : ""
+                          defaultValue={
+                            user.dataNascimento ? user.dataNascimento : ""
                           }
                         />
                       </Form.Group>
@@ -134,7 +137,7 @@ function MeuPerfil() {
                         </StyledFormLabel>
                         <Form.Control
                           type="text"
-                          value={user.profile ? user.profile.morada : ""}
+                          defaultValue={user.morada ? user.morada : ""}
                         />
                       </Form.Group>
                     </Col>
@@ -150,7 +153,7 @@ function MeuPerfil() {
                       >
                         <Form.Control
                           type="text"
-                          value={user.profile ? user.profile.codPostal : ""}
+                          defaultValue={user.codPostal ? user.codPostal : ""}
                         />
                       </Form.Group>
                     </Col>
@@ -172,7 +175,7 @@ function MeuPerfil() {
                         </StyledFormLabel>
                         <Form.Control
                           type="tel"
-                          value={user.profile ? user.profile.telefone : ""}
+                          defaultValue={user.telefone ? user.telefone : ""}
                         />
                       </Form.Group>
                     </Col>
@@ -185,7 +188,7 @@ function MeuPerfil() {
               >
                 <img
                   width={"100%"}
-                  src="https://s3-alpha-sig.figma.com/img/29da/bbe7/b0d50b148f3447c03520fe3a1f129e73?Expires=1655078400&Signature=cKWB1ikrY6eTRrZfcuCPsdecGR5F~5UjUE-1Q2hPyyMsWLi00UUa4KAdT19pMxzag5XRxJ48~xSL~ci13RaVriJtfjv01Bw7ZfJF0Dl5Nwxx-d9n~UKuSvE84Q4yk4Wxfd--lVTz-qatQl3n1zsDUlokIjInuTw2dmm2g~q7S9QPKV0dqiG4zTphonLeLdNEOJHzsVXkqCBfq4~5y7WzsAv3yHt6FB2tAVfeoqoLMsQ9VzD2qNKOCYfN5Adh82ZyxiVSFdQTlcsR67qwg-2xoi-2ueopUD-1u-Fp~B~gUFgoTTKRBcFjGmmXTAbRdqxSvyPbA2VBKF3EPqsjvlooRA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                  src="https://firealarm.com/wp-content/uploads/2021/02/executiva-empresaria-ceo-mulher-lideranca-lider-1518529250446_300x300.jpg"
                   className="mb-4"
                 ></img>
 
