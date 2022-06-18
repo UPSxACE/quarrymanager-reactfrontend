@@ -87,7 +87,7 @@ function NavbarComponent(props) {
             </Link>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="#">Loja</StyledNavLink>
+            <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
@@ -149,7 +149,7 @@ function NavbarComponent(props) {
             </Link>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="#">Loja</StyledNavLink>
+            <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
