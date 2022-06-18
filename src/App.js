@@ -234,7 +234,10 @@ function App(props) {
             path="editar-local-extracao/:id"
             element={<EditarLocalExtracao />}
           />
-          <Route path="ver-extracao/:id" element={<ViewLocalExtracao />} />
+          <Route
+            path="ver-local-extracao/:id"
+            element={<ViewLocalExtracao />}
+          />
 
           <Route path="editar-produto/:id" element={<EditarProduto />} />
           <Route path="ver-produto/:id" element={<ViewProduto />} />
@@ -246,9 +249,9 @@ function App(props) {
             path="editar-local-armazem/:id"
             element={<EditarLocalArmazem />}
           />
-          <Route path="ver-armazem/:id" element={<ViewLocalArmazem />} />
+          <Route path="ver-local-armazem/:id" element={<ViewLocalArmazem />} />
 
-          <Route path="editar-cliente/:id" element={<EditarUtilizador />} />
+          <Route path="editar-user/:id" element={<EditarUtilizador />} />
 
           <Route path="ver-user/:id" element={<ViewUtilizador />} />
 

@@ -1,14 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { DisplayH1, H1, H3, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export { DefinicoesPerfil };
 
 function DefinicoesPerfil() {
+  const [user, getUser] = useState([]);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        getUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    sendGetRequest();
+  }, []);
+
   return (
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
@@ -59,7 +83,10 @@ function DefinicoesPerfil() {
                     <StyledFormLabel>
                       <TextH4>Nome</TextH4>
                     </StyledFormLabel>
-                    <Form.Control type="text" />
+                    <Form.Control
+                      type="text"
+                      value={user.profile ? user.profile.full_name : ""}
+                    />
                   </Form.Group>
                 </Col>
 
@@ -68,7 +95,10 @@ function DefinicoesPerfil() {
                     <StyledFormLabel>
                       <TextH4>E-mail</TextH4>
                     </StyledFormLabel>
-                    <Form.Control type="email" />
+                    <Form.Control
+                      type="email"
+                      value={user.profile ? user.profile.email : ""}
+                    />
                   </Form.Group>
                 </Col>
 

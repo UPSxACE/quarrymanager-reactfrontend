@@ -1,14 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Container, Col, Row, Form } from "react-bootstrap";
 import { H1, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export { MeuPerfil };
 
 function MeuPerfil() {
+  const [user, getUser] = useState([]);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        getUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    sendGetRequest();
+  }, []);
+
   return (
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
@@ -66,32 +90,28 @@ function MeuPerfil() {
                     <Col xs={12}>
                       <Form.Group className="mb-3" controlId="formBasicName">
                         <StyledFormLabel>
-                          <TextH4>Primeiro Nome</TextH4>
+                          <TextH4>Nome Completo</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="text" />
+                        <Form.Control
+                          type="text"
+                          value={user.profile ? user.profile.full_name : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row className="pe-3 ps-3">
-                    <Col xs={12}>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicLastName"
-                      >
-                        <StyledFormLabel>
-                          <TextH4>Último Nome</TextH4>
-                        </StyledFormLabel>
-                        <Form.Control type="text" />
-                      </Form.Group>
-                    </Col>
-                  </Row>
+
                   <Row className="pe-3 ps-3">
                     <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Data de Nascimento</TextH4>
                       </StyledFormLabel>
                       <Form.Group className="mb-3" controlId="formBasicDate">
-                        <Form.Control type="date" />
+                        <Form.Control
+                          type="date"
+                          value={
+                            user.profile ? user.profile.dataNascimento : ""
+                          }
+                        />
                       </Form.Group>
                     </Col>
                     <Col xs={6}>
@@ -112,12 +132,15 @@ function MeuPerfil() {
                         <StyledFormLabel>
                           <TextH4>Morada</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="text" />
+                        <Form.Control
+                          type="text"
+                          value={user.profile ? user.profile.morada : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
                   <Row className="pe-3 ps-3">
-                    <Col xs={4}>
+                    <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Código Postal:</TextH4>
                       </StyledFormLabel>
@@ -125,20 +148,13 @@ function MeuPerfil() {
                         className="mb-3"
                         controlId="formBasicCordenadaX"
                       >
-                        <Form.Control type="number" />
+                        <Form.Control
+                          type="text"
+                          value={user.profile ? user.profile.codPostal : ""}
+                        />
                       </Form.Group>
                     </Col>
-                    <Col xs={2}>
-                      <StyledFormLabel>
-                        <TextH4>&nbsp;</TextH4>
-                      </StyledFormLabel>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicCordenadaY"
-                      >
-                        <Form.Control type="number" />
-                      </Form.Group>
-                    </Col>
+
                     <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Região:</TextH4>
@@ -154,7 +170,10 @@ function MeuPerfil() {
                         <StyledFormLabel>
                           <TextH4>Telefone</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="tel" />
+                        <Form.Control
+                          type="tel"
+                          value={user.profile ? user.profile.telefone : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
