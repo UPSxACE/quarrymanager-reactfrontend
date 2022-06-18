@@ -103,9 +103,9 @@ function NavbarComponent(props) {
             <StyledNavLink to="/faq">FAQ</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
-            <a to="/login">
+            <Link to="/login">
               <PrimaryButton>Login/Register</PrimaryButton>
-            </a>
+            </Link>
           </div>
         </div>
       </StyledNavbar>

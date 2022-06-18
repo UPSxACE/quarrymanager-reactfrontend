@@ -6,7 +6,11 @@ export { PrimaryButtonSave, SecundaryButtonCancel };
 //BOTÃO ENVIAR/DASHBOARD
 function PrimaryButtonSave(props) {
   return (
-    <SaveButton className={props.className} variant="light">
+    <SaveButton
+      onClick={props.onClick}
+      className={props.className}
+      variant="light"
+    >
       {props.children}
     </SaveButton>
   );

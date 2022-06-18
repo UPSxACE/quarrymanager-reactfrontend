@@ -166,12 +166,33 @@ function Website(props) {
   );
 }
 
+function WebsiteOperario(props) {
+  return (
+    <Private check={"operario"}>
+      <div className="Website">
+        {props.guest ? (
+          <NavbarComponent updateLogState={props.updateLogged} isGuest={true} />
+        ) : (
+          <NavbarComponent
+            updateLogState={props.updateLogged}
+            isGuest={false}
+          />
+        )}
+        <Outlet />
+        <Footer />
+      </div>
+    </Private>
+  );
+}
+
 function Dashboard() {
   return (
-    <div className="Dashboard">
-      <Outlet />
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </div>
+    <Private check={"operario"}>
+      <div className="Dashboard">
+        <Outlet />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      </div>
+    </Private>
   );
 }
 
@@ -326,6 +347,27 @@ function App(props) {
         <Route path="loja" element={<Loja />}>
           <Route path="/loja/" element={<LojaHome />}></Route>
           <Route path="produto/:id" element={<ProdutoLoja />}></Route>
+        </Route>
+
+        <Route
+          path="about"
+          element={
+            isLogged ? (
+              <WebsiteOperario
+                key={0}
+                updateLogged={updateLogState}
+                guest={false}
+              />
+            ) : (
+              <WebsiteOperario
+                key={1}
+                updateLogged={updateLogState}
+                guest={true}
+              />
+            )
+          }
+        >
+          <Route path={"/about/"} element={<About></About>}></Route>
         </Route>
       </Routes>
     </div>
