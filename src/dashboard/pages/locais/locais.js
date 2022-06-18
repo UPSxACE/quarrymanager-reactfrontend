@@ -23,11 +23,12 @@ function DashboardLocais(props) {
         console.log("this");
         return (
           <DashboardTable
-            key={0}
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
             labels={{
               nome: "Nome",
             }}
-            endPoint={"local-armazem/listar"}
+            endPoint={"local-armazem/listar?page=" + activePage}
             reference={"id"}
             actions
             view={"ver-local-armazem"}
@@ -38,13 +39,14 @@ function DashboardLocais(props) {
       case 1:
         return (
           <DashboardTable
-            key={1}
+            key={"1/" + activePage}
+            updateLimit={updatePager2}
             labels={{
               nome: "Nome",
               coordenadasGPS_X: "Coordenadas GPS X",
               coordenadasGPS_Y: "Coordenadas GPS Y",
             }}
-            endPoint={"local-extracao/listar"}
+            endPoint={"local-extracao/listar?page=" + activePage}
             reference={"id"}
             actions
             view={"ver-local-extracao"}
@@ -56,11 +58,12 @@ function DashboardLocais(props) {
         console.log("this is default");
         return (
           <DashboardTable
-            key={0}
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
             labels={{
               nome: "Nome",
             }}
-            endPoint={"local-armazem/listar"}
+            endPoint={"local-armazem/listar?page=" + activePage}
             reference={"id"}
             actions
             view={"ver-local-armazem"}

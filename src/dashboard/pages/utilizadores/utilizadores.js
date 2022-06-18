@@ -13,100 +13,113 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardUtilizadores };
-function getTable(activeTab) {
-  console.log("teste", activeTab, 1);
-
-  switch (activeTab) {
-    case 0:
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            username: "Username",
-            full_name: ["profile", "Nome"],
-            created_at: ["profile", "Data"],
-          }}
-          endPoint={"user/listar?role_id=4"}
-          reference={"id"}
-          actions
-          view={"ver-user"}
-          edit={"editar-user"}
-          delete={"delete-user"}
-        ></DashboardTable>
-      );
-    case 1:
-      return (
-        <DashboardTable
-          key={1}
-          labels={{
-            username: "Username",
-            full_name: ["profile", "Nome"],
-            created_at: ["profile", "Data"],
-          }}
-          endPoint={"user/listar?role_id=3"}
-          reference={"id"}
-          actions
-          view={"ver-user"}
-          edit={"editar-user"}
-          delete={"delete-user"}
-        ></DashboardTable>
-      );
-    case 2:
-      return (
-        <DashboardTable
-          key={2}
-          labels={{
-            username: "Username",
-            full_name: ["profile", "Nome"],
-            created_at: ["profile", "Data"],
-          }}
-          endPoint={"user/listar?role_id=2"}
-          reference={"id"}
-          actions
-          view={"ver-user"}
-          edit={"editar-user"}
-          delete={"delete-user"}
-        ></DashboardTable>
-      );
-    case 3:
-      return (
-        <DashboardTable
-          key={3}
-          labels={{
-            username: "Username",
-            full_name: ["profile", "Nome"],
-            created_at: ["profile", "Data"],
-          }}
-          endPoint={"user/listar?role_id=1"}
-          reference={"id"}
-          actions
-          view={"ver-user"}
-          edit={"editar-user"}
-          delete={"delete-user"}
-        ></DashboardTable>
-      );
-    default:
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            username: "Username",
-            full_name: ["profile", "Nome"],
-            created_at: ["profile", "Data"],
-          }}
-          endPoint={"user/listar?role_id=4"}
-          reference={"id"}
-          actions
-          view={"ver-user"}
-          edit={"editar-user"}
-          delete={"delete-user"}
-        ></DashboardTable>
-      );
-  }
-}
 
 function DashboardUtilizadores(props) {
+  const [activePage, updatePager1] = useState(1);
+  const [limitPage, updatePager2] = useState(3);
   const [activeTab, changeTab] = useState(props.tab);
+
+  function updatePager(value1, value2) {
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
+    }
+  }
+
+  function getTable(activeTab) {
+    switch (activeTab) {
+      case 0:
+        return (
+          <DashboardTable
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: "Username",
+              full_name: ["profile", "Nome"],
+              created_at: ["profile", "Data"],
+            }}
+            endPoint={"user/listar?role_id=4?page=" + activePage}
+            reference={"id"}
+            actions
+            view={"ver-user"}
+            edit={"editar-user"}
+            delete={"delete-user"}
+          ></DashboardTable>
+        );
+      case 1:
+        return (
+          <DashboardTable
+            key={"1/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: "Username",
+              full_name: ["profile", "Nome"],
+              created_at: ["profile", "Data"],
+            }}
+            endPoint={"user/listar?role_id=3?page=" + activePage}
+            reference={"id"}
+            actions
+            view={"ver-user"}
+            edit={"editar-user"}
+            delete={"delete-user"}
+          ></DashboardTable>
+        );
+      case 2:
+        return (
+          <DashboardTable
+            key={"2/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: "Username",
+              full_name: ["profile", "Nome"],
+              created_at: ["profile", "Data"],
+            }}
+            endPoint={"user/listar?role_id=2?page=" + activePage}
+            reference={"id"}
+            actions
+            view={"ver-user"}
+            edit={"editar-user"}
+            delete={"delete-user"}
+          ></DashboardTable>
+        );
+      case 3:
+        return (
+          <DashboardTable
+            key={"3/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: "Username",
+              full_name: ["profile", "Nome"],
+              created_at: ["profile", "Data"],
+            }}
+            endPoint={"user/listar?role_id=1?page=" + activePage}
+            reference={"id"}
+            actions
+            view={"ver-user"}
+            edit={"editar-user"}
+            delete={"delete-user"}
+          ></DashboardTable>
+        );
+      default:
+        return (
+          <DashboardTable
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: "Username",
+              full_name: ["profile", "Nome"],
+              created_at: ["profile", "Data"],
+            }}
+            endPoint={"user/listar?role_id=4?page=" + activePage}
+            reference={"id"}
+            actions
+            view={"ver-user"}
+            edit={"editar-user"}
+            delete={"delete-user"}
+          ></DashboardTable>
+        );
+    }
+  }
 
   function handleTabClick(newTab) {
     changeTab(newTab);
@@ -133,7 +146,11 @@ function DashboardUtilizadores(props) {
         <Row className="g-0 pt-5">
           <Col xs={12}>
             {getTable(activeTab)}
-            <TablePager />
+            <TablePager
+              updatePager={updatePager}
+              activePage={activePage}
+              limitPage={limitPage}
+            />
           </Col>
         </Row>
       </Container>
