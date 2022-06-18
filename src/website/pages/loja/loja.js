@@ -89,6 +89,10 @@ const Card = styled.div`
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 50%));
   padding: 20px;
   background-color: #596d81;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Image = styled.img``;

@@ -12,6 +12,7 @@ import {
 import styled from "styled-components";
 import weROCK from "../../images/website/weROCK.png";
 import { PrimaryButton } from "./buttons";
+import { Link } from "react-router-dom";
 export { NavbarComponent };
 
 function NavbarComponent(props) {
@@ -19,29 +20,31 @@ function NavbarComponent(props) {
   if (guest) {
     return (
       <StyledNavbar className={props.className}>
-        <div className="d-flex bd-highlight w-100 justify-content-end">
+        <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
           <div className=" p-2 bd-highlight me-auto">
-            <LogoWEROCK src={weROCK}></LogoWEROCK>
+            <Link to={"/home"}>
+              <LogoWEROCK src={weROCK}></LogoWEROCK>
+            </Link>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Loja</StyledNavLink>
+            <StyledNavLink to={"/loja"}>Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to={"/equipa"}>A nossa equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/parceiros">Parceiros</StyledNavLink>
+            <StyledNavLink to={"/parceiros"}>Parceiros</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/contactos">Contacte-nos</StyledNavLink>
+            <StyledNavLink to={"/contactos"}>Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/faq">FAQ</StyledNavLink>
+            <StyledNavLink to={"/faq"}>FAQ</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
-            <a href="/login">
+            <StyledNavLink to={"/login"}>
               <PrimaryButton>Login/Register</PrimaryButton>
-            </a>
+            </StyledNavLink>
           </div>
         </div>
       </StyledNavbar>
@@ -92,9 +95,10 @@ const StyledNavbar = styled(Navbar)`
   padding-bottom: 0px;
 `;
 
-const StyledNavLink = styled(Nav.Link)`
+const StyledNavLink = styled(Link)`
   color: white;
   font-size: 28px;
+  text-decoration: none;
 
   &:hover {
     color: #d69b7f;
