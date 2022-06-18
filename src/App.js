@@ -64,11 +64,31 @@ import { ViewUtilizador } from "./dashboard/pages/utilizadores/viewUtilizador";
 import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // App.js
 
 function accessCheck(permission_to_check) {
-  return true;
+  let permission = undefined;
+
+  const sendGetRequest = () => {
+    const username = localStorage.getItem("AuthKey");
+    const password = "";
+    const endPoint =
+      "http://localhost:8080/api/auth/check-permission?permission=" +
+      permission_to_check;
+
+    return axios(endPoint, {
+      headers: {
+        Authorization: "Basic " + btoa(username + ":" + password),
+      },
+    }).then((response) => {
+      console.log("aaa:" + response.data);
+      return response;
+    });
+  };
+
+  return sendGetRequest();
 }
 
 function isLoggedCheck() {
@@ -80,7 +100,38 @@ function isLoggedCheck() {
 }
 
 function Private(props) {
-  return accessCheck(props.check) ? <>{props.children}</> : <Navigate to="/" />;
+  const [permission, setPermission] = useState(undefined);
+
+  useState(() => {
+    const sendPermissionRequest = async () => {
+      try {
+        const username = localStorage.getItem("AuthKey");
+        const password = "";
+        const endPoint =
+          "http://localhost:8080/api/auth/check-permission?permission=" +
+          props.check;
+
+        console.log("AAAAAAA: " + permission);
+        let resp = await axios(endPoint, {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        setPermission(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPermissionRequest();
+  }, []);
+
+  if (permission === undefined) {
+    return <></>;
+  }
+
+  return permission ? <>{props.children}</> : <Navigate to="/" />;
 }
 
 function GuestOnly(props) {
