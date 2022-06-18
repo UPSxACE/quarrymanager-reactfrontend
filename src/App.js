@@ -1,6 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import { Equipa } from "./website/pages/equipa/equipa";
 import { Home } from "./website/pages/home/home";
 import { Parceiros } from "./website/pages/parceiros/parceiros";
@@ -56,8 +63,29 @@ import { ViewLote } from "./dashboard/pages/lotes/viewLote";
 import { ViewUtilizador } from "./dashboard/pages/utilizadores/viewUtilizador";
 import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
+import { useEffect, useState } from "react";
 
 // App.js
+
+function accessCheck(permission_to_check) {
+  return true;
+}
+
+function isLoggedCheck() {
+  console.log(localStorage.getItem("AuthKey"));
+  return !(
+    localStorage.getItem("AuthKey") === null ||
+    localStorage.getItem("AuthKey") === undefined
+  );
+}
+
+function Private(props) {
+  return accessCheck(props.check) ? <>{props.children}</> : <Navigate to="/" />;
+}
+
+function GuestOnly(props) {
+  return isLoggedCheck() ? <Navigate to="/" /> : <>{props.children}</>;
+}
 
 function About() {
   return (
@@ -73,10 +101,14 @@ function About() {
   );
 }
 
-function Website() {
+function Website(props) {
   return (
     <div className="Website">
-      <NavbarComponent isGuest={true} />
+      {props.guest ? (
+        <NavbarComponent updateLogState={props.updateLogged} isGuest={true} />
+      ) : (
+        <NavbarComponent updateLogState={props.updateLogged} isGuest={false} />
+      )}
       <Outlet />
       <Footer />
     </div>
@@ -95,7 +127,12 @@ function Dashboard() {
 function Perfil() {
   return (
     <div className="Website">
-      <NavbarComponent isGuest={true} />
+      {!isLoggedCheck() ? (
+        <NavbarComponent isGuest={true} />
+      ) : (
+        <NavbarComponent isGuest={false} />
+      )}
+
       <Outlet />
       <Footer />
     </div>
@@ -105,7 +142,7 @@ function Perfil() {
 function Loja() {
   return (
     <div className="Loja">
-      <NavbarComponent isGuest={true} />
+      <NavbarComponent isGuest={!isLoggedCheck()} />
       <Outlet />
       <Footer />
     </div>
@@ -113,23 +150,59 @@ function Loja() {
 }
 
 function App(props) {
+  const [isLogged, updateSession] = useState(isLoggedCheck());
+
+  function updateLogState(value) {
+    updateSession(value);
+  }
+
   return (
     <div className="App">
       {/*<NavbarComponent isGuest={true} />*/}
       <Routes>
         {/*<Route path="/" element={<Home />} />*/}
-        <Route path="/" element={<Website />}>
+        <Route
+          path="/"
+          element={
+            isLogged ? (
+              <Website key={0} updateLogged={updateLogState} guest={false} />
+            ) : (
+              <Website key={1} updateLogged={updateLogState} guest={true} />
+            )
+          }
+        >
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route
+            path="about"
+            element={
+              <Private check="admin">
+                <About />
+              </Private>
+            }
+          />
           <Route path="equipa" element={<Equipa />} />
           <Route path="home" element={<Home />} />
           <Route path="parceiros" element={<Parceiros />} />
           <Route path="pedreiras" element={<Pedreiras />} />
           <Route path="criadores" element={<Criadores />} />
           <Route path="contactos" element={<Contactos />} />
-          <Route path="login" element={<Login />} />
+          <Route
+            path="login"
+            element={
+              <GuestOnly>
+                <Login logged={isLoggedCheck} updateLogged={updateLogState} />
+              </GuestOnly>
+            }
+          />
           <Route path="index" element={<Home />} />
-          <Route path="register" element={<Register />} />
+          <Route
+            path="register"
+            element={
+              <GuestOnly>
+                <Register />
+              </GuestOnly>
+            }
+          />
           <Route path="faq" element={<Faq />} />
         </Route>
 

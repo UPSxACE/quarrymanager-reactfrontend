@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 import { DisplayH1, H1, Paragraph, H5, H3 } from "../../components/text";
 import { LoginButtonSubmit } from "../../components/buttons";
@@ -9,10 +9,40 @@ import {
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export { Login };
 
-function Login() {
+function Login(props) {
+  const [hasPermission, validatePermission] = useState(false);
+  const email = useRef("");
+  const password = useRef("");
+  const navigate = useNavigate();
+
+  function attemptLogin() {
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    const sendGetRequest = async () => {
+      try {
+        const endPoint = "http://localhost:8080/api/auth/login";
+
+        const resp = await axios.post(endPoint, {
+          email: email.current.value,
+          password: password.current.value,
+        });
+
+        localStorage.setItem("AuthKey", resp.data.acess_token);
+        props.updateLogged(true);
+        navigate("/", { replace: false });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    sendGetRequest();
+  }
+
   return (
     <Container fluid>
       <ColoredRow variant={1}>
@@ -28,7 +58,7 @@ function Login() {
                       icon={faUser}
                     />
                   </InputGroup.Text>
-                  <Form.Control type="email" placeholder="Email" />
+                  <Form.Control type="email" placeholder="Email" ref={email} />
                 </InputGroup>
               </Form.Group>
 
@@ -40,7 +70,11 @@ function Login() {
                       icon={faLock}
                     />
                   </InputGroup.Text>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    ref={password}
+                  />
                 </InputGroup>
               </Form.Group>
               <Container>
@@ -54,7 +88,9 @@ function Login() {
                     <WhiteLink href="#">Esqueceu-se da senha?</WhiteLink>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center pt-3"}>
-                    <LoginButtonSubmit>Login</LoginButtonSubmit>
+                    <LoginButtonSubmit onClick={attemptLogin}>
+                      Login
+                    </LoginButtonSubmit>
                   </Col>
                   <RegisterSpan className="text-center pt-1">
                     Não tem uma conta?{" "}
