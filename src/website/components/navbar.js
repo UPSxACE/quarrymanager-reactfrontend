@@ -108,7 +108,7 @@ function NavbarComponent(props) {
       </StyledNavbar>
     ) : (
       <StyledNavbar key={0} className={props.className}>
-        <div className="d-flex bd-highlight w-100 justify-content-end">
+        <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
           <div className=" p-2 bd-highlight me-auto">
             <Link to={"/home"}>
               <LogoWEROCK src={weROCK}></LogoWEROCK>
