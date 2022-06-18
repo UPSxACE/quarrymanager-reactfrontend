@@ -85,22 +85,22 @@ function NavbarComponent(props) {
             <LogoWEROCK src={weROCK}></LogoWEROCK>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Loja</StyledNavLink>
+            <StyledNavLink to="#">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/parceiros">Parceiros</StyledNavLink>
+            <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/contactos">Contacte-nos</StyledNavLink>
+            <StyledNavLink to="/contactos">Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/faq">FAQ</StyledNavLink>
+            <StyledNavLink to="/faq">FAQ</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight  d-flex align-items-center">
-            <a href="/login">
+            <a to="/login">
               <PrimaryButton>Login/Register</PrimaryButton>
             </a>
           </div>
@@ -145,32 +145,32 @@ function NavbarComponent(props) {
             <LogoWEROCK src={weROCK}></LogoWEROCK>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="#">Loja</StyledNavLink>
+            <StyledNavLink to="#">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/parceiros">Parceiros</StyledNavLink>
+            <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/contactos">Contacte-nos</StyledNavLink>
+            <StyledNavLink to="/contactos">Contacte-nos</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink href="/faq">Faqs</StyledNavLink>
+            <StyledNavLink to="/faq">Faqs</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight d-flex align-items-center">
             <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item href="#/action-1">Editar Perfil</Dropdown.Item>
+              <Dropdown.Item to="#/action-1">Editar Perfil</Dropdown.Item>
               {operario === true && (
-                <Dropdown.Item href="#/action-2">Dashboard</Dropdown.Item>
+                <Dropdown.Item to="#/action-2">Dashboard</Dropdown.Item>
               )}
 
-              <Dropdown.Item href="#/action-3">
+              <Dropdown.Item to="#/action-3">
                 Histórico de Encomendas
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Definições</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Ajuda</Dropdown.Item>
+              <Dropdown.Item to="#/action-3">Definições</Dropdown.Item>
+              <Dropdown.Item to="#/action-3">Ajuda</Dropdown.Item>
               <Dropdown.Item onClick={logOut}>Sair</Dropdown.Item>
             </DropdownButton>
           </div>
