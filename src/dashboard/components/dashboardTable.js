@@ -367,15 +367,29 @@ function TablePager(props) {
   }
 
   if (typeof props.activePage === "undefined") {
-    return <h1>loading...</h1>;
+    return <h1 className="text-center">missing props</h1>;
   }
 
   return (
     <div className="w-100">
       <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
-        <PagerText className="left">Anterior</PagerText>
+        <PagerText
+          className="left"
+          onClick={() => {
+            props.updatePager(props.activePage - 1, props.limitPage);
+          }}
+        >
+          Anterior
+        </PagerText>
         {getPageButtons(props.activePage, props.limitPage)}
-        <PagerText className="right">Próxima</PagerText>
+        <PagerText
+          className="right"
+          onClick={() => {
+            props.updatePager(props.activePage + 1, props.limitPage);
+          }}
+        >
+          Próxima
+        </PagerText>
       </PagerComponent>
     </div>
   );
@@ -397,7 +411,8 @@ const PagerNumber = styled.div`
   }
 `;
 
-const PagerText = styled.div`
+const PagerText = styled.button`
+  all: unset;
   padding: 7px 13px 7px 13px;
   border-top: 1px solid #bbbbbb;
   border-bottom: 1px solid #bbbbbb;

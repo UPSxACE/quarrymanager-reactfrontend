@@ -19,8 +19,10 @@ function DashboardStock(props) {
   const [activeTab, changeTab] = useState(props.tab);
 
   function updatePager(value1, value2) {
-    updatePager1(value1);
-    updatePager2(value2);
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
+    }
   }
 
   function getTable(activeTab) {
