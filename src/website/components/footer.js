@@ -34,7 +34,7 @@ function Footer() {
                         <FooterListClickable to="/parceiros">
                           <FooterListItem>Parceiros</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable to="#">
+                        <FooterListClickable to="/loja">
                           <FooterListItem>Loja</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
