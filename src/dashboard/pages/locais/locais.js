@@ -70,59 +70,14 @@ function DashboardLocais(props) {
         );
     }
   }
-  const [activePage, updatePager] = useState([1, 3]);
+  const [activePage, updatePager1] = useState(1);
+  const [limitPage, updatePager2] = useState(3);
   const [activeTab, changeTab] = useState(props.tab);
 
-  function getTable(activeTab) {
-    console.log("teste", activeTab, 1);
-
-    switch (activeTab) {
-      case 0:
-        console.log("this");
-        return (
-          <DashboardTable
-            key={0}
-            labels={{
-              nome: "Nome",
-            }}
-            endPoint={"local-armazem/listar?page=" + activePage[0]}
-            actions
-            view
-            edit
-            delete
-          />
-        );
-      case 1:
-        return (
-          <DashboardTable
-            key={1}
-            labels={{
-              nome: "Nome",
-              coordenadasGPS_X: "Coordenadas GPS X",
-              coordenadasGPS_Y: "Coordenadas GPS Y",
-            }}
-            endPoint={"local-extracao/listar?page=" + activePage[0]}
-            actions
-            view={"ver-local-extracao"}
-            edit={"editar-local-extracao"}
-            delete={"delete-local-extracao"}
-          />
-        );
-      default:
-        console.log("this is default");
-        return (
-          <DashboardTable
-            key={0}
-            labels={{
-              nome: "Nome",
-            }}
-            endPoint={"local-armazem/listar?page=" + activePage[0]}
-            actions
-            view={"ver-local-armazem"}
-            edit={"editar-local-armazem"}
-            delete={"delete-local-armazem"}
-          />
-        );
+  function updatePager(value1, value2) {
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
     }
   }
 
@@ -156,7 +111,11 @@ function DashboardLocais(props) {
         <Row className="g-0 pt-5">
           <Col xs={12}>
             {getTable(activeTab)}
-            <TablePager updatePager={updatePager} activePage={activePage} />
+            <TablePager
+              updatePager={updatePager}
+              activePage={activePage}
+              limitPage={limitPage}
+            />{" "}
           </Col>
         </Row>
       </Container>
