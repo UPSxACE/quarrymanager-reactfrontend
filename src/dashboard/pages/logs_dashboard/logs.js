@@ -13,115 +13,127 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 
 export { DashboardLogs };
-//asdfasf
-
-function getTable(activeTab) {
-  console.log("teste", activeTab, 1);
-
-  switch (activeTab) {
-    case 0:
-      console.log("this");
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            username: ["idUser0", "Username"],
-            full_name: ["idUser0", ["profile", "Nome"]],
-            name: ["idUser0", ["role", "Cargo"]],
-            nome: ["idTipoAcao0", "Tipo de Ação"],
-
-            descricao: "Descrição",
-            dataHora: "Data",
-          }}
-          endPoint={"logs/listar"}
-          actions
-          view
-          edit
-          delete
-        ></DashboardTable>
-      );
-    case 1:
-      return (
-        <DashboardTable
-          key={1}
-          labels={{
-            username: ["idUser0", "Username"],
-            full_name: ["idUser0", ["profile", "Nome"]],
-            name: ["idUser0", ["role", "Cargo"]],
-            nome: ["idTipoAcao0", "Tipo de Ação"],
-
-            descricao: "Descrição",
-            dataHora: "Data",
-          }}
-          endPoint={"logs/listar?tipoAcao=1"}
-          actions
-          view
-          edit
-          delete
-        ></DashboardTable>
-      );
-    case 2:
-      return (
-        <DashboardTable
-          key={2}
-          labels={{
-            username: ["idUser0", "Username"],
-            full_name: ["idUser0", ["profile", "Nome"]],
-            name: ["idUser0", ["role", "Cargo"]],
-            nome: ["idTipoAcao0", "Tipo de Ação"],
-
-            descricao: "Descrição",
-            dataHora: "Data",
-          }}
-          endPoint={"logs/listar?tipoAcao=2"}
-          actions
-          view
-          edit
-          delete
-        ></DashboardTable>
-      );
-    case 3:
-      return (
-        <DashboardTable
-          key={3}
-          labels={{
-            username: ["idUser0", "Username"],
-            full_name: ["idUser0", ["profile", "Nome"]],
-            name: ["idUser0", ["role", "Cargo"]],
-            nome: ["idTipoAcao0", "Tipo de Ação"],
-
-            descricao: "Descrição",
-            dataHora: "Data",
-          }}
-          endPoint={"logs/listar?tipoAcao=3"}
-          actions
-          view
-          edit
-          delete
-        ></DashboardTable>
-      );
-    default:
-      console.log("this is default");
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            nome: "Nome",
-          }}
-          endPoint={"local-armazem/listar"}
-          actions
-          view
-          edit
-          delete
-        />
-      );
-  }
-}
 
 function DashboardLogs(props) {
+  const [activePage, updatePager1] = useState(1);
+  const [limitPage, updatePager2] = useState(3);
   const [activeTab, changeTab] = useState(props.tab);
 
+  function updatePager(value1, value2) {
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
+    }
+  }
+
+  function getTable(activeTab) {
+    switch (activeTab) {
+      case 0:
+        console.log("this");
+        return (
+          <DashboardTable
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: ["idUser0", "Username"],
+              full_name: ["idUser0", ["profile", "Nome"]],
+              name: ["idUser0", ["role", "Cargo"]],
+              nome: ["idTipoAcao0", "Tipo de Ação"],
+
+              descricao: "Descrição",
+              dataHora: "Data",
+            }}
+            endPoint={"logs/listar?page=" + activePage}
+            actions
+            view
+            edit
+            delete
+          ></DashboardTable>
+        );
+      case 1:
+        return (
+          <DashboardTable
+            key={"1/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: ["idUser0", "Username"],
+              full_name: ["idUser0", ["profile", "Nome"]],
+              name: ["idUser0", ["role", "Cargo"]],
+              nome: ["idTipoAcao0", "Tipo de Ação"],
+
+              descricao: "Descrição",
+              dataHora: "Data",
+            }}
+            endPoint={"logs/listar?tipoAcao=3page=" + activePage}
+            actions
+            view
+            edit
+            delete
+          ></DashboardTable>
+        );
+      case 2:
+        return (
+          <DashboardTable
+            key={"2/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: ["idUser0", "Username"],
+              full_name: ["idUser0", ["profile", "Nome"]],
+              name: ["idUser0", ["role", "Cargo"]],
+              nome: ["idTipoAcao0", "Tipo de Ação"],
+
+              descricao: "Descrição",
+              dataHora: "Data",
+            }}
+            endPoint={"logs/listar?tipoAcao=2page=" + activePage}
+            actions
+            view
+            edit
+            delete
+          ></DashboardTable>
+        );
+      case 3:
+        return (
+          <DashboardTable
+            key={"3/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              username: ["idUser0", "Username"],
+              full_name: ["idUser0", ["profile", "Nome"]],
+              name: ["idUser0", ["role", "Cargo"]],
+              nome: ["idTipoAcao0", "Tipo de Ação"],
+
+              descricao: "Descrição",
+              dataHora: "Data",
+            }}
+            endPoint={"logs/listar?tipoAcao=1?page=" + activePage}
+            actions
+            view
+            edit
+            delete
+          ></DashboardTable>
+        );
+      default:
+        console.log("this is default");
+        return (
+          <DashboardTable
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              nome: "Nome",
+            }}
+            endPoint={"local-armazem/listar?page=" + activePage}
+            actions
+            view
+            edit
+            delete
+          />
+        );
+    }
+  }
+
   function handleTabClick(newTab) {
+    updatePager1(1);
     changeTab(newTab);
   }
 
@@ -142,7 +154,11 @@ function DashboardLogs(props) {
         <Row className="g-0 pt-5">
           <Col xs={12}>
             {getTable(activeTab)}
-            <TablePager />
+            <TablePager
+              updatePager={updatePager}
+              activePage={activePage}
+              limitPage={limitPage}
+            />
           </Col>
         </Row>
       </Container>
