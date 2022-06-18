@@ -140,7 +140,7 @@ function NavbarComponent(props) {
   } else {
     return loaded ? (
       <StyledNavbar key={1} className={props.className}>
-        <div className="d-flex bd-highlight w-100 justify-content-end">
+        <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
           <div className=" p-2 bd-highlight me-auto">
             <LogoWEROCK src={weROCK}></LogoWEROCK>
           </div>
