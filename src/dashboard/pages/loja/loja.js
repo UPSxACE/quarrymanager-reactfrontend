@@ -31,7 +31,7 @@ function getTable(activeTab) {
             quantidade_vendida: "Quantidade Vendida",
           }}
           endPoint={"produto/listar"}
-          reference={"tituloArtigo"}
+          reference={"id"}
           actions
           view={"ver-produto"}
           edit={"editar-produto"}
@@ -46,6 +46,7 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"transportadora/listar"}
+          reference={"id"}
           actions
           view={"ver-transportadora"}
           edit={"editar-transportadora"}
@@ -63,6 +64,7 @@ function getTable(activeTab) {
             preco: "Preço",
           }}
           endPoint={"produto/listar"}
+          reference={"id"}
           actions
           view={"ver-produto"}
           edit={"editar-produto"}

@@ -26,10 +26,11 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-local-armazem"}
+          edit={"editar-local-armazem"}
+          delete={"delete-local-armazem"}
         />
       );
     case 1:
@@ -42,6 +43,7 @@ function getTable(activeTab) {
             coordenadasGPS_Y: "Coordenadas GPS Y",
           }}
           endPoint={"local-extracao/listar"}
+          reference={"id"}
           actions
           view={"ver-local-extracao"}
           edit={"editar-local-extracao"}
@@ -57,6 +59,7 @@ function getTable(activeTab) {
             nome: "Nome",
           }}
           endPoint={"local-armazem/listar"}
+          reference={"id"}
           actions
           view={"ver-local-armazem"}
           edit={"editar-local-armazem"}

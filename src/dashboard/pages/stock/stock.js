@@ -75,7 +75,7 @@ function getTable(activeTab) {
             Absorcao_Agua: "Absorção de Água",
           }}
           endPoint={"produto/listar"}
-          reference={"codigo_lote"}
+          reference={"id"}
           actions
           view={"ver-produto"}
           edit={"editar-produto"}
@@ -92,7 +92,7 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"material/listar"}
-          reference={"codigo_lote"}
+          reference={"id"}
           actions
           view={"ver-material"}
           edit={"editar-material"}
@@ -110,7 +110,7 @@ function getTable(activeTab) {
             prefixo: "Prefixo",
           }}
           endPoint={"cor/listar"}
-          reference={"codigo_lote"}
+          reference={"id"}
           actions
           view={"ver-cor"}
           edit={"editar-cor"}
