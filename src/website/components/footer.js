@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import wRLogo from "../../img/website/wR.png";
 import { Paragraph } from "./text";
 import { H1 } from "./text";
+import { Link } from "react-router-dom";
 
 export { Footer };
 
@@ -30,10 +31,10 @@ function Footer() {
                       <ListHeaderTitle>Serviços</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="/parceiros">
+                        <FooterListClickable to="/parceiros">
                           <FooterListItem>Parceiros</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable to="#">
                           <FooterListItem>Loja</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
@@ -46,13 +47,13 @@ function Footer() {
                       <ListHeaderTitle>Acerca de</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="/equipa">
+                        <FooterListClickable to="/equipa">
                           <FooterListItem>Equipa</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="/criadores">
+                        <FooterListClickable to="/criadores">
                           <FooterListItem>Criadores</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="/pedreiras">
+                        <FooterListClickable to="/pedreiras">
                           <FooterListItem>Pedreiras</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
@@ -65,13 +66,13 @@ function Footer() {
                       <ListHeaderTitle>Segue-nos</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="#">
+                        <FooterListClickable to="#">
                           <FooterListItem>Facebook</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable to="#">
                           <FooterListItem>Instagram</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="#">
+                        <FooterListClickable to="#">
                           <FooterListItem>Twitter</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
@@ -84,10 +85,10 @@ function Footer() {
                       <ListHeaderTitle>Ajuda</ListHeaderTitle>
                       <WhiteLine />
                       <FooterList>
-                        <FooterListClickable href="/contactos">
+                        <FooterListClickable to="/contactos">
                           <FooterListItem>Contacte-nos</FooterListItem>
                         </FooterListClickable>
-                        <FooterListClickable href="/faq">
+                        <FooterListClickable to="/faq">
                           <FooterListItem>FAQ</FooterListItem>
                         </FooterListClickable>
                       </FooterList>
@@ -101,10 +102,10 @@ function Footer() {
         <Row>
           <Col xs={12}>
             <HorizontalUl>
-              <ClickableLi href="#">
+              <ClickableLi to="#">
                 <Li>Termos & Condições</Li>
               </ClickableLi>
-              <ClickableLi href="#">
+              <ClickableLi to="#">
                 <Li>Politica & Privacidade</Li>
               </ClickableLi>
             </HorizontalUl>
@@ -137,7 +138,7 @@ const Li = styled.li`
   font-size: 16px;
 `;
 
-const ClickableLi = styled.a`
+const ClickableLi = styled(Link)`
   text-decoration: none;
 
   &: not(: first-child) {
@@ -170,7 +171,7 @@ const FooterList = styled.ul`
   padding: 0px;
 `;
 
-const FooterListClickable = styled.a`
+const FooterListClickable = styled(Link)`
   text-decoration: none;
 `;
 
