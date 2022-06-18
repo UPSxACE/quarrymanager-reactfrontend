@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Container, Col, Row, Form } from "react-bootstrap";
 import { H1, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export { MeuPerfil };
 
 function MeuPerfil() {
+  const [user, getUser] = useState({});
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/profile/get-profile",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        getUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    sendGetRequest();
+  }, []);
+
   return (
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
@@ -66,32 +93,28 @@ function MeuPerfil() {
                     <Col xs={12}>
                       <Form.Group className="mb-3" controlId="formBasicName">
                         <StyledFormLabel>
-                          <TextH4>Primeiro Nome</TextH4>
+                          <TextH4>Nome Completo</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="text" />
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.full_name ? user.full_name : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row className="pe-3 ps-3">
-                    <Col xs={12}>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicLastName"
-                      >
-                        <StyledFormLabel>
-                          <TextH4>Último Nome</TextH4>
-                        </StyledFormLabel>
-                        <Form.Control type="text" />
-                      </Form.Group>
-                    </Col>
-                  </Row>
+
                   <Row className="pe-3 ps-3">
                     <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Data de Nascimento</TextH4>
                       </StyledFormLabel>
                       <Form.Group className="mb-3" controlId="formBasicDate">
-                        <Form.Control type="date" />
+                        <Form.Control
+                          type="date"
+                          defaultValue={
+                            user.dataNascimento ? user.dataNascimento : ""
+                          }
+                        />
                       </Form.Group>
                     </Col>
                     <Col xs={6}>
@@ -112,12 +135,15 @@ function MeuPerfil() {
                         <StyledFormLabel>
                           <TextH4>Morada</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="text" />
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.morada ? user.morada : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
                   <Row className="pe-3 ps-3">
-                    <Col xs={4}>
+                    <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Código Postal:</TextH4>
                       </StyledFormLabel>
@@ -125,20 +151,13 @@ function MeuPerfil() {
                         className="mb-3"
                         controlId="formBasicCordenadaX"
                       >
-                        <Form.Control type="number" />
+                        <Form.Control
+                          type="text"
+                          defaultValue={user.codPostal ? user.codPostal : ""}
+                        />
                       </Form.Group>
                     </Col>
-                    <Col xs={2}>
-                      <StyledFormLabel>
-                        <TextH4>&nbsp;</TextH4>
-                      </StyledFormLabel>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicCordenadaY"
-                      >
-                        <Form.Control type="number" />
-                      </Form.Group>
-                    </Col>
+
                     <Col xs={6}>
                       <StyledFormLabel>
                         <TextH4>Região:</TextH4>
@@ -154,7 +173,10 @@ function MeuPerfil() {
                         <StyledFormLabel>
                           <TextH4>Telefone</TextH4>
                         </StyledFormLabel>
-                        <Form.Control type="tel" />
+                        <Form.Control
+                          type="tel"
+                          defaultValue={user.telefone ? user.telefone : ""}
+                        />
                       </Form.Group>
                     </Col>
                   </Row>
@@ -166,7 +188,7 @@ function MeuPerfil() {
               >
                 <img
                   width={"100%"}
-                  src="https://s3-alpha-sig.figma.com/img/29da/bbe7/b0d50b148f3447c03520fe3a1f129e73?Expires=1655078400&Signature=cKWB1ikrY6eTRrZfcuCPsdecGR5F~5UjUE-1Q2hPyyMsWLi00UUa4KAdT19pMxzag5XRxJ48~xSL~ci13RaVriJtfjv01Bw7ZfJF0Dl5Nwxx-d9n~UKuSvE84Q4yk4Wxfd--lVTz-qatQl3n1zsDUlokIjInuTw2dmm2g~q7S9QPKV0dqiG4zTphonLeLdNEOJHzsVXkqCBfq4~5y7WzsAv3yHt6FB2tAVfeoqoLMsQ9VzD2qNKOCYfN5Adh82ZyxiVSFdQTlcsR67qwg-2xoi-2ueopUD-1u-Fp~B~gUFgoTTKRBcFjGmmXTAbRdqxSvyPbA2VBKF3EPqsjvlooRA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                  src="https://firealarm.com/wp-content/uploads/2021/02/executiva-empresaria-ceo-mulher-lideranca-lider-1518529250446_300x300.jpg"
                   className="mb-4"
                 ></img>
 

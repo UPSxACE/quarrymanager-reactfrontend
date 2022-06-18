@@ -178,7 +178,12 @@ function DashboardTable(props) {
                                   }
                                 </td>
                                 <td>
-                                  <div>{renderActions(index2)}</div>
+                                  <div>
+                                    {renderActions(
+                                      index2,
+                                      entry[props.reference]
+                                    )}
+                                  </div>
                                 </td>
                               </React.Fragment>
                             );
@@ -202,7 +207,12 @@ function DashboardTable(props) {
                                   }
                                 </td>
                                 <td>
-                                  <div>{renderActions(index2)}</div>
+                                  <div>
+                                    {renderActions(
+                                      index2,
+                                      entry[props.reference]
+                                    )}
+                                  </div>
                                 </td>
                               </React.Fragment>
                             );
@@ -229,7 +239,12 @@ function DashboardTable(props) {
                                   }
                                 </td>
                                 <td>
-                                  <div>{renderActions(index2)}</div>
+                                  <div>
+                                    {renderActions(
+                                      index2,
+                                      entry[props.reference]
+                                    )}
+                                  </div>
                                 </td>
                               </React.Fragment>
                             );
@@ -250,7 +265,12 @@ function DashboardTable(props) {
                               <React.Fragment key={"action" + index2 + "-cd"}>
                                 <td>{entry[field.replaceAll("$", "")]}</td>
                                 <td>
-                                  <div>{renderActions(index2)}</div>
+                                  <div>
+                                    {renderActions(
+                                      index2,
+                                      entry[props.reference]
+                                    )}
+                                  </div>
                                 </td>
                               </React.Fragment>
                             );

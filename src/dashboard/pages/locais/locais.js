@@ -15,6 +15,61 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 export { DashboardLocais };
 
 function DashboardLocais(props) {
+  function getTable(activeTab) {
+    console.log("teste", activeTab, 1);
+
+    switch (activeTab) {
+      case 0:
+        console.log("this");
+        return (
+          <DashboardTable
+            key={0}
+            labels={{
+              nome: "Nome",
+            }}
+            endPoint={"local-armazem/listar"}
+            reference={"id"}
+            actions
+            view={"ver-local-armazem"}
+            edit={"editar-local-armazem"}
+            delete={"delete-local-armazem"}
+          />
+        );
+      case 1:
+        return (
+          <DashboardTable
+            key={1}
+            labels={{
+              nome: "Nome",
+              coordenadasGPS_X: "Coordenadas GPS X",
+              coordenadasGPS_Y: "Coordenadas GPS Y",
+            }}
+            endPoint={"local-extracao/listar"}
+            reference={"id"}
+            actions
+            view={"ver-local-extracao"}
+            edit={"editar-local-extracao"}
+            delete={"delete-local-extracao"}
+          />
+        );
+      default:
+        console.log("this is default");
+        return (
+          <DashboardTable
+            key={0}
+            labels={{
+              nome: "Nome",
+            }}
+            endPoint={"local-armazem/listar"}
+            reference={"id"}
+            actions
+            view={"ver-local-armazem"}
+            edit={"editar-local-armazem"}
+            delete={"delete-local-armazem"}
+          />
+        );
+    }
+  }
   const [activePage, updatePager] = useState([1, 3]);
   const [activeTab, changeTab] = useState(props.tab);
 

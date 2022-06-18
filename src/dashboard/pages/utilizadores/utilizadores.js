@@ -27,10 +27,11 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=4"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-user"}
+          edit={"editar-user"}
+          delete={"delete-user"}
         ></DashboardTable>
       );
     case 1:
@@ -43,10 +44,11 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=3"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-user"}
+          edit={"editar-user"}
+          delete={"delete-user"}
         ></DashboardTable>
       );
     case 2:
@@ -59,10 +61,11 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=2"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-user"}
+          edit={"editar-user"}
+          delete={"delete-user"}
         ></DashboardTable>
       );
     case 3:
@@ -75,10 +78,11 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=1"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-user"}
+          edit={"editar-user"}
+          delete={"delete-user"}
         ></DashboardTable>
       );
     default:
@@ -91,10 +95,11 @@ function getTable(activeTab) {
             created_at: ["profile", "Data"],
           }}
           endPoint={"user/listar?role_id=4"}
+          reference={"id"}
           actions
-          view
-          edit
-          delete
+          view={"ver-user"}
+          edit={"editar-user"}
+          delete={"delete-user"}
         ></DashboardTable>
       );
   }

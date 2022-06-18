@@ -83,10 +83,12 @@ function NavbarComponent(props) {
       <StyledNavbar key={0} className={props.className}>
         <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
           <div className=" p-2 bd-highlight me-auto">
-            <LogoWEROCK src={weROCK}></LogoWEROCK>
+            <Link to={"/home"}>
+              <LogoWEROCK src={weROCK}></LogoWEROCK>
+            </Link>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="#">Loja</StyledNavLink>
+            <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
@@ -143,10 +145,12 @@ function NavbarComponent(props) {
       <StyledNavbar key={1} className={props.className}>
         <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
           <div className=" p-2 bd-highlight me-auto">
-            <LogoWEROCK src={weROCK}></LogoWEROCK>
+            <Link to={"/home"}>
+              <LogoWEROCK src={weROCK}></LogoWEROCK>
+            </Link>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="#">Loja</StyledNavLink>
+            <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>

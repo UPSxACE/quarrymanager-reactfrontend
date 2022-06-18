@@ -231,29 +231,35 @@ function App(props) {
             element={<DashboardNovoLocalExtracao />}
           />
           <Route
-            path="editar-local-extracao"
+            path="editar-local-extracao/:id"
             element={<EditarLocalExtracao />}
           />
-          <Route path="ver-extracao/:id" element={<ViewLocalExtracao />} />
+          <Route
+            path="ver-local-extracao/:id"
+            element={<ViewLocalExtracao />}
+          />
 
           <Route path="editar-produto/:id" element={<EditarProduto />} />
           <Route path="ver-produto/:id" element={<ViewProduto />} />
           <Route path="editar-stock" element={<EditarStock />} />
 
-          <Route path="editar-lote" element={<EditarLote />} />
+          <Route path="editar-lote/:codigo_lote" element={<EditarLote />} />
 
-          <Route path="editar-local-armazem" element={<EditarLocalArmazem />} />
-          <Route path="ver-armazem/:id" element={<ViewLocalArmazem />} />
+          <Route
+            path="editar-local-armazem/:id"
+            element={<EditarLocalArmazem />}
+          />
+          <Route path="ver-local-armazem/:id" element={<ViewLocalArmazem />} />
 
-          <Route path="editar-cliente" element={<EditarUtilizador />} />
+          <Route path="editar-user/:id" element={<EditarUtilizador />} />
 
           <Route path="ver-user/:id" element={<ViewUtilizador />} />
 
-          <Route path="editar-cor" element={<EditarCor />} />
+          <Route path="editar-cor/:id" element={<EditarCor />} />
           <Route path="ver-cor/:id" element={<ViewCor />} />
-          <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="editar-material/:id" element={<EditarMaterial />} />
           <Route path="ver-material/:id" element={<ViewMaterial />} />
-          <Route path="editar-produto" element={<EditarProduto />} />
+          <Route path="editar-produto/:id" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
 
           <Route path="ajuda" element={<DashboardAjuda />} />
