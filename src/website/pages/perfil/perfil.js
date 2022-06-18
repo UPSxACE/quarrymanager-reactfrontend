@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Container, Col, Row, Form } from "react-bootstrap";
@@ -13,6 +13,11 @@ export { MeuPerfil };
 
 function MeuPerfil(props) {
   const [user, getUser] = useState({});
+  const gender = useRef(1);
+
+  function logGender() {
+    console.log(gender.current.value);
+  }
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -30,6 +35,7 @@ function MeuPerfil(props) {
         );
 
         getUser(resp.data);
+        gender.current.value = resp.data.genero;
       } catch (err) {
         console.log(err);
       }
@@ -127,11 +133,11 @@ function MeuPerfil(props) {
                       <StyledFormLabel>
                         <TextH4>Gênero:</TextH4>
                       </StyledFormLabel>
-                      <Form.Select>
+                      <Form.Select ref={gender}>
                         <option>Selecionar</option>
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                        <option>Outro(s)</option>
+                        <option value={0}>Masculino</option>
+                        <option value={1}>Feminino</option>
+                        <option value={2}>Outro(s)</option>
                       </Form.Select>
                     </Col>
                   </Row>
@@ -209,7 +215,7 @@ function MeuPerfil(props) {
             <Row className="pe-3 ps-3">
               <Col xs={12} className="pb-5 mt-4 ps-5 pe-5">
                 <a href="#">
-                  <ButtonSubmit black className="w-100">
+                  <ButtonSubmit black className="w-100" onClick={logGender}>
                     Guardar Alteração
                   </ButtonSubmit>
                 </a>

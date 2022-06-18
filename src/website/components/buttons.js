@@ -45,7 +45,11 @@ const PrimaryButton = styled(PrimaryButtonBase)`
 
 // BOTÃO SUBMIT (ENVIAR)
 function ButtonSubmitBase(props) {
-  return <Button className={props.className}>{props.children}</Button>;
+  return (
+    <Button className={props.className} onClick={props.onClick}>
+      {props.children}
+    </Button>
+  );
 }
 const ButtonSubmit = styled(ButtonSubmitBase)`
   background-color: ${(props) => (props.black ? "black" : "white")};

@@ -13,139 +13,284 @@ import {
 
 export { DashboardStock };
 
-function getTable(activeTab) {
-  console.log("teste", activeTab, 1);
-
-  switch (activeTab) {
-    case 0:
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            codigo_lote: "Código do Lote",
-            nome: ["idProduto0", ["idMaterial0", "Material"]],
-            $nome: ["idProduto0", ["idCor0", "Cor"]],
-            quantidade: "Quantidade ",
-            $$nome: ["idLocalExtracao0", "Local de Retirada"],
-            coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
-            coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
-            dataHora: "Data",
-          }}
-          endPoint={"lote/listar"}
-          reference={"codigo_lote"}
-          actions
-          view={"ver-lote"}
-          edit={"editar-lote"}
-          delete={"delete-lote"}
-        ></DashboardTable>
-      );
-    case 1:
-      return (
-        <DashboardTable
-          key={1}
-          labels={{
-            codigo_lote: "Código do Lote",
-            nome: ["idProduto0", ["idMaterial0", "Material"]],
-            $nome: ["idProduto0", ["idCor0", "Cor"]],
-            quantidade: "Quantidade ",
-            $$nome: ["idLocalExtracao0", "Local de Retirada"],
-            coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
-            coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
-            dataHora: "Data",
-          }}
-          endPoint={"lote/listar"}
-          reference={"codigo_lote"}
-          actions
-          view={"ver-lote"}
-          edit={"editar-lote"}
-          delete={"delete-lote"}
-        ></DashboardTable>
-      );
-    case 2:
-      return (
-        <DashboardTable
-          key={2}
-          labels={{
-            na_loja: "Na Loja",
-            nome: ["idMaterial0", "Material"],
-            $nome: ["idCor0", "Cor"],
-            Res_Compressao: "Res. à Compressão",
-            Res_Flexao: "Res. à Flexão",
-            Massa_Vol_Aparente: "Massa Vol. Aparente",
-            Absorcao_Agua: "Absorção de Água",
-          }}
-          endPoint={"produto/listar"}
-          reference={"id"}
-          actions
-          view={"ver-produto"}
-          edit={"editar-produto"}
-          delete={"delete-produto"}
-        ></DashboardTable>
-      );
-    case 3:
-      return (
-        <DashboardTable
-          key={3}
-          labels={{
-            nome: "Nome",
-
-            prefixo: "Prefixo",
-          }}
-          endPoint={"material/listar"}
-          reference={"id"}
-          actions
-          view={"ver-material"}
-          edit={"editar-material"}
-          delete={"delete-material"}
-        ></DashboardTable>
-      );
-
-    case 4:
-      return (
-        <DashboardTable
-          key={4}
-          labels={{
-            nome: "Nome",
-
-            prefixo: "Prefixo",
-          }}
-          endPoint={"cor/listar"}
-          reference={"id"}
-          actions
-          view={"ver-cor"}
-          edit={"editar-cor"}
-          delete={"delete-cor"}
-        ></DashboardTable>
-      );
-    default:
-      return (
-        <DashboardTable
-          key={0}
-          labels={{
-            codigo_lote: "Código do Lote",
-            nome: ["idProduto0", ["idMaterial0", "Material"]],
-            $nome: ["idProduto0", ["idCor0", "Cor"]],
-            quantidade: "Quantidade ",
-            $$nome: ["idLocalExtracao0", "Local de Retirada"],
-            coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
-            coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
-            dataHora: "Data",
-          }}
-          endPoint={"lote/listar"}
-          reference={"codigo_lote"}
-          actions
-          view={"ver-lote"}
-          edit={"editar-lote"}
-          delete={"delete-lote"}
-        ></DashboardTable>
-      );
-  }
-}
-
 function DashboardStock(props) {
+  function getTable(activeTab) {
+    console.log("teste", activeTab, 1);
+
+    switch (activeTab) {
+      case 0:
+        return (
+          <DashboardTable
+            key={0}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar"}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+      case 1:
+        return (
+          <DashboardTable
+            key={1}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar"}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+      case 2:
+        return (
+          <DashboardTable
+            key={2}
+            labels={{
+              na_loja: "Na Loja",
+              nome: ["idMaterial0", "Material"],
+              $nome: ["idCor0", "Cor"],
+              Res_Compressao: "Res. à Compressão",
+              Res_Flexao: "Res. à Flexão",
+              Massa_Vol_Aparente: "Massa Vol. Aparente",
+              Absorcao_Agua: "Absorção de Água",
+            }}
+            endPoint={"produto/listar"}
+            reference={"id"}
+            actions
+            view={"ver-produto"}
+            edit={"editar-produto"}
+            delete={"delete-produto"}
+          ></DashboardTable>
+        );
+      case 3:
+        return (
+          <DashboardTable
+            key={3}
+            labels={{
+              nome: "Nome",
+
+              prefixo: "Prefixo",
+            }}
+            endPoint={"material/listar"}
+            reference={"id"}
+            actions
+            view={"ver-material"}
+            edit={"editar-material"}
+            delete={"delete-material"}
+          ></DashboardTable>
+        );
+
+      case 4:
+        return (
+          <DashboardTable
+            key={4}
+            labels={{
+              nome: "Nome",
+
+              prefixo: "Prefixo",
+            }}
+            endPoint={"cor/listar"}
+            reference={"id"}
+            actions
+            view={"ver-cor"}
+            edit={"editar-cor"}
+            delete={"delete-cor"}
+          ></DashboardTable>
+        );
+      default:
+        return (
+          <DashboardTable
+            key={0}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar"}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+    }
+  }
+
+  const [activePage, updatePager1] = useState(1);
+  const [limitPage, updatePager2] = useState(3);
   const [activeTab, changeTab] = useState(props.tab);
 
+  function updatePager(value1, value2) {
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
+    }
+  }
+
+  function getTable(activeTab) {
+    console.log("teste", activeTab, 1);
+
+    switch (activeTab) {
+      case 0:
+        return (
+          <DashboardTable
+            key={"0/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+      case 1:
+        return (
+          <DashboardTable
+            key={"1/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+      case 2:
+        return (
+          <DashboardTable
+            key={"2/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              na_loja: "Na Loja",
+              nome: ["idMaterial0", "Material"],
+              $nome: ["idCor0", "Cor"],
+              Res_Compressao: "Res. à Compressão",
+              Res_Flexao: "Res. à Flexão",
+              Massa_Vol_Aparente: "Massa Vol. Aparente",
+              Absorcao_Agua: "Absorção de Água",
+            }}
+            endPoint={"produto/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-produto"}
+            edit={"editar-produto"}
+            delete={"delete-produto"}
+          ></DashboardTable>
+        );
+      case 3:
+        return (
+          <DashboardTable
+            key={"3/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              nome: "Nome",
+
+              prefixo: "Prefixo",
+            }}
+            endPoint={"material/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-material"}
+            edit={"editar-material"}
+            delete={"delete-material"}
+          ></DashboardTable>
+        );
+
+      case 4:
+        return (
+          <DashboardTable
+            key={"4/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              nome: "Nome",
+
+              prefixo: "Prefixo",
+            }}
+            endPoint={"cor/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-cor"}
+            edit={"editar-cor"}
+            delete={"delete-cor"}
+          ></DashboardTable>
+        );
+      default:
+        return (
+          <DashboardTable
+            key={"5/" + activePage}
+            updateLimit={updatePager2}
+            labels={{
+              codigo_lote: "Código do Lote",
+              nome: ["idProduto0", ["idMaterial0", "Material"]],
+              $nome: ["idProduto0", ["idCor0", "Cor"]],
+              quantidade: "Quantidade ",
+              $$nome: ["idLocalExtracao0", "Local de Retirada"],
+              coordenadasGPS_X: ["idLocalExtracao0", "Coordenadas GPS X"],
+              coordenadasGPS_Y: ["idLocalExtracao0", "Coordenadas GPS Y"],
+              dataHora: "Data",
+            }}
+            endPoint={"lote/listar?page=" + activePage}
+            reference={"codigo_lote"}
+            actions
+            view={"ver-lote"}
+            edit={"editar-lote"}
+            delete={"delete-lote"}
+          ></DashboardTable>
+        );
+    }
+  }
+
   function handleTabClick(newTab) {
+    updatePager1(1);
     changeTab(newTab);
   }
 
@@ -173,7 +318,11 @@ function DashboardStock(props) {
         <Row className="g-0 pt-5">
           <Col xs={12}>
             {getTable(activeTab)}
-            <TablePager />
+            <TablePager
+              updatePager={updatePager}
+              activePage={activePage}
+              limitPage={limitPage}
+            />
           </Col>
         </Row>
       </Container>
