@@ -254,7 +254,7 @@ function App(props) {
 
           <Route path="editar-cor/:id" element={<EditarCor />} />
           <Route path="ver-cor/:id" element={<ViewCor />} />
-          <Route path="editar-material" element={<EditarMaterial />} />
+          <Route path="editar-material/:id" element={<EditarMaterial />} />
           <Route path="ver-material/:id" element={<ViewMaterial />} />
           <Route path="editar-produto/:id" element={<EditarProduto />} />
           <Route path="logs" element={<DashboardLogs tab={0} />} />
