@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export { Login };
 
@@ -85,7 +86,7 @@ function Login(props) {
                     </Form.Group>
                   </Col>
                   <Col xs={6} className={"text-end"}>
-                    <WhiteLink href="#">Esqueceu-se da senha?</WhiteLink>
+                    <WhiteLink to={"#"}>Esqueceu-se da senha?</WhiteLink>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center pt-3"}>
                     <LoginButtonSubmit onClick={attemptLogin}>
@@ -94,7 +95,7 @@ function Login(props) {
                   </Col>
                   <RegisterSpan className="text-center pt-1">
                     Não tem uma conta?{" "}
-                    <WhiteLink href="/register">Regista-te</WhiteLink>
+                    <WhiteLink to={"/register"}>Regista-te</WhiteLink>
                   </RegisterSpan>
                 </Row>
               </Container>
@@ -142,7 +143,7 @@ const RegisterSpan = styled.span`
   color: white;
 `;
 
-const WhiteLink = styled.a`
+const WhiteLink = styled(Link)`
   color: white;
 
   &:hover {

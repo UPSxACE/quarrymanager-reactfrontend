@@ -121,7 +121,7 @@ function ProdutoLoja() {
               <Form.Group controlId="formBasic">
                 <InputGroup>
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="Introduza uma quantia em m²"
                   />
                 </InputGroup>

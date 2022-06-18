@@ -175,7 +175,9 @@ function NavbarComponent(props) {
               </Dropdown.Item>
               <Dropdown.Item to="#/action-3">Definições</Dropdown.Item>
               <Dropdown.Item to="#/action-3">Ajuda</Dropdown.Item>
-              <Dropdown.Item onClick={logOut}>Sair</Dropdown.Item>
+              <Dropdown.Item onClick={logOut} to="#">
+                Sair
+              </Dropdown.Item>
             </DropdownButton>
           </div>
         </div>

@@ -5,18 +5,19 @@ import { Container, Col, Row, Form } from "react-bootstrap";
 import { H1, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import axios from "axios";
 
 export { MeuPerfil };
 
-function MeuPerfil() {
+function MeuPerfil(props) {
   const [user, getUser] = useState({});
 
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const username = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios(
@@ -36,6 +37,11 @@ function MeuPerfil() {
     sendGetRequest();
   }, []);
 
+  function logOut() {
+    localStorage.removeItem("AuthKey");
+    props.updateLogState(false);
+  }
+
   return (
     <ColoredContainer variant={1} fluid>
       <Row className="p-5">
@@ -45,25 +51,25 @@ function MeuPerfil() {
               <Col xs={12}>
                 <ul className="list-unstyled">
                   <StyledLiSelect className="p-2">
-                    <WhiteLink href="#">
+                    <WhiteLink to={"/perfil"}>
                       <H5>Meu Perfil</H5>
                     </WhiteLink>
                   </StyledLiSelect>
 
                   <StyledLi className="p-2">
-                    <WhiteLink href="#">
+                    <WhiteLink to={"/perfil/definicoes"}>
                       <H5>Definições da Conta</H5>
                     </WhiteLink>
                   </StyledLi>
 
                   <StyledLi className="p-2">
-                    <WhiteLink href="#">
+                    <WhiteLink to={"#"}>
                       <H5>Histórico de Encomendas</H5>
                     </WhiteLink>
                   </StyledLi>
 
                   <StyledLi className="p-2">
-                    <WhiteLink href="#">
+                    <WhiteLink onClick={logOut} to={"/home"}>
                       <H5>Terminar Sessão</H5>
                     </WhiteLink>
                   </StyledLi>
@@ -232,7 +238,7 @@ const StyledLiSelect = styled.li`
   border: 1px solid black;
 `;
 
-const WhiteLink = styled.a`
+const WhiteLink = styled(Link)`
   color: white;
   text-decoration: none;
   &:hover {
