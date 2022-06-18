@@ -15,6 +15,7 @@ import styled from "styled-components";
 import weROCK from "../../images/website/weROCK.png";
 import { PrimaryButton } from "./buttons";
 import { Link } from "react-router-dom";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 export { NavbarComponent };
 
 function accessCheck(permission_to_check) {
@@ -161,23 +162,54 @@ function NavbarComponent(props) {
           </div>
           <div className="p-2 bd-highlight d-flex align-items-center">
             <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-              <Dropdown.Item to="#/action-1">Editar Perfil</Dropdown.Item>
+              <Link className="dropdown-item" to="/perfil">
+                Editar Perfil
+              </Link>
               {operario === true && (
-                <Dropdown.Item to="#/action-2">Dashboard</Dropdown.Item>
+                <Link className="dropdown-item" to="/dashboard/home">
+                  Dashboard
+                </Link>
               )}
 
-              <Dropdown.Item to="#/action-3">
+              <Link className="dropdown-item" to="encomendas">
                 Histórico de Encomendas
-              </Dropdown.Item>
-              <Dropdown.Item to="#/action-3">Definições</Dropdown.Item>
-              <Dropdown.Item to="#/action-3">Ajuda</Dropdown.Item>
-              <Dropdown.Item onClick={logOut}>Sair</Dropdown.Item>
+              </Link>
+              <Link className="dropdown-item" to="/perfil/definicoes">
+                Definições
+              </Link>
+              <Link className="dropdown-item" to="#">
+                Ajuda
+              </Link>
+              <Link className="dropdown-item" onClick={logOut} to="">
+                Sair
+              </Link>
             </DropdownButton>
           </div>
         </div>
       </StyledNavbar>
     ) : (
-      <></>
+      <StyledNavbar key={1} className={props.className}>
+        <div className="d-flex bd-highlight w-100 justify-content-end align-items-center">
+          <div className=" p-2 bd-highlight me-auto">
+            <LogoWEROCK src={weROCK}></LogoWEROCK>
+          </div>
+          <div className="p-2 bd-highlight">
+            <StyledNavLink to="#">Loja</StyledNavLink>
+          </div>
+          <div className="p-2 bd-highlight">
+            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
+          </div>
+          <div className="p-2 bd-highlight">
+            <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
+          </div>
+          <div className="p-2 bd-highlight">
+            <StyledNavLink to="/contactos">Contacte-nos</StyledNavLink>
+          </div>
+          <div className="p-2 bd-highlight">
+            <StyledNavLink to="/faq">Faqs</StyledNavLink>
+          </div>
+        </div>
+      </StyledNavbar>
     );
   }
 }

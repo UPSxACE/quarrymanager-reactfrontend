@@ -86,6 +86,9 @@ function DashboardTable(props) {
           },
         });
 
+        //console.log(resp.request.getResponseHeader("X-Pagination-Page-Count"));
+        console.log(resp.headers["x-pagination-page-count"]);
+        props.updateLimit(resp.headers["x-pagination-page-count"]);
         setData(resp.data);
       } catch (err) {
         console.log(err);
@@ -334,14 +337,44 @@ const TableStyle = styled.table`
   }
 `;
 
-function TablePager() {
+function TablePager(props) {
+  console.log(props);
+  function getPageButtons(active, limit) {
+    let buttons = [];
+
+    for (let i = 0; i < limit; i++) {
+      if (i + 1 !== active) {
+        buttons.push(
+          <ClickableButton
+            key={i}
+            onClick={() => {
+              props.updatePager(i + 1, limit);
+            }}
+          >
+            <PagerNumber key={i}>{i + 1}</PagerNumber>
+          </ClickableButton>
+        );
+      } else {
+        buttons.push(
+          <PagerNumber key={i} className="active">
+            {i + 1}
+          </PagerNumber>
+        );
+      }
+    }
+
+    return <>{buttons}</>;
+  }
+
+  if (typeof props.activePage === "undefined") {
+    return <h1>loading...</h1>;
+  }
+
   return (
     <div className="w-100">
       <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
         <PagerText className="left">Anterior</PagerText>
-        <PagerNumber className="active">1</PagerNumber>
-        <PagerNumber>2</PagerNumber>
-        <PagerNumber>3</PagerNumber>
+        {getPageButtons(props.activePage, props.limitPage)}
         <PagerText className="right">Próxima</PagerText>
       </PagerComponent>
     </div>
@@ -385,4 +418,8 @@ const PagerText = styled.div`
   &:last-child {
     border-right: 1px solid #bbbbbb;
   }
+`;
+
+const ClickableButton = styled.button`
+  all: unset;
 `;
