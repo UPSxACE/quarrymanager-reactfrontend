@@ -44,11 +44,6 @@ function DashboardLogs(props) {
               dataHora: "Data",
             }}
             endPoint={"logs/listar?page=" + activePage}
-            actions
-            view
-            edit
-            delete
-            controller={"logs"}
           ></DashboardTable>
         );
       case 1:
@@ -66,10 +61,6 @@ function DashboardLogs(props) {
               dataHora: "Data",
             }}
             endPoint={"logs/listar?tipoAcao=3page=" + activePage}
-            actions
-            view
-            edit
-            delete
           ></DashboardTable>
         );
       case 2:
