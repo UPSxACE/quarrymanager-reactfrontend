@@ -4,8 +4,8 @@ import { ColoredContainer } from "../../components/coloredComponents";
 import { Container, Col, Row, Form } from "react-bootstrap";
 import { H1, H5 } from "../../components/text";
 import { Button } from "bootstrap";
-import { ButtonSubmit } from "../../components/buttons";
-import { useParams, Link } from "react-router-dom";
+import { ButtonSubmit, FileSubmitButton } from "../../components/buttons";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -14,6 +14,43 @@ export { MeuPerfil };
 function MeuPerfil(props) {
   const [user, getUser] = useState({});
   const gender = useRef(1);
+  const [file, setFile] = useState(null);
+  let navigate = useNavigate();
+
+  function submit() {
+    console.log(file);
+    const sendPostRequest = async () => {
+      try {
+        let formdata = new FormData();
+        formdata.append("image", file);
+        //formdata.append('name', 'miguel rocha');
+
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/profile/test-image-upload",
+          {
+            gender: gender.current.value,
+            file: file,
+            file2: file,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
+
+        //navigate("/", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
 
   function logGender() {
     console.log(gender.current.value);
@@ -205,9 +242,14 @@ function MeuPerfil(props) {
                 ></img>
 
                 <a href="#">
-                  <ButtonSubmit black className="w-100">
-                    Carregar foto de perfil
-                  </ButtonSubmit>
+                  <FileSubmitButton
+                    type="file"
+                    black
+                    className="w-100"
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                    }}
+                  ></FileSubmitButton>
                 </a>
               </Col>
             </Row>
@@ -215,7 +257,7 @@ function MeuPerfil(props) {
             <Row className="pe-3 ps-3">
               <Col xs={12} className="pb-5 mt-4 ps-5 pe-5">
                 <a href="#">
-                  <ButtonSubmit black className="w-100" onClick={logGender}>
+                  <ButtonSubmit black className="w-100" onClick={submit}>
                     Guardar Alteração
                   </ButtonSubmit>
                 </a>

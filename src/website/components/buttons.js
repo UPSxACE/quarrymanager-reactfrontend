@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-export { PrimaryButton, ButtonSubmit, LoginButtonSubmit };
+export { FileSubmitButton, PrimaryButton, ButtonSubmit, LoginButtonSubmit };
 
 // BOTÃO DO LOGIN NAVBAR
 function PrimaryButtonBase(props) {
@@ -80,6 +80,39 @@ const ButtonSubmit = styled(ButtonSubmitBase)`
   &:active:focus {
     box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
   }
+`;
+
+const FileSubmitButton = styled.input`
+  color: white;
+  /*
+  background-color: ${(props) => (props.black ? "black" : "white")};
+  color: ${(props) => (props.black ? "white" : "black")};
+  border: 0;
+  border-radius: 0;
+  font-size: 20px;
+
+  &:active {
+    color: #fff;
+    background-color: black;
+    border: 0;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: black;
+    border: 0;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: black;
+    border: 0;
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+
+  &:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }*/
 `;
 
 //BOTÃO ENTER LOGIN
