@@ -51,19 +51,35 @@ function EditarLocalExtracao() {
             <Col xs={12}>
               <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={dados.nome ? dados.nome : ""}
+                />
               </Form.Group>
             </Col>
             <Col xs={6} className="pe-3">
               <FormColor>Coordenadas GPS X</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={
+                    dados.coordenadasGPS_X ? dados.coordenadasGPS_X : ""
+                  }
+                />
               </Form.Group>
             </Col>
             <Col xs={6}>
               <FormColor>Coordenadas GPS Y</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={
+                    dados.coordenadasGPS_Y ? dados.coordenadasGPS_Y : ""
+                  }
+                />
               </Form.Group>
             </Col>
             <Col xs={12} className="pt-3">
@@ -79,6 +95,33 @@ function EditarLocalExtracao() {
 }
 
 function EditarLocalArmazem() {
+  const [dados, atualizarDados] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/local-extracao/find?id=" + id,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        atualizarDados(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, [id]);
+
   return (
     <DashboardLayout>
       <Container fluid>
@@ -87,7 +130,11 @@ function EditarLocalArmazem() {
             <Col xs={12}>
               <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={dados.nome ? dados.nome : ""}
+                />
               </Form.Group>
             </Col>
 
