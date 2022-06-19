@@ -5,12 +5,18 @@ import { LoginButtonSubmit } from "../../components/buttons";
 import { ColoredRow } from "../../components/coloredComponents";
 import styled from "styled-components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export { Register };
 
 function Register() {
   const username = useRef("");
   const email = useRef("");
-  const password = useRef("");
+  const newPassword = useRef("");
+  const newPassword2 = useRef("");
+  const dataNascimento = useRef("");
+  const genero = useRef("");
+  const full_name = useRef("");
+  let navigate = useNavigate();
 
   function submit() {
     const sendPostRequest = async () => {
@@ -21,9 +27,15 @@ function Register() {
         const resp = await axios.post(
           "http://localhost:8080/api/auth/register",
           {
-            nome: username.current.value,
+            username: username.current.value,
             email: email.current.value,
-            password: password.current.value,
+            newPassword:
+              newPassword.current.value === newPassword2.current.value
+                ? newPassword.current.value
+                : "",
+            genero: genero.current.value,
+            dataNascimento: dataNascimento.current.value,
+            full_name: full_name.current.value,
           },
           {
             headers: {
@@ -31,6 +43,7 @@ function Register() {
             },
           }
         );
+        navigate("/", { replace: true });
       } catch (err) {
         console.log(err);
       }
@@ -49,8 +62,13 @@ function Register() {
             <H3 className={"text-center"}>REGISTA-TE</H3>
             <Form>
               <Form.Group controlId="formPrimeiroNome">
-                <StyledFormLabel>Nome:</StyledFormLabel>
+                <StyledFormLabel>Usename:</StyledFormLabel>
                 <Form.Control type="text" placeholder="Nome" ref={username} />
+              </Form.Group>
+
+              <Form.Group controlId="formPrimeiroNome" className="mt-3">
+                <StyledFormLabel>Nome Completo:</StyledFormLabel>
+                <Form.Control type="text" placeholder="Nome" ref={full_name} />
               </Form.Group>
 
               <Form.Group controlId="formEmail" className="mt-3">
@@ -66,7 +84,7 @@ function Register() {
                 <Form.Control
                   type="email"
                   placeholder="Password"
-                  ref={password}
+                  ref={newPassword}
                 />
               </Form.Group>
               <Form.Group controlId="formConfirmarPassword" className="mt-3">
@@ -74,7 +92,7 @@ function Register() {
                 <Form.Control
                   type="email"
                   placeholder="Confirmar Password"
-                  ref={password}
+                  ref={newPassword2}
                 />
               </Form.Group>
 
@@ -83,16 +101,20 @@ function Register() {
                   <Col xs={6}>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                       <StyledFormLabel>Data de Nascimento:</StyledFormLabel>
-                      <Form.Control type="date" name="date_of_birth" />
+                      <Form.Control
+                        type="date"
+                        name="date_of_birth"
+                        ref={dataNascimento}
+                      />
                     </Form.Group>
                   </Col>
                   <Col xs={6}>
                     <StyledFormLabel>Gênero:</StyledFormLabel>
-                    <Form.Select>
+                    <Form.Select ref={genero}>
                       <option>Selecionar</option>
-                      <option>Masculino</option>
-                      <option>Feminino</option>
-                      <option>Outro(s)</option>
+                      <option value={0}>Masculino</option>
+                      <option value={1}>Feminino</option>
+                      <option value={2}>Outro(s)</option>
                     </Form.Select>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center pt-2"}>

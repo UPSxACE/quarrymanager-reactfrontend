@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {} from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardSidebar } from "./sidebar";
-import { H1Alt, H1 } from "./layoutComponents";
+import { H1Alt } from "./layoutComponents";
+import axios from "axios";
 export { DashboardLayout };
 
 function DashboardLayout(props) {
+  const [put, findStats] = useState({});
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/user/find?id=1", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        findStats(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
   return (
     <BackgoundDiv className="DashboardLayout d-flex">
       <aside>
@@ -16,7 +40,7 @@ function DashboardLayout(props) {
           <H1Alt textColor={1}>Nome</H1Alt>
           <div className="userMenu d-flex ms-auto">
             <H1Alt className="ps-3" textColor={1}>
-              Props_Username
+              {put.username ? put.username : ""}
             </H1Alt>
             <H1Alt className="ps-3" textColor={1}>
               icone
