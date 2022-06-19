@@ -1,21 +1,57 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  InputGroup,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
+import React, { useRef } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { H1, H5, H3 } from "../../components/text";
 import { LoginButtonSubmit } from "../../components/buttons";
 import { ColoredRow } from "../../components/coloredComponents";
 import styled from "styled-components";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export { Register };
 
 function Register() {
+  const username = useRef("");
+  const email = useRef("");
+  const newPassword = useRef("");
+  const newPassword2 = useRef("");
+  const dataNascimento = useRef("");
+  const genero = useRef("");
+  const full_name = useRef("");
+  let navigate = useNavigate();
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/auth/register",
+          {
+            username: username.current.value,
+            email: email.current.value,
+            newPassword:
+              newPassword.current.value === newPassword2.current.value
+                ? newPassword.current.value
+                : "",
+            genero: genero.current.value,
+            dataNascimento: dataNascimento.current.value,
+            full_name: full_name.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+        navigate("/", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   return (
     <Container fluid>
       <ColoredRow variant={1}>
@@ -26,24 +62,38 @@ function Register() {
             <H3 className={"text-center"}>REGISTA-TE</H3>
             <Form>
               <Form.Group controlId="formPrimeiroNome">
-                <StyledFormLabel>Primeiro Nome:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Primeiro Nome" />
+                <StyledFormLabel>Usename:</StyledFormLabel>
+                <Form.Control type="text" placeholder="Nome" ref={username} />
               </Form.Group>
-              <Form.Group controlId="formApelido" className="mt-3">
-                <StyledFormLabel>Apelido:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Apelido" />
+
+              <Form.Group controlId="formPrimeiroNome" className="mt-3">
+                <StyledFormLabel>Nome Completo:</StyledFormLabel>
+                <Form.Control type="text" placeholder="Nome" ref={full_name} />
               </Form.Group>
+
               <Form.Group controlId="formEmail" className="mt-3">
                 <StyledFormLabel>Email:</StyledFormLabel>
-                <Form.Control type="email" placeholder="example@email.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="example@email.com"
+                  ref={email}
+                />
               </Form.Group>
               <Form.Group controlId="formPassword" className="mt-3">
                 <StyledFormLabel>Password:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Password" />
+                <Form.Control
+                  type="email"
+                  placeholder="Password"
+                  ref={newPassword}
+                />
               </Form.Group>
               <Form.Group controlId="formConfirmarPassword" className="mt-3">
                 <StyledFormLabel>Confirmar Password:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Confirmar Password" />
+                <Form.Control
+                  type="email"
+                  placeholder="Confirmar Password"
+                  ref={newPassword2}
+                />
               </Form.Group>
 
               <Container fluid className="mt-3">
@@ -51,20 +101,24 @@ function Register() {
                   <Col xs={6}>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                       <StyledFormLabel>Data de Nascimento:</StyledFormLabel>
-                      <Form.Control type="date" name="date_of_birth" />
+                      <Form.Control
+                        type="date"
+                        name="date_of_birth"
+                        ref={dataNascimento}
+                      />
                     </Form.Group>
                   </Col>
                   <Col xs={6}>
                     <StyledFormLabel>Gênero:</StyledFormLabel>
-                    <Form.Select>
+                    <Form.Select ref={genero}>
                       <option>Selecionar</option>
-                      <option>Masculino</option>
-                      <option>Feminino</option>
-                      <option>Outro(s)</option>
+                      <option value={0}>Masculino</option>
+                      <option value={1}>Feminino</option>
+                      <option value={2}>Outro(s)</option>
                     </Form.Select>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center pt-2"}>
-                    <LoginButtonSubmit width={"500px"}>
+                    <LoginButtonSubmit onClick={submit} width={"500px"}>
                       Registar
                     </LoginButtonSubmit>
                   </Col>{" "}
