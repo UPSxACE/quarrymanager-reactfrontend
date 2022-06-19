@@ -47,6 +47,7 @@ function DashboardLoja(props) {
             view={"ver-produto"}
             edit={"editar-produto"}
             delete={"delete-produto"}
+            controller={"produto"}
           ></DashboardTable>
         );
       case 1:
@@ -63,6 +64,7 @@ function DashboardLoja(props) {
             view={"ver-transportadora"}
             edit={"editar-transportadora"}
             delete={"delete-transportadora"}
+            controller={"transportadora"}
           ></DashboardTable>
         );
       default:
@@ -82,6 +84,7 @@ function DashboardLoja(props) {
             view={"ver-produto"}
             edit={"editar-produto"}
             delete={"delete-produto"}
+            controller={"produto"}
           ></DashboardTable>
         );
     }
@@ -100,7 +103,7 @@ function DashboardLoja(props) {
                 listItems={["Produtos", "Transportadoras"]}
                 rightButton={[
                   ["Adicionar Produto à Loja", "novo-produto"],
-                  "",
+
                   ["Nova Transportadora", "nova-transportadora"],
                 ]}
                 activeItem={activeTab}

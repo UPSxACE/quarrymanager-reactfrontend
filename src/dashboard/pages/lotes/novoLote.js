@@ -1,17 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import { Col, Container, Row, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
-import {
-  DashboardContainer,
-  DashboardRow,
-} from "../../components/layoutComponents";
+import { DashboardRow } from "../../components/layoutComponents";
 import uploadBackgroundImg from "../../../images/dashboard/uploadImagem20opacity.png";
 import { H1, H2 } from "../../components/layoutComponents";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export { DashboardNovoLote };
 
 //teste
 function DashboardNovoLote() {
+  const idProduto = useRef("");
+  const idLocalArmazem = useRef("");
+  const idLocalExtracao = useRef("");
+  const dataHora = useRef("");
+  const quantidade = useRef("");
+  let navigate = useNavigate();
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/produto/add",
+          {
+            idProduto: idProduto.current.value,
+            idLocalArmazem: idLocalArmazem.current.value,
+            idLocalExtracao: idLocalExtracao.current.value,
+            dataHora: dataHora.current.value,
+            quantidade: quantidade.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        navigate("/dashboard/stock", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
   return (
     <DashboardLayout>
       <Container fluid>
@@ -20,74 +56,51 @@ function DashboardNovoLote() {
             <Col xs={12}>
               <Container fluid>
                 <Row className="g-0 ">
-                  <Col xs={3} className="pe-4 ps-4">
-                    <H2>Material</H2>
-                    <Form.Select>
+                  <Col xs={6} className="pe-4 ps-4">
+                    <H2>Produto</H2>
+                    <Form.Select ref={idProduto}>
                       <option>Selecionar</option>
                     </Form.Select>
                   </Col>
-                  <Col xs={3} className="pe-5 ps-4 ">
-                    <H2>Cor</H2>
-                    <Form.Select>
-                      <option>Selecionar</option>
-                    </Form.Select>
-                  </Col>
-                  <Col xs={6} className="ps-5 pe-4">
-                    <H2>ID Lote</H2>
-                    <Form.Group className="mb-3" controlId="formBasicIdLote">
-                      <Form.Control type="text" placeholder="ID" />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row className="g-0 ">
-                  <Col xs={6} className="pe-5 ps-4">
-                    <H2>Local de Retirada</H2>
-                    <Form.Select>
-                      <option>Selecionar</option>
-                    </Form.Select>
-                  </Col>
-                  <Col xs={6} className="ps-5 pe-4">
+
+                  <Col xs={6} className="pe-4 ps-4">
                     <H2>Data/Hora</H2>
                     <Form.Group className="mb-3" controlId="formBasicDateTime">
                       <Form.Control
                         type="datetime-local"
                         placeholder="00/00/0000 00:00 AM"
+                        ref={dataHora}
                       />
                     </Form.Group>
                   </Col>
                 </Row>
+                <Row className="g-0 ">
+                  <Col xs={6} className="pe-4 ps-4">
+                    <H2>Local de Armazém</H2>
+                    <Form.Select ref={idLocalArmazem}>
+                      <option>Selecionar</option>
+                    </Form.Select>
+                  </Col>
+                  <Col xs={6} className="pe-4 ps-4">
+                    <H2>Local de Extração</H2>
+                    <Form.Select ref={idLocalExtracao}>
+                      <option>Selecionar</option>
+                    </Form.Select>
+                  </Col>
+                </Row>
                 <Row className="g-0">
-                  <Col xs={6} className="pe-5 ps-4">
+                  <Col xs={6} className="pe-4 ps-4">
                     <H2>Quantidade</H2>
                     <Form.Group
                       className="mb-3"
                       controlId="formBasicQuantidadeMaterial"
                     >
-                      <Form.Control type="text" placeholder="0" />
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        ref={quantidade}
+                      />
                     </Form.Group>
-                  </Col>
-                  <Col xs={6} className="ps-5">
-                    <Container fluid>
-                      <Row className="g-0">
-                        <H2>Cordenadas GPS</H2>
-                        <Col xs={3} className="pe-4">
-                          <Form.Group
-                            className="mb-3"
-                            controlId="formBasicCordenadaX"
-                          >
-                            <Form.Control type="number" placeholder="000.000" />
-                          </Form.Group>
-                        </Col>
-                        <Col xs={3} className="ps-4">
-                          <Form.Group
-                            className="mb-3"
-                            controlId="formBasicCordenadaY"
-                          >
-                            <Form.Control type="number" placeholder="000.000" />
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                    </Container>
                   </Col>
                 </Row>
               </Container>
@@ -118,7 +131,7 @@ function DashboardNovoLote() {
           <DashboardRow className="mt-4 g-0">
             <Col xs={12}>
               <a href="#">
-                <SubmitButton>
+                <SubmitButton onClick={submit}>
                   <H1>Submeter</H1>
                 </SubmitButton>
               </a>

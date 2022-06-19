@@ -65,6 +65,7 @@ import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { DashboardNovaTransportadora } from "./dashboard/pages/loja/novaTransportadora";
 
 // App.js
 
@@ -282,6 +283,10 @@ function App(props) {
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
+          <Route
+            path="nova-transportadora"
+            element={<DashboardNovaTransportadora />}
+          />
 
           <Route
             path="utilizadores"
@@ -369,7 +374,9 @@ function App(props) {
 }
 
 function Imagem() {
-  const [img, setImg] = useState();
+  const [img, setImg] = useState(
+    "https://yt3.ggpht.com/yti/APfAmoEx_S6AowQIUQh7LAWrbpPWgbmwacK2ImrWhNNuXA=s108-c-k-c0x00ffffff-no-rj"
+  );
   const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
   const password = "";
 

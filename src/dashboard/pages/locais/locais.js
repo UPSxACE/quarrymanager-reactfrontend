@@ -34,6 +34,7 @@ function DashboardLocais(props) {
             view={"ver-local-armazem"}
             edit={"editar-local-armazem"}
             delete={"delete-local-armazem"}
+            controller={"local-armazem"}
           />
         );
       case 1:
@@ -52,6 +53,7 @@ function DashboardLocais(props) {
             view={"ver-local-extracao"}
             edit={"editar-local-extracao"}
             delete={"delete-local-extracao"}
+            controller={"local-armazem"}
           />
         );
       default:
@@ -69,6 +71,7 @@ function DashboardLocais(props) {
             view={"ver-local-armazem"}
             edit={"editar-local-armazem"}
             delete={"delete-local-armazem"}
+            controller={"local-armazem"}
           />
         );
     }
