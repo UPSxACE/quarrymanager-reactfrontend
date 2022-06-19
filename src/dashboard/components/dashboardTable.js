@@ -38,6 +38,7 @@ function DashboardTable(props) {
         );
 
         delete_reload(reload_after_delete + 1);
+        handleClose();
       } catch (err) {
         console.log(err);
       }

@@ -64,7 +64,7 @@ function DashboardLoja(props) {
             view={"ver-transportadora"}
             edit={"editar-transportadora"}
             delete={"delete-transportadora"}
-            controller={"transportador"}
+            controller={"transportadora"}
           ></DashboardTable>
         );
       default:
