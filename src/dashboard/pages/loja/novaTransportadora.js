@@ -10,12 +10,12 @@ import {
 } from "../../components/buttons";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-export { DashboardNovaCor };
+export { DashboardNovaTransportadora };
 
 //teste
-function DashboardNovaCor() {
+function DashboardNovaTransportadora() {
   const nome = useRef("");
-  const prefixo = useRef("");
+
   let navigate = useNavigate();
 
   function submit() {
@@ -25,10 +25,9 @@ function DashboardNovaCor() {
         const password = "";
 
         const resp = await axios.post(
-          "http://localhost:8080/api/cor/add",
+          "http://localhost:8080/api/transportadora/add",
           {
             nome: nome.current.value,
-            prefixo: prefixo.current.value,
           },
           {
             headers: {
@@ -37,7 +36,7 @@ function DashboardNovaCor() {
           }
         );
 
-        navigate("/dashboard/stock", { replace: true });
+        navigate("/dashboard/loja", { replace: true });
       } catch (err) {
         console.log(err);
       }
@@ -51,7 +50,7 @@ function DashboardNovaCor() {
         <Form>
           <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={12}>
-              <H2 className="pb-3">Nova Cor</H2>
+              <H2 className="pb-3">Nova Transportadora</H2>
             </Col>
             <Col xs={6} className="pe-3">
               <FormColor>Nome</FormColor>
@@ -59,17 +58,12 @@ function DashboardNovaCor() {
                 <Form.Control type="text" placeholder="" ref={nome} />
               </Form.Group>
             </Col>
-            <Col xs={6}>
-              <FormColor>Prefixo</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" ref={prefixo} />
-              </Form.Group>
-            </Col>
+
             <Col xs={12} className="pt-3">
               <PrimaryButtonSave onClick={submit} className="me-2">
                 Enviar
               </PrimaryButtonSave>
-              <Link to={"/dashboard/stock"}>
+              <Link to={"/dashboard/loja"}>
                 <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
               </Link>
             </Col>

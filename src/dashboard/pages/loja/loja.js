@@ -100,7 +100,7 @@ function DashboardLoja(props) {
                 listItems={["Produtos", "Transportadoras"]}
                 rightButton={[
                   ["Adicionar Produto à Loja", "novo-produto"],
-                  "",
+
                   ["Nova Transportadora", "nova-transportadora"],
                 ]}
                 activeItem={activeTab}

@@ -9,7 +9,7 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export { DashboardNovoMaterial };
 
 //teste
@@ -70,8 +70,9 @@ function DashboardNovoMaterial() {
               <PrimaryButtonSave onClick={submit} className="me-2">
                 Enviar
               </PrimaryButtonSave>
-
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </DashboardRow>
         </Form>
