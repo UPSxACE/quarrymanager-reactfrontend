@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,10 +9,48 @@ import { Link } from "react-router-dom";
 export { DashboardTable, TablePager };
 
 function DashboardTable(props) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (id_to_set) => {
+    setID(id_to_set);
+    setShow(true);
+  };
+  const handleDelete = (item_to_delete) => {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.delete(
+          "http://localhost:8080/api/" +
+            props.controller +
+            "/delete-" +
+            props.controller +
+            "?" +
+            props.reference +
+            "=" +
+            item_to_delete,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        delete_reload(reload_after_delete + 1);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  };
   // ex de objeto recebido: {id: "Order ID", username: "Username", dateTime: "Date of arrival"}
   const [data, setData] = useState([]); // dados vindos da API
   const [labels, setLabels] = useState([]); // ex: ["Order ID", "Username", "Date of arrivale"]
   const [fields, setFields] = useState([]); //ex: ["id", "username", "dateTime"]
+  const [item_id, setID] = useState(0);
+  const [reload_after_delete, delete_reload] = useState(0);
   const [endPoint, setEndpoint] = useState(
     "http://localhost:8080/api/" + props.endPoint
   );
@@ -67,6 +105,9 @@ function DashboardTable(props) {
           <FontAwesomeIcon
             className="align-self-center action"
             icon={faTrash}
+            onClick={() => {
+              handleShow(reference);
+            }}
           ></FontAwesomeIcon>
         </button>
       );
@@ -108,10 +149,31 @@ function DashboardTable(props) {
       });
     });
     setFields(Object.keys(props.labels));
-  }, []);
+  }, [reload_after_delete]);
 
   return (
     <TableWrapper>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmar apagar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body id={item_id}>
+          Tem a certeza que deseja apagar o objeto de ID #{item_id}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Fechar
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleDelete(item_id);
+            }}
+          >
+            Apagar
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <TableStyle>
         <thead>
           <tr>

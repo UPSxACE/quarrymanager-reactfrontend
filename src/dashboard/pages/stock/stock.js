@@ -50,6 +50,7 @@ function DashboardStock(props) {
             view={"ver-lote"}
             edit={"editar-lote"}
             delete={"delete-lote"}
+            controller={"lote"}
           ></DashboardTable>
         );
       case 1:

@@ -41,6 +41,7 @@ function DashboardEncomendas() {
               view={"ver-lote"}
               edit={"editar-lote"}
               delete={"delete-lote"}
+              controller={"lote"}
             ></DashboardTable>
             <TablePager
               updatePager={updatePager}
