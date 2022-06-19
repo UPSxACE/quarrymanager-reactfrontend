@@ -50,6 +50,7 @@ function DashboardStock(props) {
             view={"ver-lote"}
             edit={"editar-lote"}
             delete={"delete-lote"}
+            controller={"lote"}
           ></DashboardTable>
         );
       case 1:
@@ -73,6 +74,7 @@ function DashboardStock(props) {
             view={"ver-lote"}
             edit={"editar-lote"}
             delete={"delete-lote"}
+            controller={"lote"}
           ></DashboardTable>
         );
       case 2:
@@ -95,6 +97,7 @@ function DashboardStock(props) {
             view={"ver-produto"}
             edit={"editar-produto"}
             delete={"delete-produto"}
+            controller={"produto"}
           ></DashboardTable>
         );
       case 3:
@@ -113,6 +116,7 @@ function DashboardStock(props) {
             view={"ver-material"}
             edit={"editar-material"}
             delete={"delete-material"}
+            controller={"material"}
           ></DashboardTable>
         );
 
@@ -132,6 +136,7 @@ function DashboardStock(props) {
             view={"ver-cor"}
             edit={"editar-cor"}
             delete={"delete-cor"}
+            controller={"cor"}
           ></DashboardTable>
         );
       default:
@@ -155,6 +160,7 @@ function DashboardStock(props) {
             view={"ver-lote"}
             edit={"editar-lote"}
             delete={"delete-lote"}
+            controller={"lote"}
           ></DashboardTable>
         );
     }
