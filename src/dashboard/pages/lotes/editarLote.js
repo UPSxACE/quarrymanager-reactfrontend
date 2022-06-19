@@ -9,14 +9,14 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 export { EditarLote };
 
 function EditarLote() {
-  const [dados, atualizarDados] = useState([]);
-  const { id } = useParams();
+  const [lote, atualizarLote] = useState({});
+  const { codigo_lote } = useParams();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -25,7 +25,7 @@ function EditarLote() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/lote/find?id=" + id,
+          "http://localhost:8080/api/lote/find?codigo_lote=" + codigo_lote,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -33,14 +33,14 @@ function EditarLote() {
           }
         );
 
-        atualizarDados(resp.data);
+        atualizarLote(resp.data);
       } catch (err) {
         console.log(err);
       }
     };
 
     sendGetRequest();
-  }, [id]);
+  }, [codigo_lote]);
   return (
     <DashboardLayout>
       <Container fluid>
@@ -48,51 +48,66 @@ function EditarLote() {
           <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
             <Col xs={12}>
               <H2 className="pb-3">Editar Lote</H2>
+            </Col>
+            <Col xs={6} className="pe-4">
               <FormColor>Código do Lote</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" readOnly />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={lote.codigo_lote ? lote.codigo_lote : ""}
+                  readOnly
+                />
               </Form.Group>
             </Col>
-            <Col xs={6} className="pe-3">
-              <FormColor>Material</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
-              </Form.Group>
-            </Col>
+
             <Col xs={6}>
-              <FormColor>Cor</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+              <FormColor>Data/Hora de Extração</FormColor>
+              <Form.Group controlId="formBasicIdLote">
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={lote.dataHora ? lote.dataHora : ""}
+                  readOnly
+                />
               </Form.Group>
             </Col>
-            <Col xs={6} className="pe-3">
+            <Col xs={6} className="pe-4">
+              <FormColor>Produto</FormColor>
+              <Form.Select>
+                <option>Selecionar</option>
+              </Form.Select>
+            </Col>
+
+            <Col xs={6}>
               <FormColor>Quantidade</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={lote.quantidade ? lote.quantidade : ""}
+                />
               </Form.Group>
             </Col>
-            <Col xs={6}>
+            <Col xs={6} className="pe-4">
               <FormColor>Local de Extração</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
             </Col>
-            <Col xs={6} className="pe-3">
+            <Col xs={6}>
               <FormColor>Local de Armazém</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
                 <Form.Control type="text" placeholder="" />
               </Form.Group>
             </Col>
-            <Col xs={6}>
-              <FormColor>Data/Hora de Extração</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
-              </Form.Group>
-            </Col>
+
             <Col xs={12} className="pt-3">
               <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </DashboardRow>
         </Form>

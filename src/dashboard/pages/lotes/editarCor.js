@@ -9,13 +9,13 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 export { EditarCor };
 
 function EditarCor() {
-  const [dados, atualizarDados] = useState([]);
+  const [cor, getCor] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function EditarCor() {
           }
         );
 
-        atualizarDados(resp.data);
+        getCor(resp.data);
       } catch (err) {
         console.log(err);
       }
@@ -50,21 +50,31 @@ function EditarCor() {
             <Col xs={6} className="pe-3">
               <FormColor>Nome</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={cor.nome ? cor.nome : ""}
+                />
               </Form.Group>
             </Col>
 
             <Col xs={6} className="pe-3">
               <FormColor>Perfixo</FormColor>
               <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  defaultValue={cor.prefixo ? cor.prefixo : ""}
+                />
               </Form.Group>
             </Col>
 
             <Col xs={12} className="pt-3">
               <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
 
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </DashboardRow>
         </Form>

@@ -47,7 +47,7 @@ import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
 
 import { LojaHome } from "./website/pages/loja/loja";
 
-import { EditarProduto } from "./dashboard/pages/loja/editarLoja";
+import { EditarProduto } from "./dashboard/pages/lotes/editarProduto";
 import { EditarLote } from "./dashboard/pages/lotes/editarLote";
 import { EditarStock } from "./dashboard/pages/stock/editarStock";
 import { EditarUtilizador } from "./dashboard/pages/utilizadores/editarUtilizador";
