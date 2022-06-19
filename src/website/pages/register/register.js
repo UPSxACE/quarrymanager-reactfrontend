@@ -1,21 +1,44 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  InputGroup,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
+import React, { useRef } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { H1, H5, H3 } from "../../components/text";
 import { LoginButtonSubmit } from "../../components/buttons";
 import { ColoredRow } from "../../components/coloredComponents";
 import styled from "styled-components";
+import axios from "axios";
 export { Register };
 
 function Register() {
+  const username = useRef("");
+  const email = useRef("");
+  const password = useRef("");
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/auth/register",
+          {
+            nome: username.current.value,
+            email: email.current.value,
+            password: password.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   return (
     <Container fluid>
       <ColoredRow variant={1}>
@@ -26,24 +49,33 @@ function Register() {
             <H3 className={"text-center"}>REGISTA-TE</H3>
             <Form>
               <Form.Group controlId="formPrimeiroNome">
-                <StyledFormLabel>Primeiro Nome:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Primeiro Nome" />
+                <StyledFormLabel>Nome:</StyledFormLabel>
+                <Form.Control type="text" placeholder="Nome" ref={username} />
               </Form.Group>
-              <Form.Group controlId="formApelido" className="mt-3">
-                <StyledFormLabel>Apelido:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Apelido" />
-              </Form.Group>
+
               <Form.Group controlId="formEmail" className="mt-3">
                 <StyledFormLabel>Email:</StyledFormLabel>
-                <Form.Control type="email" placeholder="example@email.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="example@email.com"
+                  ref={email}
+                />
               </Form.Group>
               <Form.Group controlId="formPassword" className="mt-3">
                 <StyledFormLabel>Password:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Password" />
+                <Form.Control
+                  type="email"
+                  placeholder="Password"
+                  ref={password}
+                />
               </Form.Group>
               <Form.Group controlId="formConfirmarPassword" className="mt-3">
                 <StyledFormLabel>Confirmar Password:</StyledFormLabel>
-                <Form.Control type="email" placeholder="Confirmar Password" />
+                <Form.Control
+                  type="email"
+                  placeholder="Confirmar Password"
+                  ref={password}
+                />
               </Form.Group>
 
               <Container fluid className="mt-3">
@@ -64,7 +96,7 @@ function Register() {
                     </Form.Select>
                   </Col>
                   <Col xs={12} className={"d-flex justify-content-center pt-2"}>
-                    <LoginButtonSubmit width={"500px"}>
+                    <LoginButtonSubmit onClick={submit} width={"500px"}>
                       Registar
                     </LoginButtonSubmit>
                   </Col>{" "}
