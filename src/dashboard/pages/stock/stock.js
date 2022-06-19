@@ -92,7 +92,7 @@ function DashboardStock(props) {
               Absorcao_Agua: "Absorção de Água",
             }}
             endPoint={"produto/listar?page=" + activePage}
-            reference={"codigo_lote"}
+            reference={"id"}
             actions
             view={"ver-produto"}
             edit={"editar-produto"}
@@ -111,7 +111,7 @@ function DashboardStock(props) {
               prefixo: "Prefixo",
             }}
             endPoint={"material/listar?page=" + activePage}
-            reference={"codigo_lote"}
+            reference={"id"}
             actions
             view={"ver-material"}
             edit={"editar-material"}
@@ -131,7 +131,7 @@ function DashboardStock(props) {
               prefixo: "Prefixo",
             }}
             endPoint={"cor/listar?page=" + activePage}
-            reference={"codigo_lote"}
+            reference={"id"}
             actions
             view={"ver-cor"}
             edit={"editar-cor"}
