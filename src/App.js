@@ -245,14 +245,8 @@ function App(props) {
           }
         >
           <Route path="/" element={<Home />} />
-          <Route
-            path="about"
-            element={
-              <Private check="admin">
-                <About />
-              </Private>
-            }
-          />
+          <Route path="imagem" element={<Imagem />} />
+
           <Route path="equipa" element={<Equipa />} />
           <Route path="home" element={<Home />} />
           <Route path="parceiros" element={<Parceiros />} />
@@ -376,6 +370,38 @@ function App(props) {
         </Route>
       </Routes>
     </div>
+  );
+}
+
+function Imagem() {
+  const [img, setImg] = useState();
+  const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+  const password = "";
+
+  const fetchImage = async () => {
+    const res = await axios.get(
+      "http://localhost:8080/api/profile/test-image-upload",
+      {
+        headers: {
+          Authorization: "Basic " + btoa(username + ":" + password),
+        },
+        responseType: "blob",
+      }
+    );
+    console.log(res);
+    const imageBlob = await res.data;
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+    setImg(imageObjectURL);
+  };
+
+  useEffect(() => {
+    fetchImage();
+  }, []);
+
+  return (
+    <>
+      <img src={img} height={200} alt="icons" />
+    </>
   );
 }
 
