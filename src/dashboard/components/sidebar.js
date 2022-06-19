@@ -12,8 +12,10 @@ import {
   faScrewdriverWrench,
   faBullhorn,
   faCircleQuestion,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+
 export { DashboardSidebar };
 //
 function DashboardSidebar(props) {
@@ -102,6 +104,17 @@ function DashboardSidebar(props) {
             <SidebarIcon
               icon={faCircleQuestion}
               className={props.tab === "aju" ? "active" : ""}
+            />
+          </Link>
+        </IconSidebarList>
+
+        <IconSidebarList
+          className={props.tab === "bac" ? "text-center active" : "text-center"}
+        >
+          <Link to="/home">
+            <SidebarIcon
+              icon={faRightFromBracket}
+              className={props.tab === "bac" ? "active" : ""}
             />
           </Link>
         </IconSidebarList>
