@@ -13,8 +13,15 @@ export { MeuPerfil };
 
 function MeuPerfil(props) {
   const [user, getUser] = useState({});
-  const gender = useRef(1);
+  const full_name = useRef("");
+  const dataNascimento = useRef("");
+  const genero = useRef(1);
+  const morada = useRef("");
+  const codPostal = useRef("");
+  const localidade = useRef("");
+  const telefone = useRef("");
   const [file, setFile] = useState(null);
+  const [update_on_upload, upload_update] = useState(0);
   let navigate = useNavigate();
 
   function submit() {
@@ -29,9 +36,16 @@ function MeuPerfil(props) {
         const password = "";
 
         const resp = await axios.post(
-          "http://localhost:8080/api/profile/test-image-upload",
+          "http://localhost:8080/api/profile/editar",
           {
-            gender: gender.current.value,
+            full_name: full_name.current.value,
+            dataNascimento: dataNascimento.current.value,
+            genero: genero.current.value,
+            morada: morada.current.value,
+            codPostal: codPostal.current.value,
+            localidade: localidade.current.value,
+            telefone: telefone.current.value,
+
             file: file,
             file2: file,
           },
@@ -43,6 +57,8 @@ function MeuPerfil(props) {
           }
         );
 
+        upload_update(update_on_upload + 1);
+
         //navigate("/", { replace: true });
       } catch (err) {
         console.log(err);
@@ -52,8 +68,8 @@ function MeuPerfil(props) {
     sendPostRequest();
   }
 
-  function logGender() {
-    console.log(gender.current.value);
+  function loggenero() {
+    console.log(genero.current.value);
   }
 
   useEffect(() => {
@@ -72,13 +88,13 @@ function MeuPerfil(props) {
         );
 
         getUser(resp.data);
-        gender.current.value = resp.data.genero;
+        genero.current.value = resp.data.genero;
       } catch (err) {
         console.log(err);
       }
     };
     sendGetRequest();
-  }, []);
+  }, [update_on_upload]);
 
   function logOut() {
     localStorage.removeItem("AuthKey");
@@ -170,7 +186,7 @@ function MeuPerfil(props) {
                       <StyledFormLabel>
                         <TextH4>Gênero:</TextH4>
                       </StyledFormLabel>
-                      <Form.Select ref={gender}>
+                      <Form.Select ref={genero}>
                         <option>Selecionar</option>
                         <option value={0}>Masculino</option>
                         <option value={1}>Feminino</option>
@@ -236,8 +252,14 @@ function MeuPerfil(props) {
                 className="g-0 pe-5 d-flex flex-column justify-content-start"
               >
                 <img
+                  key={update_on_upload}
                   width={"100%"}
-                  src="https://firealarm.com/wp-content/uploads/2021/02/executiva-empresaria-ceo-mulher-lideranca-lider-1518529250446_300x300.jpg"
+                  src={
+                    user.profilePic
+                      ? "http://localhost:8080/uploads/" + user.profilePic
+                      : "http://localhost:8080/uploads/profilePictures/genericUserProfilePicture.svg"
+                  }
+                  alt={"profile"}
                   className="mb-4"
                 ></img>
 
