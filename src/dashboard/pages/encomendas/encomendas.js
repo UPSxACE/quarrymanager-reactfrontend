@@ -37,6 +37,7 @@ function DashboardEncomendas() {
                 nome: ["idProduto0", ["idMaterial0", "Nome"]], // entry["idProduto0"]["idMaterial0"]
               }}
               endPoint={"lote/listar?page=" + activePage}
+              reference={"codigo_lote"}
               actions
               view={"ver-lote"}
               edit={"editar-lote"}

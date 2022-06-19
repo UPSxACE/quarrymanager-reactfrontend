@@ -44,6 +44,7 @@ function DashboardUtilizadores(props) {
             view={"ver-user"}
             edit={"editar-user"}
             delete={"delete-user"}
+            controller={"user"}
           ></DashboardTable>
         );
       case 1:
@@ -62,6 +63,7 @@ function DashboardUtilizadores(props) {
             view={"ver-user"}
             edit={"editar-user"}
             delete={"delete-user"}
+            controller={"user"}
           ></DashboardTable>
         );
       case 2:
@@ -80,6 +82,7 @@ function DashboardUtilizadores(props) {
             view={"ver-user"}
             edit={"editar-user"}
             delete={"delete-user"}
+            controller={"user"}
           ></DashboardTable>
         );
       case 3:
@@ -98,6 +101,7 @@ function DashboardUtilizadores(props) {
             view={"ver-user"}
             edit={"editar-user"}
             delete={"delete-user"}
+            controller={"user"}
           ></DashboardTable>
         );
       default:
@@ -116,6 +120,7 @@ function DashboardUtilizadores(props) {
             view={"ver-user"}
             edit={"editar-user"}
             delete={"delete-user"}
+            controller={"user"}
           ></DashboardTable>
         );
     }
