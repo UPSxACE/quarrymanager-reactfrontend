@@ -45,6 +45,7 @@ function NavbarComponent(props) {
   const [guest, setGuest] = useState(props.isGuest);
   const [loaded, setLoad] = useState(false);
   const [operario, setOperario] = useState(undefined);
+  const [put, findStats] = useState({});
 
   useState(() => {
     console.log("aaaBC: " + loaded);
@@ -65,6 +66,30 @@ function NavbarComponent(props) {
         setLoad(true);
 
         console.log("testee: " + resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/profile/get-profile?expand=username",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        findStats(resp.data);
       } catch (err) {
         console.log(err);
       }
@@ -165,7 +190,11 @@ function NavbarComponent(props) {
             <StyledNavLink to="/faq">Faqs</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight d-flex align-items-center">
-            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+            <ButtonDropdown
+              id="dropdown-basic-button"
+              title={put.username ? put.username : ""}
+              align="end"
+            >
               <Link className="dropdown-item" to="/perfil">
                 Editar Perfil
               </Link>
@@ -176,7 +205,7 @@ function NavbarComponent(props) {
               )}
 
               <Link className="dropdown-item" to="encomendas">
-                Histórico de Encomendas
+                Encomendas
               </Link>
               <Link className="dropdown-item" to="/perfil/definicoes">
                 Definições
@@ -187,7 +216,7 @@ function NavbarComponent(props) {
               <Link className="dropdown-item" onClick={logOut} to="">
                 Sair
               </Link>
-            </DropdownButton>
+            </ButtonDropdown>
           </div>
         </div>
       </StyledNavbar>
@@ -217,6 +246,56 @@ function NavbarComponent(props) {
     );
   }
 }
+
+const ButtonDropdown = styled(DropdownButton)`
+  background-color: #30373e;
+  color: white;
+  border-radius: 17px;
+  border: 0;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
+  z-index: 99;
+  
+
+
+  .btn-primary {
+    color: white;
+    background-color:  #30373e;
+    border-color: #30373e;
+
+  &:active {
+    color: #fff;
+    background-color: #4c4f52;
+    border: 0;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #4c4f52;
+    border: 0;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: #4c4f52;
+    border: 0;
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+
+  &:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+
+  &.btn-check:active+.btn-primary:focus,  &.btn-check:checked+.btn-primary:focus,  &.btn-primary.active:focus,  &.btn-primary:active:focus,  &.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.0rem rgb(0 0 0 / 0%);
+}
+
+&.btn-primary.dropdown-toggle {
+    color: #30373e; 
+    background-color:  white;
+    border-color: #30373e;
+}
+
+`;
 
 const StyledNavbar = styled(Navbar)`
   background-color: #30373e;
