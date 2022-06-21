@@ -92,7 +92,6 @@ function accessCheck(permission_to_check) {
         Authorization: "Basic " + btoa(username + ":" + password),
       },
     }).then((response) => {
-      console.log("aaa:" + response.data);
       return response;
     });
   };
@@ -101,11 +100,14 @@ function accessCheck(permission_to_check) {
 }
 
 function isLoggedCheck() {
-  console.log(localStorage.getItem("AuthKey"));
   return !(
     localStorage.getItem("AuthKey") === null ||
     localStorage.getItem("AuthKey") === undefined
   );
+}
+
+function LoggedInOnly(props) {
+  return isLoggedCheck() ? <>{props.children}</> : <Navigate to="/home" />;
 }
 
 function Private(props) {
@@ -120,7 +122,6 @@ function Private(props) {
           "http://localhost:8080/api/auth/check-permission?permission=" +
           props.check;
 
-        console.log("AAAAAAA: " + permission);
         let resp = await axios(endPoint, {
           headers: {
             Authorization: "Basic " + btoa(username + ":" + password),
@@ -162,12 +163,6 @@ function About() {
 }
 
 function Website(props) {
-  const [tab, setTab] = useState("hom");
-
-  useEffect(() => {
-    console.log("Foi:" + tab);
-  }, [tab]);
-
   return (
     <div className="Website">
       {props.guest ? (
@@ -206,7 +201,7 @@ function Dashboard() {
   return (
     <Private check={"operario"}>
       <DashboardTabContext.Provider value={[tab, setTab]}>
-        <DashboardLayout tab={"hom"}>
+        <DashboardLayout>
           <div className="Dashboard">
             <Outlet />
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -214,31 +209,6 @@ function Dashboard() {
         </DashboardLayout>
       </DashboardTabContext.Provider>
     </Private>
-  );
-}
-
-function Perfil() {
-  return (
-    <div className="Website">
-      {!isLoggedCheck() ? (
-        <NavbarComponent isGuest={true} />
-      ) : (
-        <NavbarComponent isGuest={false} />
-      )}
-
-      <Outlet />
-      <Footer />
-    </div>
-  );
-}
-
-function Loja() {
-  return (
-    <div className="Loja">
-      <NavbarComponent isGuest={!isLoggedCheck()} />
-      <Outlet />
-      <Footer />
-    </div>
   );
 }
 
@@ -290,7 +260,26 @@ function App(props) {
               </GuestOnly>
             }
           />
+
+          <Route
+            path="/perfil/definicoes"
+            element={
+              <LoggedInOnly>
+                <DefinicoesPerfil />
+              </LoggedInOnly>
+            }
+          ></Route>
+          <Route
+            path="perfil"
+            element={
+              <LoggedInOnly>
+                <MeuPerfil />
+              </LoggedInOnly>
+            }
+          ></Route>
           <Route path="faq" element={<Faq />} />
+          <Route path="loja/" element={<LojaHome />}></Route>
+          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
 
         <Route path="dashboard/" element={<Dashboard />}>
@@ -362,16 +351,6 @@ function App(props) {
           <Route path="ver-lote/:codigo_lote" element={<ViewLote />} />
         </Route>
 
-        <Route path="perfil" element={<Perfil />}>
-          <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
-          <Route path="/perfil/" element={<MeuPerfil />}></Route>
-        </Route>
-
-        <Route path="loja" element={<Loja />}>
-          <Route path="/loja/" element={<LojaHome />}></Route>
-          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
-        </Route>
-
         <Route
           path="about"
           element={
@@ -422,7 +401,6 @@ function Imagem() {
         responseType: "blob",
       }
     );
-    console.log(res);
     const imageBlob = await res.data;
     const imageObjectURL = URL.createObjectURL(imageBlob);
     setImg(imageObjectURL);

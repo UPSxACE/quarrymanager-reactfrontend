@@ -31,8 +31,6 @@ function ViewLote() {
             },
           }
         );
-        console.log(codigo_lote);
-        console.log("teste: " + resp.data);
         findStats(resp.data);
       } catch (err) {
         console.log(err);
@@ -43,157 +41,151 @@ function ViewLote() {
   }, [codigo_lote]);
 
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <DashboardRow className="g-0 pt-4 pb-4">
-          <Col xs={12}>
-            <Container>
-              <Tabela className="w-100 ">
-                <tbody>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Codigo do Lote :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.codigo_lote ? find.codigo_lote : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Quantidade :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.quantidade ? find.quantidade : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.dataHora ? find.dataHora : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Titulo do Artigo :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0 ? find.idProduto0.tituloArtigo : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Em Stock ?</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0 ? find.idProduto0.na_loja : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Res. à Compressão :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0 ? find.idProduto0.Res_Compressao : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Res. à Flexão :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0 ? find.idProduto0.Res_Flexao : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">
-                      {" "}
-                      Massa Vol. Aparente :
-                    </th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
-                        ? find.idProduto0.Massa_Vol_Aparente
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Absorção de Água :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0 ? find.idProduto0.Absorcao_Agua : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Material :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
-                        ? find.idProduto0.idMaterial0
-                          ? find.idProduto0.idMaterial0.nome
-                          : ""
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Cor :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
-                        ? find.idProduto0.idCor0
-                          ? find.idProduto0.idCor0.nome
-                          : ""
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Preço :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
+    <Container fluid>
+      <DashboardRow className="g-0 pt-4 pb-4">
+        <Col xs={12}>
+          <Container>
+            <Tabela className="w-100 ">
+              <tbody>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Codigo do Lote :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.codigo_lote ? find.codigo_lote : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Quantidade :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.quantidade ? find.quantidade : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.dataHora ? find.dataHora : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Titulo do Artigo :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.tituloArtigo : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Em Stock ?</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.na_loja : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Res. à Compressão :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.Res_Compressao : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Res. à Flexão :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.Res_Flexao : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">
+                    {" "}
+                    Massa Vol. Aparente :
+                  </th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.Massa_Vol_Aparente : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Absorção de Água :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0 ? find.idProduto0.Absorcao_Agua : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Material :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0
+                      ? find.idProduto0.idMaterial0
+                        ? find.idProduto0.idMaterial0.nome
+                        : ""
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Cor :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0
+                      ? find.idProduto0.idCor0
+                        ? find.idProduto0.idCor0.nome
+                        : ""
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Preço :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0
+                      ? find.idProduto0.preco
                         ? find.idProduto0.preco
-                          ? find.idProduto0.preco
-                          : ""
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">
-                      Quantidade Vendida :
-                    </th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
+                        : ""
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Quantidade Vendida :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0
+                      ? find.idProduto0.quantidade_vendida
                         ? find.idProduto0.quantidade_vendida
-                          ? find.idProduto0.quantidade_vendida
-                          : ""
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Número de pedidos :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idProduto0
+                        : ""
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Número de pedidos :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idProduto0
+                      ? find.idProduto0.numero_pedidos
                         ? find.idProduto0.numero_pedidos
-                          ? find.idProduto0.numero_pedidos
-                          : ""
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Local de Extraçao :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idLocalExtracao0 ? find.idLocalExtracao0.nome : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS X :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idLocalExtracao0
-                        ? find.idLocalExtracao0.coordenadasGPS_X
-                        : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS Y :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.idLocalExtracao0
-                        ? find.idLocalExtracao0.coordenadasGPS_Y
-                        : ""}
-                    </td>
-                  </tr>
-                </tbody>
-              </Tabela>
-              <Col xs={12} className="pt-3">
-                <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
-                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-              </Col>
-            </Container>
-          </Col>
-        </DashboardRow>
-      </Container>
-    </DashboardLayout>
+                        : ""
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Local de Extraçao :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idLocalExtracao0 ? find.idLocalExtracao0.nome : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS X :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idLocalExtracao0
+                      ? find.idLocalExtracao0.coordenadasGPS_X
+                      : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS Y :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.idLocalExtracao0
+                      ? find.idLocalExtracao0.coordenadasGPS_Y
+                      : ""}
+                  </td>
+                </tr>
+              </tbody>
+            </Tabela>
+            <Col xs={12} className="pt-3">
+              <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Col>
+          </Container>
+        </Col>
+      </DashboardRow>
+    </Container>
   );
 }
 

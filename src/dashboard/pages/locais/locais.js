@@ -23,11 +23,8 @@ function DashboardLocais(props) {
   });
 
   function getTable(activeTab) {
-    console.log("teste", activeTab, 1);
-
     switch (activeTab) {
       case 0:
-        console.log("this");
         return (
           <DashboardTable
             key={"0/" + activePage}
@@ -64,7 +61,6 @@ function DashboardLocais(props) {
           />
         );
       default:
-        console.log("this is default");
         return (
           <DashboardTable
             key={"0/" + activePage}
@@ -98,9 +94,7 @@ function DashboardLocais(props) {
     changeTab(newTab);
   }
 
-  useEffect(() => {
-    console.log("aba atual:" + activeTab);
-  }, [activeTab]);
+  useEffect(() => {}, [activeTab]);
 
   return (
     <Container fluid>

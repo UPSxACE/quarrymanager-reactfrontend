@@ -14,12 +14,13 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
 import { ButtonSubmit } from "../../../website/components/buttons";
-
+import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.svg";
 export { DashboardEncomendas, DashboardVerEncomendas };
 
-function DashboardEncomendas() {
+function DashboardEncomendas(props) {
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
+  const [activeTab, changeTab] = useState(0);
   const [currentTab, setTab] = useContext(DashboardTabContext);
 
   useEffect(() => {
@@ -34,6 +35,16 @@ function DashboardEncomendas() {
   }
   return (
     <Container fluid>
+      <Row className="g-0">
+        <Col xs={12}>
+          <DashboardMenu>
+            <DashboardMenuList
+              listItems={["Encomendas"]}
+              activeItem={activeTab}
+            ></DashboardMenuList>
+          </DashboardMenu>
+        </Col>
+      </Row>
       <Row className="g-0 pt-5">
         <Col xs={12}>
           <DashboardTable
@@ -62,7 +73,7 @@ function DashboardEncomendas() {
 
 function DashboardVerEncomendas() {
   return (
-    <Container fluid>
+    <ContainerStretch fluid className="d-flex flex-column">
       <ButtonsRow>
         <Col xs={12}>
           <div className="d-flex bd-highlight">
@@ -84,106 +95,117 @@ function DashboardVerEncomendas() {
           </div>
         </Col>
       </ButtonsRow>
-      <EncomendaWrapper className="g-0">
-        <Col xs={12}>
+      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
+        <Col xs={12} className="d-flex">
           <Container fluid>
-            <Row className="p-5">
-              <BoxCol xs={6} className="g-0 pe-3 pb-5">
-                <h1>O Status: </h1>
-                <div>
-                  <ButtonSubmit black className="w-100">
-                    Conferir o Stock
-                  </ButtonSubmit>
+            <Row className="h-25">
+              <BoxCol xs={6} className="pe-3">
+                <div className="borderBox p-3">
+                  <h1>O Status: </h1>
+                  <div className="">
+                    <ButtonSubmit black className="w-100 ">
+                      (forçar mudança de estado)
+                    </ButtonSubmit>
+                  </div>
                 </div>
               </BoxCol>
               <Col xs={6} className="ps-3">
-                ad
+                <div className="d-flex justify-content-end p-3">
+                  <div className="d-flex flex-column text-right ">
+                    <h2>Nome</h2>
+                    <h6>Encomenda N</h6>
+                    <h6>Pedido realizado em: </h6>
+                  </div>
+                  <ProfileEncPic src={EncomendaPic}></ProfileEncPic>
+                </div>
               </Col>
             </Row>
-            <Row className="pb-5 pe-5 ps-5">
-              <Col xs={6} className="g-0 pe-3">
-                <ButtonSubmit black className="">
+
+            <Row className="h-75 pt-5">
+              <Col xs={6} className="g-0 h-100 d-flex flex-column pe-3">
+                <EditButton black variant="secondary">
                   Editar
-                </ButtonSubmit>
-                <BoxContainer>
+                </EditButton>
+                <BoxContainer className="pe-5 ps-3 pb-5 pt-2  flex-grow-1">
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Nome:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Morada:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Email:</h6>
                         <span>abc@abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Telefone:</h6>
                         <span>99999999</span>
                       </div>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} className="pb-2">
                       Detalhes da Conta do Utilizador
                       <textarea className="w-100"></textarea>
                     </Col>
                   </Row>
                 </BoxContainer>
               </Col>
-              <Col xs={6} className="g-0 ps-3">
-                <ButtonSubmit black className="">
+
+              <Col xs={6} className="g-0 h-100 d-flex flex-column ps-3">
+                <EditButton black variant="secondary">
                   Editar
-                </ButtonSubmit>
-                <BoxContainer>
+                </EditButton>
+                <BoxContainer className="pe-5 ps-5 pb-5 pt-2 flex-grow-1">
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Produto:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Preço/m²:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Quantidade:</h6>
                         <span>abc@abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Código de Desconto:</h6>
                         <span>99999999</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Preço Inicial:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Desconto (Manual):</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Estimativa Preço Final:</h6>
                         <span>abc</span>
@@ -196,7 +218,7 @@ function DashboardVerEncomendas() {
           </Container>
         </Col>
       </EncomendaWrapper>
-    </Container>
+    </ContainerStretch>
   );
 }
 
@@ -211,5 +233,21 @@ const BoxContainer = styled(Container)`
 `;
 
 const BoxCol = styled(Col)`
-  border: 1px solid black;
+  .borderBox {
+    border: 1px solid black;
+  }
+  padding: 0px;
+`;
+
+const ContainerStretch = styled(Container)`
+  height: calc(100vh - 70px - 6rem);
+`;
+
+const EditButton = styled(ButtonSubmit)`
+  width: 70px;
+`;
+
+const ProfileEncPic = styled.img`
+  border-radius: 50px;
+  height: 100px;
 `;

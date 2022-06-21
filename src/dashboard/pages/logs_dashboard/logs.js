@@ -35,7 +35,6 @@ function DashboardLogs(props) {
   function getTable(activeTab) {
     switch (activeTab) {
       case 0:
-        console.log("this");
         return (
           <DashboardTable
             key={"0/" + activePage}
@@ -104,7 +103,6 @@ function DashboardLogs(props) {
           ></DashboardTable>
         );
       default:
-        console.log("this is default");
         return (
           <DashboardTable
             key={"0/" + activePage}

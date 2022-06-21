@@ -22,9 +22,6 @@ function Login(props) {
   const navigate = useNavigate();
 
   function attemptLogin() {
-    console.log(email.current.value);
-    console.log(password.current.value);
-
     const sendGetRequest = async () => {
       try {
         const endPoint = "http://localhost:8080/api/auth/login";

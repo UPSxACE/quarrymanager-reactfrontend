@@ -49,97 +49,95 @@ function DashboardNovoLote() {
     sendPostRequest();
   }
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4">
-            <Col xs={12}>
-              <Container fluid>
-                <Row className="g-0 ">
-                  <Col xs={6} className="pe-4 ps-4">
-                    <H2>Produto</H2>
-                    <Form.Select ref={idProduto}>
-                      <option>Selecionar</option>
-                    </Form.Select>
-                  </Col>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4">
+          <Col xs={12}>
+            <Container fluid>
+              <Row className="g-0 ">
+                <Col xs={6} className="pe-4 ps-4">
+                  <H2>Produto</H2>
+                  <Form.Select ref={idProduto}>
+                    <option>Selecionar</option>
+                  </Form.Select>
+                </Col>
 
-                  <Col xs={6} className="pe-4 ps-4">
-                    <H2>Data/Hora</H2>
-                    <Form.Group className="mb-3" controlId="formBasicDateTime">
-                      <Form.Control
-                        type="datetime-local"
-                        placeholder="00/00/0000 00:00 AM"
-                        ref={dataHora}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row className="g-0 ">
-                  <Col xs={6} className="pe-4 ps-4">
-                    <H2>Local de Armazém</H2>
-                    <Form.Select ref={idLocalArmazem}>
-                      <option>Selecionar</option>
-                    </Form.Select>
-                  </Col>
-                  <Col xs={6} className="pe-4 ps-4">
-                    <H2>Local de Extração</H2>
-                    <Form.Select ref={idLocalExtracao}>
-                      <option>Selecionar</option>
-                    </Form.Select>
-                  </Col>
-                </Row>
-                <Row className="g-0">
-                  <Col xs={6} className="pe-4 ps-4">
-                    <H2>Quantidade</H2>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formBasicQuantidadeMaterial"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="0"
-                        ref={quantidade}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-              </Container>
-            </Col>
-          </DashboardRow>
+                <Col xs={6} className="pe-4 ps-4">
+                  <H2>Data/Hora</H2>
+                  <Form.Group className="mb-3" controlId="formBasicDateTime">
+                    <Form.Control
+                      type="datetime-local"
+                      placeholder="00/00/0000 00:00 AM"
+                      ref={dataHora}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row className="g-0 ">
+                <Col xs={6} className="pe-4 ps-4">
+                  <H2>Local de Armazém</H2>
+                  <Form.Select ref={idLocalArmazem}>
+                    <option>Selecionar</option>
+                  </Form.Select>
+                </Col>
+                <Col xs={6} className="pe-4 ps-4">
+                  <H2>Local de Extração</H2>
+                  <Form.Select ref={idLocalExtracao}>
+                    <option>Selecionar</option>
+                  </Form.Select>
+                </Col>
+              </Row>
+              <Row className="g-0">
+                <Col xs={6} className="pe-4 ps-4">
+                  <H2>Quantidade</H2>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formBasicQuantidadeMaterial"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="0"
+                      ref={quantidade}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+            </Container>
+          </Col>
+        </DashboardRow>
 
-          <DashboardRow className="mt-4 d-flex g-0">
-            <Col xs={12} className="d-flex p-4 ">
-              <H2>Imagens</H2>
+        <DashboardRow className="mt-4 d-flex g-0">
+          <Col xs={12} className="d-flex p-4 ">
+            <H2>Imagens</H2>
 
-              <UploadButton className="ms-auto ">Upload Imagem</UploadButton>
-            </Col>
-            <UploadDiv>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
-            </UploadDiv>
-          </DashboardRow>
+            <UploadButton className="ms-auto ">Upload Imagem</UploadButton>
+          </Col>
+          <UploadDiv>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+          </UploadDiv>
+        </DashboardRow>
 
-          <DashboardRow className="mt-4 g-0">
-            <Col xs={12}>
-              <a href="#">
-                <SubmitButton onClick={submit}>
-                  <H1>Submeter</H1>
-                </SubmitButton>
-              </a>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+        <DashboardRow className="mt-4 g-0">
+          <Col xs={12}>
+            <a href="#">
+              <SubmitButton onClick={submit}>
+                <H1>Submeter</H1>
+              </SubmitButton>
+            </a>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 

@@ -49,26 +49,24 @@ function DashboardNovoLocalArmazem() {
   }
 
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4">
-            <Col xs={6} className="ps-5 pe-4">
-              <H2>Novo Local de Armazém</H2>
-              <Form.Label>Nome</Form.Label>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" ref={nome} />
-              </Form.Group>
-              <PrimaryButtonSave onClick={submit} className="me-2">
-                Enviar
-              </PrimaryButtonSave>
-              <Link to={"/dashboard/locais"}>
-                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-              </Link>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4">
+          <Col xs={6} className="ps-5 pe-4">
+            <H2>Novo Local de Armazém</H2>
+            <Form.Label>Nome</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control type="text" placeholder="" ref={nome} />
+            </Form.Group>
+            <PrimaryButtonSave onClick={submit} className="me-2">
+              Enviar
+            </PrimaryButtonSave>
+            <Link to={"/dashboard/locais"}>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Link>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }

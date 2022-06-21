@@ -32,8 +32,6 @@ function DashboardStock(props) {
   }
 
   function getTable(activeTab) {
-    console.log("teste", activeTab, 1);
-
     switch (activeTab) {
       case 0:
         return (
