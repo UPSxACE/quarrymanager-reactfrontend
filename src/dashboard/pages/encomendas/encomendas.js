@@ -44,7 +44,7 @@ function DashboardEncomendas() {
             endPoint={"lote/listar?page=" + activePage}
             reference={"codigo_lote"}
             actions
-            viewencomenda={"ver"}
+            viewencomenda={"encomendas/ver"}
             controller={"lote"}
           ></DashboardTable>
           <TablePager
