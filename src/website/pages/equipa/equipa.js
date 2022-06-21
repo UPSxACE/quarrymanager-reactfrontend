@@ -8,7 +8,7 @@ export { Equipa };
 function Equipa() {
   return (
     <Container fluid>
-      <StyledRowLight>
+      <StyledRowLight className="stretch">
         <Col xs={12} className={"g-0 pb-5 pt-3 ps-5 pe-5"}>
           <DisplayH1 textAlign={"center"}>A NOSSA EQUIPA</DisplayH1>
           <br></br>

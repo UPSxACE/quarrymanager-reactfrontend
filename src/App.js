@@ -70,6 +70,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DashboardNovaTransportadora } from "./dashboard/pages/loja/novaTransportadora";
 import { DashboardLayout } from "./dashboard/components/layout";
+import styled from "styled-components";
 export { DashboardTabContext };
 
 const DashboardTabContext = createContext();
@@ -249,7 +250,7 @@ function App(props) {
   }
 
   return (
-    <div className="App">
+    <Main className="App">
       {/*<NavbarComponent isGuest={true} />*/}
       <Routes>
         {/*<Route path="/" element={<Home />} />*/}
@@ -392,9 +393,17 @@ function App(props) {
           <Route path={"/about/"} element={<About></About>}></Route>
         </Route>
       </Routes>
-    </div>
+    </Main>
   );
 }
+
+const Main = styled.main`
+  .container-fluid.stretch,
+  .container.stretch,
+  .row.stretch {
+    min-height: calc(100vh - 80px);
+  }
+`;
 
 function Imagem() {
   const [img, setImg] = useState(

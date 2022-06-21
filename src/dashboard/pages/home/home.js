@@ -250,11 +250,11 @@ const DashboardGraphWrapper = styled.div`
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
 
   &.left50 {
-    width: 50%;
+    width: 49%;
     margin-right: 1%;
   }
   &.right50 {
-    width: 50%;
+    width: 49%;
     margin-left: 1%;
   }
 

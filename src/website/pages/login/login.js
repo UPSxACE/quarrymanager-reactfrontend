@@ -45,8 +45,8 @@ function Login(props) {
   }
 
   return (
-    <Container fluid>
-      <ColoredRow variant={1}>
+    <ColoredContainer variant={1} className={"stretch"} fluid>
+      <Row>
         <CardBodyRow className={"container-fluid mt-5 mb-5 p-5 pt-4"}>
           <Col xs={12} className={"g-0"}>
             <H3 className={"text-center pb-3"}>LOGIN</H3>
@@ -102,8 +102,8 @@ function Login(props) {
             </Form>
           </Col>
         </CardBodyRow>
-      </ColoredRow>
-    </Container>
+      </Row>
+    </ColoredContainer>
   );
 }
 

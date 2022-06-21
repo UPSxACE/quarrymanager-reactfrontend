@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { H1, H5, H3 } from "../../components/text";
 import { LoginButtonSubmit } from "../../components/buttons";
-import { ColoredRow } from "../../components/coloredComponents";
+import {
+  ColoredContainer,
+  ColoredRow,
+} from "../../components/coloredComponents";
 import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -53,8 +56,8 @@ function Register() {
   }
 
   return (
-    <Container fluid>
-      <ColoredRow variant={1}>
+    <ColoredContainer variant={1} className={"stretch"} fluid>
+      <Row>
         <CardBodyRow
           className={"container-fluid mt-5 mb-5 pt-4 pb-4 ps-5 pe-5"}
         >
@@ -131,8 +134,8 @@ function Register() {
             </Form>
           </Col>
         </CardBodyRow>
-      </ColoredRow>
-    </Container>
+      </Row>
+    </ColoredContainer>
   );
 }
 

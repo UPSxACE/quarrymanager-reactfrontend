@@ -90,7 +90,13 @@ const PageHeader = styled.div`
 `;
 
 const ContentDiv = styled.div`
-  width: calc(100% - 95px);
+  width: calc(100% - 70px);
+  overflow-y: scroll;
+  height: 100vh;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const BackgoundDiv = styled.div`
