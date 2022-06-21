@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Container, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardRow } from "../../components/layoutComponents";
@@ -9,7 +9,7 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export { EditarLocalArmazem };
@@ -18,6 +18,8 @@ export { EditarLocalExtracao };
 function EditarLocalExtracao() {
   const [dados, atualizarDados] = useState([]);
   const { id } = useParams();
+  const nomeLocais = useRef("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -43,6 +45,34 @@ function EditarLocalExtracao() {
     sendGetRequest();
   }, [id]);
 
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "localhost:8080/api/local-extracao/editar",
+          {
+            nome: nomeLocais.current.value,
+            id: id,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        navigate("/dashboard/locais", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest(); //TERMINAR AQUI
+  }
+
   return (
     <Container fluid>
       <Form>
@@ -54,6 +84,7 @@ function EditarLocalExtracao() {
                 type="text"
                 placeholder=""
                 defaultValue={dados.nome ? dados.nome : ""}
+                ref={nomeLocais}
               />
             </Form.Group>
           </Col>
@@ -82,7 +113,9 @@ function EditarLocalExtracao() {
             </Form.Group>
           </Col>
           <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+            <PrimaryButtonSave className="me-2" onClick={submit}>
+              Guardar
+            </PrimaryButtonSave>
 
             <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
           </Col>
@@ -103,7 +136,7 @@ function EditarLocalArmazem() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-extracao/find?id=" + id,
+          "http://localhost:8080/api/local-armazem/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),

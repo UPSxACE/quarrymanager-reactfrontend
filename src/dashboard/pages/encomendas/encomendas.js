@@ -13,8 +13,9 @@ import {
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
-import { ButtonSubmit } from "../../../website/components/buttons";
+
 import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.svg";
+import { ButtonSubmit } from "../../../website/components/buttons";
 export {
   DashboardEncomendas,
   DashboardVerEncomendas,
@@ -102,19 +103,19 @@ function DashboardVerEncomendas() {
         <Col xs={12}>
           <div className="d-flex bd-highlight">
             <div className="bd-highlight">
-              <ButtonSubmit black className="">
+              <ButtonSubmit2 green className="">
                 Dados Da Encomenda
-              </ButtonSubmit>
+              </ButtonSubmit2>
             </div>
             <div className="bd-highlight ps-1">
-              <ButtonSubmit black className="">
+              <ButtonSubmit2 green className="">
                 Mobilização do Stock
-              </ButtonSubmit>
+              </ButtonSubmit2>
             </div>
             <div className="ms-auto bd-highlight">
-              <ButtonSubmit black className="">
+              <ButtonSubmit2 green className="">
                 Cancelar Encomenda
-              </ButtonSubmit>
+              </ButtonSubmit2>
             </div>
           </div>
         </Col>
@@ -125,20 +126,20 @@ function DashboardVerEncomendas() {
             <Row className="h-25">
               <BoxCol xs={6} className="pe-3">
                 <div className="borderBox p-3">
-                  <h1>O Status: </h1>
+                  <DisplayTextH1>O Status: </DisplayTextH1>
                   <div className="">
-                    <ButtonSubmit black className="w-100 ">
+                    <ButtonSubmit2 green className="w-100 ">
                       (forçar mudança de estado)
-                    </ButtonSubmit>
+                    </ButtonSubmit2>
                   </div>
                 </div>
               </BoxCol>
               <Col xs={6} className="ps-3">
                 <div className="d-flex justify-content-end p-3">
                   <div className="d-flex flex-column text-right ">
-                    <h2>Nome</h2>
-                    <h6>Encomenda N</h6>
-                    <h6>Pedido realizado em: </h6>
+                    <DisplayTextH2>Nome</DisplayTextH2>
+                    <DisplayTextH6>Encomenda N</DisplayTextH6>
+                    <DisplayTextH6>Pedido realizado em: </DisplayTextH6>
                   </div>
                   <ProfileEncPic src={EncomendaPic}></ProfileEncPic>
                 </div>
@@ -154,31 +155,33 @@ function DashboardVerEncomendas() {
                   <Row>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Nome:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Nome:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Morada:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Morada:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Email:</h6>
-                        <span>abc@abc</span>
+                        <DisplayTextH6>Email:</DisplayTextH6>
+                        <DisplayTextSpan>abc@abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Telefone:</h6>
-                        <span>99999999</span>
+                        <DisplayTextH6>Telefone:</DisplayTextH6>
+                        <DisplayTextSpan>99999999</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={12} className="pb-2">
-                      Detalhes da Conta do Utilizador
-                      <textarea className="w-100"></textarea>
+                      <DisplayTextH6>
+                        Detalhes da Conta do Utilizador:
+                      </DisplayTextH6>
+                      <Textarea className="w-100"></Textarea>
                     </Col>
                   </Row>
                 </BoxContainer>
@@ -192,47 +195,47 @@ function DashboardVerEncomendas() {
                   <Row>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Produto:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Produto:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
-                        <h6>Preço/m²:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Preço/m²:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
-                        <h6>Quantidade:</h6>
-                        <span>abc@abc</span>
+                        <DisplayTextH6>Quantidade:</DisplayTextH6>
+                        <DisplayTextSpan>abc@abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
-                        <h6>Código de Desconto:</h6>
-                        <span>99999999</span>
+                        <DisplayTextH6>Código de Desconto:</DisplayTextH6>
+                        <DisplayTextSpan>99999999</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Preço Inicial:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Preço Inicial:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Desconto (Manual):</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Desconto (Manual):</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <h6>Estimativa Preço Final:</h6>
-                        <span>abc</span>
+                        <DisplayTextH6>Estimativa Preço Final:</DisplayTextH6>
+                        <DisplayTextSpan>abc</DisplayTextSpan>
                       </div>
                     </Col>
                   </Row>
@@ -247,7 +250,8 @@ function DashboardVerEncomendas() {
 }
 
 const EncomendaWrapper = styled(Row)`
-  border: 1px solid black;
+  border: 1px solid #004b5b;
+
   textare {
   }
 `;
@@ -255,12 +259,12 @@ const EncomendaWrapper = styled(Row)`
 const ButtonsRow = styled(Row)``;
 
 const BoxContainer = styled(Container)`
-  border: 1px solid black;
+  border: 1px solid #004b5b;
 `;
 
 const BoxCol = styled(Col)`
   .borderBox {
-    border: 1px solid black;
+    border: 1px solid #004b5b;
   }
   padding: 0px;
 `;
@@ -271,9 +275,61 @@ const ContainerStretch = styled(Container)`
 
 const EditButton = styled(ButtonSubmit)`
   width: 70px;
+  background-color: #004b5b;
 `;
 
 const ProfileEncPic = styled.img`
   border-radius: 50px;
   height: 100px;
+`;
+
+const ButtonSubmit2 = styled(ButtonSubmit)`
+  background-color: ${(props) => (props.green ? "#004b5b" : "white")};
+  color: ${(props) => (props.green ? "white" : "#004b5b")};
+  border: 0;
+  border-radius: 0;
+  font-size: 20px;
+
+  &:active {
+    color: #fff;
+    background-color: #004b5b;
+    border: 0;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #004b5b;
+    border: 0;
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: #004b5b;
+    border: 0;
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+
+  &:active:focus {
+    box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
+  }
+`;
+
+const DisplayTextH1 = styled.h1`
+  color: #004b5b;
+`;
+
+const DisplayTextH2 = styled.h2`
+  color: #004b5b;
+`;
+
+const DisplayTextH6 = styled.h6`
+  color: #004b5b;
+`;
+
+const DisplayTextSpan = styled.span`
+  color: #004b5b;
+`;
+
+const Textarea = styled.textarea`
+  border-color: #004b5b;
 `;

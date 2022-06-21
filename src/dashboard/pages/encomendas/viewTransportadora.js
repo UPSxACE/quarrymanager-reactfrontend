@@ -8,11 +8,11 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-export { ViewLocalExtracao };
+export { ViewTransportadora };
 
-function ViewLocalExtracao() {
+function ViewTransportadora() {
   const [find, findStats] = useState({});
 
   const { id } = useParams("id");
@@ -24,7 +24,7 @@ function ViewLocalExtracao() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-extracao/find?id=" + id,
+          "http://localhost:8080/api/transportadora/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -41,36 +41,56 @@ function ViewLocalExtracao() {
     sendGetRequest();
   }, [id]);
 
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "localhost:8080/api/transportadora/editar",
+          {
+            nome: nome.current.value,
+            id: id,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        navigate("/dashboard/locais", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest(); //TERMINAR AQUI
+  }
+
   return (
     <Container fluid>
-      <DashboardRow className="g-0 pt-4 pb-4">
+      <DashboardRow className="g-0 pt-4 pb-4 ps-5 pe-5">
         <Col xs={12}>
           <Container>
             <Tabela className="w-100 ">
               <tbody>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
+                  <th className="pt-2 pe-3 ps-5 pb-2">Nome :</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.nome ? find.nome : ""}
                   </td>
                 </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS X :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.coordenadasGPS_X ? find.coordenadasGPS_X : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS Y :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.coordenadasGPS_Y ? find.coordenadasGPS_Y : ""}
-                  </td>
-                </tr>
               </tbody>
             </Tabela>
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            <Col xs={12} className="pt-4">
+              <Link to={"/dashboard/editar-transportadora/" + id}>
+                <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
+              </Link>
+              <Link to={"/dashboard/loja"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>
