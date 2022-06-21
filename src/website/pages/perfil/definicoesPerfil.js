@@ -1,17 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ColoredContainer } from "../../components/coloredComponents";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { DisplayH1, H1, H3, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit } from "../../components/buttons";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export { DefinicoesPerfil };
 
 function DefinicoesPerfil(props) {
   const [user, getUser] = useState([]);
+  const email = useRef("");
+  const oldPassword = useRef("");
+  const newPassword = useRef("");
+  const confirmNewPassword = useRef("");
+  const [update_submit, submit_update] = useState(0);
+  let navigate = useNavigate();
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/profile/editar-definicoes-perfil",
+          {
+            email: email.current.value,
+            password: oldPassword.current.value,
+            newPassword:
+              newPassword.current.value === confirmNewPassword.current.value
+                ? newPassword.current.value
+                : "",
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        submit_update(update_submit + 1);
+        navigate("/perfil/definicoes", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -20,7 +59,7 @@ function DefinicoesPerfil(props) {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/profile/get-profile",
+          "http://localhost:8080/api/profile/get-profile-definicoes",
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -34,7 +73,7 @@ function DefinicoesPerfil(props) {
       }
     };
     sendGetRequest();
-  }, []);
+  }, [update_submit]);
 
   function logOut() {
     localStorage.removeItem("AuthKey");
@@ -89,11 +128,11 @@ function DefinicoesPerfil(props) {
                 <Col xs={12} className="g-0">
                   <Form.Group className="mb-3" controlId="formBasicName">
                     <StyledFormLabel>
-                      <TextH4>Nome</TextH4>
+                      <TextH4>Username</TextH4>
                     </StyledFormLabel>
                     <Form.Control
                       type="text"
-                      value={user.profile ? user.profile.full_name : ""}
+                      defaultValue={user.username ? user.username : ""}
                     />
                   </Form.Group>
                 </Col>
@@ -105,7 +144,8 @@ function DefinicoesPerfil(props) {
                     </StyledFormLabel>
                     <Form.Control
                       type="email"
-                      value={user.profile ? user.profile.email : ""}
+                      defaultValue={user.email ? user.email : ""}
+                      ref={email}
                     />
                   </Form.Group>
                 </Col>
@@ -116,28 +156,37 @@ function DefinicoesPerfil(props) {
                     <StyledFormLabel>
                       <TextH4>Palavra-Passe</TextH4>
                     </StyledFormLabel>
-                    <Form.Control type="password" />
+                    <Form.Control type="password" ref={oldPassword} />
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} className="g-0">
+                  <Form.Group className="mb-3" controlId="formNewPassword">
+                    <StyledFormLabel>
+                      <TextH4>Nova Palavra-Passe</TextH4>
+                    </StyledFormLabel>
+                    <Form.Control type="password" ref={newPassword} />
                   </Form.Group>
                 </Col>
 
                 <Col xs={12} className="g-0">
                   <Form.Group
                     className="mb-3"
-                    controlId="formBasicPasswordConfirm"
+                    controlId="formNewPasswordConfirm"
                   >
                     <StyledFormLabel>
                       <TextH4>Confirmar Palavra-Passe</TextH4>
                     </StyledFormLabel>
-                    <Form.Control type="password" />
+                    <Form.Control type="password" ref={confirmNewPassword} />
                   </Form.Group>
                 </Col>
 
                 <Col xs={12} className="pb-5 mt-4 g-0">
-                  <a href="#">
+                  <Link to={"#"} onClick={submit}>
                     <ButtonSubmit black className="w-100">
                       Enviar
                     </ButtonSubmit>
-                  </a>
+                  </Link>
                 </Col>
               </Row>
             </Form>

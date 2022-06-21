@@ -26,7 +26,6 @@ function MeuPerfil(props) {
   let navigate = useNavigate();
 
   function submit() {
-    console.log(file);
     const sendPostRequest = async () => {
       try {
         let formdata = new FormData();
@@ -164,6 +163,7 @@ function MeuPerfil(props) {
                         <Form.Control
                           type="text"
                           defaultValue={user.full_name ? user.full_name : ""}
+                          ref={full_name}
                         />
                       </Form.Group>
                     </Col>
@@ -180,6 +180,7 @@ function MeuPerfil(props) {
                           defaultValue={
                             user.dataNascimento ? user.dataNascimento : ""
                           }
+                          ref={dataNascimento}
                         />
                       </Form.Group>
                     </Col>
@@ -204,6 +205,7 @@ function MeuPerfil(props) {
                         <Form.Control
                           type="text"
                           defaultValue={user.morada ? user.morada : ""}
+                          ref={morada}
                         />
                       </Form.Group>
                     </Col>
@@ -220,6 +222,7 @@ function MeuPerfil(props) {
                         <Form.Control
                           type="text"
                           defaultValue={user.codPostal ? user.codPostal : ""}
+                          ref={codPostal}
                         />
                       </Form.Group>
                     </Col>
@@ -242,6 +245,7 @@ function MeuPerfil(props) {
                         <Form.Control
                           type="tel"
                           defaultValue={user.telefone ? user.telefone : ""}
+                          ref={telefone}
                         />
                       </Form.Group>
                     </Col>
@@ -279,11 +283,11 @@ function MeuPerfil(props) {
 
             <Row className="pe-3 ps-3">
               <Col xs={12} className="pb-5 mt-4 ps-5 pe-5">
-                <a href="#">
+                <Link to="#">
                   <ButtonSubmit black className="w-100" onClick={submit}>
                     Guardar Alteração
                   </ButtonSubmit>
-                </a>
+                </Link>
               </Col>
             </Row>
           </ColoredContainer>
