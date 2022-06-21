@@ -92,7 +92,6 @@ function accessCheck(permission_to_check) {
         Authorization: "Basic " + btoa(username + ":" + password),
       },
     }).then((response) => {
-      console.log("aaa:" + response.data);
       return response;
     });
   };
@@ -101,7 +100,6 @@ function accessCheck(permission_to_check) {
 }
 
 function isLoggedCheck() {
-  console.log(localStorage.getItem("AuthKey"));
   return !(
     localStorage.getItem("AuthKey") === null ||
     localStorage.getItem("AuthKey") === undefined
@@ -120,7 +118,6 @@ function Private(props) {
           "http://localhost:8080/api/auth/check-permission?permission=" +
           props.check;
 
-        console.log("AAAAAAA: " + permission);
         let resp = await axios(endPoint, {
           headers: {
             Authorization: "Basic " + btoa(username + ":" + password),
@@ -163,10 +160,6 @@ function About() {
 
 function Website(props) {
   const [tab, setTab] = useState("hom");
-
-  useEffect(() => {
-    console.log("Foi:" + tab);
-  }, [tab]);
 
   return (
     <div className="Website">
@@ -422,7 +415,6 @@ function Imagem() {
         responseType: "blob",
       }
     );
-    console.log(res);
     const imageBlob = await res.data;
     const imageObjectURL = URL.createObjectURL(imageBlob);
     setImg(imageObjectURL);

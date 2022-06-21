@@ -144,7 +144,6 @@ function DashboardTable(props) {
           },
         });
 
-        //console.log(resp.request.getResponseHeader("X-Pagination-Page-Count"));
         console.log(resp.headers["x-pagination-page-count"]);
         props.updateLimit(resp.headers["x-pagination-page-count"]);
         setData(resp.data);
@@ -447,7 +446,6 @@ const TableStyle = styled.table`
 `;
 
 function TablePager(props) {
-  console.log(props);
   function getPageButtons(active, limit) {
     let buttons = [];
 

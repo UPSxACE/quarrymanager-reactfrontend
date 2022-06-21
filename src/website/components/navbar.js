@@ -33,7 +33,6 @@ function accessCheck(permission_to_check) {
         Authorization: "Basic " + btoa(username + ":" + password),
       },
     }).then((response) => {
-      console.log("aaa:" + response.data);
       return response;
     });
   };
@@ -48,7 +47,6 @@ function NavbarComponent(props) {
   const [put, findStats] = useState({});
 
   useState(() => {
-    console.log("aaaBC: " + loaded);
     const sendGetRequest = async () => {
       try {
         const username = localStorage.getItem("AuthKey");
@@ -64,8 +62,6 @@ function NavbarComponent(props) {
 
         setOperario(resp.data);
         setLoad(true);
-
-        console.log("testee: " + resp.data);
       } catch (err) {
         console.log(err);
       }

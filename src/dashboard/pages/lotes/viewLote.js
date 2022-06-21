@@ -31,8 +31,6 @@ function ViewLote() {
             },
           }
         );
-        console.log(codigo_lote);
-        console.log("teste: " + resp.data);
         findStats(resp.data);
       } catch (err) {
         console.log(err);
