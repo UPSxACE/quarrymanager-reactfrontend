@@ -46,37 +46,35 @@ function DashboardNovaCor() {
     sendPostRequest();
   }
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={12}>
-              <H2 className="pb-3">Nova Cor</H2>
-            </Col>
-            <Col xs={6} className="pe-3">
-              <FormColor>Nome</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" ref={nome} />
-              </Form.Group>
-            </Col>
-            <Col xs={6}>
-              <FormColor>Prefixo</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" ref={prefixo} />
-              </Form.Group>
-            </Col>
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave onClick={submit} className="me-2">
-                Enviar
-              </PrimaryButtonSave>
-              <Link to={"/dashboard/stock"}>
-                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-              </Link>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+          <Col xs={12}>
+            <H2 className="pb-3">Nova Cor</H2>
+          </Col>
+          <Col xs={6} className="pe-3">
+            <FormColor>Nome</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control type="text" placeholder="" ref={nome} />
+            </Form.Group>
+          </Col>
+          <Col xs={6}>
+            <FormColor>Prefixo</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control type="text" placeholder="" ref={prefixo} />
+            </Form.Group>
+          </Col>
+          <Col xs={12} className="pt-3">
+            <PrimaryButtonSave onClick={submit} className="me-2">
+              Enviar
+            </PrimaryButtonSave>
+            <Link to={"/dashboard/stock"}>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Link>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 

@@ -44,53 +44,51 @@ function EditarLocalExtracao() {
   }, [id]);
 
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={12}>
-              <FormColor>Nome</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={dados.nome ? dados.nome : ""}
-                />
-              </Form.Group>
-            </Col>
-            <Col xs={6} className="pe-3">
-              <FormColor>Coordenadas GPS X</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={
-                    dados.coordenadasGPS_X ? dados.coordenadasGPS_X : ""
-                  }
-                />
-              </Form.Group>
-            </Col>
-            <Col xs={6}>
-              <FormColor>Coordenadas GPS Y</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={
-                    dados.coordenadasGPS_Y ? dados.coordenadasGPS_Y : ""
-                  }
-                />
-              </Form.Group>
-            </Col>
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+          <Col xs={12}>
+            <FormColor>Nome</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={dados.nome ? dados.nome : ""}
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={6} className="pe-3">
+            <FormColor>Coordenadas GPS X</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={
+                  dados.coordenadasGPS_X ? dados.coordenadasGPS_X : ""
+                }
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={6}>
+            <FormColor>Coordenadas GPS Y</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={
+                  dados.coordenadasGPS_Y ? dados.coordenadasGPS_Y : ""
+                }
+              />
+            </Form.Group>
+          </Col>
+          <Col xs={12} className="pt-3">
+            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 
@@ -123,30 +121,28 @@ function EditarLocalArmazem() {
   }, [id]);
 
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={12}>
-              <FormColor>Nome</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={dados.nome ? dados.nome : ""}
-                />
-              </Form.Group>
-            </Col>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+          <Col xs={12}>
+            <FormColor>Nome</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={dados.nome ? dados.nome : ""}
+              />
+            </Form.Group>
+          </Col>
 
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+          <Col xs={12} className="pt-3">
+            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 

@@ -42,43 +42,41 @@ function EditarMaterial() {
     sendGetRequest();
   }, [id]);
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={6} className="pe-3">
-              <FormColor>Nome</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={material.nome ? material.nome : ""}
-                />
-              </Form.Group>
-            </Col>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+          <Col xs={6} className="pe-3">
+            <FormColor>Nome</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={material.nome ? material.nome : ""}
+              />
+            </Form.Group>
+          </Col>
 
-            <Col xs={6} className="pe-3">
-              <FormColor>Perfixo</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  defaultValue={material.prefixo ? material.prefixo : ""}
-                />
-              </Form.Group>
-            </Col>
+          <Col xs={6} className="pe-3">
+            <FormColor>Perfixo</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control
+                type="text"
+                placeholder=""
+                defaultValue={material.prefixo ? material.prefixo : ""}
+              />
+            </Form.Group>
+          </Col>
 
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+          <Col xs={12} className="pt-3">
+            <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
 
-              <Link to={"/dashboard/stock"}>
-                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-              </Link>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+            <Link to={"/dashboard/stock"}>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Link>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 

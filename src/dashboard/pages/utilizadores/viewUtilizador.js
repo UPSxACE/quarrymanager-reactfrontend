@@ -41,48 +41,46 @@ function ViewUtilizador() {
   }, [id]);
 
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <DashboardRow className="g-0 pt-4 pb-4">
-          <Col xs={12}>
-            <Container>
-              <Tabela className="w-100 ">
-                <tbody>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Username :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.username ? find.username : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Cargo :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.role ? find.role.name : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.profile ? find.profile.full_name : ""}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
-                    <td className="pt-2 pe-3 ps-3 pb-2">
-                      {find.profile ? find.profile.created_at : ""}
-                    </td>
-                  </tr>
-                </tbody>
-              </Tabela>
-              <Col xs={12} className="pt-3">
-                <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
-                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-              </Col>
-            </Container>
-          </Col>
-        </DashboardRow>
-      </Container>
-    </DashboardLayout>
+    <Container fluid>
+      <DashboardRow className="g-0 pt-4 pb-4">
+        <Col xs={12}>
+          <Container>
+            <Tabela className="w-100 ">
+              <tbody>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Username :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.username ? find.username : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Cargo :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.role ? find.role.name : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.profile ? find.profile.full_name : ""}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
+                  <td className="pt-2 pe-3 ps-3 pb-2">
+                    {find.profile ? find.profile.created_at : ""}
+                  </td>
+                </tr>
+              </tbody>
+            </Tabela>
+            <Col xs={12} className="pt-3">
+              <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Col>
+          </Container>
+        </Col>
+      </DashboardRow>
+    </Container>
   );
 }
 

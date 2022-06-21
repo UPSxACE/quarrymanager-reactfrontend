@@ -8,9 +8,5 @@ export { DashboardAjuda };
 
 function DashboardAjuda() {
   //
-  return (
-    <DashboardLayout tab={"aju"}>
-      <h1>conteudo para ajudar as pessoas uwu</h1>
-    </DashboardLayout>
-  );
+  return <h1>conteudo para ajudar as pessoas uwu</h1>;
 }

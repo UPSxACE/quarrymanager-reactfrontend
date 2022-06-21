@@ -227,7 +227,7 @@ function NavbarComponent(props) {
             <LogoWEROCK src={weROCK}></LogoWEROCK>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="#">Loja</StyledNavLink>
+            <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>

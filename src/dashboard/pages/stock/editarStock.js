@@ -14,27 +14,25 @@ export { EditarStock };
 
 function EditarStock() {
   return (
-    <DashboardLayout>
-      <Container fluid>
-        <Form>
-          <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
-            <Col xs={12}>
-              <H2 className="pb-3">Editar stock</H2>
-              <FormColor>Material</FormColor>
-              <Form.Group className="mb-3" controlId="formBasicIdLote">
-                <Form.Control type="text" placeholder="" />
-              </Form.Group>
-            </Col>
+    <Container fluid>
+      <Form>
+        <DashboardRow className="g-0 pt-4 pb-4 pt-4 ps-5 pe-5">
+          <Col xs={12}>
+            <H2 className="pb-3">Editar stock</H2>
+            <FormColor>Material</FormColor>
+            <Form.Group className="mb-3" controlId="formBasicIdLote">
+              <Form.Control type="text" placeholder="" />
+            </Form.Group>
+          </Col>
 
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+          <Col xs={12} className="pt-3">
+            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
-            </Col>
-          </DashboardRow>
-        </Form>
-      </Container>
-    </DashboardLayout>
+            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+          </Col>
+        </DashboardRow>
+      </Form>
+    </Container>
   );
 }
 

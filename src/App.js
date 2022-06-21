@@ -206,7 +206,7 @@ function Dashboard() {
   return (
     <Private check={"operario"}>
       <DashboardTabContext.Provider value={[tab, setTab]}>
-        <DashboardLayout tab={"hom"}>
+        <DashboardLayout>
           <div className="Dashboard">
             <Outlet />
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
