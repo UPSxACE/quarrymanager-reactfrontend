@@ -9,12 +9,15 @@ import {
   DashboardMenuListItem,
   DashboardMenuListItemRight,
   DashboardRow,
+  H1,
+  H1Normal,
   H3,
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
 import { ButtonSubmit } from "../../../website/components/buttons";
 import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.svg";
+import { useParams } from "react-router-dom";
 export {
   DashboardEncomendas,
   DashboardVerEncomendas,
@@ -75,7 +78,7 @@ function DashboardEncomendas(props) {
   );
 }
 
-function DashboardMobilizacaoStock() {
+function DashboardAgendarRecolha() {
   return (
     <ContainerStretch fluid className="d-flex flex-column">
       <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
@@ -85,11 +88,81 @@ function DashboardMobilizacaoStock() {
   );
 }
 
-function DashboardAgendarRecolha() {
+function DashboardMobilizacaoStock() {
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+  const { id } = useParams();
+
+  const [activePage, updatePager1] = useState(1);
+  const [limitPage, updatePager2] = useState(1);
+
+  function updatePager(value1, value2) {
+    if (value1 <= limitPage && value1 > 0) {
+      updatePager1(value1);
+      updatePager2(value2);
+    }
+  }
+
+  useEffect(() => {
+    setTab("Encomenda #" + id);
+  });
+
   return (
     <ContainerStretch fluid className="d-flex flex-column">
+      <ButtonsRow>
+        <Col xs={12}>
+          <div className="d-flex bd-highlight">
+            <div className="bd-highlight">
+              <ButtonSubmit black className="">
+                Dados Da Encomenda
+              </ButtonSubmit>
+            </div>
+            <div className="bd-highlight ps-1">
+              <ButtonSubmit black className="">
+                Mobilização do Stock
+              </ButtonSubmit>
+            </div>
+            <div className="ms-auto bd-highlight">
+              <ButtonSubmit black className="">
+                Cancelar Encomenda
+              </ButtonSubmit>
+            </div>
+          </div>
+        </Col>
+      </ButtonsRow>
       <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
-        <Col xs={12}>aaa</Col>
+        <Col xs={12} className="d-flex">
+          <Container fluid>
+            <Row>
+              <Col xs={12}>
+                <div className={"d-flex"}>
+                  <H1>Produto:</H1>
+                  <H1Normal className="ps-2">aaa</H1Normal>
+                </div>
+                <DashboardTable
+                  key={"0"}
+                  updateLimit={updatePager2}
+                  labels={{
+                    codigoLote: "Lote",
+                    quantidade: "Quantidade",
+                    dataHoraAgendamento: "Data de Agendamento",
+                    dataHoraRecolha: "Data de Recolha",
+                  }}
+                  endPoint={
+                    "pedido-lote/recolhas-agendadas?id=" +
+                    id +
+                    "&page=" +
+                    activePage
+                  }
+                ></DashboardTable>
+                <TablePager
+                  updatePager={updatePager}
+                  activePage={activePage}
+                  limitPage={limitPage}
+                />
+              </Col>
+            </Row>
+          </Container>
+        </Col>
       </EncomendaWrapper>
     </ContainerStretch>
   );
@@ -248,7 +321,8 @@ function DashboardVerEncomendas() {
 
 const EncomendaWrapper = styled(Row)`
   border: 1px solid black;
-  textare {
+  textarea {
+    height: 75px;
   }
 `;
 

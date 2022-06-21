@@ -297,7 +297,7 @@ function App(props) {
             element={<DashboardVerEncomendas />}
           />
           <Route
-            path="encomendas/ver/:codigo_lote/mobilizar-stock"
+            path="encomendas/ver/:id/mobilizar-stock"
             element={<DashboardMobilizacaoStock />}
           />
           <Route path="loja" element={<DashboardLoja tab={0} />} />

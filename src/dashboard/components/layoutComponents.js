@@ -7,6 +7,7 @@ export {
   DashboardRow,
   DashboardCol,
   H1,
+  H1Normal,
   H2,
   H3,
   H5,
@@ -46,6 +47,10 @@ const H1 = styled.h1((props) => ({
   fontSize: "40px",
   textAlign: props.textAlign,
 }));
+
+const H1Normal = styled(H1)`
+  font-weight: normal;
+`;
 
 const H2 = styled.h2((props) => ({
   color: textColor1,
