@@ -13,7 +13,7 @@ import {
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
 
-export { DashboardEncomendas };
+export { DashboardEncomendas, DashboardVerEncomendas };
 
 function DashboardEncomendas() {
   const [activePage, updatePager1] = useState(1);
@@ -56,4 +56,8 @@ function DashboardEncomendas() {
       </Row>
     </Container>
   );
+}
+
+function DashboardVerEncomendas() {
+  return <></>;
 }

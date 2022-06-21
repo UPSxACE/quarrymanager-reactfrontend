@@ -28,7 +28,10 @@ import { DashboardLotes } from "./dashboard/pages/lotes/lotes";
 import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
 
 import { DashboardStock } from "./dashboard/pages/stock/stock";
-import { DashboardEncomendas } from "./dashboard/pages/encomendas/encomendas";
+import {
+  DashboardEncomendas,
+  DashboardVerEncomendas,
+} from "./dashboard/pages/encomendas/encomendas";
 import { DashboardLoja } from "./dashboard/pages/loja/loja";
 import { DashboardUtilizadores } from "./dashboard/pages/utilizadores/utilizadores";
 import { DashboardLocais } from "./dashboard/pages/locais/locais";
@@ -298,6 +301,10 @@ function App(props) {
           <Route path="nova-cor" element={<DashboardNovaCor />} />
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
+          <Route
+            path="encomendas/ver/:codigo_lote"
+            element={<DashboardVerEncomendas />}
+          />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
           <Route
             path="nova-transportadora"
