@@ -2,13 +2,13 @@ import { Container, Row, Col } from "react-bootstrap";
 import { DisplayH1, H1, Paragraph, H5, H3 } from "../../components/text";
 import styled from "styled-components";
 import lojaPic from "../../../images/website/granitoAmarelo.jpg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 export { LojaHome };
 
-function LojaHome() {
+function LojaHome(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {

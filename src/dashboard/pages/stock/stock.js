@@ -172,37 +172,35 @@ function DashboardStock(props) {
   }
 
   return (
-    <DashboardLayout tab={"sto"}>
-      <Container fluid>
-        <Row className="g-0">
-          <Col xs={12}>
-            <DashboardMenu>
-              <DashboardMenuList
-                listItems={["Lotes", "Stock", "Produtos", "Materiais", "Cores"]}
-                rightButton={[
-                  ["Novo Lote", "novo-lote"],
-                  "",
-                  ["Novo Produto", "novo-produto"],
-                  ["Novo Material", "novo-material"],
-                  ["Nova Cor", "nova-cor"],
-                ]}
-                activeItem={activeTab}
-                tabClickFunction={handleTabClick}
-              ></DashboardMenuList>
-            </DashboardMenu>
-          </Col>
-        </Row>
-        <Row className="g-0 pt-5">
-          <Col xs={12}>
-            {getTable(activeTab)}
-            <TablePager
-              updatePager={updatePager}
-              activePage={activePage}
-              limitPage={limitPage}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </DashboardLayout>
+    <Container fluid>
+      <Row className="g-0">
+        <Col xs={12}>
+          <DashboardMenu>
+            <DashboardMenuList
+              listItems={["Lotes", "Stock", "Produtos", "Materiais", "Cores"]}
+              rightButton={[
+                ["Novo Lote", "novo-lote"],
+                "",
+                ["Novo Produto", "novo-produto"],
+                ["Novo Material", "novo-material"],
+                ["Nova Cor", "nova-cor"],
+              ]}
+              activeItem={activeTab}
+              tabClickFunction={handleTabClick}
+            ></DashboardMenuList>
+          </DashboardMenu>
+        </Col>
+      </Row>
+      <Row className="g-0 pt-5">
+        <Col xs={12}>
+          {getTable(activeTab)}
+          <TablePager
+            updatePager={updatePager}
+            activePage={activePage}
+            limitPage={limitPage}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }

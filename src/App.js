@@ -63,9 +63,13 @@ import { ViewLote } from "./dashboard/pages/lotes/viewLote";
 import { ViewUtilizador } from "./dashboard/pages/utilizadores/viewUtilizador";
 import { ViewLocalArmazem } from "./dashboard/pages/locais/viewLocalArmazem";
 import { ViewLocalExtracao } from "./dashboard/pages/locais/viewLocalExtracao";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DashboardNovaTransportadora } from "./dashboard/pages/loja/novaTransportadora";
+import { DashboardLayout } from "./dashboard/components/layout";
+export { DashboardTabContext };
+
+const DashboardTabContext = createContext();
 
 // App.js
 
@@ -154,6 +158,12 @@ function About() {
 }
 
 function Website(props) {
+  const [tab, setTab] = useState("hom");
+
+  useEffect(() => {
+    console.log("Foi:" + tab);
+  }, [tab]);
+
   return (
     <div className="Website">
       {props.guest ? (
@@ -187,12 +197,18 @@ function WebsiteOperario(props) {
 }
 
 function Dashboard() {
+  const [tab, setTab] = useState(undefined);
+
   return (
     <Private check={"operario"}>
-      <div className="Dashboard">
-        <Outlet />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      </div>
+      <DashboardTabContext.Provider value={[tab, setTab]}>
+        <DashboardLayout tab={"hom"}>
+          <div className="Dashboard">
+            <Outlet />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          </div>
+        </DashboardLayout>
+      </DashboardTabContext.Provider>
     </Private>
   );
 }

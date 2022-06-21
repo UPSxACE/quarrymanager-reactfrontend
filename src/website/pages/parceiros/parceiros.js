@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { DisplayH1 } from "../../components/text";
 import { ColoredContainer } from "../../components/coloredComponents";
@@ -9,6 +9,7 @@ import parceiro3 from "../../../images/website/parceiro3.png";
 import parceiro4 from "../../../images/website/parceiro4.png";
 import parceiro5 from "../../../images/website/parceiro5.png";
 import parceiro6 from "../../../images/website/parceiro6.png";
+import { DashboardTabContext } from "../../../App";
 export { Parceiros };
 
 function Parceiros() {
