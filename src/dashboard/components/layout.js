@@ -1,13 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {} from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardSidebar } from "./sidebar";
 import { H1Alt } from "./layoutComponents";
 import axios from "axios";
+import { DashboardTabContext } from "../../App";
 export { DashboardLayout };
 
 function DashboardLayout(props) {
   const [put, findStats] = useState({});
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  function getPageName() {
+    switch (currentTab) {
+      case "hom":
+        return "Home";
+      case "sto":
+        return "Stock";
+      case "enc":
+        return "Encomendas";
+      case "loj":
+        return "Loja";
+      case "uti":
+        return "Utilizadores";
+      case "loc":
+        return "Locais";
+      case "log":
+        return "Logs";
+      default:
+        return "";
+    }
+  }
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -40,7 +63,7 @@ function DashboardLayout(props) {
       </aside>
       <ContentDiv>
         <PageHeader className="d-flex w-100">
-          <H1Alt textColor={1}>Nome</H1Alt>
+          <H1Alt textColor={1}>{getPageName()}</H1Alt>
           <div className="userMenu d-flex ms-auto">
             <H1Alt className="ps-3" textColor={1}>
               {put.username ? put.username : ""}
