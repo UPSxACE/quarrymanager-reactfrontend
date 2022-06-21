@@ -37,7 +37,7 @@ function LojaHome(props) {
 
   return (
     <Container fluid>
-      <StyledRowDark>
+      <StyledRowDark className="stretch">
         <StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>
 
         <Col xs={9}>

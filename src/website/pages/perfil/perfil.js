@@ -6,6 +6,7 @@ import { H1, H5 } from "../../components/text";
 import { Button } from "bootstrap";
 import { ButtonSubmit, FileSubmitButton } from "../../components/buttons";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import genericPfp from "../../../images/website/genericUserProfilePicture.svg";
 
 import axios from "axios";
 
@@ -103,7 +104,7 @@ function MeuPerfil(props) {
 
   return (
     <ColoredContainer variant={1} fluid>
-      <Row className="p-5">
+      <Row className="p-5 stretch">
         <Col xs={3} className="g-0 pe-5">
           <Container fluid>
             <Row>
@@ -251,17 +252,17 @@ function MeuPerfil(props) {
                 xs={4}
                 className="g-0 pe-5 d-flex flex-column justify-content-start"
               >
-                <img
+                <ProfilePicture
                   key={update_on_upload}
                   width={"100%"}
                   src={
                     user.profilePic
                       ? "http://localhost:8080/uploads/" + user.profilePic
-                      : "http://localhost:8080/uploads/profilePictures/genericUserProfilePicture.svg"
+                      : genericPfp
                   }
                   alt={"profile"}
-                  className="mb-4"
-                ></img>
+                  className="mb-4 pfp"
+                ></ProfilePicture>
 
                 <a href="#">
                   <FileSubmitButton
@@ -318,4 +319,9 @@ const WhiteLink = styled(Link)`
 
 const TextH4 = styled.h4`
   font-weight: lighter;
+`;
+
+const ProfilePicture = styled.img`
+  background-color: white;
+  width: 100%;
 `;

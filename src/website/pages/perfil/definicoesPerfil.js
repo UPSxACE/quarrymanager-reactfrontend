@@ -43,7 +43,7 @@ function DefinicoesPerfil(props) {
 
   return (
     <ColoredContainer variant={1} fluid>
-      <Row className="p-5">
+      <Row className="p-5 stretch">
         <Col xs={3} className="g-0 pe-5">
           <ul className="list-unstyled">
             <StyledLi className="p-2">

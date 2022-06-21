@@ -8,10 +8,10 @@ export { Contactos };
 
 function Contactos() {
   return (
-    <ColoredContainer variant={1} fluid>
-      <DisplayH1 className="text-center pb-5 pt-5">Contactos</DisplayH1>
+    <ColoredContainer variant={1} fluid className="stretch">
       <Row>
         <Col xs={12}>
+          <DisplayH1 className="text-center pb-5 pt-5">Contactos</DisplayH1>
           <Container>
             <Row>
               <Col xs={4}>

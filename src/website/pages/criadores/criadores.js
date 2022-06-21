@@ -6,11 +6,12 @@ import moniquePic from "../../../images/website/monique.jpg";
 import eduardoPic from "../../../images/website/eduardo.jpg";
 import diogoPic from "../../../images/website/ceo1.jpg";
 import miguelPic from "../../../images/website/ceo2.jpg";
+import { ColoredContainer } from "../../components/coloredComponents";
 export { Criadores };
 
 function Criadores() {
   return (
-    <Container fluid>
+    <ColoredContainer fluid className={"stretch"}>
       <StyledRow>
         <Col xs={12} className={"pb-4 pt-4 ps-5 pe-5"}>
           <DisplayH1 textAlign={"left"}>NOSSA EQUIPA</DisplayH1>
@@ -67,7 +68,7 @@ function Criadores() {
           </Paragraph>
         </Col>
       </StyledRow>
-    </Container>
+    </ColoredContainer>
   );
 }
 

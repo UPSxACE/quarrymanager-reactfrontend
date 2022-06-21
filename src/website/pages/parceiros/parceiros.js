@@ -14,7 +14,7 @@ export { Parceiros };
 
 function Parceiros() {
   return (
-    <ColoredContainer className="main" fluid>
+    <ColoredContainer className="main stretch" fluid>
       <Row className="pt-3 pb-5">
         <Col xs={12}>
           <DisplayH1 className="text-center">Parceiros Comerciais</DisplayH1>
