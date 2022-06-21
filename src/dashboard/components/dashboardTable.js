@@ -113,6 +113,19 @@ function DashboardTable(props) {
         </button>
       );
     }
+    if (props.viewencomenda) {
+      actions.push(
+        <Link
+          className="actionLink"
+          key={index + "viewencomenda"}
+          to={"/dashboard/" + props.viewencomenda + "/" + reference}
+        >
+          <button className="btn btn-outline-success" key={index + "view"}>
+            Ver
+          </button>
+        </Link>
+      );
+    }
     return <>{actions}</>;
   }
 
@@ -403,8 +416,18 @@ const TableWrapper = styled.div`
     color: #004b5b;
   }
 
-  button {
+  button.actionLink {
     all: unset;
+  }
+
+  .btn-outline-success {
+    border-color: #004b5b;
+    color: #004b5b;
+  }
+
+  .btn-outline-success:hover {
+    background-color: #004b5b;
+    color: white;
   }
 
   td div {
@@ -416,7 +439,7 @@ const TableStyle = styled.table`
   width: 100%;
 
   tbody {
-    height: 576px;
+    height: 690px;
   }
 `;
 
