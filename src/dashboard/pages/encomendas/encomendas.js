@@ -15,7 +15,11 @@ import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
 import { ButtonSubmit } from "../../../website/components/buttons";
 import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.svg";
-export { DashboardEncomendas, DashboardVerEncomendas };
+export {
+  DashboardEncomendas,
+  DashboardVerEncomendas,
+  DashboardMobilizacaoStock,
+};
 
 function DashboardEncomendas(props) {
   const [activePage, updatePager1] = useState(1);
@@ -68,6 +72,26 @@ function DashboardEncomendas(props) {
         </Col>
       </Row>
     </Container>
+  );
+}
+
+function DashboardMobilizacaoStock() {
+  return (
+    <ContainerStretch fluid className="d-flex flex-column">
+      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
+        <Col xs={12}>aaa</Col>
+      </EncomendaWrapper>
+    </ContainerStretch>
+  );
+}
+
+function DashboardAgendarRecolha() {
+  return (
+    <ContainerStretch fluid className="d-flex flex-column">
+      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
+        <Col xs={12}>aaa</Col>
+      </EncomendaWrapper>
+    </ContainerStretch>
   );
 }
 
@@ -224,6 +248,8 @@ function DashboardVerEncomendas() {
 
 const EncomendaWrapper = styled(Row)`
   border: 1px solid black;
+  textare {
+  }
 `;
 
 const ButtonsRow = styled(Row)``;

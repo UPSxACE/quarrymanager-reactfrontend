@@ -30,6 +30,7 @@ import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
 import { DashboardStock } from "./dashboard/pages/stock/stock";
 import {
   DashboardEncomendas,
+  DashboardMobilizacaoStock,
   DashboardVerEncomendas,
 } from "./dashboard/pages/encomendas/encomendas";
 import { DashboardLoja } from "./dashboard/pages/loja/loja";
@@ -294,6 +295,10 @@ function App(props) {
           <Route
             path="encomendas/ver/:codigo_lote"
             element={<DashboardVerEncomendas />}
+          />
+          <Route
+            path="encomendas/ver/:codigo_lote/mobilizar-stock"
+            element={<DashboardMobilizacaoStock />}
           />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
           <Route
