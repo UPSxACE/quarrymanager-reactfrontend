@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -11,6 +11,7 @@ import {
   H3,
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
+import { DashboardTabContext } from "../../../App";
 
 export { DashboardLoja };
 
@@ -18,6 +19,11 @@ function DashboardLoja(props) {
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
   const [activeTab, changeTab] = useState(props.tab);
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  useEffect(() => {
+    setTab("loj");
+  });
 
   function updatePager(value1, value2) {
     if (value1 <= limitPage && value1 > 0) {
@@ -94,35 +100,33 @@ function DashboardLoja(props) {
     changeTab(newTab);
   }
   return (
-    <DashboardLayout tab={"loj"}>
-      <Container fluid>
-        <Row className="g-0">
-          <Col xs={12}>
-            <DashboardMenu>
-              <DashboardMenuList
-                listItems={["Produtos", "Transportadoras"]}
-                rightButton={[
-                  ["Adicionar Produto à Loja", "novo-produto"],
+    <Container fluid>
+      <Row className="g-0">
+        <Col xs={12}>
+          <DashboardMenu>
+            <DashboardMenuList
+              listItems={["Produtos", "Transportadoras"]}
+              rightButton={[
+                ["Adicionar Produto à Loja", "novo-produto"],
 
-                  ["Nova Transportadora", "nova-transportadora"],
-                ]}
-                activeItem={activeTab}
-                tabClickFunction={handleTabClick}
-              ></DashboardMenuList>
-            </DashboardMenu>
-          </Col>
-        </Row>
-        <Row className="g-0 pt-5">
-          <Col xs={12}>
-            {getTable(activeTab)}
-            <TablePager
-              updatePager={updatePager}
-              activePage={activePage}
-              limitPage={limitPage}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </DashboardLayout>
+                ["Nova Transportadora", "nova-transportadora"],
+              ]}
+              activeItem={activeTab}
+              tabClickFunction={handleTabClick}
+            ></DashboardMenuList>
+          </DashboardMenu>
+        </Col>
+      </Row>
+      <Row className="g-0 pt-5">
+        <Col xs={12}>
+          {getTable(activeTab)}
+          <TablePager
+            updatePager={updatePager}
+            activePage={activePage}
+            limitPage={limitPage}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }

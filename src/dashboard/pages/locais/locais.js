@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -11,10 +11,17 @@ import {
   H3,
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
+import { DashboardTabContext } from "../../../App";
 
 export { DashboardLocais };
 
 function DashboardLocais(props) {
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  useEffect(() => {
+    setTab("loc");
+  });
+
   function getTable(activeTab) {
     console.log("teste", activeTab, 1);
 
@@ -96,35 +103,33 @@ function DashboardLocais(props) {
   }, [activeTab]);
 
   return (
-    <DashboardLayout tab={"loc"}>
-      <Container fluid>
-        <Row className="g-0">
-          <Col xs={12}>
-            <DashboardMenu>
-              <DashboardMenuList
-                listItems={["Locais de Armazéns", "Locais de Extração"]}
-                rightButton={[
-                  ["Novo Local de Armazém", "novo-local-armazem"],
-                  ["Novo Local de Extração", "novo-local-extracao"],
-                ]}
-                activeItem={activeTab}
-                tabClickFunction={handleTabClick}
-              ></DashboardMenuList>
-            </DashboardMenu>
-          </Col>
-        </Row>
+    <Container fluid>
+      <Row className="g-0">
+        <Col xs={12}>
+          <DashboardMenu>
+            <DashboardMenuList
+              listItems={["Locais de Armazéns", "Locais de Extração"]}
+              rightButton={[
+                ["Novo Local de Armazém", "novo-local-armazem"],
+                ["Novo Local de Extração", "novo-local-extracao"],
+              ]}
+              activeItem={activeTab}
+              tabClickFunction={handleTabClick}
+            ></DashboardMenuList>
+          </DashboardMenu>
+        </Col>
+      </Row>
 
-        <Row className="g-0 pt-5">
-          <Col xs={12}>
-            {getTable(activeTab)}
-            <TablePager
-              updatePager={updatePager}
-              activePage={activePage}
-              limitPage={limitPage}
-            />{" "}
-          </Col>
-        </Row>
-      </Container>
-    </DashboardLayout>
+      <Row className="g-0 pt-5">
+        <Col xs={12}>
+          {getTable(activeTab)}
+          <TablePager
+            updatePager={updatePager}
+            activePage={activePage}
+            limitPage={limitPage}
+          />{" "}
+        </Col>
+      </Row>
+    </Container>
   );
 }

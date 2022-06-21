@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
+import { DashboardTabContext } from "../../../App";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardLayout } from "../../components/layout";
 import {
@@ -17,6 +18,11 @@ function DashboardStock(props) {
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
   const [activeTab, changeTab] = useState(props.tab);
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  useEffect(() => {
+    setTab("sto");
+  });
 
   function updatePager(value1, value2) {
     if (value1 <= limitPage && value1 > 0) {
