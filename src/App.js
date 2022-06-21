@@ -106,6 +106,10 @@ function isLoggedCheck() {
   );
 }
 
+function LoggedInOnly(props) {
+  return isLoggedCheck() ? <>{props.children}</> : <Navigate to="/home" />;
+}
+
 function Private(props) {
   const [permission, setPermission] = useState(undefined);
 
@@ -159,8 +163,6 @@ function About() {
 }
 
 function Website(props) {
-  const [tab, setTab] = useState("hom");
-
   return (
     <div className="Website">
       {props.guest ? (
@@ -207,31 +209,6 @@ function Dashboard() {
         </DashboardLayout>
       </DashboardTabContext.Provider>
     </Private>
-  );
-}
-
-function Perfil() {
-  return (
-    <div className="Website">
-      {!isLoggedCheck() ? (
-        <NavbarComponent isGuest={true} />
-      ) : (
-        <NavbarComponent isGuest={false} />
-      )}
-
-      <Outlet />
-      <Footer />
-    </div>
-  );
-}
-
-function Loja() {
-  return (
-    <div className="Loja">
-      <NavbarComponent isGuest={!isLoggedCheck()} />
-      <Outlet />
-      <Footer />
-    </div>
   );
 }
 
@@ -283,7 +260,26 @@ function App(props) {
               </GuestOnly>
             }
           />
+
+          <Route
+            path="/perfil/definicoes"
+            element={
+              <LoggedInOnly>
+                <DefinicoesPerfil />
+              </LoggedInOnly>
+            }
+          ></Route>
+          <Route
+            path="perfil"
+            element={
+              <LoggedInOnly>
+                <MeuPerfil />
+              </LoggedInOnly>
+            }
+          ></Route>
           <Route path="faq" element={<Faq />} />
+          <Route path="loja/" element={<LojaHome />}></Route>
+          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
 
         <Route path="dashboard/" element={<Dashboard />}>
@@ -353,16 +349,6 @@ function App(props) {
           <Route path="ajuda" element={<DashboardAjuda />} />
           <Route path="novo-lote" element={<DashboardNovoLote />} />
           <Route path="ver-lote/:codigo_lote" element={<ViewLote />} />
-        </Route>
-
-        <Route path="perfil" element={<Perfil />}>
-          <Route path="definicoes" element={<DefinicoesPerfil />}></Route>
-          <Route path="/perfil/" element={<MeuPerfil />}></Route>
-        </Route>
-
-        <Route path="loja" element={<Loja />}>
-          <Route path="/loja/" element={<LojaHome />}></Route>
-          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
 
         <Route
