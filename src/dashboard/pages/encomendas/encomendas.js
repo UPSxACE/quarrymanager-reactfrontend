@@ -61,27 +61,27 @@ function DashboardEncomendas() {
 
 function DashboardVerEncomendas() {
   return (
-    <Container fluid>
+    <ContainerStretch fluid className="d-flex flex-column">
       <ButtonsRow>
         <Col xs={12}>
-          <Button variant="secondary"> Dados da Encomenda </Button>
-          <Button variant="secondary"> Mobilização do Stock</Button>
-          <Button variant="secondary"> Agendar Recolha</Button>
+          <Button variant="secondary">Dados da Encomenda</Button>
+          <Button variant="secondary">Mobilização do Stock</Button>
+          <Button variant="secondary">Agendar Recolha</Button>
         </Col>
       </ButtonsRow>
-      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5">
-        <Col xs={12}>
+      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
+        <Col xs={12} className="d-flex">
           <Container fluid>
-            <Row>
+            <Row className="h-25">
               <BoxCol xs={6}>
                 <h1>O Status: </h1>
               </BoxCol>
               <Col xs={6}>ad</Col>
             </Row>
-            <Row>
-              <Col xs={6} className="g-0">
-                <Button variant="secondary"> Dados da Encomenda </Button>
-                <BoxContainer className="p-5">
+            <Row className="h-75">
+              <Col xs={6} className="g-0 h-100 d-flex flex-column">
+                <EditButton variant="secondary">Editar</EditButton>
+                <BoxContainer className="p-5 flex-grow-1">
                   <Row>
                     <Col xs={6}>
                       <div>
@@ -117,9 +117,9 @@ function DashboardVerEncomendas() {
                   </Row>
                 </BoxContainer>
               </Col>
-              <Col xs={6} className="g-0">
-                <Button variant="secondary"> Dados da Encomenda </Button>
-                <BoxContainer className="pb-5 pe-5">
+              <Col xs={6} className="g-0 h-100 d-flex flex-column">
+                <EditButton variant="secondary">Editar</EditButton>
+                <BoxContainer className="p-5 flex-grow-1">
                   <Row>
                     <Col xs={6}>
                       <div>
@@ -173,7 +173,7 @@ function DashboardVerEncomendas() {
           </Container>
         </Col>
       </EncomendaWrapper>
-    </Container>
+    </ContainerStretch>
   );
 }
 
@@ -189,4 +189,12 @@ const BoxContainer = styled(Container)`
 
 const BoxCol = styled(Col)`
   border: 1px solid black;
+`;
+
+const ContainerStretch = styled(Container)`
+  height: calc(100vh - 70px - 6rem);
+`;
+
+const EditButton = styled(Button)`
+  width: 70px;
 `;
