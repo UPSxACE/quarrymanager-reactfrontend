@@ -16,9 +16,10 @@ import { DashboardTabContext } from "../../../App";
 
 export { DashboardEncomendas, DashboardVerEncomendas };
 
-function DashboardEncomendas() {
+function DashboardEncomendas(props) {
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
+  const [activeTab, changeTab] = useState(0);
   const [currentTab, setTab] = useContext(DashboardTabContext);
 
   useEffect(() => {
@@ -33,6 +34,16 @@ function DashboardEncomendas() {
   }
   return (
     <Container fluid>
+      <Row className="g-0">
+        <Col xs={12}>
+          <DashboardMenu>
+            <DashboardMenuList
+              listItems={["Encomendas"]}
+              activeItem={activeTab}
+            ></DashboardMenuList>
+          </DashboardMenu>
+        </Col>
+      </Row>
       <Row className="g-0 pt-5">
         <Col xs={12}>
           <DashboardTable

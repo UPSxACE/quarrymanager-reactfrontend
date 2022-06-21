@@ -59,7 +59,7 @@ function DashboardTable(props) {
   function getBlankTables(length) {
     let rows = [];
 
-    for (let i = length; i < 10; i++) {
+    for (let i = length; i < 7; i++) {
       rows.push(
         <tr key={i}>
           <td>&nbsp;</td>
@@ -120,9 +120,12 @@ function DashboardTable(props) {
           key={index + "viewencomenda"}
           to={"/dashboard/" + props.viewencomenda + "/" + reference}
         >
-          <button className="btn btn-outline-success" key={index + "view"}>
+          <Button25px
+            className="btn btn-outline-success pt-0 pb-0"
+            key={index + "view"}
+          >
             Ver
-          </button>
+          </Button25px>
         </Link>
       );
     }
@@ -439,7 +442,7 @@ const TableStyle = styled.table`
   width: 100%;
 
   tbody {
-    height: 690px;
+    height: 385px;
   }
 `;
 
@@ -543,4 +546,9 @@ const PagerText = styled.button`
 
 const ClickableButton = styled.button`
   all: unset;
+`;
+
+const Button25px = styled.button`
+  height: 22px;
+  line-height: 20px;
 `;
