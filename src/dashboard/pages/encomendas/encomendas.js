@@ -13,7 +13,8 @@ import {
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
-
+import { ButtonSubmit } from "../../../website/components/buttons";
+import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.svg";
 export { DashboardEncomendas, DashboardVerEncomendas };
 
 function DashboardEncomendas(props) {
@@ -75,103 +76,136 @@ function DashboardVerEncomendas() {
     <ContainerStretch fluid className="d-flex flex-column">
       <ButtonsRow>
         <Col xs={12}>
-          <Button variant="secondary">Dados da Encomenda</Button>
-          <Button variant="secondary">Mobilização do Stock</Button>
-          <Button variant="secondary">Agendar Recolha</Button>
+          <div className="d-flex bd-highlight">
+            <div className="bd-highlight">
+              <ButtonSubmit black className="">
+                Dados Da Encomenda
+              </ButtonSubmit>
+            </div>
+            <div className="bd-highlight ps-1">
+              <ButtonSubmit black className="">
+                Mobilização do Stock
+              </ButtonSubmit>
+            </div>
+            <div className="ms-auto bd-highlight">
+              <ButtonSubmit black className="">
+                Cancelar Encomenda
+              </ButtonSubmit>
+            </div>
+          </div>
         </Col>
       </ButtonsRow>
       <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
         <Col xs={12} className="d-flex">
           <Container fluid>
             <Row className="h-25">
-              <BoxCol xs={6}>
-                <h1>O Status: </h1>
+              <BoxCol xs={6} className="pe-3">
+                <div className="borderBox p-3">
+                  <h1>O Status: </h1>
+                  <div className="">
+                    <ButtonSubmit black className="w-100 ">
+                      (forçar mudança de estado)
+                    </ButtonSubmit>
+                  </div>
+                </div>
               </BoxCol>
-              <Col xs={6}>ad</Col>
+              <Col xs={6} className="ps-3">
+                <div className="d-flex justify-content-end p-3">
+                  <div className="d-flex flex-column text-right ">
+                    <h2>Nome</h2>
+                    <h6>Encomenda N</h6>
+                    <h6>Pedido realizado em: </h6>
+                  </div>
+                  <ProfileEncPic src={EncomendaPic}></ProfileEncPic>
+                </div>
+              </Col>
             </Row>
-            <Row className="h-75">
-              <Col xs={6} className="g-0 h-100 d-flex flex-column">
-                <EditButton variant="secondary">Editar</EditButton>
-                <BoxContainer className="p-5 flex-grow-1">
+
+            <Row className="h-75 pt-5">
+              <Col xs={6} className="g-0 h-100 d-flex flex-column pe-3">
+                <EditButton black variant="secondary">
+                  Editar
+                </EditButton>
+                <BoxContainer className="pe-5 ps-3 pb-5 pt-2  flex-grow-1">
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Nome:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
-                      {" "}
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Morada:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
-                      {" "}
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Email:</h6>
                         <span>abc@abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
-                      {" "}
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Telefone:</h6>
                         <span>99999999</span>
                       </div>
                     </Col>
-                    <Col xs={12}>
+                    <Col xs={12} className="pb-2">
                       Detalhes da Conta do Utilizador
                       <textarea className="w-100"></textarea>
                     </Col>
                   </Row>
                 </BoxContainer>
               </Col>
-              <Col xs={6} className="g-0 h-100 d-flex flex-column">
-                <EditButton variant="secondary">Editar</EditButton>
-                <BoxContainer className="p-5 flex-grow-1">
+
+              <Col xs={6} className="g-0 h-100 d-flex flex-column ps-3">
+                <EditButton black variant="secondary">
+                  Editar
+                </EditButton>
+                <BoxContainer className="pe-5 ps-5 pb-5 pt-2 flex-grow-1">
                   <Row>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Produto:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Preço/m²:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Quantidade:</h6>
                         <span>abc@abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <h6>Código de Desconto:</h6>
                         <span>99999999</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Preço Inicial:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Desconto (Manual):</h6>
                         <span>abc</span>
                       </div>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className="pb-2">
                       <div>
                         <h6>Estimativa Preço Final:</h6>
                         <span>abc</span>
@@ -199,13 +233,21 @@ const BoxContainer = styled(Container)`
 `;
 
 const BoxCol = styled(Col)`
-  border: 1px solid black;
+  .borderBox {
+    border: 1px solid black;
+  }
+  padding: 0px;
 `;
 
 const ContainerStretch = styled(Container)`
   height: calc(100vh - 70px - 6rem);
 `;
 
-const EditButton = styled(Button)`
+const EditButton = styled(ButtonSubmit)`
   width: 70px;
+`;
+
+const ProfileEncPic = styled.img`
+  border-radius: 50px;
+  height: 100px;
 `;
