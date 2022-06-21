@@ -13,6 +13,7 @@ import {
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
 import { DashboardTabContext } from "../../../App";
+import { ButtonSubmit } from "../../../website/components/buttons";
 
 export { DashboardEncomendas, DashboardVerEncomendas };
 
@@ -64,24 +65,47 @@ function DashboardVerEncomendas() {
     <Container fluid>
       <ButtonsRow>
         <Col xs={12}>
-          <Button variant="secondary"> Dados da Encomenda </Button>
-          <Button variant="secondary"> Mobilização do Stock</Button>
-          <Button variant="secondary"> Agendar Recolha</Button>
+          <div className="d-flex bd-highlight">
+            <div className="bd-highlight">
+              <ButtonSubmit black className="">
+                Dados Da Encomenda
+              </ButtonSubmit>
+            </div>
+            <div className="bd-highlight ps-1">
+              <ButtonSubmit black className="">
+                Mobilização do Stock
+              </ButtonSubmit>
+            </div>
+            <div className="ms-auto bd-highlight">
+              <ButtonSubmit black className="">
+                Cancelar Encomenda
+              </ButtonSubmit>
+            </div>
+          </div>
         </Col>
       </ButtonsRow>
-      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5">
+      <EncomendaWrapper className="g-0">
         <Col xs={12}>
           <Container fluid>
-            <Row>
-              <BoxCol xs={6}>
+            <Row className="p-5">
+              <BoxCol xs={6} className="g-0 pe-3 pb-5">
                 <h1>O Status: </h1>
+                <div>
+                  <ButtonSubmit black className="w-100">
+                    Conferir o Stock
+                  </ButtonSubmit>
+                </div>
               </BoxCol>
-              <Col xs={6}>ad</Col>
+              <Col xs={6} className="ps-3">
+                ad
+              </Col>
             </Row>
-            <Row>
-              <Col xs={6} className="g-0">
-                <Button variant="secondary"> Dados da Encomenda </Button>
-                <BoxContainer className="p-5">
+            <Row className="pb-5 pe-5 ps-5">
+              <Col xs={6} className="g-0 pe-3">
+                <ButtonSubmit black className="">
+                  Editar
+                </ButtonSubmit>
+                <BoxContainer>
                   <Row>
                     <Col xs={6}>
                       <div>
@@ -90,21 +114,18 @@ function DashboardVerEncomendas() {
                       </div>
                     </Col>
                     <Col xs={6}>
-                      {" "}
                       <div>
                         <h6>Morada:</h6>
                         <span>abc</span>
                       </div>
                     </Col>
                     <Col xs={6}>
-                      {" "}
                       <div>
                         <h6>Email:</h6>
                         <span>abc@abc</span>
                       </div>
                     </Col>
                     <Col xs={6}>
-                      {" "}
                       <div>
                         <h6>Telefone:</h6>
                         <span>99999999</span>
@@ -117,9 +138,11 @@ function DashboardVerEncomendas() {
                   </Row>
                 </BoxContainer>
               </Col>
-              <Col xs={6} className="g-0">
-                <Button variant="secondary"> Dados da Encomenda </Button>
-                <BoxContainer className="pb-5 pe-5">
+              <Col xs={6} className="g-0 ps-3">
+                <ButtonSubmit black className="">
+                  Editar
+                </ButtonSubmit>
+                <BoxContainer>
                   <Row>
                     <Col xs={6}>
                       <div>
