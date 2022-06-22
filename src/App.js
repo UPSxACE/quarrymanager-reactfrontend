@@ -29,6 +29,7 @@ import { DashboardNovoLote } from "./dashboard/pages/lotes/novoLote";
 
 import { DashboardStock } from "./dashboard/pages/stock/stock";
 import {
+  DashboardAgendarRecolha,
   DashboardEncomendas,
   DashboardMobilizacaoStock,
   DashboardVerEncomendas,
@@ -299,6 +300,10 @@ function App(props) {
           <Route
             path="encomendas/ver/:id/mobilizar-stock"
             element={<DashboardMobilizacaoStock />}
+          />
+          <Route
+            path="encomendas/ver/:id/agendar-recolha"
+            element={<DashboardAgendarRecolha />}
           />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
           <Route

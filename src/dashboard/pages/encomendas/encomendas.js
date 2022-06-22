@@ -22,6 +22,7 @@ export {
   DashboardEncomendas,
   DashboardVerEncomendas,
   DashboardMobilizacaoStock,
+  DashboardAgendarRecolha,
 };
 
 function DashboardEncomendas(props) {
@@ -123,7 +124,7 @@ function DashboardMobilizacaoStock() {
             </div>
             <div className="ms-auto bd-highlight">
               <ButtonSubmit black className="">
-                Cancelar Encomenda
+                Agendar Recolha
               </ButtonSubmit>
             </div>
           </div>
