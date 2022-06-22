@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -8,14 +8,16 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-export { ViewLocalArmazem };
+export { ViewTransportadora };
 
-function ViewLocalArmazem() {
+function ViewTransportadora() {
   const [find, findStats] = useState({});
 
   const { id } = useParams("id");
+  const nomeLocais = useRef("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -24,7 +26,7 @@ function ViewLocalArmazem() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-armazem/find?id=" + id,
+          "http://localhost:8080/api/transportadora/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -43,24 +45,26 @@ function ViewLocalArmazem() {
 
   return (
     <Container fluid>
-      <DashboardRow className="g-0 pt-4 pb-4">
+      <DashboardRow className="g-0 pt-4 pb-4 ps-5 pe-5">
         <Col xs={12}>
           <Container>
             <Tabela className="w-100 ">
               <tbody>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Nome :</th>
+                  <th className="pt-2 pe-3 ps-5 pb-2">Nome :</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.nome ? find.nome : ""}
                   </td>
                 </tr>
               </tbody>
             </Tabela>
-            <Col xs={12} className="pt-3">
-              <Link to={"/dashboard/editar-local-armazem/" + id}>
+            <Col xs={12} className="pt-4">
+              <Link to={"/dashboard/editar-transportadora/" + id}>
                 <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
               </Link>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/loja"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>

@@ -73,6 +73,8 @@ import axios from "axios";
 import { DashboardNovaTransportadora } from "./dashboard/pages/loja/novaTransportadora";
 import { DashboardLayout } from "./dashboard/components/layout";
 import styled from "styled-components";
+import { ViewTransportadora } from "./dashboard/pages/encomendas/viewTransportadora";
+import { EditarTransportadora } from "./dashboard/pages/encomendas/editarTransportadora";
 export { DashboardTabContext };
 
 const DashboardTabContext = createContext();
@@ -309,6 +311,16 @@ function App(props) {
           <Route
             path="nova-transportadora"
             element={<DashboardNovaTransportadora />}
+          />
+
+          <Route
+            path="ver-transportadora/:id"
+            element={<ViewTransportadora />}
+          />
+
+          <Route
+            path="editar-transportadora/:id"
+            element={<EditarTransportadora />}
           />
 
           <Route

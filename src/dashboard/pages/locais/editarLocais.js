@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Container, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardRow } from "../../components/layoutComponents";
@@ -9,7 +9,7 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export { EditarLocalArmazem };
@@ -18,6 +18,10 @@ export { EditarLocalExtracao };
 function EditarLocalExtracao() {
   const [dados, atualizarDados] = useState([]);
   const { id } = useParams();
+  const nomeLocais = useRef("");
+  const coordenadasGPS_X = useRef("");
+  const coordenadasGPS_Y = useRef("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -43,6 +47,36 @@ function EditarLocalExtracao() {
     sendGetRequest();
   }, [id]);
 
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/local-extracao/editar",
+          {
+            id: id,
+            nome: nomeLocais.current.value,
+            coordenadasGPS_X: coordenadasGPS_X.current.value,
+            coordenadasGPS_Y: coordenadasGPS_Y.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        navigate("/dashboard/locais", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest(); //TERMINAR AQUI
+  }
+
   return (
     <Container fluid>
       <Form>
@@ -54,6 +88,7 @@ function EditarLocalExtracao() {
                 type="text"
                 placeholder=""
                 defaultValue={dados.nome ? dados.nome : ""}
+                ref={nomeLocais}
               />
             </Form.Group>
           </Col>
@@ -66,6 +101,7 @@ function EditarLocalExtracao() {
                 defaultValue={
                   dados.coordenadasGPS_X ? dados.coordenadasGPS_X : ""
                 }
+                ref={coordenadasGPS_X}
               />
             </Form.Group>
           </Col>
@@ -78,11 +114,14 @@ function EditarLocalExtracao() {
                 defaultValue={
                   dados.coordenadasGPS_Y ? dados.coordenadasGPS_Y : ""
                 }
+                ref={coordenadasGPS_Y}
               />
             </Form.Group>
           </Col>
           <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+            <PrimaryButtonSave className="me-2" onClick={submit}>
+              Guardar
+            </PrimaryButtonSave>
 
             <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
           </Col>
@@ -95,6 +134,8 @@ function EditarLocalExtracao() {
 function EditarLocalArmazem() {
   const [dados, atualizarDados] = useState([]);
   const { id } = useParams();
+  const nomeLocais = useRef("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -103,7 +144,7 @@ function EditarLocalArmazem() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/local-extracao/find?id=" + id,
+          "http://localhost:8080/api/local-armazem/find?id=" + id,
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -119,6 +160,34 @@ function EditarLocalArmazem() {
 
     sendGetRequest();
   }, [id]);
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/local-armazem/editar",
+          {
+            nome: nomeLocais.current.value,
+            id: id,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        navigate("/dashboard/locais", { replace: true });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest(); //TERMINAR AQUI
+  }
 
   return (
     <Container fluid>
@@ -136,9 +205,13 @@ function EditarLocalArmazem() {
           </Col>
 
           <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+            <PrimaryButtonSave className="me-2" onClick={submit}>
+              Guardar
+            </PrimaryButtonSave>
 
-            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            <Link to={"/dashboard/locais"}>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Link>
           </Col>
         </DashboardRow>
       </Form>
