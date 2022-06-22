@@ -41,7 +41,7 @@ function LojaHome(props) {
         <StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>
 
         <Col xs={9}>
-          <DisplayH1 className="text-center pt-3 pb-5">Loja</DisplayH1>
+          <DisplayH1 className="text-center pt-3 pb-5">A Nossa Loja</DisplayH1>
           <Container>
             <StyledRowDark>
               {data.map((produto, index) => {

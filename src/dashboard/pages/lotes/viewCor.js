@@ -8,7 +8,7 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 export { ViewCor };
 
@@ -63,7 +63,9 @@ function ViewCor() {
               </tbody>
             </Tabela>
             <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
+              <Link to={"/dashboard/editar-cor/" + id}>
+                <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
+              </Link>
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
           </Container>

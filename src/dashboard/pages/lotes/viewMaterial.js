@@ -8,7 +8,7 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 export { ViewMaterial };
 
@@ -62,8 +62,8 @@ function ViewMaterial() {
                 </tr>
               </tbody>
             </Tabela>
-            <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
+            <Col xs={12} className="pt-3"> <Link to={"/dashboard/editar-material/" + id}>
+              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave></Link>
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
           </Container>
