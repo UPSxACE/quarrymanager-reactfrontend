@@ -292,29 +292,6 @@ function DashboardMobilizacaoStock() {
     }
   }
 
-  function cancelar() {
-    const sendPostRequest = async () => {
-      try {
-        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
-
-        const resp = await axios.post(
-          "http://localhost:8080/api/pedido/cancelar-encomenda?idPedido=" +
-            idPedido,
-          {},
-          {
-            headers: {
-              Authorization: "Basic " + btoa(AuthKey + ":"),
-            },
-          }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    sendPostRequest();
-  }
-
   useEffect(() => {
     setTab("Encomenda #" + idPedido);
   });
@@ -424,6 +401,29 @@ function DashboardVerEncomendas() {
     sendPostRequest();
   }
 
+  function proximoEstado() {
+    const sendPostRequest = async () => {
+      try {
+        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido/proximo-estado?idPedido=" +
+            idPedido,
+          {},
+          {
+            headers: {
+              Authorization: "Basic " + btoa(AuthKey + ":"),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -489,7 +489,11 @@ function DashboardVerEncomendas() {
                 <div className="borderBox p-3">
                   <DisplayTextH1>O Status: </DisplayTextH1>
                   <div className="">
-                    <ButtonSubmit2 green className="w-100 ">
+                    <ButtonSubmit2
+                      onClick={proximoEstado}
+                      green
+                      className="w-100 "
+                    >
                       (forçar mudança de estado)
                     </ButtonSubmit2>
                   </div>
