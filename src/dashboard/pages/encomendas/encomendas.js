@@ -21,7 +21,7 @@ import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.sv
 
 import { ButtonSubmit } from "../../../website/components/buttons";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
@@ -93,6 +93,8 @@ function DashboardEncomendas(props) {
 }
 
 function DashboardAgendarRecolha() {
+  let navigate = useNavigate();
+
   function getLotesOptions() {
     if (options.lotes !== null && options.lotes !== undefined) {
       let lotesKeys = Object.keys(options.lotes);
@@ -112,6 +114,38 @@ function DashboardAgendarRecolha() {
     }
 
     return <></>;
+  }
+
+  function submit() {
+    console.log("AQUIII");
+    const sendPostRequest = async () => {
+      try {
+        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido-lote/agendar-recolha?idPedido=" +
+            idPedido,
+          {
+            codigoLote: codigo_lote.current.value,
+            quantidade: quantidade.current.value,
+            idTransportadora: transportadora.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(AuthKey + ":"),
+            },
+          }
+        );
+
+        navigate("/dashboard/encomendas/ver/" + idPedido + "/mobilizar-stock", {
+          replace: true,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
   }
 
   function getTransportadorasOptions() {
@@ -206,8 +240,10 @@ function DashboardAgendarRecolha() {
           </Form.Select>
         </Col>
         <Col xs={12} className="pt-3">
-          <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
-          <Link to={"/dashboard/loja"}>
+          <PrimaryButtonSave className="me-2" onClick={submit}>
+            Guardar
+          </PrimaryButtonSave>
+          <Link to={"/dashboard/encomendas/ver/" + idPedido}>
             <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
           </Link>
         </Col>
@@ -219,9 +255,35 @@ function DashboardAgendarRecolha() {
 function DashboardMobilizacaoStock() {
   const [currentTab, setTab] = useContext(DashboardTabContext);
   const { idPedido } = useParams();
-
+  const [nomeProduto, setNome] = useState({});
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/pedido/find?id=" +
+            idPedido +
+            "&fields=idProduto0.tituloArtigo",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setNome(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  });
 
   function updatePager(value1, value2) {
     if (value1 <= limitPage && value1 > 0) {
@@ -272,7 +334,11 @@ function DashboardMobilizacaoStock() {
               <Col xs={12}>
                 <div className={"d-flex"}>
                   <H1>Produto:</H1>
-                  <H1Normal className="ps-2">aaa</H1Normal>
+                  <H1Normal className="ps-2">
+                    {nomeProduto.idProduto0
+                      ? nomeProduto.idProduto0.tituloArtigo
+                      : ""}
+                  </H1Normal>
                 </div>
                 <DashboardTable
                   key={"0"}
@@ -280,6 +346,7 @@ function DashboardMobilizacaoStock() {
                   labels={{
                     codigoLote: "Lote",
                     quantidade: "Quantidade",
+                    id: ["idTransportadora0", "Transportadora"],
                     dataHoraAgendamento: "Data de Agendamento",
                     dataHoraRecolha: "Data de Recolha",
                   }}
@@ -287,7 +354,8 @@ function DashboardMobilizacaoStock() {
                     "pedido-lote/recolhas-agendadas?id=" +
                     idPedido +
                     "&page=" +
-                    activePage
+                    activePage +
+                    "&expand=idTransportadora0"
                   }
                 ></DashboardTable>
                 <TablePager
