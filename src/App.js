@@ -294,7 +294,7 @@ function App(props) {
           ></Route>
           <Route path="faq" element={<Faq />} />
           <Route path="loja/" element={<LojaHome />}></Route>
-          <Route path="produto/:id" element={<ProdutoLoja />}></Route>
+          <Route path="loja/produto/:id" element={<ProdutoLoja />}></Route>
         </Route>
 
         <Route path="dashboard/" element={<Dashboard />}>
