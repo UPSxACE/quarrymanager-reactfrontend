@@ -13,6 +13,32 @@ import axios from "axios";
 export { HistoricoEncomendas };
 
 function HistoricoEncomendas(props) {
+  const [encomendas, setEncomendas] = useState([]);
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/pedido/find-pedidos-utilizador",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setEncomendas(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
   function logOut() {
     localStorage.removeItem("AuthKey");
     props.updateLogState(false);
@@ -91,30 +117,21 @@ function HistoricoEncomendas(props) {
                     <tbody>
                       <tr>
                         <td>
-                          <TextH6>#00001</TextH6>
+                          <TextH6>
+                            {encomendas[0] ? encomendas[0].id : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>Mármore Amarelo</TextH6>
+                          <TextH6>
+                            {encomendas[0]
+                              ? encomendas[0].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <TextH6>teste1</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>teste2</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
+                          <TextH6>
+                            {encomendas[0] ? encomendas[0].ultimo_estado : ""}
+                          </TextH6>
                         </td>
                         <td>
                           <TextH6>2022-04-22 23:19:01</TextH6>
@@ -125,30 +142,23 @@ function HistoricoEncomendas(props) {
                       </tr>
                       <tr>
                         <td>
-                          <TextH6>teste1</TextH6>
+                          <TextH6>
+                            {encomendas[1] ? encomendas[1].id : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>teste2</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[1]
+                              ? encomendas[1].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <TextH6>teste1</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>teste2</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[1] ? encomendas[1].ultimo_estado : ""}
+                          </TextH6>
                         </td>
                         <td>
                           <TextH6>2022-04-22 23:19:01</TextH6>
@@ -159,30 +169,23 @@ function HistoricoEncomendas(props) {
                       </tr>
                       <tr>
                         <td>
-                          <TextH6>teste1</TextH6>
+                          <TextH6>
+                            {encomendas[2] ? encomendas[2].id : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>teste2</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[2]
+                              ? encomendas[2].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <TextH6>teste1</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>teste2</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[2] ? encomendas[2].ultimo_estado : ""}
+                          </TextH6>
                         </td>
                         <td>
                           <TextH6>2022-04-22 23:19:01</TextH6>
@@ -193,13 +196,102 @@ function HistoricoEncomendas(props) {
                       </tr>
                       <tr>
                         <td>
-                          <TextH6>teste1</TextH6>
+                          <TextH6>
+                            {encomendas[3] ? encomendas[3].id : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>teste2</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[3]
+                              ? encomendas[3].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>Pagamento Confirmado</TextH6>
+                          <TextH6>
+                            {" "}
+                            {encomendas[3] ? encomendas[3].ultimo_estado : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>
+                            {encomendas[4] ? encomendas[4].id : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {" "}
+                            {encomendas[4]
+                              ? encomendas[4].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {" "}
+                            {encomendas[4] ? encomendas[4].ultimo_estado : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>
+                            {encomendas[5] ? encomendas[5].id : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {" "}
+                            {encomendas[5]
+                              ? encomendas[5].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[5] ? encomendas[5].ultimo_estado : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>
+                            {encomendas[6] ? encomendas[6].id : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {" "}
+                            {encomendas[6]
+                              ? encomendas[6].idProduto0.tituloArtigo
+                              : ""}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[6] ? encomendas[6].ultimo_estado : ""}
+                          </TextH6>
                         </td>
                         <td>
                           <TextH6>2022-04-22 23:19:01</TextH6>
@@ -212,6 +304,7 @@ function HistoricoEncomendas(props) {
                   </table>
                 </CardDiv>
               </Col>
+              <TablePager />
             </Row>
           </ColoredContainer>
         </Col>
@@ -283,5 +376,60 @@ const CardDiv = styled.div`
   thead {
     border-bottom: 3px solid #30373e;
     background-color: #4b505614;
+  }
+`;
+
+function TablePager() {
+  return (
+    <div className="w-100">
+      <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
+        <PagerText className="left">Anterior</PagerText>
+        <PagerNumber className="active">1</PagerNumber>
+        <PagerNumber>2</PagerNumber>
+        <PagerNumber>3</PagerNumber>
+        <PagerText className="right">Próxima</PagerText>
+      </PagerComponent>
+    </div>
+  );
+}
+
+const PagerComponent = styled.div`
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 50%));
+`;
+
+const PagerNumber = styled.div`
+  padding: 7px 13px 7px 13px;
+  border-top: 1px solid #596d81;
+  border-bottom: 1px solid #596d81;
+  border-left: 1px solid #596d81;
+  background-color: #fff;
+  color: #394a58;
+
+  &.active {
+    color: white;
+    background-color: #30373e;
+  }
+`;
+
+const PagerText = styled.div`
+  padding: 7px 13px 7px 13px;
+  border-top: 1px solid #596d81;
+  border-bottom: 1px solid #596d81;
+  border-left: 1px solid #596d81;
+  background-color: #fff;
+  color: #394a58;
+
+  &.left {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  &.right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  &:last-child {
+    border-right: 1px solid #596d81;
   }
 `;
