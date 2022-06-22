@@ -59,7 +59,7 @@ function DashboardNovoLocalArmazem() {
               <Form.Control type="text" placeholder="" ref={nome} />
             </Form.Group>
             <PrimaryButtonSave onClick={submit} className="me-2">
-              Enviar
+              Guardar
             </PrimaryButtonSave>
             <Link to={"/dashboard/locais"}>
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>

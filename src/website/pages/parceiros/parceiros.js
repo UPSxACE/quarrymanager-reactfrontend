@@ -14,16 +14,22 @@ export { Parceiros };
 
 function Parceiros() {
   return (
-    <ColoredContainer className="main stretch" fluid>
-      <Row className="pt-3 pb-5">
+    <ColoredContainer className="main stretch d-flex flex-column" fluid>
+      <Row className="pt-4 pb-5">
         <Col xs={12}>
           <DisplayH1 className="text-center">Parceiros Comerciais</DisplayH1>
         </Col>
       </Row>
-      <Row>
-        <Container fluid>
-          <Row className="justify-content-center">
-            <Col xxl={9} xl={10} lg={11} md={12}>
+      <Row className="justify-content-center flex-grow-1">
+        <Container fluid className="d-flex align-content-center">
+          <Row className="justify-content-center flex-grow-1">
+            <Col
+              xxl={9}
+              xl={10}
+              lg={11}
+              md={12}
+              className="d-flex align-content-center align-items-center"
+            >
               <Container fluid>
                 <Row>
                   <Col

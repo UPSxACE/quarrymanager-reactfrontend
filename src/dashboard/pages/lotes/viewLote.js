@@ -179,7 +179,7 @@ function ViewLote() {
               </tbody>
             </Tabela>
             <Col xs={12} className="pt-3">
-              <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
               <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
             </Col>
           </Container>

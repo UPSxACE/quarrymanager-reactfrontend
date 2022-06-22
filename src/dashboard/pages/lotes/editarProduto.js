@@ -138,7 +138,9 @@ function EditarProduto() {
                 </Col>
 
                 <Col xs={12} className="pt-3 ps-5">
-                  <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+                  <PrimaryButtonSave className="me-2">
+                    Guardar
+                  </PrimaryButtonSave>
 
                   <Link to={"/dashboard/stock"}>
                     <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>

@@ -42,9 +42,13 @@ function Login(props) {
   }
 
   return (
-    <ColoredContainer variant={1} className={"stretch"} fluid>
-      <Row>
-        <CardBodyRow className={"container-fluid mt-5 mb-5 p-5 pt-4"}>
+    <ColoredContainer
+      variant={1}
+      className={"stretch d-flex justify-content-center"}
+      fluid
+    >
+      <Row className={"align-items-center"}>
+        <CardBody className={"container-fluid mt-5 mb-5 p-5 pt-4"}>
           <Col xs={12} className={"g-0"}>
             <H3 className={"text-center pb-3"}>LOGIN</H3>
             <Form>
@@ -98,13 +102,13 @@ function Login(props) {
               </Container>
             </Form>
           </Col>
-        </CardBodyRow>
+        </CardBody>
       </Row>
     </ColoredContainer>
   );
 }
 
-const CardBodyRow = styled.div`
+const CardBody = styled.div`
   background-color: #5e666d;
   width: 600px;
   border-radius: 17px;

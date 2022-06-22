@@ -141,7 +141,7 @@ function DashboardNovoProduto() {
 
                 <Col xs={12} className="pt-3 ps-5">
                   <PrimaryButtonSave onClick={submit} className="me-2">
-                    Enviar
+                    Guardar
                   </PrimaryButtonSave>
                   <Link to={"/dashboard/stock"}>
                     <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>

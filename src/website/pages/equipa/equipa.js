@@ -10,7 +10,7 @@ function Equipa() {
     <Container fluid>
       <StyledRowLight className="stretch">
         <Col xs={12} className={"g-0 pb-5 pt-3 ps-5 pe-5"}>
-          <DisplayH1 textAlign={"center"}>A NOSSA EQUIPA</DisplayH1>
+          <DisplayH1 textAlign={"center"}>A Nossa Equipa</DisplayH1>
           <br></br>
           <WRLogo src={wRLogo} className={"pe-3"} />
           <Paragraph textAlign={"justify"}>

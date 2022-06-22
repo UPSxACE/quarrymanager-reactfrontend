@@ -60,7 +60,7 @@ function EditarUtilizador() {
           </Col>
 
           <Col xs={12} className="pt-3">
-            <PrimaryButtonSave className="me-2">Enviar</PrimaryButtonSave>
+            <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
             <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
           </Col>

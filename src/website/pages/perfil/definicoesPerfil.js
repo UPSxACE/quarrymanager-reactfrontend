@@ -184,7 +184,7 @@ function DefinicoesPerfil(props) {
                 <Col xs={12} className="pb-5 mt-4 g-0">
                   <Link to={"#"} onClick={submit}>
                     <ButtonSubmit black className="w-100">
-                      Enviar
+                      Guardar
                     </ButtonSubmit>
                   </Link>
                 </Col>

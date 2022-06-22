@@ -112,7 +112,7 @@ function NavbarComponent(props) {
             <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to="/equipa">Equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
@@ -142,7 +142,7 @@ function NavbarComponent(props) {
             <StyledNavLink to={"/loja"}>Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to={"/equipa"}>A nossa equipa</StyledNavLink>
+            <StyledNavLink to={"/equipa"}>Equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to={"/parceiros"}>Parceiros</StyledNavLink>
@@ -174,7 +174,7 @@ function NavbarComponent(props) {
             <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to="/equipa">Equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
@@ -226,7 +226,7 @@ function NavbarComponent(props) {
             <StyledNavLink to="/loja">Loja</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
-            <StyledNavLink to="/equipa">A nossa equipa</StyledNavLink>
+            <StyledNavLink to="/equipa">Equipa</StyledNavLink>
           </div>
           <div className="p-2 bd-highlight">
             <StyledNavLink to="/parceiros">Parceiros</StyledNavLink>
