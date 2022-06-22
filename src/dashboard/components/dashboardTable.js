@@ -479,7 +479,7 @@ function TablePager(props) {
 
   return (
     <div className="w-100">
-      <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
+      <PagerComponent className="w-100 text-center d-flex justify-content-center p-4">
         <PagerText
           className="left"
           onClick={() => {
