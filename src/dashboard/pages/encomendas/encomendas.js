@@ -307,6 +307,33 @@ function DashboardMobilizacaoStock() {
 function DashboardVerEncomendas() {
   const { idPedido } = useParams();
   const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  const [dados, setDados] = useState({});
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/pedido/find?id=" + idPedido,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setDados(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
   useEffect(() => {
     setTab("Encomenda #" + idPedido);
   });
@@ -354,54 +381,83 @@ function DashboardVerEncomendas() {
                   </div>
                 </div>
               </BoxCol>
-              <Col xs={6} className="ps-3">
-                <div className="d-flex justify-content-end p-3">
-                  <div className="d-flex flex-column text-right ">
-                    <DisplayTextH2>Nome</DisplayTextH2>
-                    <DisplayTextH6>Encomenda N</DisplayTextH6>
-                    <DisplayTextH6>Pedido realizado em: </DisplayTextH6>
+              <Col xs={6} className="g-0">
+                <div className="d-flex p-3">
+                  <div className="d-flex flex-column">
+                    <DisplayTextH2>
+                      Nome:{" "}
+                      {dados.idUser0 ? dados.idUser0.profile.full_name : ""}
+                    </DisplayTextH2>
+                    <DisplayTextH6>
+                      Encomenda Nº.: {dados.id ? dados.id : ""}{" "}
+                    </DisplayTextH6>
+                    <DisplayTextH6>
+                      Pedido realizado em:{" "}
+                      {dados.dataHoraPedido ? dados.dataHoraPedido : ""}
+                    </DisplayTextH6>
                   </div>
-                  <ProfileEncPic src={EncomendaPic}></ProfileEncPic>
+                  <ProfileEncPic
+                    src={
+                      dados.idUser0
+                        ? "http://localhost:8080/uploads/" +
+                          dados.idUser0.profile.profilePic
+                        : EncomendaPic
+                    }
+                    className="ms-auto"
+                  ></ProfileEncPic>
                 </div>
               </Col>
             </Row>
 
-            <Row className="h-75 pt-5">
+            <Row className="h-75 pt-4">
               <Col xs={6} className="g-0 h-100 d-flex flex-column pe-3">
                 <EditButton black variant="secondary">
                   Editar
                 </EditButton>
-                <BoxContainer className="pe-5 ps-3 pb-5 pt-2  flex-grow-1 overflow-hidden">
+                <BoxContainer className="pe-5 ps-3 pb-5 pt-2 flex-grow-1 overflow-hidden">
                   <Row>
                     <Col xs={6} className="pb-2">
                       <div>
-                        <DisplayTextH6>Nome:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextH6>Nome: </DisplayTextH6>
+                        <DisplayTextSpan>
+                          {dados.idUser0 ? dados.idUser0.profile.full_name : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Morada:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {dados.idUser0 ? dados.idUser0.profile.morada : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Email:</DisplayTextH6>
-                        <DisplayTextSpan>abc@abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {" "}
+                          {dados.idUser0 ? dados.idUser0.profile.email : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Telefone:</DisplayTextH6>
-                        <DisplayTextSpan>99999999</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {" "}
+                          {dados.idUser0 ? dados.idUser0.profile.telefone : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={12} className="pb-2">
                       <DisplayTextH6>
-                        Detalhes da Conta do Utilizador:
+                        <u>Detalhes da Conta do Utilizador</u>
                       </DisplayTextH6>
-                      <Textarea className="w-100"></Textarea>
+                      <Textarea
+                        className="w-100"
+                        value={dados.mensagem ? dados.mensagem : ""}
+                      ></Textarea>
                     </Col>
                   </Row>
                 </BoxContainer>
@@ -411,51 +467,70 @@ function DashboardVerEncomendas() {
                 <EditButton black variant="secondary">
                   Editar
                 </EditButton>
-                <BoxContainer className="pe-5 ps-5 pb-5 pt-2 flex-grow-1">
+                <BoxContainer className="pe-5 ps-3 pb-5 pt-2 flex-grow-1">
                   <Row>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Produto:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {dados.idProduto0
+                            ? dados.idProduto0.tituloArtigo
+                            : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <DisplayTextH6>Preço/m²:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {" "}
+                          {dados.idProduto0 ? dados.idProduto0.preco : ""} €/m²
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <DisplayTextH6>Quantidade:</DisplayTextH6>
-                        <DisplayTextSpan>abc@abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {dados.idProduto0
+                            ? dados.idProduto0.quantidade_vendida
+                            : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       {" "}
                       <div>
                         <DisplayTextH6>Código de Desconto:</DisplayTextH6>
-                        <DisplayTextSpan>99999999</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {dados.codigo_desconto ? dados.codigo_desconto : ""}
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Preço Inicial:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {" "}
+                          {dados.idProduto0 ? dados.idProduto0.preco : ""} €/m²
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Desconto (Manual):</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>0</DisplayTextSpan>
                       </div>
                     </Col>
                     <Col xs={6} className="pb-2">
                       <div>
                         <DisplayTextH6>Estimativa Preço Final:</DisplayTextH6>
-                        <DisplayTextSpan>abc</DisplayTextSpan>
+                        <DisplayTextSpan>
+                          {" "}
+                          {dados.idProduto0 ? dados.idProduto0.preco : ""} €/m²
+                        </DisplayTextSpan>
                       </div>
                     </Col>
                   </Row>
@@ -496,8 +571,25 @@ const ContainerStretch = styled(Container)`
 `;
 
 const EditButton = styled(ButtonSubmit)`
-  width: 70px;
+  width: 80px;
+  text-align: center;
   background-color: #004b5b;
+  border: 1px solid #004b5b;
+  border-width: 1px 1px 0px 1px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #f5f8f9;
+    color: #004b5b;
+    border: 1px solid #004b5b;
+    border-width: 1px 1px 0px 1px;
+  }
+
+  &:active:focus,
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(0 75 91 / 8%);
+  }
 `;
 
 const ProfileEncPic = styled.img`
