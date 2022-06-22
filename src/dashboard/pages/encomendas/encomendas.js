@@ -375,8 +375,53 @@ function DashboardMobilizacaoStock() {
 function DashboardVerEncomendas() {
   const { idPedido } = useParams();
   const [currentTab, setTab] = useContext(DashboardTabContext);
+  const [update, forceUpdate] = useState(0);
+  const [estado, setEstado] = useState(0);
+  const [nome_estado, setNomeEstado] = useState("");
 
   const [dados, setDados] = useState({});
+
+  function getTooltip() {
+    if (dados.id_estado) {
+      let ret = "";
+      switch (estado) {
+        case 1:
+          ret = "Conferi os dados";
+          break;
+        case 2:
+          ret = "Conferi o stock";
+          break;
+        case 3:
+          ret = "Validar encomenda";
+          break;
+        case 4:
+          ret = "Confirmar pagamento";
+          break;
+        case 5:
+          ret = "Mobilizei o stock";
+          break;
+        case 6:
+          ret = "Agendei as recolhas";
+          break;
+        case 7:
+          ret = "(forçar mudança de estado)";
+          break;
+        case 8:
+          ret = "(forçar mudança de estado)";
+          break;
+        case 9:
+          ret = "(forçar mudança de estado)";
+          break;
+        default:
+          ret = "";
+          break;
+      }
+
+      return <>{ret}</>;
+    }
+
+    return <></>;
+  }
 
   function cancelar() {
     const sendPostRequest = async () => {
@@ -416,6 +461,10 @@ function DashboardVerEncomendas() {
             },
           }
         );
+
+        if (estado < 10) {
+          setEstado(estado + 1);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -431,7 +480,9 @@ function DashboardVerEncomendas() {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/pedido/find?id=" + idPedido,
+          "http://localhost:8080/api/pedido/find?id=" +
+            idPedido +
+            "&expand=id_estado",
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -440,13 +491,15 @@ function DashboardVerEncomendas() {
         );
 
         setDados(resp.data);
+        setEstado(resp.data.id_estado);
+        setNomeEstado(resp.data.ultimo_estado);
       } catch (err) {
         console.log(err);
       }
     };
 
     sendGetRequest();
-  }, []);
+  }, [estado]);
 
   useEffect(() => {
     setTab("Encomenda #" + idPedido);
@@ -487,15 +540,21 @@ function DashboardVerEncomendas() {
             <Row className="h-25">
               <BoxCol xs={6} className="pe-3">
                 <div className="borderBox p-3">
-                  <DisplayTextH1>O Status: </DisplayTextH1>
+                  <DisplayTextH1 key={nome_estado}>
+                    O Status: {dados.ultimo_estado ? nome_estado : ""}
+                  </DisplayTextH1>
                   <div className="">
-                    <ButtonSubmit2
-                      onClick={proximoEstado}
-                      green
-                      className="w-100 "
-                    >
-                      (forçar mudança de estado)
-                    </ButtonSubmit2>
+                    {dados.id_estado && dados.id_estado < 10 && (
+                      <ButtonSubmit2
+                        onClick={proximoEstado}
+                        green
+                        className="w-100 "
+                      >
+                        <React.Fragment key={estado}>
+                          {getTooltip()}
+                        </React.Fragment>
+                      </ButtonSubmit2>
+                    )}
                   </div>
                 </div>
               </BoxCol>
