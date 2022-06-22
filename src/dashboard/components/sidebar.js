@@ -13,6 +13,7 @@ import {
   faBullhorn,
   faCircleQuestion,
   faRightFromBracket,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { DashboardTabContext } from "../../App";
@@ -141,7 +142,13 @@ function DashboardSidebar(props) {
         </IconSidebarList>
       </NavigationItems>
       <ThemeColorButton className="text-center">
-        <Link to="#">Button</Link>
+        <Link to="#">
+          {" "}
+          <SidebarIcon
+            icon={faSun}
+            className={currentTab === "mod" ? "active" : ""}
+          />
+        </Link>
       </ThemeColorButton>
     </StyledSideBar>
   );

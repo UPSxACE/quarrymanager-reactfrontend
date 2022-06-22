@@ -81,7 +81,7 @@ function DashboardLayout(props) {
             </H1Alt>*/}
           </div>
         </PageHeader>
-        <div className="page-content p-5">{props.children}</div>
+        <div className="page-content pt-4 pb-4 ps-5 pe-5">{props.children}</div>
       </ContentDiv>
     </BackgoundDiv>
   );

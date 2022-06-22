@@ -63,7 +63,7 @@ function DashboardEncomendas(props) {
           </DashboardMenu>
         </Col>
       </Row>
-      <Row className="g-0 pt-5">
+      <Row className="g-0 pt-4">
         <Col xs={12}>
           <DashboardTable
             key={"0/" + activePage}

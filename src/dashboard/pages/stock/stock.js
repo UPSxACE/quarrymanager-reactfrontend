@@ -195,7 +195,7 @@ function DashboardStock(props) {
           </DashboardMenu>
         </Col>
       </Row>
-      <Row className="g-0 pt-5">
+      <Row className="g-0 pt-4">
         <Col xs={12}>
           {getTable(activeTab)}
           <TablePager
