@@ -292,6 +292,29 @@ function DashboardMobilizacaoStock() {
     }
   }
 
+  function cancelar() {
+    const sendPostRequest = async () => {
+      try {
+        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido/cancelar-encomenda?idPedido=" +
+            idPedido,
+          {},
+          {
+            headers: {
+              Authorization: "Basic " + btoa(AuthKey + ":"),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   useEffect(() => {
     setTab("Encomenda #" + idPedido);
   });
@@ -378,6 +401,29 @@ function DashboardVerEncomendas() {
 
   const [dados, setDados] = useState({});
 
+  function cancelar() {
+    const sendPostRequest = async () => {
+      try {
+        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido/cancelar-encomenda?idPedido=" +
+            idPedido,
+          {},
+          {
+            headers: {
+              Authorization: "Basic " + btoa(AuthKey + ":"),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
@@ -428,7 +474,7 @@ function DashboardVerEncomendas() {
               </Link>
             </div>
             <div className="ms-auto bd-highlight">
-              <ButtonSubmit2 green className="">
+              <ButtonSubmit2 green onClick={cancelar} className="">
                 Cancelar Encomenda
               </ButtonSubmit2>
             </div>

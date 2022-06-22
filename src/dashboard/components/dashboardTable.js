@@ -143,9 +143,13 @@ function DashboardTable(props) {
             Authorization: "Basic " + btoa(username + ":" + password),
           },
         });
-
         console.log(resp.headers["x-pagination-page-count"]);
-        props.updateLimit(resp.headers["x-pagination-page-count"]);
+
+        props.updateLimit(
+          resp.headers["x-pagination-page-count"] !== "0"
+            ? resp.headers["x-pagination-page-count"]
+            : 1
+        );
         setData(resp.data);
       } catch (err) {
         console.log(err);
