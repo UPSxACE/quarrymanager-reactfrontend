@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Container, Row, Col, Button, Form, FormLabel } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import axios from "axios";
@@ -11,6 +11,7 @@ import {
   DashboardRow,
   H1,
   H1Normal,
+  H2,
   H3,
 } from "../../components/layoutComponents";
 import { DashboardTable, TablePager } from "../../components/dashboardTable";
@@ -21,6 +22,10 @@ import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.sv
 import { ButtonSubmit } from "../../../website/components/buttons";
 
 import { Link, useParams } from "react-router-dom";
+import {
+  PrimaryButtonSave,
+  SecundaryButtonCancel,
+} from "../../components/buttons";
 
 export {
   DashboardEncomendas,
@@ -87,10 +92,50 @@ function DashboardEncomendas(props) {
 }
 
 function DashboardAgendarRecolha() {
+  const { idPedido } = useParams();
+  const codigo_lote = useRef();
+  const transportadora = useRef();
+  const quantidade = useRef();
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+  useEffect(() => {
+    setTab("Encomenda #" + idPedido);
+  });
+
   return (
     <ContainerStretch fluid className="d-flex flex-column">
-      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5 flex-grow-1">
-        <Col xs={12}>aaa</Col>
+      <EncomendaWrapper className="g-0 pt-4 pb-4 ps-5 pe-5">
+        <Col xs={6} className={"pe-2"}>
+          <FormLabel>
+            <H2>Código Lote:</H2>
+          </FormLabel>
+          <Form.Select ref={codigo_lote}>
+            <option>Selecionar</option>
+            <option value={0}>Masculino</option>
+          </Form.Select>
+        </Col>
+        <Col xs={6} className={"ps-2"}>
+          <FormLabel>
+            <H2>Quantidade:</H2>
+          </FormLabel>
+          <Form.Group className="mb-3" controlId="formQuantidade">
+            <Form.Control type="number" placeholder="" ref={quantidade} />
+          </Form.Group>
+        </Col>
+        <Col xs={12}>
+          <FormLabel>
+            <H2>Transportadora:</H2>
+          </FormLabel>
+          <Form.Select ref={transportadora}>
+            <option>Selecionar</option>
+            <option value={0}>Masculino</option>
+          </Form.Select>
+        </Col>
+        <Col xs={12} className="pt-3">
+          <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
+          <Link to={"/dashboard/loja"}>
+            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+          </Link>
+        </Col>
       </EncomendaWrapper>
     </ContainerStretch>
   );
@@ -186,6 +231,10 @@ function DashboardMobilizacaoStock() {
 
 function DashboardVerEncomendas() {
   const { idPedido } = useParams();
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+  useEffect(() => {
+    setTab("Encomenda #" + idPedido);
+  });
 
   return (
     <ContainerStretch fluid className="d-flex flex-column">
@@ -348,7 +397,7 @@ function DashboardVerEncomendas() {
 const EncomendaWrapper = styled(Row)`
   border: 1px solid #004b5b;
   textarea {
-    height: 275px;
+    height: 175px;
     resize: vertical;
     max-height: 275px;
   }
