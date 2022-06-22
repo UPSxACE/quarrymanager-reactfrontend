@@ -20,7 +20,7 @@ import EncomendaPic from "../../../images/dashboard/genericUserProfilePicture.sv
 
 import { ButtonSubmit } from "../../../website/components/buttons";
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export {
   DashboardEncomendas,
@@ -63,11 +63,14 @@ function DashboardEncomendas(props) {
             key={"0/" + activePage}
             updateLimit={updatePager2}
             labels={{
-              quantidade: "Quantidade",
-              nome: ["idProduto0", ["idMaterial0", "Nome"]], // entry["idProduto0"]["idMaterial0"]
+              idPedido: "ID Encomenda",
+              nome: ["idEstado0", "Status"],
+              dataEstado: "Ultima Atualização",
+              username: ["idPedido0", ["idUser0", "Cliente"]],
+              tituloArtigo: ["idPedido0", ["idProduto0", "Produto"]],
             }}
-            endPoint={"lote/listar?page=" + activePage}
-            reference={"codigo_lote"}
+            endPoint={"estado-pedido/listar-encomendas?page=" + activePage}
+            reference={"idPedido"}
             actions
             viewencomenda={"encomendas/ver"}
             controller={"lote"}
@@ -95,7 +98,7 @@ function DashboardAgendarRecolha() {
 
 function DashboardMobilizacaoStock() {
   const [currentTab, setTab] = useContext(DashboardTabContext);
-  const { id } = useParams();
+  const { idPedido } = useParams();
 
   const [activePage, updatePager1] = useState(1);
   const [limitPage, updatePager2] = useState(1);
@@ -108,7 +111,7 @@ function DashboardMobilizacaoStock() {
   }
 
   useEffect(() => {
-    setTab("Encomenda #" + id);
+    setTab("Encomenda #" + idPedido);
   });
 
   return (
@@ -117,19 +120,27 @@ function DashboardMobilizacaoStock() {
         <Col xs={12}>
           <div className="d-flex bd-highlight">
             <div className="bd-highlight">
-              <ButtonSubmit black className="">
-                Dados Da Encomenda
-              </ButtonSubmit>
+              <Link to={"/dashboard/encomendas/ver/" + idPedido}>
+                <ButtonSubmit2 green className="">
+                  Dados Da Encomenda
+                </ButtonSubmit2>
+              </Link>
             </div>
             <div className="bd-highlight ps-1">
-              <ButtonSubmit black className="">
+              <ButtonSubmit2 green className="">
                 Mobilização do Stock
-              </ButtonSubmit>
+              </ButtonSubmit2>
             </div>
             <div className="ms-auto bd-highlight">
-              <ButtonSubmit black className="">
-                Agendar Recolha
-              </ButtonSubmit>
+              <Link
+                to={
+                  "/dashboard/encomendas/ver/" + idPedido + "/agendar-recolha"
+                }
+              >
+                <ButtonSubmit2 green className="">
+                  Agendar Recolha
+                </ButtonSubmit2>
+              </Link>
             </div>
           </div>
         </Col>
@@ -154,7 +165,7 @@ function DashboardMobilizacaoStock() {
                   }}
                   endPoint={
                     "pedido-lote/recolhas-agendadas?id=" +
-                    id +
+                    idPedido +
                     "&page=" +
                     activePage
                   }
@@ -174,6 +185,8 @@ function DashboardMobilizacaoStock() {
 }
 
 function DashboardVerEncomendas() {
+  const { idPedido } = useParams();
+
   return (
     <ContainerStretch fluid className="d-flex flex-column">
       <ButtonsRow>
@@ -185,9 +198,15 @@ function DashboardVerEncomendas() {
               </ButtonSubmit2>
             </div>
             <div className="bd-highlight ps-1">
-              <ButtonSubmit2 green className="">
-                Mobilização do Stock
-              </ButtonSubmit2>
+              <Link
+                to={
+                  "/dashboard/encomendas/ver/" + idPedido + "/mobilizar-stock"
+                }
+              >
+                <ButtonSubmit2 green className="">
+                  Mobilização do Stock
+                </ButtonSubmit2>
+              </Link>
             </div>
             <div className="ms-auto bd-highlight">
               <ButtonSubmit2 green className="">
@@ -228,7 +247,7 @@ function DashboardVerEncomendas() {
                 <EditButton black variant="secondary">
                   Editar
                 </EditButton>
-                <BoxContainer className="pe-5 ps-3 pb-5 pt-2  flex-grow-1">
+                <BoxContainer className="pe-5 ps-3 pb-5 pt-2  flex-grow-1 overflow-hidden">
                   <Row>
                     <Col xs={6} className="pb-2">
                       <div>
@@ -329,7 +348,9 @@ function DashboardVerEncomendas() {
 const EncomendaWrapper = styled(Row)`
   border: 1px solid #004b5b;
   textarea {
-    height: 75px;
+    height: 275px;
+    resize: vertical;
+    max-height: 275px;
   }
 `;
 

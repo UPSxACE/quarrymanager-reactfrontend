@@ -24,7 +24,7 @@ function Register() {
   function submit() {
     const sendPostRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
         const password = "";
 
         const resp = await axios.post(
@@ -42,7 +42,7 @@ function Register() {
           },
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":" + password),
             },
           }
         );

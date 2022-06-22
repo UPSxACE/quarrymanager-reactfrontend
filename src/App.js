@@ -296,15 +296,15 @@ function App(props) {
           <Route path="novo-produto" element={<DashboardNovoProduto />} />
           <Route path="encomendas" element={<DashboardEncomendas />} />
           <Route
-            path="encomendas/ver/:codigo_lote"
+            path="encomendas/ver/:idPedido"
             element={<DashboardVerEncomendas />}
           />
           <Route
-            path="encomendas/ver/:id/mobilizar-stock"
+            path="encomendas/ver/:idPedido/mobilizar-stock"
             element={<DashboardMobilizacaoStock />}
           />
           <Route
-            path="encomendas/ver/:id/agendar-recolha"
+            path="encomendas/ver/:idPedido/agendar-recolha"
             element={<DashboardAgendarRecolha />}
           />
           <Route path="loja" element={<DashboardLoja tab={0} />} />
