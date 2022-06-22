@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -8,7 +8,7 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 export { ViewTransportadora };
 
@@ -16,6 +16,8 @@ function ViewTransportadora() {
   const [find, findStats] = useState({});
 
   const { id } = useParams("id");
+  const nomeLocais = useRef("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -40,34 +42,6 @@ function ViewTransportadora() {
 
     sendGetRequest();
   }, [id]);
-
-  function submit() {
-    const sendPostRequest = async () => {
-      try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
-        const password = "";
-
-        const resp = await axios.post(
-          "localhost:8080/api/transportadora/editar",
-          {
-            nome: nome.current.value,
-            id: id,
-          },
-          {
-            headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
-            },
-          }
-        );
-
-        navigate("/dashboard/locais", { replace: true });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    sendPostRequest(); //TERMINAR AQUI
-  }
 
   return (
     <Container fluid>
