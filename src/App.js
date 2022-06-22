@@ -46,6 +46,7 @@ import { EditarLocalExtracao } from "./dashboard/pages/locais/editarLocais";
 
 import { MeuPerfil } from "./website/pages/perfil/perfil";
 import { DefinicoesPerfil } from "./website/pages/perfil/definicoesPerfil";
+import { HistoricoEncomendas } from "./website/pages/perfil/historicoEncomendas";
 import { DashboardNovoMaterial } from "./dashboard/pages/lotes/novoMaterial";
 import { DashboardNovaCor } from "./dashboard/pages/lotes/novaCor";
 import { DashboardNovoProduto } from "./dashboard/pages/lotes/novoProduto";
@@ -273,6 +274,16 @@ function App(props) {
               </LoggedInOnly>
             }
           ></Route>
+
+          <Route
+            path="/perfil/historico-encomendas"
+            element={
+              <LoggedInOnly>
+                <HistoricoEncomendas />
+              </LoggedInOnly>
+            }
+          ></Route>
+
           <Route
             path="perfil"
             element={

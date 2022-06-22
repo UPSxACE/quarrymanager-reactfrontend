@@ -122,7 +122,7 @@ function MeuPerfil(props) {
                   </StyledLi>
 
                   <StyledLi className="p-2">
-                    <WhiteLink to={"#"}>
+                    <WhiteLink to={"/perfil/historico-encomendas"}>
                       <H5>Histórico de Encomendas</H5>
                     </WhiteLink>
                   </StyledLi>
