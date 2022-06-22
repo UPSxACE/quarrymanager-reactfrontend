@@ -107,9 +107,13 @@ function ViewProduto() {
               </tbody>
             </Tabela>
             <Col xs={12} className="pt-3">
-            <Link to={"/dashboard/editar-produto/" + id}>
-              <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave></Link>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/editar-produto/" + id}>
+                <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
+              </Link>
+
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>

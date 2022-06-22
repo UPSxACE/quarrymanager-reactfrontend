@@ -17,6 +17,10 @@ const ColoredContainer = styled(Container)`
     }
   }};
 
+  .perfilHeightFix {
+    min-height: calc(100vh - 48px - 48px - 81px);
+  }
+
   &.dropShadow25 {
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
   }

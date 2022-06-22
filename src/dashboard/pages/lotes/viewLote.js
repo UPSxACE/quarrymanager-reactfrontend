@@ -182,7 +182,9 @@ function ViewLote() {
               <Link to={"/dashboard/editar-lote/" + codigo_lote}>
                 <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
               </Link>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>

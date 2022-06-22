@@ -66,7 +66,9 @@ function ViewCor() {
               <Link to={"/dashboard/editar-cor/" + id}>
                 <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
               </Link>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/stock"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>

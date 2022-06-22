@@ -1,0 +1,287 @@
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { ColoredContainer } from "../../components/coloredComponents";
+import { Container, Col, Row, Form } from "react-bootstrap";
+import { H1, H5 } from "../../components/text";
+import { Button } from "bootstrap";
+import { ButtonSubmit, FileSubmitButton } from "../../components/buttons";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import genericPfp from "../../../images/website/genericUserProfilePicture.svg";
+
+import axios from "axios";
+
+export { HistoricoEncomendas };
+
+function HistoricoEncomendas(props) {
+  function logOut() {
+    localStorage.removeItem("AuthKey");
+    props.updateLogState(false);
+  }
+
+  return (
+    <ColoredContainer variant={1} fluid>
+      <Row className="p-5 stretch">
+        <Col xs={3} className="g-0 pe-5">
+          <Container fluid>
+            <Row>
+              <Col xs={12}>
+                <ul className="list-unstyled">
+                  <StyledLiSelect className="p-2">
+                    <WhiteLink to={"/perfil"}>
+                      <H5>Meu Perfil</H5>
+                    </WhiteLink>
+                  </StyledLiSelect>
+
+                  <StyledLi className="p-2">
+                    <WhiteLink to={"/perfil/definicoes"}>
+                      <H5>Definições da Conta</H5>
+                    </WhiteLink>
+                  </StyledLi>
+
+                  <StyledLi className="p-2">
+                    <WhiteLink to={"/perfil/historico-encomendas"}>
+                      <H5>Histórico de Encomendas</H5>
+                    </WhiteLink>
+                  </StyledLi>
+
+                  <StyledLi className="p-2">
+                    <WhiteLink onClick={logOut} to={"/home"}>
+                      <H5>Terminar Sessão</H5>
+                    </WhiteLink>
+                  </StyledLi>
+                </ul>
+              </Col>
+            </Row>
+          </Container>
+        </Col>
+        <Col xs={9} className="g-0">
+          <ColoredContainer
+            variant={2}
+            fluid
+            className="drop dropShadow25 borderBlack perfilHeightFix"
+          >
+            <Row className="pe-3 ps-3">
+              <Col xs={12} className="ps-5 mt-5 mb-3 d-flex">
+                <H1>Histórico de Encomendas</H1>
+              </Col>
+
+              <Col xs={12} className="ps-5 mb-4 pe-5">
+                <CardDiv>
+                  <table className="w-100">
+                    <thead>
+                      <tr>
+                        <th className="pt-3 c1">
+                          <h5>Encomenda</h5>
+                        </th>
+                        <th className="pt-3 c2">
+                          <h5>Produto</h5>
+                        </th>
+                        <th className="pt-3 c3">
+                          <h5>Status</h5>
+                        </th>
+                        <th className="pt-3 c4">
+                          <h5>Data do Pedido</h5>
+                        </th>
+                        <th className="pt-3 c5">
+                          <h5>Última Atualização</h5>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>
+                          <TextH6>#00001</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Mármore Amarelo</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <TextH6>teste1</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>teste2</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>Pagamento Confirmado</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                        <td>
+                          <TextH6>2022-04-22 23:19:01</TextH6>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </CardDiv>
+              </Col>
+            </Row>
+          </ColoredContainer>
+        </Col>
+      </Row>
+    </ColoredContainer>
+  );
+}
+
+const StyledLi = styled.li`
+  background-color: #4c5660;
+  color: black;
+  border: 1px solid black;
+`;
+
+const StyledLiSelect = styled.li`
+  background-color: #30373e;
+  color: black;
+  border: 1px solid black;
+`;
+
+const WhiteLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: #f3844f;
+  }
+`;
+
+const TextH6 = styled.h6`
+  font-weight: lighter;
+  font-size: 18px;
+`;
+
+const CardDiv = styled.div`
+  background-color: #fff;
+
+  table {
+    overflow: hidden;
+  }
+
+  .c1 {
+    width: 15%;
+    padding-left: 20px;
+  }
+  tr td:first-child {
+    padding-left: 20px;
+  }
+
+  .c2 {
+    width: 19%;
+  }
+  .c3 {
+    width: 23%;
+  }
+  .c4 {
+    width: 20%;
+  }
+  .c5 {
+    width: 23%;
+  }
+
+  td {
+    padding: 7px 0px 7px 0px;
+    border-bottom: 1px solid #30373e;
+  }
+  td h6 {
+    margin: 0px;
+  }
+  thead {
+    border-bottom: 3px solid #30373e;
+    background-color: #4b505614;
+  }
+`;

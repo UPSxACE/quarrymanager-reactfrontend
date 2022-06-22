@@ -78,7 +78,9 @@ function ViewUtilizador() {
               <Link to={"/dashboard/editar-user/" + id}>
                 <PrimaryButtonSave className="me-2">Editar</PrimaryButtonSave>
               </Link>
-              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              <Link to={"/dashboard/utilizadores"}>
+                <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+              </Link>
             </Col>
           </Container>
         </Col>

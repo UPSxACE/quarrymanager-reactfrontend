@@ -9,7 +9,7 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import { DashboardLayout } from "../../components/layout";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 export { EditarProduto };
@@ -71,7 +71,9 @@ function EditarProduto() {
           <Col xs={12} className="pt-3">
             <PrimaryButtonSave className="me-2">Guardar</PrimaryButtonSave>
 
-            <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            <Link to={"/dashboard/loja"}>
+              <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
+            </Link>
           </Col>
         </DashboardRow>
       </Form>
