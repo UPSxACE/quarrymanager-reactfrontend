@@ -26,6 +26,7 @@ import {
   PrimaryButtonSave,
   SecundaryButtonCancel,
 } from "../../components/buttons";
+import { getMouseEventOptions } from "@testing-library/user-event/dist/utils";
 
 export {
   DashboardEncomendas,
@@ -92,14 +93,88 @@ function DashboardEncomendas(props) {
 }
 
 function DashboardAgendarRecolha() {
+  function getLotesOptions() {
+    if (options.lotes !== null && options.lotes !== undefined) {
+      let lotesKeys = Object.keys(options.lotes);
+      let lotesValues = Object.values(options.lotes);
+
+      return (
+        <>
+          {lotesKeys.map((lote, index) => {
+            return (
+              <option key={"0" + index} value={lote}>
+                {options.lotes[lote]}
+              </option>
+            );
+          })}
+        </>
+      );
+    }
+
+    return <></>;
+  }
+
+  function getTransportadorasOptions() {
+    if (
+      options.transportadoras !== null &&
+      options.transportadoras !== undefined
+    ) {
+      let transportadorasKeys = Object.keys(options.transportadoras);
+      let transportadorasValues = Object.values(options.transportadoras);
+
+      return (
+        <>
+          {transportadorasKeys.map((transportadora, index) => {
+            console.log(transportadora);
+            return (
+              <option key={"1" + index} value={transportadora}>
+                {options.transportadoras[transportadora]}
+              </option>
+            );
+          })}
+        </>
+      );
+    }
+
+    return <></>;
+  }
+
   const { idPedido } = useParams();
   const codigo_lote = useRef();
   const transportadora = useRef();
   const quantidade = useRef();
   const [currentTab, setTab] = useContext(DashboardTabContext);
+  const [options, setOptions] = useState({});
+
   useEffect(() => {
     setTab("Encomenda #" + idPedido);
   });
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/pedido/agendar-recolha-options?idPedido=" +
+            idPedido,
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setOptions(resp.data);
+        console.log(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
 
   return (
     <ContainerStretch fluid className="d-flex flex-column">
@@ -110,7 +185,7 @@ function DashboardAgendarRecolha() {
           </FormLabel>
           <Form.Select ref={codigo_lote}>
             <option>Selecionar</option>
-            <option value={0}>Masculino</option>
+            {getLotesOptions()}
           </Form.Select>
         </Col>
         <Col xs={6} className={"ps-2"}>
@@ -127,7 +202,7 @@ function DashboardAgendarRecolha() {
           </FormLabel>
           <Form.Select ref={transportadora}>
             <option>Selecionar</option>
-            <option value={0}>Masculino</option>
+            {getTransportadorasOptions()}
           </Form.Select>
         </Col>
         <Col xs={12} className="pt-3">
