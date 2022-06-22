@@ -5,6 +5,7 @@ import { DashboardSidebar } from "./sidebar";
 import { H1Alt } from "./layoutComponents";
 import axios from "axios";
 import { DashboardTabContext } from "../../App";
+import genericUserProfilePicture from "../../images/dashboard/genericUserProfilePicture.svg";
 export { DashboardLayout };
 
 function DashboardLayout(props) {
@@ -28,7 +29,7 @@ function DashboardLayout(props) {
       case "log":
         return "Logs";
       default:
-        return "";
+        return currentTab;
     }
   }
 
@@ -68,12 +69,16 @@ function DashboardLayout(props) {
             <H1Alt className="ps-3" textColor={1}>
               {put.username ? put.username : ""}
             </H1Alt>
-            <H1Alt className="ps-3" textColor={1}>
-              icone
-            </H1Alt>
-            <H1Alt className="ps-3" textColor={1}>
+
+            <img
+              height={46}
+              alt={"generic"}
+              src={genericUserProfilePicture}
+            ></img>
+
+            {/*<H1Alt className="ps-3" textColor={1}>
               Seta
-            </H1Alt>
+            </H1Alt>*/}
           </div>
         </PageHeader>
         <div className="page-content p-5">{props.children}</div>
@@ -87,6 +92,17 @@ const PageHeader = styled.div`
   padding-left: 60px;
   padding-right: 60px;
   height: calc(40px + 30px);
+  align-content: center;
+
+  h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 40px;
+  }
+
+  .userMenu img {
+    margin-left: 10px;
+  }
 `;
 
 const ContentDiv = styled.div`
