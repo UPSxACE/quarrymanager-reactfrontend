@@ -118,186 +118,306 @@ function HistoricoEncomendas(props) {
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[0] ? encomendas[0].id : ""}
+                            {encomendas[0] ? encomendas[0].id : <>&nbsp;</>}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {encomendas[0]
-                              ? encomendas[0].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[0] ? (
+                              encomendas[0].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {encomendas[0] ? encomendas[0].ultimo_estado : ""}
+                            {encomendas[0] ? (
+                              encomendas[0].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[0] ? (
+                              encomendas[0].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[0] ? (
+                              encomendas[0].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[1] ? encomendas[1].id : ""}
+                            {encomendas[1] ? encomendas[1].id : <>&nbsp;</>}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[1] ? (
+                              encomendas[1].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[1] ? (
+                              encomendas[1].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[1] ? (
+                              encomendas[1].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
                             {" "}
-                            {encomendas[1]
-                              ? encomendas[1].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[1] ? (
+                              encomendas[1].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>
-                            {" "}
-                            {encomendas[1] ? encomendas[1].ultimo_estado : ""}
-                          </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[2] ? encomendas[2].id : ""}
+                            {encomendas[2] ? encomendas[2].id : <>&nbsp;</>}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[2] ? (
+                              encomendas[2].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[2] ? (
+                              encomendas[2].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[2] ? (
+                              encomendas[2].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
                             {" "}
-                            {encomendas[2]
-                              ? encomendas[2].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[2] ? (
+                              encomendas[2].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>
-                            {" "}
-                            {encomendas[2] ? encomendas[2].ultimo_estado : ""}
-                          </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[3] ? encomendas[3].id : ""}
+                            {encomendas[3] ? encomendas[3].id : <>&nbsp;</>}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[3] ? (
+                              encomendas[3].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[3] ? (
+                              encomendas[3].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[3] ? (
+                              encomendas[3].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
                             {" "}
-                            {encomendas[3]
-                              ? encomendas[3].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[3] ? (
+                              encomendas[3].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>
-                            {" "}
-                            {encomendas[3] ? encomendas[3].ultimo_estado : ""}
-                          </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[4] ? encomendas[4].id : ""}
+                            {encomendas[4] ? encomendas[4].id : <>&nbsp;</>}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[4] ? (
+                              encomendas[4].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[4] ? (
+                              encomendas[4].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
+                        </td>
+                        <td>
+                          <TextH6>
+                            {encomendas[4] ? (
+                              encomendas[4].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
                             {" "}
-                            {encomendas[4]
-                              ? encomendas[4].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[4] ? (
+                              encomendas[4].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>
-                            {" "}
-                            {encomendas[4] ? encomendas[4].ultimo_estado : ""}
-                          </TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
-                        </td>
-                        <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[5] ? encomendas[5].id : ""}
+                            {encomendas[5] ? encomendas[5].id : <>&nbsp;</>}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {" "}
-                            {encomendas[5]
-                              ? encomendas[5].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[5] ? (
+                              encomendas[5].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {encomendas[5] ? encomendas[5].ultimo_estado : ""}
+                            {encomendas[5] ? (
+                              encomendas[5].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[5] ? (
+                              encomendas[5].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[5] ? (
+                              encomendas[5].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <TextH6>
-                            {encomendas[6] ? encomendas[6].id : ""}
+                            {encomendas[6] ? encomendas[6].id : <>&nbsp;</>}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {" "}
-                            {encomendas[6]
-                              ? encomendas[6].idProduto0.tituloArtigo
-                              : ""}
+                            {encomendas[6] ? (
+                              encomendas[6].idProduto0.tituloArtigo
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
                           <TextH6>
-                            {encomendas[6] ? encomendas[6].ultimo_estado : ""}
+                            {encomendas[6] ? (
+                              encomendas[6].ultimo_estado
+                            ) : (
+                              <>&nbsp;</>
+                            )}
                           </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[6] ? (
+                              encomendas[6].dataHoraPedido
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                         <td>
-                          <TextH6>2022-04-22 23:19:01</TextH6>
+                          <TextH6>
+                            {encomendas[6] ? (
+                              encomendas[6].ultima_atualizacao
+                            ) : (
+                              <>&nbsp;</>
+                            )}
+                          </TextH6>
                         </td>
                       </tr>
                     </tbody>
@@ -385,8 +505,6 @@ function TablePager() {
       <PagerComponent className="w-100 text-center d-flex justify-content-center p-5">
         <PagerText className="left">Anterior</PagerText>
         <PagerNumber className="active">1</PagerNumber>
-        <PagerNumber>2</PagerNumber>
-        <PagerNumber>3</PagerNumber>
         <PagerText className="right">Próxima</PagerText>
       </PagerComponent>
     </div>
@@ -407,7 +525,7 @@ const PagerNumber = styled.div`
 
   &.active {
     color: white;
-    background-color: #30373e;
+    background-color: #394a58;
   }
 `;
 
