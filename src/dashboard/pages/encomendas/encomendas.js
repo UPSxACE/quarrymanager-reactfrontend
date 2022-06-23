@@ -438,6 +438,8 @@ function DashboardVerEncomendas() {
             },
           }
         );
+
+        setEstado(10);
       } catch (err) {
         console.log(err);
       }
@@ -544,7 +546,7 @@ function DashboardVerEncomendas() {
                     O Status: {dados.ultimo_estado ? nome_estado : ""}
                   </DisplayTextH1>
                   <div className="">
-                    {dados.id_estado && dados.id_estado < 10 && (
+                    {dados.id_estado && dados.id_estado < 9 && (
                       <ButtonSubmit2
                         onClick={proximoEstado}
                         green
