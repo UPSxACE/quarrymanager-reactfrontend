@@ -56,14 +56,32 @@ function DashboardNovoProdutoLoja() {
           <Col xs={12}>
             <Container fluid>
               <Row className="g-0 ">
-                <Col xs={9} className="pe-3 ps-5 pb-4">
+                <Col xs={6} className="pe-3 ps-5 pb-4">
                   <FormColor>Produto</FormColor>
                   <Form.Select ref={idMaterial}>
                     <option>Selecionar Produto</option>
                   </Form.Select>
                 </Col>
+                <Col xs={6} className="pe-5">
+                  <FormColor>Preço</FormColor>
+                  <Form.Group className="mb-3" controlId="formBasicIdLote">
+                    <Form.Control
+                      type="text"
+                      placeholder=""
+                      defaultValue={preco.current.value}
+                      ref={preco}
+                    />
+                  </Form.Group>
+                </Col>
 
-                <Col xs={9} className="pe-3 ps-5">
+                {/* <Col xs={6} className="pe-5 pb-4">
+                  <FormColor>
+                    Imagem: <br></br>
+                    <input type="file" className="pt-2" />
+                  </FormColor>
+                </Col> */}
+
+                <Col xs={6} className="pe-3 ps-5">
                   <FormColor>Título Artigo</FormColor>
                   <Form.Group className="mb-3" controlId="formBasicIdLote">
                     <Form.Control
@@ -73,13 +91,8 @@ function DashboardNovoProdutoLoja() {
                     />
                   </Form.Group>
                 </Col>
-                <Col xs={3} className="pe-5">
-                  <FormColor>Preço</FormColor>
-                  <Form.Group className="mb-3" controlId="formBasicIdLote">
-                    <Form.Control type="text" placeholder="" ref={preco} />
-                  </Form.Group>
-                </Col>
-                <Col xs={12} className="pe-5 ps-5">
+
+                <Col xs={6} className="pe-5">
                   <FormColor>Descrição do Produto</FormColor>
                   <Form.Group className="mb-3" controlId="formBasicIdLote">
                     <Form.Control
@@ -89,9 +102,13 @@ function DashboardNovoProdutoLoja() {
                     />
                   </Form.Group>
                 </Col>
+                <Col xs={12} className="ps-5 pb-4 pe-5">
+                  <FormColor>
+                    Imagem: <br></br>
+                    <input type="file" className="pt-2" />
+                  </FormColor>
+                </Col>
               </Row>
-
-              <Col xs={12}></Col>
 
               <Col xs={12} className="pt-3 ps-5">
                 <PrimaryButtonSave onClick={submit} className="me-2">
