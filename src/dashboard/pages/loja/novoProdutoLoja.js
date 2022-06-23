@@ -9,17 +9,18 @@ import {
   SecundaryButtonCancel,
 } from "../../components/buttons";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 export { DashboardNovoProdutoLoja };
 
 function DashboardNovoProdutoLoja() {
-  const idMaterial = useRef("");
+  const idProduto = useRef("");
   const tituloArtigo = useRef("");
   const preco = useRef("");
   const descricaoProduto = useRef("");
   let navigate = useNavigate();
   const [dropdownData, setDropdownData] = useState({}); //#
+  const [file, setFile] = useState(null);
 
   function dropdownProdutos() {
     //#
@@ -74,16 +75,18 @@ function DashboardNovoProdutoLoja() {
         const password = "";
 
         const resp = await axios.post(
-          "http://localhost:8080/api/produto/add",
+          "http://localhost:8080/api/produto/adicionar-loja",
           {
-            idMaterial: idMaterial.current.value,
+            idProduto: idProduto.current.value,
             tituloArtigo: tituloArtigo.current.value,
             preco: preco.current.value,
             descricaoProduto: descricaoProduto.current.value,
+            file: file,
           },
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
+              "content-type": "multipart/form-data",
             },
           }
         );
@@ -116,7 +119,7 @@ function DashboardNovoProdutoLoja() {
 
                 <Col xs={6} className="pe-3 ps-5 pb-4">
                   <FormColor>Produto</FormColor>
-                  <Form.Select ref={idMaterial}>
+                  <Form.Select ref={idProduto}>
                     <option>Selecionar Produto</option>
                     {dropdownProdutos()}
                   </Form.Select>
@@ -142,7 +145,13 @@ function DashboardNovoProdutoLoja() {
                 <Col xs={12} className="ps-5 pb-4 pe-5">
                   <FormColor>
                     Imagem: <br></br>
-                    <input type="file" className="pt-2" />
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        setFile(e.target.files[0]);
+                      }}
+                      className="pt-2"
+                    />
                   </FormColor>
                 </Col>
               </Row>
