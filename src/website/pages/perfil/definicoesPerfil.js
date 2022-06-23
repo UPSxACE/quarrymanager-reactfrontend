@@ -12,6 +12,7 @@ export { DefinicoesPerfil };
 
 function DefinicoesPerfil(props) {
   const [user, getUser] = useState([]);
+  const username = useRef("");
   const email = useRef("");
   const oldPassword = useRef("");
   const newPassword = useRef("");
@@ -22,12 +23,12 @@ function DefinicoesPerfil(props) {
   function submit() {
     const sendPostRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
-        const password = "";
+        const AuthKey = localStorage.getItem("AuthKey");
 
         const resp = await axios.post(
           "http://localhost:8080/api/profile/editar-definicoes-perfil",
           {
+            username: username.current.value,
             email: email.current.value,
             password: oldPassword.current.value,
             newPassword:
@@ -37,7 +38,7 @@ function DefinicoesPerfil(props) {
           },
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
             },
           }
         );
@@ -55,14 +56,14 @@ function DefinicoesPerfil(props) {
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
-        const username = localStorage.getItem("AuthKey");
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios(
           "http://localhost:8080/api/profile/get-profile-definicoes",
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
             },
           }
         );
@@ -133,6 +134,7 @@ function DefinicoesPerfil(props) {
                     <Form.Control
                       type="text"
                       defaultValue={user.username ? user.username : ""}
+                      ref={username}
                     />
                   </Form.Group>
                 </Col>

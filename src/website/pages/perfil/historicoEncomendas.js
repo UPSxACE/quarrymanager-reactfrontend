@@ -18,14 +18,14 @@ function HistoricoEncomendas(props) {
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios(
           "http://localhost:8080/api/pedido/find-pedidos-utilizador",
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
             },
           }
         );

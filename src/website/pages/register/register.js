@@ -85,7 +85,7 @@ function Register() {
               <Form.Group controlId="formPassword" className="mt-3">
                 <StyledFormLabel>Password:</StyledFormLabel>
                 <Form.Control
-                  type="email"
+                  type="password"
                   placeholder="Password"
                   ref={newPassword}
                 />
@@ -93,7 +93,7 @@ function Register() {
               <Form.Group controlId="formConfirmarPassword" className="mt-3">
                 <StyledFormLabel>Confirmar Password:</StyledFormLabel>
                 <Form.Control
-                  type="email"
+                  type="password"
                   placeholder="Confirmar Password"
                   ref={newPassword2}
                 />

@@ -32,8 +32,7 @@ function MeuPerfil(props) {
         formdata.append("image", file);
         //formdata.append('name', 'miguel rocha');
 
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
-        const password = "";
+        const AuthKey = localStorage.getItem("AuthKey");
 
         const resp = await axios.post(
           "http://localhost:8080/api/profile/editar",
@@ -51,7 +50,7 @@ function MeuPerfil(props) {
           },
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
               "content-type": "multipart/form-data",
             },
           }

@@ -41,7 +41,7 @@ function ProdutoLoja() {
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios(
@@ -50,7 +50,7 @@ function ProdutoLoja() {
             "&fields=tituloArtigo,preco,Res_Compressao,Res_Flexao,Massa_Vol_Aparente,Absorcao_Agua,descricaoProduto",
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
             },
           }
         );
@@ -67,14 +67,14 @@ function ProdutoLoja() {
   useEffect(() => {
     const sendGetRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios(
           "http://localhost:8080/api/profile/get-profile",
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":" + password),
             },
           }
         );
@@ -91,7 +91,7 @@ function ProdutoLoja() {
   function updateProfile() {
     const sendPostRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios.post(
@@ -104,7 +104,7 @@ function ProdutoLoja() {
           },
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
               "content-type": "multipart/form-data",
             },
           }
@@ -131,7 +131,7 @@ function ProdutoLoja() {
   function submit() {
     const sendPostRequest = async () => {
       try {
-        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const AuthKey = localStorage.getItem("AuthKey");
         const password = "";
 
         const resp = await axios.post(
@@ -144,7 +144,7 @@ function ProdutoLoja() {
           },
           {
             headers: {
-              Authorization: "Basic " + btoa(username + ":" + password),
+              Authorization: "Basic " + btoa(AuthKey + ":"),
             },
           }
         );
@@ -260,7 +260,7 @@ function ProdutoLoja() {
                 Entraremos em contacto consigo o mais brevemente possível.{" "}
                 <br></br>
                 Enquanto aguarda pode acompanhar o seu pedido no{" "}
-                <WhiteLink to="/historico-encomendas">
+                <WhiteLink to="/perfil/historico-encomendas">
                   histórico de encomendas
                 </WhiteLink>
                 .
