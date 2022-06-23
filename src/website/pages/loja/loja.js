@@ -43,7 +43,7 @@ function LojaHome(props) {
         {/*<StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>*/}
 
         <Col xs={12}>
-          <PageHeader className="ps-4 pt-3 pb-5 d-flex pe-4">
+          <PageHeader className="ps-4 pt-4 pb-4 d-flex pe-4">
             <DisplayH1>A Nossa Loja</DisplayH1>
             <Search className="searchWrapper">
               <div className="search d-flex">
@@ -64,7 +64,7 @@ function LojaHome(props) {
             </Search>
           </PageHeader>
 
-          <Container fluid className="g-0 pe-4 ps-4">
+          <Container fluid className="g-0 pt-2 pe-4 ps-4">
             <StyledRowDark>
               {data.map((produto, index) => {
                 return (
@@ -194,7 +194,7 @@ const Search = styled.div`
   margin-left: auto;
 
   &.searchWrapper {
-    width: 500px;
+    width: 400px;
   }
 
   button {
@@ -210,6 +210,7 @@ const Search = styled.div`
   }
 
   .search-input {
+    padding-left: 15px;
     font-size: 28px;
     min-width: 0; /* linha de código para concertar o resize automático da tag input */
   }

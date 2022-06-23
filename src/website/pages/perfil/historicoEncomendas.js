@@ -84,14 +84,14 @@ function HistoricoEncomendas(props) {
           <ColoredContainer
             variant={2}
             fluid
-            className="drop dropShadow25 borderBlack perfilHeightFix"
+            className="drop dropShadow25 borderBlack perfilHeightFix d-flex"
           >
             <Row className="pe-3 ps-3">
               <Col xs={12} className="ps-5 mt-5 mb-3 d-flex">
                 <H1>Histórico de Encomendas</H1>
               </Col>
 
-              <Col xs={12} className="ps-5 mb-4 pe-5">
+              <Col xs={12} className="ps-5 mb-4 pe-5 flex-grow-1">
                 <CardDiv>
                   <table className="w-100">
                     <thead>
