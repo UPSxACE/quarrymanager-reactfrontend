@@ -27,7 +27,7 @@ function DashboardNovoProdutoLoja() {
         const password = "";
 
         const resp = await axios.post(
-          "http://localhost:8080/api/produto/find?id=1",
+          "http://localhost:8080/api/produto/add",
           {
             idMaterial: idMaterial.current.value,
             tituloArtigo: tituloArtigo.current.value,
@@ -56,32 +56,7 @@ function DashboardNovoProdutoLoja() {
           <Col xs={12}>
             <Container fluid>
               <Row className="g-0 ">
-                <Col xs={6} className="pe-3 ps-5 pb-4">
-                  <FormColor>Produto</FormColor>
-                  <Form.Select ref={idMaterial}>
-                    <option>Selecionar Produto</option>
-                  </Form.Select>
-                </Col>
-                <Col xs={6} className="pe-5">
-                  <FormColor>Preço</FormColor>
-                  <Form.Group className="mb-3" controlId="formBasicIdLote">
-                    <Form.Control
-                      type="text"
-                      placeholder=""
-                      defaultValue={preco.current.value}
-                      ref={preco}
-                    />
-                  </Form.Group>
-                </Col>
-
-                {/* <Col xs={6} className="pe-5 pb-4">
-                  <FormColor>
-                    Imagem: <br></br>
-                    <input type="file" className="pt-2" />
-                  </FormColor>
-                </Col> */}
-
-                <Col xs={6} className="pe-3 ps-5">
+                <Col xs={12} className="pe-5 ps-5">
                   <FormColor>Título Artigo</FormColor>
                   <Form.Group className="mb-3" controlId="formBasicIdLote">
                     <Form.Control
@@ -92,14 +67,28 @@ function DashboardNovoProdutoLoja() {
                   </Form.Group>
                 </Col>
 
+                <Col xs={6} className="pe-3 ps-5 pb-4">
+                  <FormColor>Produto</FormColor>
+                  <Form.Select ref={idMaterial}>
+                    <option>Selecionar Produto</option>
+                  </Form.Select>
+                </Col>
                 <Col xs={6} className="pe-5">
+                  <FormColor>Preço</FormColor>
+                  <Form.Group className="mb-3" controlId="formBasicIdLote">
+                    <Form.Control type="text" placeholder="" ref={preco} />
+                  </Form.Group>
+                </Col>
+
+                <Col xs={12} className="pe-5 ps-5">
                   <FormColor>Descrição do Produto</FormColor>
                   <Form.Group className="mb-3" controlId="formBasicIdLote">
-                    <Form.Control
+                    <Textarea
+                      className="w-100"
                       type="text"
                       placeholder=""
                       ref={descricaoProduto}
-                    />
+                    ></Textarea>
                   </Form.Group>
                 </Col>
                 <Col xs={12} className="ps-5 pb-4 pe-5">
@@ -114,7 +103,7 @@ function DashboardNovoProdutoLoja() {
                 <PrimaryButtonSave onClick={submit} className="me-2">
                   Guardar
                 </PrimaryButtonSave>
-                <Link to={"/dashboard/stock"}>
+                <Link to={"/dashboard/loja"}>
                   <SecundaryButtonCancel>Cancelar</SecundaryButtonCancel>
                 </Link>
               </Col>
@@ -128,4 +117,10 @@ function DashboardNovoProdutoLoja() {
 
 const FormColor = styled(Form.Label)`
   color: #004b5b;
+`;
+
+const Textarea = styled.textarea`
+  min-height: 150px;
+  max-height: 300px;
+  resize: vertical;
 `;

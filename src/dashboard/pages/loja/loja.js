@@ -107,7 +107,7 @@ function DashboardLoja(props) {
             <DashboardMenuList
               listItems={["Produtos", "Transportadoras"]}
               rightButton={[
-                ["Adicionar Produto à Loja", "novo-produto"],
+                ["Adicionar Produto à Loja", "novo-produto-loja"],
 
                 ["Nova Transportadora", "nova-transportadora"],
               ]}
