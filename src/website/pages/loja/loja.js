@@ -5,6 +5,8 @@ import lojaPic from "../../../images/website/granitoAmarelo.jpg";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export { LojaHome };
 
@@ -38,18 +40,39 @@ function LojaHome(props) {
   return (
     <Container fluid>
       <StyledRowDark className="stretch">
-        <StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>
+        {/*<StyledColLight xs={3}>SIDEBAR FILTROS</StyledColLight>*/}
 
-        <Col xs={9}>
-          <DisplayH1 className="text-center pt-3 pb-5">A Nossa Loja</DisplayH1>
-          <Container>
+        <Col xs={12}>
+          <PageHeader className="ps-4 pt-3 pb-5 d-flex pe-4">
+            <DisplayH1>A Nossa Loja</DisplayH1>
+            <Search className="searchWrapper">
+              <div className="search d-flex">
+                <input
+                  type="text"
+                  className="search-input flex-grow-1"
+                  placeholder="Search..."
+                />
+                <div class="iconBox text-center">
+                  <button className="search-icon">
+                    <FontAwesomeIcon
+                      className={"i"}
+                      icon={faSearch}
+                    ></FontAwesomeIcon>
+                  </button>
+                </div>
+              </div>
+            </Search>
+          </PageHeader>
+
+          <Container fluid className="g-0 pe-4 ps-4">
             <StyledRowDark>
               {data.map((produto, index) => {
                 return (
                   <Col
                     xs={12}
-                    lg={6}
-                    xxl={4}
+                    md={6}
+                    xl={4}
+                    xxl={3}
                     className="mb-5 d-flex justify-content-center"
                     key={index}
                   >
@@ -79,6 +102,12 @@ function LojaHome(props) {
 
 const StyledRowDark = styled(Row)`
   background-color: #394a58;
+
+  @media (min-width: 1400px) and (max-width: 1480px) {
+    .col-xxl-3 {
+      width: 33.33333333% !important;
+    }
+  }
 `;
 
 const StyledColLight = styled(Col)`
@@ -153,5 +182,41 @@ const PagerText = styled.div`
 
   &:last-child {
     border-right: 1px solid #596d81;
+  }
+`;
+
+const PageHeader = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Search = styled.div`
+  margin-left: auto;
+
+  &.searchWrapper {
+    width: 500px;
+  }
+
+  button {
+    all: unset;
+  }
+
+  .iconBox {
+    display: flex;
+    justify-content: center;
+    width: 75px;
+    height: 55px;
+    background-color: #30373e;
+  }
+
+  .search-input {
+    font-size: 28px;
+    min-width: 0; /* linha de código para concertar o resize automático da tag input */
+  }
+
+  .iconBox .i {
+    color: white;
+    font-size: 28px;
+    line-height: 55px;
   }
 `;
