@@ -120,7 +120,7 @@ function DashboardSidebar(props) {
             currentTab === "aju" ? "text-center active" : "text-center"
           }
         >
-          <Link to="#">
+          <Link to="">
             <SidebarIcon
               icon={faCircleQuestion}
               className={currentTab === "aju" ? "active" : ""}
@@ -142,7 +142,7 @@ function DashboardSidebar(props) {
         </IconSidebarList>
       </NavigationItems>
       <ThemeColorButton className="text-center">
-        <Link to="#">
+        <Link to="">
           {" "}
           <SidebarIcon
             icon={faSun}

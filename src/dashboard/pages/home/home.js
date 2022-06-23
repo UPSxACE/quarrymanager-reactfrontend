@@ -170,7 +170,7 @@ function DashboardHome() {
                 <CardGraph>
                   Finanças
                   <NumberH1Graph className="pt-2">
-                    {stats.financas}
+                    {stats.financas}€
                   </NumberH1Graph>
                 </CardGraph>
               </Col>
