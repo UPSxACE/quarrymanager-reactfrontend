@@ -52,7 +52,7 @@ function DashboardLoja(props) {
             actions
             view={"ver-produto"}
             edit={"editar-produto"}
-            delete={"delete-produto"}
+            //delete={"delete-produto"}
             controller={"produto"}
           ></DashboardTable>
         );
@@ -69,7 +69,7 @@ function DashboardLoja(props) {
             actions
             view={"ver-transportadora"}
             edit={"editar-transportadora"}
-            delete={"delete-transportadora"}
+            //delete={"delete-transportadora"}
             controller={"transportadora"}
           ></DashboardTable>
         );
@@ -89,7 +89,7 @@ function DashboardLoja(props) {
             actions
             view={"ver-produto"}
             edit={"editar-produto"}
-            delete={"delete-produto"}
+            //delete={"delete-produto"}
             controller={"produto"}
           ></DashboardTable>
         );

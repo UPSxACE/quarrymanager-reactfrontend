@@ -53,7 +53,7 @@ function DashboardStock(props) {
             actions
             view={"ver-lote"}
             edit={"editar-lote"}
-            delete={"delete-lote"}
+            //delete={"delete-lote"}
             controller={"lote"}
           ></DashboardTable>
         );
@@ -77,7 +77,7 @@ function DashboardStock(props) {
             actions
             view={"ver-lote"}
             edit={"editar-lote"}
-            delete={"delete-lote"}
+            //delete={"delete-lote"}
             controller={"lote"}
           ></DashboardTable>
         );
@@ -100,7 +100,7 @@ function DashboardStock(props) {
             actions
             view={"ver-produto"}
             edit={"editar-produto"}
-            delete={"delete-produto"}
+            //delete={"delete-produto"}
             controller={"produto"}
           ></DashboardTable>
         );
@@ -119,7 +119,7 @@ function DashboardStock(props) {
             actions
             view={"ver-material"}
             edit={"editar-material"}
-            delete={"delete-material"}
+            //delete={"delete-material"}
             controller={"material"}
           ></DashboardTable>
         );
@@ -139,7 +139,7 @@ function DashboardStock(props) {
             actions
             view={"ver-cor"}
             edit={"editar-cor"}
-            delete={"delete-cor"}
+            //delete={"delete-cor"}
             controller={"cor"}
           ></DashboardTable>
         );
@@ -163,7 +163,7 @@ function DashboardStock(props) {
             actions
             view={"ver-lote"}
             edit={"editar-lote"}
-            delete={"delete-lote"}
+            //delete={"delete-lote"}
             controller={"lote"}
           ></DashboardTable>
         );

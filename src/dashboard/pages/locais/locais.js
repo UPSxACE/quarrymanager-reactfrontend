@@ -37,7 +37,7 @@ function DashboardLocais(props) {
             actions
             view={"ver-local-armazem"}
             edit={"editar-local-armazem"}
-            delete={"delete-local-armazem"}
+            //delete={"delete-local-armazem"}
             controller={"local-armazem"}
           />
         );
@@ -56,7 +56,7 @@ function DashboardLocais(props) {
             actions
             view={"ver-local-extracao"}
             edit={"editar-local-extracao"}
-            delete={"delete-local-extracao"}
+            //delete={"delete-local-extracao"}
             controller={"local-armazem"}
           />
         );
@@ -73,7 +73,7 @@ function DashboardLocais(props) {
             actions
             view={"ver-local-armazem"}
             edit={"editar-local-armazem"}
-            delete={"delete-local-armazem"}
+            //delete={"delete-local-armazem"}
             controller={"local-armazem"}
           />
         );
