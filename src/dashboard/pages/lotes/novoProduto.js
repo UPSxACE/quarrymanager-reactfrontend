@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
@@ -21,6 +21,98 @@ function DashboardNovoProduto() {
   const Massa_Vol_Aparente = useRef("");
   const Absorcao_Agua = useRef("");
   let navigate = useNavigate();
+
+  const [dropdownData, setDropdownData] = useState({});
+  const [dropdownData2, setDropdownData2] = useState({}); //#
+
+  function dropdownMaterial() {
+    //#
+    if (dropdownData !== null && dropdownData !== undefined) {
+      let materialKeys = Object.keys(dropdownData);
+      let materialValues = Object.values(dropdownData);
+
+      return (
+        <>
+          {materialKeys.map((material, index) => {
+            return (
+              <option key={"0" + index} value={material}>
+                {dropdownData[material]}
+              </option>
+            );
+          })}
+        </>
+      );
+    }
+
+    return <></>;
+  }
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/material/material-options",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        setDropdownData(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
+  function dropdownCor() {
+    //#
+    if (dropdownData2 !== null && dropdownData2 !== undefined) {
+      let corKeys = Object.keys(dropdownData2);
+      let corValues = Object.values(dropdownData2);
+
+      return (
+        <>
+          {corKeys.map((cor, index) => {
+            return (
+              <option key={"0" + index} value={cor}>
+                {dropdownData2[cor]}
+              </option>
+            );
+          })}
+        </>
+      );
+    }
+
+    return <></>;
+  }
+
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios("http://localhost:8080/api/cor/cor-options", {
+          headers: {
+            Authorization: "Basic " + btoa(username + ":" + password),
+          },
+        });
+
+        setDropdownData2(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
 
   function submit() {
     const sendPostRequest = async () => {
@@ -64,12 +156,14 @@ function DashboardNovoProduto() {
                   <FormColor>Material</FormColor>
                   <Form.Select ref={idMaterial}>
                     <option>Selecionar</option>
+                    {dropdownMaterial()}
                   </Form.Select>
                 </Col>
                 <Col xs={6} className="pe-5 ps-2 ">
                   <FormColor>Cor</FormColor>
                   <Form.Select ref={idCor}>
                     <option>Selecionar</option>
+                    {dropdownCor()}
                   </Form.Select>
                 </Col>
 
