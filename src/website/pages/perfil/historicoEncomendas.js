@@ -52,11 +52,11 @@ function HistoricoEncomendas(props) {
             <Row>
               <Col xs={12}>
                 <ul className="list-unstyled">
-                  <StyledLiSelect className="p-2">
+                  <StyledLi className="p-2">
                     <WhiteLink to={"/perfil"}>
                       <H5>Meu Perfil</H5>
                     </WhiteLink>
-                  </StyledLiSelect>
+                  </StyledLi>
 
                   <StyledLi className="p-2">
                     <WhiteLink to={"/perfil/definicoes"}>
@@ -64,11 +64,11 @@ function HistoricoEncomendas(props) {
                     </WhiteLink>
                   </StyledLi>
 
-                  <StyledLi className="p-2">
+                  <StyledLiSelect className="p-2">
                     <WhiteLink to={"/perfil/historico-encomendas"}>
                       <H5>Histórico de Encomendas</H5>
                     </WhiteLink>
-                  </StyledLi>
+                  </StyledLiSelect>
 
                   <StyledLi className="p-2">
                     <WhiteLink onClick={logOut} to={"/home"}>

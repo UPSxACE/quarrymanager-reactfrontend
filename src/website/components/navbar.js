@@ -200,7 +200,7 @@ function NavbarComponent(props) {
                 </Link>
               )}
 
-              <Link className="dropdown-item" to="encomendas">
+              <Link className="dropdown-item" to="/perfil/historico-encomendas">
                 Encomendas
               </Link>
               <Link className="dropdown-item" to="/perfil/definicoes">

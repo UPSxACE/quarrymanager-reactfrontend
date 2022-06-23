@@ -7,17 +7,36 @@ import {
   FormControl,
 } from "react-bootstrap";
 import { DisplayH1, H1, Paragraph, H2, H5, H3 } from "../../components/text";
+import { ButtonSubmit } from "../../components/buttons";
 import styled from "styled-components";
 import produtoPic from "../../../images/website/marmore.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export { ProdutoLoja };
 
 function ProdutoLoja() {
   const [find, findStats] = useState({});
+  const [user, getUser] = useState({});
+  const [estimativa, atualizarEstimativa] = useState(0);
+  const [sent, setSent] = useState(false);
+  const [editing, toggleEditing] = useState(false);
   const { id } = useParams("id");
+  const full_name = useRef("");
+  const morada = useRef("");
+  const email = useRef("");
+  const telefone = useRef("");
+
+  const codigo_desconto = useRef("");
+  const mensagem = useRef("");
+  const quantidade = useRef("");
+
+  function handleChange(event) {
+    find.preco
+      ? atualizarEstimativa((event.target.value * find.preco).toFixed(2))
+      : atualizarEstimativa(event.target.value);
+  }
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -45,6 +64,98 @@ function ProdutoLoja() {
     sendGetRequest();
   }, []);
 
+  useEffect(() => {
+    const sendGetRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios(
+          "http://localhost:8080/api/profile/get-profile",
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+
+        getUser(resp.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendGetRequest();
+  }, []);
+
+  function updateProfile() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/profile/editar",
+          {
+            full_name: full_name.current.value,
+            morada: morada.current.value,
+            email: email.current.value,
+            telefone: telefone.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
+  function isLoggedCheck() {
+    return !(
+      localStorage.getItem("AuthKey") === null ||
+      localStorage.getItem("AuthKey") === undefined
+    );
+  }
+
+  function editToggle() {
+    toggleEditing(!editing);
+  }
+
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido/pedido-orcamento/",
+          {
+            idProduto: id,
+            quantidade: quantidade.current.value,
+            codigo_desconto: codigo_desconto.current.value,
+            mensagem: mensagem.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   return (
     <Card className="d-flex flex-column">
       <BackgroundLight fluid>
@@ -53,11 +164,11 @@ function ProdutoLoja() {
             <Image src={produtoPic} />
           </Col>
 
-          <Col xs={6} className="paddLeft pt-3 pb-3">
+          <Col xs={6} className="paddLeft pt-5 pb-3">
             <H1> {find.tituloArtigo ? find.tituloArtigo : ""}</H1>
           </Col>
 
-          <Col xs={6} className="paddRight pt-3 pb-3">
+          <Col xs={6} className="paddRight pt-5 pb-3">
             <H1 className="text-end">{find.preco ? find.preco : ""} €/m²</H1>
           </Col>
           <Col xs={6} className="paddLeft">
@@ -104,36 +215,278 @@ function ProdutoLoja() {
           </Col>
         </Row>
       </BackgroundLight>
-      <BackgroundDark className="" fluid>
-        <Row className="dark pt-3 pe-5 ps-5 pb-5">
-          <Col xs={12}>
-            <H1 className="text-center pb-3">Orçamento</H1>
 
-            <H5 className="pb-2">
-              Para efetuar um pedido de orçamento, por favor registe-se ou
-              efetue login.
-            </H5>
-          </Col>
+      {!isLoggedCheck() ? (
+        <BackgroundDark className="" fluid>
+          <Row className="dark pt-3 pe-5 ps-5 pb-5">
+            <Col xs={12}>
+              <H1 className="text-center pb-3">Orçamento</H1>
 
-          <Col xs={6}>
-            <H5>Quantidade(m²):</H5>
-            <Form>
+              <H5 className="pb-2">
+                Para efetuar um pedido de orçamento, por favor{" "}
+                <WhiteLink to={"/register"}>registe-se</WhiteLink> ou efetue{" "}
+                <WhiteLink to={"/login"}>login</WhiteLink>.
+              </H5>
+            </Col>
+
+            <Col xs={6}>
+              <H5>Quantidade(m²):</H5>
+
               <Form.Group controlId="formBasic">
                 <InputGroup>
                   <Form.Control
                     type="number"
                     placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
                   />
                 </InputGroup>
               </Form.Group>
-            </Form>
-          </Col>
-          <Col xs={6}>
-            <H5>Estimativa de Preço:</H5>
-            <H3>0€</H3>
-          </Col>
-        </Row>
-      </BackgroundDark>
+            </Col>
+            <Col xs={6}>
+              <H5>Estimativa de Preço:</H5>
+              <H3>{estimativa}€</H3>
+            </Col>
+          </Row>
+        </BackgroundDark>
+      ) : sent ? (
+        // CASO ORÇAMENTO ENVIADOO = TRUE
+        <BackgroundDark className="logged" fluid>
+          <Row className="dark pt-5 pe-5 ps-5">
+            <Col xs={12}>
+              <H1 className="text-center pb-3">Pedido de Orçamento Enviado!</H1>
+              <H5 className="pb-5">
+                Entraremos em contacto consigo o mais brevemente possível.{" "}
+                <br></br>
+                Enquanto aguarda pode acompanhar o seu pedido no{" "}
+                <WhiteLink to="/historico-encomendas">
+                  histórico de encomendas
+                </WhiteLink>
+                .
+                <Link to="/loja">
+                  <ButtonSubmit className="w-100 mt-5">Voltar</ButtonSubmit>
+                </Link>
+              </H5>
+            </Col>
+          </Row>
+        </BackgroundDark>
+      ) : //CASO ORÇAMENTO ENVIADO = FALSE
+      editing ? (
+        //CASO EDITING = TRUE
+        <BackgroundDark className="logged" fluid>
+          <Row className="dark pt-3 pe-5 ps-5 pb-5">
+            <Col xs={12}>
+              <H1 className="text-center pb-3">Orçamento</H1>
+              <H5 className="pb-5">
+                Para pedidos de orçamento deixe a sua mensagem. Entraremos em
+                contacto consigo o mais brevemente possível.
+              </H5>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Quantidade(m²):</H5>
+
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="number"
+                    placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Estimativa de Preço:</H5>
+              <H3>{estimativa}€</H3>
+            </Col>
+            <Col xs={6} className="pb-3">
+              {" "}
+              <H5>Código de Desconto:</H5>
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder="Introduza um código de desconto."
+                    ref={codigo_desconto}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>&nbsp;</H5>
+              <H5>Nenhum.</H5>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Nome:</H5>{" "}
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    defaultValue={user.full_name ? user.full_name : ""}
+                    ref={full_name}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Morada:</H5>{" "}
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    defaultValue={user.morada ? user.morada : ""}
+                    ref={morada}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Email:</H5>{" "}
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    defaultValue={user.email ? user.email : ""}
+                    ref={email}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Telefone:</H5>{" "}
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    defaultValue={user.telefone ? user.telefone : ""}
+                    ref={telefone}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={12} className="pb-3">
+              <H5>Mensagem:</H5>
+            </Col>
+
+            <Col xs={12}>
+              {" "}
+              <Textarea
+                className="mb-3"
+                defaultValue={mensagem.current.value}
+                ref={mensagem}
+              ></Textarea>
+              <ButtonSubmit
+                className="w-100"
+                onClick={() => {
+                  updateProfile();
+                  submit();
+                  setSent(true);
+                }}
+              >
+                Enviar
+              </ButtonSubmit>
+            </Col>
+          </Row>
+        </BackgroundDark>
+      ) : (
+        //CASO EDITING = FALSE
+        <BackgroundDark className="logged" fluid>
+          <Row className="dark pt-3 pe-5 ps-5 pb-5">
+            <Col xs={12}>
+              <H1 className="text-center pb-3">Orçamento</H1>
+              <H5 className="pb-5">
+                Para pedidos de orçamento deixe a sua mensagem. Entraremos em
+                contacto consigo o mais brevemente possível.
+              </H5>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Quantidade(m²):</H5>
+
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="number"
+                    placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Estimativa de Preço:</H5>
+              <H3>{estimativa}€</H3>
+            </Col>
+            <Col xs={6} className="pb-3">
+              {" "}
+              <H5>Código de Desconto:</H5>
+              <Form.Group controlId="formBasic">
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder="Introduza um código de desconto."
+                    ref={codigo_desconto}
+                  />
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>&nbsp;</H5>
+              <H5>Nenhum.</H5>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Nome:</H5>{" "}
+              <TextH6> {user.full_name ? user.full_name : ""} </TextH6>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Morada:</H5>{" "}
+              <TextH6> {user.morada ? user.morada : ""} </TextH6>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Email:</H5> <TextH6> {user.email ? user.email : ""} </TextH6>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Telefone:</H5>{" "}
+              <TextH6> {user.telefone ? user.telefone : ""}</TextH6>
+            </Col>
+            <Col xs={6} className="pb-3">
+              <H5>Mensagem:</H5>
+            </Col>
+            <Col xs={6} className="pb-3 d-flex">
+              <Link to={"#"} className="ms-auto" onClick={editToggle}>
+                <H5>
+                  <u>Editar</u>
+                </H5>
+              </Link>
+            </Col>
+            <Col xs={12}>
+              {" "}
+              <Textarea
+                className="mb-3"
+                defaultValue={mensagem.current.value}
+                ref={mensagem}
+              ></Textarea>
+              <ButtonSubmit
+                className="w-100"
+                onClick={() => {
+                  submit();
+                  setSent(true);
+                }}
+              >
+                Enviar
+              </ButtonSubmit>
+            </Col>
+          </Row>
+        </BackgroundDark>
+      )}
     </Card>
   );
 }
@@ -165,6 +518,16 @@ const BackgroundDark = styled(Container)`
   padding-top: 40px;
   padding-bottom: 70px;
 
+  &.logged .unset {
+  }
+
+  textarea {
+    height: 175px;
+    resize: vertical;
+    max-height: 275px;
+    width: 100%;
+  }
+
   .dark {
     background-color: #30373e;
   }
@@ -180,4 +543,24 @@ const Descricao = styled.span`
   font-size: 20px;
 
   color: white;
+`;
+
+const Textarea = styled.textarea`
+  border-color: #004b5b;
+  border-radius: 4px;
+`;
+
+const TextH6 = styled.h6`
+  font-size: 18px;
+  color: #a7a7a7;
+  font-weight: lighter;
+  margin: 0px;
+`;
+
+const WhiteLink = styled(Link)`
+  color: white;
+
+  &:hover {
+    color: #f3844f;
+  }
 `;
