@@ -19,12 +19,24 @@ export { ProdutoLoja };
 function ProdutoLoja() {
   const [find, findStats] = useState({});
   const [user, getUser] = useState({});
+  const [estimativa, atualizarEstimativa] = useState(0);
+  const [sent, setSent] = useState(false);
   const [editing, toggleEditing] = useState(false);
   const { id } = useParams("id");
   const full_name = useRef("");
   const morada = useRef("");
   const email = useRef("");
   const telefone = useRef("");
+
+  const codigo_desconto = useRef("");
+  const mensagem = useRef("");
+  const quantidade = useRef("");
+
+  function handleChange(event) {
+    find.preco
+      ? atualizarEstimativa((event.target.value * find.preco).toFixed(2))
+      : atualizarEstimativa(event.target.value);
+  }
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -116,6 +128,34 @@ function ProdutoLoja() {
     toggleEditing(!editing);
   }
 
+  function submit() {
+    const sendPostRequest = async () => {
+      try {
+        const username = "dC9VOjlGLSmsg6ZGkh7E0DJKz8G1K59O";
+        const password = "";
+
+        const resp = await axios.post(
+          "http://localhost:8080/api/pedido/pedido-orcamento/",
+          {
+            idProduto: id,
+            quantidade: quantidade.current.value,
+            codigo_desconto: codigo_desconto.current.value,
+            mensagem: mensagem.current.value,
+          },
+          {
+            headers: {
+              Authorization: "Basic " + btoa(username + ":" + password),
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    sendPostRequest();
+  }
+
   return (
     <Card className="d-flex flex-column">
       <BackgroundLight fluid>
@@ -124,11 +164,11 @@ function ProdutoLoja() {
             <Image src={produtoPic} />
           </Col>
 
-          <Col xs={6} className="paddLeft pt-3 pb-3">
+          <Col xs={6} className="paddLeft pt-5 pb-3">
             <H1> {find.tituloArtigo ? find.tituloArtigo : ""}</H1>
           </Col>
 
-          <Col xs={6} className="paddRight pt-3 pb-3">
+          <Col xs={6} className="paddRight pt-5 pb-3">
             <H1 className="text-end">{find.preco ? find.preco : ""} €/m²</H1>
           </Col>
           <Col xs={6} className="paddLeft">
@@ -183,8 +223,9 @@ function ProdutoLoja() {
               <H1 className="text-center pb-3">Orçamento</H1>
 
               <H5 className="pb-2">
-                Para efetuar um pedido de orçamento, por favor registe-se ou
-                efetue login.
+                Para efetuar um pedido de orçamento, por favor{" "}
+                <WhiteLink to={"/register"}>registe-se</WhiteLink> ou efetue{" "}
+                <WhiteLink to={"/login"}>login</WhiteLink>.
               </H5>
             </Col>
 
@@ -196,17 +237,42 @@ function ProdutoLoja() {
                   <Form.Control
                     type="number"
                     placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
                   />
                 </InputGroup>
               </Form.Group>
             </Col>
             <Col xs={6}>
               <H5>Estimativa de Preço:</H5>
-              <H3>0€</H3>
+              <H3>{estimativa}€</H3>
             </Col>
           </Row>
         </BackgroundDark>
-      ) : editing ? (
+      ) : sent ? (
+        // CASO ORÇAMENTO ENVIADOO = TRUE
+        <BackgroundDark className="logged" fluid>
+          <Row className="dark pt-5 pe-5 ps-5">
+            <Col xs={12}>
+              <H1 className="text-center pb-3">Pedido de Orçamento Enviado!</H1>
+              <H5 className="pb-5">
+                Entraremos em contacto consigo o mais brevemente possível.{" "}
+                <br></br>
+                Enquanto aguarda pode acompanhar o seu pedido no{" "}
+                <WhiteLink to="/historico-encomendas">
+                  histórico de encomendas
+                </WhiteLink>
+                .
+                <Link to="/loja">
+                  <ButtonSubmit className="w-100 mt-5">Voltar</ButtonSubmit>
+                </Link>
+              </H5>
+            </Col>
+          </Row>
+        </BackgroundDark>
+      ) : //CASO ORÇAMENTO ENVIADO = FALSE
+      editing ? (
         //CASO EDITING = TRUE
         <BackgroundDark className="logged" fluid>
           <Row className="dark pt-3 pe-5 ps-5 pb-5">
@@ -225,13 +291,16 @@ function ProdutoLoja() {
                   <Form.Control
                     type="number"
                     placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
                   />
                 </InputGroup>
               </Form.Group>
             </Col>
             <Col xs={6} className="pb-3">
               <H5>Estimativa de Preço:</H5>
-              <H3>0€</H3>
+              <H3>{estimativa}€</H3>
             </Col>
             <Col xs={6} className="pb-3">
               {" "}
@@ -241,6 +310,7 @@ function ProdutoLoja() {
                   <Form.Control
                     type="text"
                     placeholder="Introduza um código de desconto."
+                    ref={codigo_desconto}
                   />
                 </InputGroup>
               </Form.Group>
@@ -307,11 +377,17 @@ function ProdutoLoja() {
 
             <Col xs={12}>
               {" "}
-              <Textarea className="mb-3"></Textarea>
+              <Textarea
+                className="mb-3"
+                defaultValue={mensagem.current.value}
+                ref={mensagem}
+              ></Textarea>
               <ButtonSubmit
                 className="w-100"
                 onClick={() => {
                   updateProfile();
+                  submit();
+                  setSent(true);
                 }}
               >
                 Enviar
@@ -338,13 +414,16 @@ function ProdutoLoja() {
                   <Form.Control
                     type="number"
                     placeholder="Introduza uma quantia em m²"
+                    ref={quantidade}
+                    onChange={handleChange}
+                    defaultValue={estimativa}
                   />
                 </InputGroup>
               </Form.Group>
             </Col>
             <Col xs={6} className="pb-3">
               <H5>Estimativa de Preço:</H5>
-              <H3>0€</H3>
+              <H3>{estimativa}€</H3>
             </Col>
             <Col xs={6} className="pb-3">
               {" "}
@@ -352,8 +431,9 @@ function ProdutoLoja() {
               <Form.Group controlId="formBasic">
                 <InputGroup>
                   <Form.Control
-                    type="number"
+                    type="text"
                     placeholder="Introduza um código de desconto."
+                    ref={codigo_desconto}
                   />
                 </InputGroup>
               </Form.Group>
@@ -389,8 +469,20 @@ function ProdutoLoja() {
             </Col>
             <Col xs={12}>
               {" "}
-              <Textarea className="mb-3"></Textarea>
-              <ButtonSubmit className="w-100">Enviar</ButtonSubmit>
+              <Textarea
+                className="mb-3"
+                defaultValue={mensagem.current.value}
+                ref={mensagem}
+              ></Textarea>
+              <ButtonSubmit
+                className="w-100"
+                onClick={() => {
+                  submit();
+                  setSent(true);
+                }}
+              >
+                Enviar
+              </ButtonSubmit>
             </Col>
           </Row>
         </BackgroundDark>
@@ -463,4 +555,12 @@ const TextH6 = styled.h6`
   color: #a7a7a7;
   font-weight: lighter;
   margin: 0px;
+`;
+
+const WhiteLink = styled(Link)`
+  color: white;
+
+  &:hover {
+    color: #f3844f;
+  }
 `;
