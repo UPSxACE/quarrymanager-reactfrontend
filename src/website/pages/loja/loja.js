@@ -20,7 +20,7 @@ function LojaHome(props) {
         const password = "";
 
         const resp = await axios(
-          "http://localhost:8080/api/produto/produtos-loja?fields=tituloArtigo,preco&expand=id",
+          "http://localhost:8080/api/produto/produtos-loja?fields=tituloArtigo,preco&expand=id,url_fotografia",
           {
             headers: {
               Authorization: "Basic " + btoa(username + ":" + password),
@@ -78,7 +78,12 @@ function LojaHome(props) {
                   >
                     <Card>
                       <Link to={"/loja/produto/" + produto.id}>
-                        <Image src={lojaPic} />
+                        <Image
+                          src={
+                            "http://localhost:8080/uploads/" +
+                            produto.url_fotografia
+                          }
+                        />
                       </Link>
                       <div className="d-flex pt-2">
                         <Link to={"/loja/produto/" + produto.id}>
@@ -124,7 +129,10 @@ const Card = styled.div`
   }
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  height: 200px;
+  width: 300px;
+`;
 
 function TablePager() {
   return (

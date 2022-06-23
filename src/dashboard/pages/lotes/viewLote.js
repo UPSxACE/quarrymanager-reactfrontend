@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { DashboardLayout } from "../../components/layout";
 import { DashboardRow } from "../../components/layoutComponents";
@@ -10,12 +10,18 @@ import {
 } from "../../components/buttons";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { DashboardTabContext } from "../../../App";
 export { ViewLote };
 
 function ViewLote() {
   const [find, findStats] = useState({});
 
   const { codigo_lote } = useParams("codigo_lote");
+  const [currentTab, setTab] = useContext(DashboardTabContext);
+
+  useEffect(() => {
+    setTab("Lote #" + codigo_lote);
+  });
 
   useEffect(() => {
     const sendGetRequest = async () => {
@@ -42,70 +48,46 @@ function ViewLote() {
 
   return (
     <Container fluid>
-      <DashboardRow className="g-0 pt-4 pb-4">
+      <DashboardRow className="g-0 pt-2 pb-3">
         <Col xs={12}>
           <Container>
-            <Tabela className="w-100 ">
+            <Container className="pb-1">
+              <Row>
+                <PicturesCol xs={12}>
+                  <img src="https://media.discordapp.net/attachments/938926709623906334/989600052425138226/1.jpg?width=1014&height=676" />
+                  <img src="https://media.discordapp.net/attachments/938926709623906334/989600052672618546/2.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989600052886515712/3.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989600053746348052/6.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989600054035771502/7.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989600054396456970/8.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989600054606188544/9.jpg" />
+                  <img src="https://cdn.discordapp.com/attachments/938926709623906334/989601082156154890/10.jpg" />
+                </PicturesCol>
+              </Row>
+            </Container>
+            <Tabela className="w-100">
               <tbody>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Codigo do Lote :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Codigo do Lote</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.codigo_lote ? find.codigo_lote : ""}
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Quantidade :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Quantidade</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.quantidade ? find.quantidade : ""}
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Data/Hora</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.dataHora ? find.dataHora : ""}
                   </td>
                 </tr>
+
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Titulo do Artigo :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.tituloArtigo : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Em Stock ?</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.na_loja : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Res. à Compressão :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.Res_Compressao : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Res. à Flexão :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.Res_Flexao : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">
-                    {" "}
-                    Massa Vol. Aparente :
-                  </th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.Massa_Vol_Aparente : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Absorção de Água :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0 ? find.idProduto0.Absorcao_Agua : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Material :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Material</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.idProduto0
                       ? find.idProduto0.idMaterial0
@@ -115,7 +97,7 @@ function ViewLote() {
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Cor :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Cor</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.idProduto0
                       ? find.idProduto0.idCor0
@@ -124,44 +106,21 @@ function ViewLote() {
                       : ""}
                   </td>
                 </tr>
+
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Preço :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Local de Armazém</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0
-                      ? find.idProduto0.preco
-                        ? find.idProduto0.preco
-                        : ""
-                      : ""}
+                    {find.idLocalArmazem0 ? find.idLocalArmazem0.nome : ""}
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Quantidade Vendida :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0
-                      ? find.idProduto0.quantidade_vendida
-                        ? find.idProduto0.quantidade_vendida
-                        : ""
-                      : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Número de pedidos :</th>
-                  <td className="pt-2 pe-3 ps-3 pb-2">
-                    {find.idProduto0
-                      ? find.idProduto0.numero_pedidos
-                        ? find.idProduto0.numero_pedidos
-                        : ""
-                      : ""}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Local de Extraçao :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Local de Extraçao</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.idLocalExtracao0 ? find.idLocalExtracao0.nome : ""}
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS X :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS X</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.idLocalExtracao0
                       ? find.idLocalExtracao0.coordenadasGPS_X
@@ -169,7 +128,7 @@ function ViewLote() {
                   </td>
                 </tr>
                 <tr>
-                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS Y :</th>
+                  <th className="pt-2 pe-3 ps-3 pb-2">Coordenadas GPS Y</th>
                   <td className="pt-2 pe-3 ps-3 pb-2">
                     {find.idLocalExtracao0
                       ? find.idLocalExtracao0.coordenadasGPS_Y
@@ -205,5 +164,26 @@ const Tabela = styled.table`
   td {
     width: 50%;
     border: 1px solid #dcdcdc;
+  }
+`;
+
+const PicturesCol = styled.div`
+  img {
+    height: 200px;
+    width: 25%;
+    padding: 10px;
+
+    object-fit: cover;
+  }
+
+  img:nth-child(1),
+  img:nth-child(5),
+  img:nth-child(9) {
+    padding-left: 0;
+  }
+
+  img:nth-child(4),
+  img:nth-child(8) {
+    padding-right: 0;
   }
 `;
