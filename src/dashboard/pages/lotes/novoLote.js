@@ -20,9 +20,6 @@ function DashboardNovoLote() {
   const quantidade = useRef("");
   const [files, setFiles] = useState([]);
   const [dropdownData, setDropdownData] = useState({});
-  const [produtos, setProdutos] = useState([]);
-  const [locaisA, setLocaisA] = useState([]);
-  const [locaisE, setLocaisE] = useState([]);
   let navigate = useNavigate();
 
   function dropdownProdutos() {
