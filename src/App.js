@@ -76,6 +76,7 @@ import { DashboardLayout } from "./dashboard/components/layout";
 import styled from "styled-components";
 import { ViewTransportadora } from "./dashboard/pages/encomendas/viewTransportadora";
 import { EditarTransportadora } from "./dashboard/pages/encomendas/editarTransportadora";
+import { DashboardNovoProdutoLoja } from "./dashboard/pages/loja/novoProdutoLoja";
 export { DashboardTabContext };
 
 const DashboardTabContext = createContext();
@@ -332,6 +333,10 @@ function App(props) {
           <Route
             path="editar-transportadora/:id"
             element={<EditarTransportadora />}
+          />
+          <Route
+            path="novo-produto-loja"
+            element={<DashboardNovoProdutoLoja />}
           />
 
           <Route
