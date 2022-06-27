@@ -200,6 +200,7 @@ function EditarLocalArmazem() {
                 type="text"
                 placeholder=""
                 defaultValue={dados.nome ? dados.nome : ""}
+                ref={nomeLocais}
               />
             </Form.Group>
           </Col>
