@@ -249,13 +249,12 @@ const ButtonDropdown = styled(DropdownButton)`
   border: 0;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 25%));
   z-index: 99;
-  
-
 
   .btn-primary {
     color: white;
-    background-color:  #30373e;
+    background-color: #30373e;
     border-color: #30373e;
+  }
 
   &:active {
     color: #fff;
@@ -280,16 +279,19 @@ const ButtonDropdown = styled(DropdownButton)`
     box-shadow: 0 0 0 0.25rem rgb(82 85 90 / 50%);
   }
 
-  &.btn-check:active+.btn-primary:focus,  &.btn-check:checked+.btn-primary:focus,  &.btn-primary.active:focus,  &.btn-primary:active:focus,  &.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.0rem rgb(0 0 0 / 0%);
-}
+  &.btn-check:active + .btn-primary:focus,
+  &.btn-check:checked + .btn-primary:focus,
+  &.btn-primary.active:focus,
+  &.btn-primary:active:focus,
+  &.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0rem rgb(0 0 0 / 0%);
+  }
 
-&.btn-primary.dropdown-toggle {
-    color: #30373e; 
-    background-color:  white;
+  &.btn-primary.dropdown-toggle {
+    color: #30373e;
+    background-color: white;
     border-color: #30373e;
-}
-
+  }
 `;
 
 const StyledNavbar = styled(Navbar)`
